@@ -43,8 +43,8 @@
     each elm in listhero
       .slider__item
         .hero__item
-          if elm.picD || elm.img
-            .hero__bg(class={"hero__bg--solo": !elm.descr && !elm.title && !elm.btn})
+          .hero__bg(class={"hero__bg--solo": !elm.descr && !elm.title && !elm.btn})
+            if elm.picD || elm.img
               picture
                 if elm.picM
                   source(media="(max-width: 767px)" srcset=elm.picM)
@@ -53,7 +53,8 @@
           if elm.descr || elm.title || elm.btn
             .wrap.hero__wrap
               .hero__text
-                .hero__descr= elm.descr
+                if elm.descr
+                  .hero__descr= elm.descr
                 .hero__title= elm.title
                 if elm.btn
                   .hero__cta

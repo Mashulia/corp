@@ -5,7 +5,7 @@ deploy:
   stage: deploy
   image: node:15
   environment:
-    name: belur
+    name: corp21-front
     url: https://corp21.netlify.app
   only:
     - master

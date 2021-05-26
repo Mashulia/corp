@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lollikay/tian-corp-front.git"
+    "url": "git+https://gitlab.sapropels.com/proofs/corp21.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/lollikay/tian-corp-front/issues"
+    "url": "https://gitlab.sapropels.com/proofs/corp21/issues"
   },
-  "homepage": "https://github.com/lollikay/tian-corp-front#readme",
+  "homepage": "https://gitlab.sapropels.com/proofs/corp21#readme",
   "devDependencies": {
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
@@ -46,9 +46,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "browserslist": [
-    "since 2015",
-    "ie > 10",
-    "> 1%"
+    "since 2015"
   ],
   "dependencies": {
     "imagemin-webpack-plugin": "^2.4.2",
