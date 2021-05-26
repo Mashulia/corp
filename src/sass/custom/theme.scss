@@ -21,13 +21,15 @@ a,
   color: $custom-color-1;
 }
 .connect::before,
-.hero__item {
+.hero__item,
+.benefits__img {
   background-color: $custom-color-2;
 }
 .button-primary,
 .bcart__button--active::after,
 .form__submit,
-.slick-active button {
+.slick-active button,
+.categories__title {
   background-color: $custom-color-1;
 }
 .button-primary,
@@ -37,13 +39,15 @@ a,
 }
 .button-primary:hover,
 .button-secondary:hover,
-.form__submit:hover {
+.form__submit:hover,
+.categories__link:hover .categories__title {
   background-color: $custom-color-hover;
   border-color: $custom-color-hover;
 }
 .button-primary:active,
 .button-secondary:active,
-.form__submit:active {
+.form__submit:active,
+.categories__link:active .categories__title {
   background-color: $custom-color-active;
   border-color: $custom-color-active;
 }

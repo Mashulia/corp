@@ -1,0 +1,34 @@
+.section {
+  padding-top: 1.875rem;
+  padding-bottom: 1.875rem;
+}
+.section__header {
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.section__name:not(:last-child),
+.section__more {
+  flex-basis: auto;
+}
+.section__name:last-child {
+  text-align: center;
+}
+.section__title {
+  color: $color-textHeader;
+  font-weight: 800;
+  font-size: 1.375rem;
+  line-height: 1.24;
+}
+.section__link {
+  display: flex;
+  align-items: center;
+}
+.section__link__icon {
+  margin-left: 0.5rem;
+}
+.section__intro {
+  font-weight: 400;
+  padding-right: 2.5rem;
+}

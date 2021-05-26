@@ -1,21 +1,32 @@
-.benefits__wrap {
-}
 .benefits__list {
-  @extend %fx-centered-y;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: -1rem;
+  margin-bottom: 0.75rem;
+
+  &:last-child {
+    margin-bottom: -1.1875rem;
+    padding-bottom: 1px;
+  }
 }
 .benefits__item {
   @extend %fx-centered-y;
-  flex: 0 0 20%;
-  margin-bottom: 1rem;
-  padding: 1.5rem;
+  color: $color-textHeader;
+  font-weight: bold;
+  font-size: 0.9375rem;
+  margin-bottom: 1.125rem;
   position: relative;
 }
 .benefits__img {
-  flex: 0 0 2.5rem;
-  height: 2.5rem;
-  max-width: 2.5rem;
-  margin-right: 1rem;
+  flex: 0 0 3.125rem;
+  background: $color-bg;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.125rem;
+  max-width: 3.125rem;
+  margin-right: 0.75rem;
+  overflow: hidden;
+
+  img {
+    max-height: 100%;
+  }
 }

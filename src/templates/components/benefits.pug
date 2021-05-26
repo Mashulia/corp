@@ -1,52 +1,40 @@
 -
   var bens = [
     {
-      pic: "delivery",
-      title: "Быстрая доставка  в черте города"
+      pic: require("/src/images/content-images/bens-1.png"),
+      title: "Соблюдение сроков строительства"
     },
     {
-      pic: "service",
-      title: "Круглосуточный клиентский сервис"
+      pic: require("/src/images/content-images/bens-2.png"),
+      title: "Квалифицированные строители"
     },
     {
-      pic: "bonus",
+      pic: require("/src/images/content-images/bens-3.png"),
       title: "Персональные скидки клиентам"
     },
     {
-      pic: "garanty",
-      title: "Гарантия на мебель 2 года"
+      pic: require("/src/images/content-images/bens-4.png"),
+      title: "Цены на материалы от производителя"
     },
     {
-      pic: "pay",
-      title: "Любые виды оплаты"
+      pic: require("/src/images/content-images/bens-5.png"),
+      title: "Гарантия 10 лет на строительные работы"
     },
     //- {
-    //-   pic: "bonus",
-    //-   title: "Персональные скидки клиентам"
+    //-   pic: require("/src/images/content-images/prods-1.jpg"),
+    //-   title: "Персональные скидки клиентам и еще что-то очень длинное, потому что нужно проверить, как чего выглядит"
     //- },
     //- {
-    //-   pic: "garanty",
-    //-   title: "Гарантия на мебель 2 года"
+    //-   pic: require("/src/images/content-images/cats-2.png"),
+    //-   title: "Гарантия"
     //- }
   ];
-
-mixin icon-delivery
-  include ../../images/inline-svgs/delivery.svg
-mixin icon-service
-  include ../../images/inline-svgs/service.svg
-mixin icon-bonus
-  include ../../images/inline-svgs/bonus.svg
-mixin icon-garanty
-  include ../../images/inline-svgs/garanty.svg
-mixin icon-pay
-  include ../../images/inline-svgs/pay.svg
-
 .section.benefits
   .wrap
-    .benefits__wrap
-      .benefits__list
-        each itm in bens
+    .benefits__list.cells
+      each itm in bens
+        .cell.cell-sm-6.cell-md-4.cell-lg-3
           .benefits__item
             .benefits__img
-              +#{"icon-" + itm.pic}
+              img(src=itm.pic)
             .benefits__title= itm.title

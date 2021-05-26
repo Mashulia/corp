@@ -1,53 +1,57 @@
 -
   var cats = [
     {
-      title: "Мягкая мебель",
-      pic: require("/src/images/content-images/cats-1.png"),
-      bg: '#E0E18E'
+      title: "Дома из клееного бруса",
+      pic: require("/src/images/content-images/catalog-1.jpg")
     },
     {
-      title: "Кухни",
-      pic: require("/src/images/content-images/cats-2.png"),
-      bg: '#A2CBCE'
+      title: "Каркасные дома",
+      pic: require("/src/images/content-images/catalog-2.jpg")
     },
     {
-      title: "Диваны прямые по индивидуальным размерам",
-      pic: require("/src/images/content-images/cats-3.png"),
-      bg: '#EBCCB0'
+      title: "Дома из пеноблоков",
+      pic: require("/src/images/content-images/catalog-3.jpg")
     },
     {
-      title: "Мягкая мебель",
-      pic: require("/src/images/content-images/hero-1.png"),
-      bg: '#E0E18E'
+      title: "Кирпичные дома",
+      pic: require("/src/images/content-images/catalog-4.jpg")
     },
     {
-      title: "Кухни",
-      pic: require("/src/images/content-images/prods-2.jpg"),
-      bg: '#A2CBCE'
+      title: "Дома из газобетона",
+      pic: require("/src/images/content-images/catalog-5.jpg")
     },
     {
-      title: "Диваны прямые по индивидуальным размерам",
-      pic: require("/src/images/content-images/services-4.jpg"),
-      bg: '#EBCCB0'
-    }
+      title: "Дома из бревна",
+      pic: require("/src/images/content-images/catalog-6.jpg")
+    },
+    {
+      title: "Дома из SIP панелей",
+      pic: require("/src/images/content-images/catalog-7.jpg")
+    },
+    {
+      title: "Бани и беседки",
+      pic: require("/src/images/content-images/catalog-8.jpg")
+    },
+    //- {
+    //-   title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic magnam reiciendis quia accusantium blanditiis alias voluptate facilis eos numquam cum, pariatur suscipit inventore, repellat placeat, mollitia laborum! Minus, tenetur quidem.",
+    //-   pic: require("/src/images/content-images/cats-2.png")
+    //- },
+    //- {
+    //-   title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
+    //-   pic: require("/src/images/content-images/prods-1.jpg")
+    //- }
   ];
 .section.categories
   .wrap
     .section__header.cells
-      .cell.cell-auto
-        .section__title Каталог товаров
-      .cell.cell-auto
-        a.section__link(href="catalog.html") Перейти в каталог
-          span.section__link__icon
-            include ../../images/inline-svgs/right.svg
-    .cells
-      .cell.cell-4
-        .section__intro
-          | Мы посвятили себя производству лучшего ассортимента сказочно ценной мебели.
-          | И, как ведущий производитель, мы ежедневно доказываем, что российской мебели можно доверять.
-      .cell.cell-8
-        .slider.categories__slider
-          each elm, index in cats
-            .slider__item
-              a.categories__item(style="background-color: " + elm.bg + "; background-image: url(" + elm.pic + ")" href="")
-                .categories__title= elm.title
+      .cell.section__name
+        .section__title Мы строим
+      //- .cell.section__more
+      //-   a.section__link(href="catalog.html") Перейти в каталог
+      //-     span.section__link__icon
+      //-       include ../../images/inline-svgs/right.svg
+    .categories__list
+      each elm, index in cats
+        .categories__item
+          a.categories__link(style="background-image: url(" + elm.pic + ");" href="category.html")
+            .categories__title= elm.title

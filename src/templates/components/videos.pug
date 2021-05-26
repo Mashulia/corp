@@ -1,58 +1,51 @@
 -
   var vids = [
     {
-      link: "https://youtu.be/4TH9mFgjdaI",
-      title: "Процесс создания кресла Сhisterika",
-      descr: "Заведующий производством рассказывает о технологиях и процессах.",
-      duration: "15 мин. 23 сек.",
+      link: "https://www.youtube.com/embed/4TH9mFgjdaI",
+      title: "Дом мечты. От проекта до реализации",
+      descr: "Заведующий производством рассказывает о технологиях и процессах",
       cover: "https://img.youtube.com/vi/4TH9mFgjdaI/maxresdefault.jpg"
     },
-    {
-      link: "https://youtu.be/jKw3n1Gsrtw",
-      title: "Процесс создания кресла Сhisterika",
-      descr: "",
-      duration: "40 мин. 00 сек.",
-      cover: "https://img.youtube.com/vi/jKw3n1Gsrtw/maxresdefault.jpg"
-    },
-    {
-      link: "https://youtu.be/WYk-ezOLrqs",
-      title: "Интервью с директором фабрики Ивановым",
-      descr: "",
-      duration: "60 сек.",
-      cover: "https://img.youtube.com/vi/WYk-ezOLrqs/maxresdefault.jpg"
-    },
-    {
-      link: "https://youtu.be/OAPb_cZlmbU",
-      title: "Производство",
-      descr: "",
-      duration: "1 ч 15 мин. 23 сек.",
-      cover: "https://img.youtube.com/vi/OAPb_cZlmbU/maxresdefault.jpg"
-    },
+    //- {
+    //-   link: "jKw3n1Gsrtw",
+    //-   title: "Процесс создания кресла Сhisterika",
+    //-   descr: "",
+    //-   duration: "40 мин. 00 сек.",
+    //-   cover: "https://img.youtube.com/vi/jKw3n1Gsrtw/maxresdefault.jpg"
+    //- },
+    //- {
+    //-   link: "WYk-ezOLrqs",
+    //-   title: "Интервью с директором фабрики Ивановым",
+    //-   descr: "",
+    //-   duration: "60 сек.",
+    //-   cover: "https://img.youtube.com/vi/WYk-ezOLrqs/maxresdefault.jpg"
+    //- },
+    //- {
+    //-   link: "OAPb_cZlmbU",
+    //-   title: "Производство",
+    //-   descr: "",
+    //-   duration: "1 ч 15 мин. 23 сек.",
+    //-   cover: "https://img.youtube.com/vi/OAPb_cZlmbU/maxresdefault.jpg"
+    //- },
   ];
 .section.videos
   .wrap
-    .section__header.cells
-        .cell.cell-auto
-          .section__title Видео
-        .cell.cell-auto
-          a.section__link(href="vids.html") Все видео
-            span.section__link__icon
-              include ../../images/inline-svgs/right.svg
     .cells
-      .cell.cell-4
+      .cell
+        .section__title Надежный дом за один сезон «под ключ»
         .section__intro
-          | В конструкторском бюро эскиз превращается в цифровую модель, затем в процесс включается производство.
-          | Здесь, шаг за шагом, из отборной древесины, лучших наполнителей и тканей создаются наши диваны.
-          | Такие красивые, мягкие, стильные — разные.
-          | И, как ведущий производитель, мы ежедневно доказываем, что российской мебели можно доверять.
-      .cell.cell-8
-        .videos__list.cells
-            .cell
-              .videos__column
-                each itm in vids
-                  a.videos__item(href="")
-                    .videos__cover(style="background-image: url(" + itm.cover + ")")
-                      .videos__text
-                        .videos__title= itm.title
-                      .videos__play
-                        include ../../images/inline-svgs/play.svg
+          | Мы строим дома, создаем будущее в лучшем виде. Мы знаем и любим свое дело.
+          | Позвольте показать наши возможности, доказать, что строительство &mdash;
+          | это увлекательный и радостный процесс, результат которого превзойдет ваши ожидания!
+        .section__goto
+          a.button.button-secondary(href="videos.html") Смотреть все видео
+      .cell
+        each itm in vids
+          .videos__item
+            a.videos__link(href="")
+              .videos__cover(style="background-image: url(" + itm.cover + ")")
+              .videos__text
+                .videos__title= itm.title
+                .videos__descr= itm.descr
+            .videos__content
+              iframe(width="560", height="315", src= itm.link, title="YouTube video player", frameborder="0", allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
