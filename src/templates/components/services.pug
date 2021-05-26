@@ -1,0 +1,57 @@
+-
+  var srvcs = [
+    {
+      pic: require("/src/images/content-images/services-1.jpg"),
+      title: "Реставрация мягкой мебели"
+    },
+    {
+      pic: require("/src/images/content-images/services-2.jpg"),
+      title: "Выезд мастера на замер и консультацию"
+    },
+    {
+      pic: require("/src/images/content-images/services-3.jpg"),
+      title: "Доставка мебели и подъем на этаж"
+    },
+    {
+      pic: require("/src/images/content-images/services-4.jpg"),
+      title: "Хранение мебели"
+    },
+    {
+      pic: require("/src/images/content-images/services-5.jpg"),
+      title: "Студийное и сценическое оборудование "
+    },
+    {
+      pic: require("/src/images/content-images/services-6.jpg"),
+      title: "Мойки воздуха"
+    },
+    {
+      pic: require("/src/images/content-images/cats-1.png"),
+      title: "Игровые приставки и компьютеры"
+    },
+    {
+      pic: require("/src/images/content-images/prods-4.jpg"),
+      title: "Антивирусы и безопасность"
+    }
+  ];
+
+.section.b-services
+  .wrap
+    .section__header.cells
+        .cell.cell-auto
+          .section__title Услуги
+        .cell.cell-auto
+          a.section__link(href="services.html") Все категории услуг
+            span.section__link__icon
+              include ../../images/inline-svgs/right.svg
+    .b-services__slider.slider
+      each itm, index in srvcs
+        .slider__item
+          a.b-services__item(href="")
+            .b-services__image
+              img(src= itm.pic)
+            .b-services__text
+              .b-services__title= itm.title
+              .b-services__more Подробнее
+                span.b-services__more
+                  include ../../images/inline-svgs/right.svg
+

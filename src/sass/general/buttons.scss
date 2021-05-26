@@ -1,0 +1,94 @@
+.button {
+  background-repeat: no-repeat;
+  border: 1px solid transparent;
+  border-radius: $brad-1;
+  background-color: transparent;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  margin: 0;
+  padding: 0;
+  position: relative;
+
+  &__body {
+    display: flex;
+    align-items: center;
+  }
+  & svg {
+    display: block;
+    max-height: 100%;
+    max-width: 100%;
+  }
+  & .button__spinner {
+    display: none;
+    border: solid currentColor;
+    border-width: 1px 2px 3px 0;
+    border-radius: 50%;
+    height: 1rem;
+    width: 1rem;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    top: calc(50% - 0.5rem);
+    left: calc(50% - 0.5rem);
+  }
+
+  &-primary,
+  &-secondary {
+    min-height: 2.75rem;
+    padding: 0.6875rem 1.5rem;
+
+    &:hover,
+    &:active {
+      color: #fff;
+    }
+  }
+
+  &-primary {
+    color: #fff;
+  }
+
+  &-icon {
+    border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
+  }
+}
+.button:focus {
+  outline: none;
+}
+.button:focus-visible {
+  outline: 2px dotted currentColor;
+  outline-offset: -0.25rem;
+}
+.button-icon:focus-visible {
+  color: #000;
+}
+button.button:disabled,
+.button.button--loading {
+  background-color: $color-sep;
+  border-color: $color-sep;
+  color: $color-text2;
+  pointer-events: none;
+}
+.button--loading {
+  & .button__body {
+    visibility: hidden;
+  }
+  & .button__spinner {
+    display: block;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

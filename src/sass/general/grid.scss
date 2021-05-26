@@ -1,0 +1,106 @@
+// container
+// rows, cols
+// flex utils
+
+// container
+.wrap {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.25rem;
+  width: 100%;
+  max-width: 88.5rem + (1rem * 2);
+}
+
+// rows, cols
+.cells {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -$grid-gap;
+  margin-right: -$grid-gap;
+}
+.cell {
+  flex: 0 0 100%;
+  max-width: 100%;
+  padding-left: $grid-gap;
+  padding-right: $grid-gap;
+}
+@for $i from 1 through $grid-cols {
+  .cell-#{$i} {
+    flex-basis: ($col-width * $i);
+    max-width: ($col-width * $i);
+  }
+}
+.cell-auto {
+  flex-basis: auto;
+}
+@for $i from 1 through $grid-cols {
+  .offset-cell-#{$i} {
+    margin-left: ($col-width * $i);
+  }
+}
+@media (min-width: $break-sm) {
+  @for $i from 1 through $grid-cols {
+    .cell-sm-#{$i} {
+      flex-basis: ($col-width * $i);
+      max-width: ($col-width * $i);
+    }
+  }
+}
+@media (min-width: $break-md) {
+  @for $i from 1 through $grid-cols {
+    .cell-md-#{$i} {
+      flex-basis: ($col-width * $i);
+      max-width: ($col-width * $i);
+    }
+  }
+}
+@media (min-width: $break-lg) {
+  @for $i from 1 through $grid-cols {
+    .cell-lg-#{$i} {
+      flex-basis: ($col-width * $i);
+      max-width: ($col-width * $i);
+    }
+  }
+}
+@media (min-width: $break-xl) {
+  @for $i from 1 through $grid-cols {
+    .cell-xl-#{$i} {
+      flex-basis: ($col-width * $i);
+      max-width: ($col-width * $i);
+    }
+  }
+}
+// flex utils
+%fx-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+%fx-centered-y {
+  display: flex;
+  align-items: center;
+}
+.fx-column {
+  flex-direction: column;
+}
+.fx-grow-1 {
+  flex-grow: 1;
+}
+.fx-align-start {
+  align-items: flex-start;
+}
+.fx-align-center {
+  align-items: center;
+}
+.fx-justify-between {
+  justify-content: space-between;
+}
+.fx-justify-center {
+  justify-content: center;
+}
+.fx-justify-end {
+  justify-content: flex-end;
+}
+.fx-wrap {
+  flex-wrap: wrap;
+}

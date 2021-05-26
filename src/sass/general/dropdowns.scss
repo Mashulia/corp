@@ -1,0 +1,28 @@
+.dropdown {
+  position: relative;
+}
+.dropdown__body {
+  display: none;
+  background-color: #fff;
+  border-radius: 0 0 $brad-2 $brad-2;
+  max-width: 15rem;
+  padding: 1rem;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1;
+}
+.dropdown__toggle {
+  display: flex;
+}
+.dropdown:hover .dropdown__body {
+  display: block;
+}
+.dropdown__icon {
+  @extend %fx-centered;
+  margin-left: 0.25rem;
+  height: 1rem;
+  width: 1rem;
+  position: relative;
+  top: 0.35em;
+}

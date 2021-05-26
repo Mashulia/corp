@@ -1,0 +1,16 @@
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  image: node:15
+  environment:
+    name: belur
+    url: https://corp21.netlify.app
+  only:
+    - master
+  script:
+    - npm i
+    # your build command
+    - npm run build
+    - npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod

@@ -1,0 +1,124 @@
+-
+  var menuItems = [
+    {
+      name: "Продукция",
+      href: "catalog.html",
+      active: false,
+      dd: [
+        {
+          name: "Категория 1",
+          href: "category.html",
+          dd: [
+            {
+              name: "Подкатегория 1",
+              href: "subcategory.html"
+            },
+            {
+              name: "Подкатегория 2",
+              href: "subcategory.html"
+            },
+            {
+              name: "Подкатегория с длинным названием, которое не просто так",
+              href: "subcategory.html"
+            }
+          ]
+        },
+        {
+          name: "Категория 2",
+          href: "category.html"
+        },
+        {
+          name: "Категория с очень-очень-очень длинным названием. Охах.",
+          href: "category.html"
+        }
+      ]
+    },
+    {
+      name: "Услуги",
+      href: "services.html",
+      active: true,
+      dd: [
+        {
+          name: "Услуга номер первая, обладающая длинным названием",
+          href: "service.html"
+        },
+        {
+          name: "Услуга среднего названия",
+          href: "service.html"
+        },
+        {
+          name: "Услуга 1",
+          href: "service.html"
+        }
+      ]
+    },
+    {
+      name: "Проекты",
+      href: "projects.html"
+    },
+    {
+      name: "Отзывы",
+      href: "reviews.html"
+    },
+    {
+      name: "Видео",
+      href: "video.html"
+    },
+    {
+      name: "Контакты",
+      href: "contacts.html"
+    },
+    {
+      name: "Пункт меню с длинным названием",
+      href: "video.html",
+      dd: [
+        {
+          name: "Услуга номер первая, обладающая длинным названием",
+          href: "service.html"
+        },
+        {
+          name: "Услуга среднего названия",
+          href: "service.html"
+        },
+        {
+          name: "Услуга 1",
+          href: "service.html"
+        }
+      ]
+    },
+    {
+      name: "Калькулятор",
+      href: "calc.html"
+    },
+    {
+      name: "Контакты",
+      href: "contacts.html"
+    }
+  ];
+ul.primary-nav__list
+  each val in menuItems
+    li.primary-nav__item(class = {"expand" : val.dd})
+      a.primary-nav__link(class = {"primary-nav__link--active" : val.active, "expand__toggle" : val.dd}, href= val.href)= val.name
+        if val.dd
+          div.expand__icon
+            include ../../images/inline-svgs/dropdown.svg
+      if val.dd
+        .expand__body
+          ul.primary-nav__list
+            each itm in val.dd
+              li.primary-nav__item(class = {"expand" : itm.dd})
+                a.primary-nav__link(class = {"primary-nav__link--active" : itm.active, "expand__toggle" : itm.dd}, href= itm.href)= itm.name
+                  if itm.dd
+                    div.expand__icon
+                      include ../../images/inline-svgs/dropdown.svg
+                if itm.dd
+                  .expand__body
+                    ul.primary-nav__list
+                      each item in itm.dd
+                        li.primary-nav__item
+                          a.primary-nav__link(class = {"primary-nav__link--active" : item.active}, href= item.href)= item.name
+.expand.primary-nav--extra
+  button.button.button-icon.expand__toggle(title="Показать/скрыть остальные пункты меню")
+    include ../../images/inline-svgs/dots.svg
+  .expand__body
+    ul.primary-nav__list

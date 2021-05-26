@@ -1,0 +1,23 @@
+doctype html
+html(lang="ru")
+  block head
+    head
+      meta(charset="utf-8")
+      meta(content="width=device-width, initial-scale=1" name="viewport")
+      meta(name="format-detection", content="telephone=no")
+      link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap")
+      link(rel="stylesheet", href="assets/css/vendor/jquery.fancybox.css")
+      title Tian Corp Front
+  body
+    .corp
+      block header
+        include components/header
+      block content
+      block footer
+        include components/footer
+        //- include components/popups
+    script(src="assets/js/vendor/jquery-3.6.0.min.js")
+    script(src="assets/js/vendor/jquery.fancybox.min.js")
+    script(src="assets/js/vendor/slick.min.js")
+    script(src="assets/js/vendor/jquery.form.js")
+    script(src="assets/js/vendor/clamp.min.js")

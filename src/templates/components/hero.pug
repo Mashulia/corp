@@ -1,0 +1,63 @@
+-
+  var listhero = [
+    {
+      title: 'Построим дом вашей мечты «под ключ»',
+      descr: "Индивидуальное проектирование",
+      btn: "Узнать больше",
+      picM: require("/src/images/content-images/promo-mob-2.jpg"),
+      picD: require("/src/images/content-images/promo-desk-2.jpg")
+    },
+    {
+      title: "Коллекция дизайнерской мебели в скандинавском стиле",
+      descr: "Новая коллекция",
+      btn: "Смотреть в каталоге",
+      picM: require("/src/images/content-images/promo-mob.jpg"),
+      picD: require("/src/images/content-images/promo-desk.jpg")
+    },
+    {
+      title: "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+      descr: "Aut impedit cumque doloremque molestias aperiam quod quaerat excepturi! Ullam molestias ducimus vero nostrum?",
+      btn: "See all"
+    },
+    {
+      title: "Laborum maxime maiores doloribus",
+      picD: require("/src/images/content-images/promo-desk-2.jpg")
+    },
+    {
+      title: "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+      descr: "Aut impedit cumque doloremque molestias aperiam quod quaerat excepturi! Ullam molestias ducimus vero nostrum?",
+      picD: require("/src/images/content-images/promo-desk.jpg")
+    },
+    {
+      title: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum maxime maiores doloribus asperiores hic totam facere",
+      descr: "",
+      btn: "Learn so very much more"
+    },
+    {
+      picM: require("/src/images/content-images/promo-mob.jpg"),
+      picD: require("/src/images/content-images/promo-desk.jpg")
+    }
+  ];
+.section.hero
+  .slider.hero__slider
+    each elm in listhero
+      .slider__item
+        .hero__item
+          if elm.picD || elm.img
+            .hero__bg(class={"hero__bg--solo": !elm.descr && !elm.title && !elm.btn})
+              picture
+                if elm.picM
+                  source(media="(max-width: 767px)" srcset=elm.picM)
+                source(media="(min-width: 768px)" srcset=elm.picD)
+                img(src=elm.picD)
+          if elm.descr || elm.title || elm.btn
+            .wrap.hero__wrap
+              .hero__text
+                .hero__descr= elm.descr
+                .hero__title= elm.title
+                if elm.btn
+                  .hero__cta
+                    a.button.button-primary.hero__button(href="")= elm.btn
+                      span.button__icon
+                        include ../../images/inline-svgs/right.svg
+

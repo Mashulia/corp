@@ -1,0 +1,52 @@
+@use "sass:color";
+$custom-color-1: hsl(29, 78%, 58%);
+$custom-color-2: hsl(150, 26%, 36%);
+
+$custom-color-hover: color.adjust(
+  $custom-color-1,
+  $saturation: +10,
+  $lightness: -15
+);
+$custom-color-active: color.adjust($custom-color-1, $lightness: -20);
+
+$custom-color-21: color.adjust($custom-color-1, $lightness: -15);
+
+.corp {
+  --custom-color-1: #{$custom-color-1};
+  --custom-color-2: #{$custom-color-2};
+}
+
+a,
+.expand__icon {
+  color: $custom-color-1;
+}
+.connect::before,
+.hero__item {
+  background-color: $custom-color-2;
+}
+.button-primary,
+.bcart__button--active::after,
+.form__submit,
+.slick-active button {
+  background-color: $custom-color-1;
+}
+.button-primary,
+.form__submit,
+.button-secondary {
+  border-color: $custom-color-1;
+}
+.button-primary:hover,
+.button-secondary:hover,
+.form__submit:hover {
+  background-color: $custom-color-hover;
+  border-color: $custom-color-hover;
+}
+.button-primary:active,
+.button-secondary:active,
+.form__submit:active {
+  background-color: $custom-color-active;
+  border-color: $custom-color-active;
+}
+.hero__slider .slick-dots button {
+  border-color: $custom-color-2;
+}

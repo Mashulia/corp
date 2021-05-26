@@ -1,0 +1,145 @@
+// tags
+// classes
+
+// tags
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  font-size: 100%;
+  line-height: 1.4;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  font-family: $font-family;
+  font-feature-settings: "pnum" on, "lnum" on;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  margin: 0;
+  padding: 0;
+}
+h1,
+.h1,
+h2,
+.h2 {
+  font-style: normal;
+  font-weight: 600;
+}
+h1,
+.h1 {
+  line-height: 1.4;
+  letter-spacing: 0;
+  margin-bottom: 2.5rem;
+}
+h2,
+.h2 {
+  line-height: 1.4;
+}
+a {
+  background-color: transparent;
+  text-decoration: none;
+}
+b,
+strong {
+  font-weight: bolder;
+}
+small {
+  font-size: 80%;
+}
+img {
+  border-style: none;
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 1.4;
+  margin: 0;
+}
+button,
+input {
+  overflow: visible;
+}
+button,
+select {
+  text-transform: none;
+}
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+textarea {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+hr {
+  box-sizing: content-box;
+  border: 0;
+  border-top: 1px solid $color-sep;
+  height: 0;
+  margin: 0;
+  overflow: visible;
+}
+[hidden] {
+  display: none;
+}
+*:focus {
+  outline: none;
+}
+*:focus-visible {
+  outline: 2px dotted currentColor;
+  outline-offset: 0.125rem;
+}
+// classes
+.corp {
+  color: $color-text1;
+  height: auto;
+  width: 100%;
+  overflow: hidden;
+}
+nav ul,
+.nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.section {
+  margin-bottom: 6rem;
+}
+.section__header {
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+.section__title {
+  font-size: 1.5rem;
+}
+.section__link {
+  display: flex;
+  align-items: center;
+}
+.section__link__icon {
+  margin-left: 0.5rem;
+}
+.section__intro {
+  font-weight: 400;
+  padding-right: 2.5rem;
+}

@@ -1,0 +1,37 @@
+-
+  var menuItems = [
+    {
+      name: "Компания",
+      href: "about",
+      active: false
+    },
+    {
+      name: "Магазины",
+      href: "contacts",
+      active: true
+      },
+    {
+      name: "Новости",
+      href: "news",
+      active: false
+    },
+    {
+      name: "Статьи",
+      href: "blog",
+      active: false
+    },
+    {
+      name: "Вопросы и ответы",
+      href: "qna",
+      active: false
+      },
+    {
+      name: "Видео",
+      href: "video",
+      active: false
+    }
+  ];
+ul.site-nav__list
+  each val in menuItems
+    li.site-nav__item
+      a.site-nav__link(class = {"site-nav__link--active" : val.active} href= val.href)= val.name

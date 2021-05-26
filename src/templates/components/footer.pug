@@ -1,0 +1,96 @@
+-
+  var phns = [
+    {
+      num: "+7 (351) 778-88-00",
+      href: "+73517788800",
+      label: "call-центр"
+    },
+    {
+      num: "+7 (351) 778-88-01",
+      href: "+73517788801",
+      label: "бухгалтерия"
+    },
+    {
+      num: "+7 (351) 778-88-02",
+      href: "+73517788802",
+      label: "приемная"
+    }
+  ];
+.footer.bg-inverted
+  .wrap
+    .cells
+      .cell.cell-2
+        .nav.site-nav.footer__site-nav
+          include site-nav.pug
+      .cell.cell-2
+
+      .cell.cell-lg-3.offset-cell-lg-1
+        .footer__connects.connects
+          .addresses.footer__addresses.connects__list
+            .connects__item
+              .connects__label Адрес офиса:
+              .connects__value Москва, ​Профсоюзная, 65 ст2
+          .phones.footer__phones.connects__list
+            each itm in phns
+              .connects__item
+                a.connects__value(href= itm.href)= itm.num
+                .connects__label= itm.label
+          .messengers.footer__messengers.connects__list
+            .messengers__item
+              a.messengers__link.messengers__link--tg(href="")
+                include ../../images/inline-svgs/tg.svg
+            .messengers__item
+              a.messengers__link.messengers__link--viber(href="")
+                include ../../images/inline-svgs/viber.svg
+          .emails.footer__emails.connects__list
+            .connects__item
+              .connects__label Эл. почта:
+              a.connects__value(href="mailto:info@zetrade.com") info@zetrade.com
+      .cell.cell-lg-3.offset-cell-lg-1
+        .subscribe.footer__subscribe
+        .subscribe__title Подпишитесь на акции и новости
+        form.form.subscribe-form
+          label.form__field.required
+            span.form__label Эл. почта
+            input(type="email", name="" required)
+          .form__action
+            button.form__submit.button(type="submit")
+              span.sr-only Подписаться на рассылку
+              include ../../images/inline-svgs/arrow-right.svg
+    hr.divider
+    .cells.fx-justify-between
+      .cell.cell-auto
+        .footer__legal
+          .footer__copy «ЗЕ» трэйд © 2020
+          .footer__policy
+            a.policy__link(href="policy.html") Политика конфиденциальности
+      .cell.cell-auto
+        .footer__socials.socials
+          .socials__item
+            a.socials__link
+              .socials__icon
+                include ../../images/inline-svgs/fb.svg
+              span.sr-only Ссылка на страницу Facebook
+            a.socials__link
+              .socials__icon
+                include ../../images/inline-svgs/vk.svg
+              span.sr-only Ссылка на страницу Вконтакте
+            a.socials__link
+              .socials__icon
+                include ../../images/inline-svgs/tw.svg
+              span.sr-only Ссылка на страницу Twitter
+            a.socials__link
+              .socials__icon
+                include ../../images/inline-svgs/ok.svg
+              span.sr-only Ссылка на страницу в Одноклассниках
+            a.socials__link
+              .socials__icon
+                include ../../images/inline-svgs/ig.svg
+              span.sr-only Ссылка на страницу Instagram
+            a.socials__link
+              .socials__icon
+                include ../../images/inline-svgs/tb.svg
+              span.sr-only Ссылка на страницу YouTube
+
+
+

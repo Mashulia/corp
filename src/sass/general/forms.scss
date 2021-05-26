@@ -1,0 +1,20 @@
+.form__field {
+  display: block;
+  margin-bottom: 1rem;
+}
+.form__input {
+  background: transparent;
+  border: 1px solid $color-sep;
+  border-radius: $brad-2;
+  padding: 0.5em 1.25em;
+  width: 100%;
+
+  &:focus {
+    outline: 2px dotted currentColor;
+    outline-offset: 0;
+  }
+}
+.form__submit {
+  color: #fff;
+  padding: 0.5rem 1rem;
+}

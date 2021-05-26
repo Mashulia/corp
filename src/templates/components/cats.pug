@@ -1,0 +1,53 @@
+-
+  var cats = [
+    {
+      title: "Мягкая мебель",
+      pic: require("/src/images/content-images/cats-1.png"),
+      bg: '#E0E18E'
+    },
+    {
+      title: "Кухни",
+      pic: require("/src/images/content-images/cats-2.png"),
+      bg: '#A2CBCE'
+    },
+    {
+      title: "Диваны прямые по индивидуальным размерам",
+      pic: require("/src/images/content-images/cats-3.png"),
+      bg: '#EBCCB0'
+    },
+    {
+      title: "Мягкая мебель",
+      pic: require("/src/images/content-images/hero-1.png"),
+      bg: '#E0E18E'
+    },
+    {
+      title: "Кухни",
+      pic: require("/src/images/content-images/prods-2.jpg"),
+      bg: '#A2CBCE'
+    },
+    {
+      title: "Диваны прямые по индивидуальным размерам",
+      pic: require("/src/images/content-images/services-4.jpg"),
+      bg: '#EBCCB0'
+    }
+  ];
+.section.categories
+  .wrap
+    .section__header.cells
+      .cell.cell-auto
+        .section__title Каталог товаров
+      .cell.cell-auto
+        a.section__link(href="catalog.html") Перейти в каталог
+          span.section__link__icon
+            include ../../images/inline-svgs/right.svg
+    .cells
+      .cell.cell-4
+        .section__intro
+          | Мы посвятили себя производству лучшего ассортимента сказочно ценной мебели.
+          | И, как ведущий производитель, мы ежедневно доказываем, что российской мебели можно доверять.
+      .cell.cell-8
+        .slider.categories__slider
+          each elm, index in cats
+            .slider__item
+              a.categories__item(style="background-color: " + elm.bg + "; background-image: url(" + elm.pic + ")" href="")
+                .categories__title= elm.title

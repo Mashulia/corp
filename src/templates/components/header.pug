@@ -1,0 +1,93 @@
+.header.header--v1.mheader--v1
+  .mheader
+    .wrap
+      .mheader__row
+        .mheader__logo
+          .logo
+            a.logo__link(href="/")
+              .logo__image
+                include ../../images/theme-images/logo.svg
+        .mheader__phones
+          .phones.connect
+            a.connect__item(href="tel:+73517788800")
+              .connect__text +7 (351) 778-88-00
+        .mheader__callback
+          button.button.button-primary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
+        .mheader__addresses
+          .addresses.connect
+            .connect__item
+              .connect__value Москва, ​Профсоюзная, 65 ст2
+        .mheader__bcart
+          .bcart
+            a.button.button-icon.bcart__button.bcart__button--active(title="Перейти в корзину", href="cart.html")
+              include ../../images/inline-svgs/cart-icon.svg
+        .mheader__opener
+          button.header__opener(title="Показать меню")
+            include ../../images/inline-svgs/menu.svg
+  .header__contents
+    button.header__closer(title="Скрыть меню")
+    .wrap
+      .cells.header__top
+        .cell.header__top__col.cell-lg-6
+          .display-flex.fx-align-center
+            nav.header__site-nav.site-nav
+              include site-nav.pug
+            .header__search
+              .search
+                button.search__toggle.button.button-icon
+                  include ../../images/inline-svgs/search.svg
+                .search__body
+                  form.search__form.form(action="")
+                    button.button.button-icon.search__close(type="reset", title="Закрыть форму поиска")
+                    label.form__field
+                      input.form__input(type="text", name="", placeholder="Что ищете")
+                    button.form__submit.button(type="submit") Найти на сайте
+        .header__connects.cell.cell-lg-6
+          .connects
+            .cells.fx-align-center.fx-justify-end
+              .header__phones.cell.cell-auto
+                .phones.connect
+                  a.connect__item(href="tel:+73517788800")
+                    .connect__text +7 (351) 778-88-00
+              .header__addresses.cell.cell-auto
+                .addresses.connect
+                  .connect__item
+                    .connect__value Москва, ​Профсоюзная, 65 ст2
+      hr.divider
+      .header__body
+        .cells.fx-align-center
+          .header__logo.cell.cell-lg-4
+            .logo
+              a.logo__link(href="/")
+                .logo__image
+                  include ../../images/theme-images/logo.svg
+              //-   .logo__text ZE Строй
+              .logo__slogan Selling the best goods on Earth since 1900
+          .header__primary-nav.cell.cell-lg-7
+            nav.primary-nav
+              include primary-nav.pug
+          .cell.header__bcart.cell-auto
+            .bcart
+              a.button.button-icon.bcart__button.bcart__button--active(title="Перейти в корзину", href="cart.html")
+                include ../../images/inline-svgs/cart-icon.svg
+  .display-none#callback-form
+    .custom-form.collapsing-form
+      form(action="")
+        .form__title Заказать звонок
+        .form__bg
+          .form__body
+            label.form__field
+              span.form__label Имя
+              input.form__input(type="text")
+            label.form__field.form__field--required
+              span.form__label Телефон
+              input.form__input(type="tel", required)
+            .form__submit
+              button.button.button-submit(type="submit") Отправить
+            .form__note Нажимая на кнопку «Отправить», подтверждаю свое согласие с&nbsp;
+              a(href="policy.html") условиями обработки персональных данных
+          .form__message
+            .form__success
+              .form__message__title Ваша заявка принята!
+              .form__message__text Наши менеджеры свяжутся с Вами
+

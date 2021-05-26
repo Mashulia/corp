@@ -1,0 +1,52 @@
+-
+  var bens = [
+    {
+      pic: "delivery",
+      title: "Быстрая доставка  в черте города"
+    },
+    {
+      pic: "service",
+      title: "Круглосуточный клиентский сервис"
+    },
+    {
+      pic: "bonus",
+      title: "Персональные скидки клиентам"
+    },
+    {
+      pic: "garanty",
+      title: "Гарантия на мебель 2 года"
+    },
+    {
+      pic: "pay",
+      title: "Любые виды оплаты"
+    },
+    //- {
+    //-   pic: "bonus",
+    //-   title: "Персональные скидки клиентам"
+    //- },
+    //- {
+    //-   pic: "garanty",
+    //-   title: "Гарантия на мебель 2 года"
+    //- }
+  ];
+
+mixin icon-delivery
+  include ../../images/inline-svgs/delivery.svg
+mixin icon-service
+  include ../../images/inline-svgs/service.svg
+mixin icon-bonus
+  include ../../images/inline-svgs/bonus.svg
+mixin icon-garanty
+  include ../../images/inline-svgs/garanty.svg
+mixin icon-pay
+  include ../../images/inline-svgs/pay.svg
+
+.section.benefits
+  .wrap
+    .benefits__wrap
+      .benefits__list
+        each itm in bens
+          .benefits__item
+            .benefits__img
+              +#{"icon-" + itm.pic}
+            .benefits__title= itm.title

@@ -1,0 +1,21 @@
+.benefits__wrap {
+}
+.benefits__list {
+  @extend %fx-centered-y;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: -1rem;
+}
+.benefits__item {
+  @extend %fx-centered-y;
+  flex: 0 0 20%;
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+  position: relative;
+}
+.benefits__img {
+  flex: 0 0 2.5rem;
+  height: 2.5rem;
+  max-width: 2.5rem;
+  margin-right: 1rem;
+}

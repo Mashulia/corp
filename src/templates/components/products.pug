@@ -1,0 +1,93 @@
+-
+  var prds = [
+    {
+      pic: require("/src/images/content-images/prods-1.jpg"),
+      title: "Стул мастера Norden Спринг табурет, кожа, коричневый",
+      sale: false,
+      price: "150 900 rur",
+      oprice: "250 980 rur"
+    },
+    {
+      pic: require("/src/images/content-images/prods-2.jpg"),
+      title: "Стул мастера Norden Спринг табурет, кожа, коричневый, с деревянными ножками. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      sale: true,
+      price: "15 900 rur",
+      oprice: "25 980 rur"
+    },
+    {
+      pic: require("/src/images/content-images/prods-3.jpg"),
+      title: "Пуф",
+      sale: false,
+      price: "10 900 rur",
+      oprice: "125 980 rur"
+    },
+    {
+      pic: require("/src/images/content-images/prods-4.jpg"),
+      title: "Eaque recusandae iure tempore, quisquam perspiciatis, nam unde distinctio facere temporibus itaque autem!",
+      sale: false,
+      price: "5 900 rur",
+      oprice: "25 980 rur"
+    },
+    {
+      pic: require("/src/images/content-images/prods-5.jpg"),
+      title: "Студийное и сценическое оборудование ",
+      sale: true,
+      price: "900 rur",
+      oprice: "3 980 rur"
+    },
+    {
+      pic: require("/src/images/content-images/prods-3.jpg"),
+      title: "Deserunt minima recusandae aut animi fugit exercitationem veritatis provident. Lorem ipsum dolor sit amet consectetur adipisicing elit",
+      sale: false,
+      price: "15 900 rur",
+      oprice: "525 980 rur"
+    },
+    {
+      pic: require("/src/images/content-images/prods-1.jpg"),
+      title: "Игровые приставки и компьютеры",
+      sale: false,
+      price: "1 155 900 rur",
+      oprice: "1 425 980 rur"
+    },
+    {
+      pic: require("/src/images/content-images/prods-2.jpg"),
+      title: "Антивирусы и безопасность. Lorem ipsum dolor sit amet consectetur adipisicing elit",
+      sale: false,
+      price: "15 900 rur/mo",
+      oprice: "25 980 rur/mo"
+    }
+  ];
+- var cats = ["Кухни", "Прихожие", "Мягкая мебель", "Мебель для кухни", "Мебель для ванной"];
+
+.section.b-products.tabs
+  .wrap
+    .section__header.cells
+        .cell.cell-auto
+          .section__title
+            .tabs__switches
+              each itm, ind in cats
+                if ind < 5
+                  a.tabs__switch.js-tab(href="#prod-pan-" + ind class={"tabs__switch--active": ind == 0})= itm
+        .cell.cell-auto
+          a.section__link(href="products.html") Перейти в каталог
+            span.section__link__icon
+              include ../../images/inline-svgs/right.svg
+    .tabs__panels
+      each ind in [0, 1, 2]
+        .tabs__panel(id="prod-pan-" + ind class={"tabs__panel--active": ind == 0})
+          .b-products__slider.slider
+            each itm, index in prds
+              .slider__item
+                .b-products__item
+                  a.b-products__images(href="product.html")
+                    img(src= itm.pic)
+                  .b-products__text
+                    a.b-products__title(href="product.html")= itm.title
+                    .b-products__action
+                      .b-products__prices
+                        .b-products__prices__old= itm.oprice
+                        .b-products__prices__new= itm.price
+                      button.button.button-primary
+                        span.button__body В корзину
+                        span.button__loader
+
