@@ -17,19 +17,22 @@ $custom-color-21: color.adjust($custom-color-1, $lightness: -15);
 }
 
 a,
-.expand__icon {
+.expand__icon,
+.button-secondary {
   color: $custom-color-1;
 }
 .connect::before,
 .hero__item,
-.benefits__img {
+.benefits__img,
+.videos__text {
   background-color: $custom-color-2;
 }
 .button-primary,
 .bcart__button--active::after,
 .form__submit,
 .slick-active button,
-.categories__title {
+.services__title,
+.videos__cover::after {
   background-color: $custom-color-1;
 }
 .button-primary,
@@ -40,17 +43,25 @@ a,
 .button-primary:hover,
 .button-secondary:hover,
 .form__submit:hover,
-.categories__link:hover .categories__title {
+.services__link:hover .services__title,
+.videos__link:hover .videos__cover::after {
   background-color: $custom-color-hover;
   border-color: $custom-color-hover;
 }
 .button-primary:active,
 .button-secondary:active,
 .form__submit:active,
-.categories__link:active .categories__title {
+.services__link:active .services__title,
+.videos__link:active .videos__cover::after {
   background-color: $custom-color-active;
   border-color: $custom-color-active;
 }
 .hero__slider .slick-dots button {
   border-color: $custom-color-2;
+}
+.videos__cover::after {
+  outline-color: $custom-color-2;
+}
+.videos__link:hover .videos__cover::after {
+  outline-color: $custom-color-hover;
 }

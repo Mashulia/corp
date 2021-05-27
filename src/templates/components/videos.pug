@@ -1,7 +1,7 @@
 -
   var vids = [
     {
-      link: "https://www.youtube.com/embed/4TH9mFgjdaI",
+      link: "4TH9mFgjdaI",
       title: "Дом мечты. От проекта до реализации",
       descr: "Заведующий производством рассказывает о технологиях и процессах",
       cover: "https://img.youtube.com/vi/4TH9mFgjdaI/maxresdefault.jpg"
@@ -31,21 +31,21 @@
 .section.videos
   .wrap
     .cells
-      .cell
-        .section__title Надежный дом за один сезон «под ключ»
+      .cell.cell-md-5
+        .h2 Надежный дом за один сезон «под ключ»
         .section__intro
           | Мы строим дома, создаем будущее в лучшем виде. Мы знаем и любим свое дело.
           | Позвольте показать наши возможности, доказать, что строительство &mdash;
           | это увлекательный и радостный процесс, результат которого превзойдет ваши ожидания!
         .section__goto
           a.button.button-secondary(href="videos.html") Смотреть все видео
-      .cell
+      .cell.cell-md-7
         each itm in vids
           .videos__item
-            a.videos__link(href="")
+            a.videos__link(href="https://www.youtube.com/watch?v=" + itm.link)
               .videos__cover(style="background-image: url(" + itm.cover + ")")
-              .videos__text
-                .videos__title= itm.title
-                .videos__descr= itm.descr
+            .videos__text
+              .videos__title= itm.title
+              .videos__descr= itm.descr
             .videos__content
-              iframe(width="560", height="315", src= itm.link, title="YouTube video player", frameborder="0", allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
+              iframe(width="560", height="315", src= "https://www.youtube.com/embed/" + itm.link, title="YouTube video player", frameborder="0", allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)

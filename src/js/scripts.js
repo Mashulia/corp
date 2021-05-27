@@ -10,6 +10,7 @@
 // header menu overflow
 // dropdowns
 // header menu dropdowns
+// handle videos__link.click
 
 // slick
 // fancybox
@@ -326,6 +327,19 @@ window.addEventListener("load", function() {
     }
   }
 
+  // handle videos__link.click
+  let vidLinks = document.querySelectorAll(".videos__link");
+  if (vidLinks) {
+    for (let i=0; i < vidLinks.length; i++) {
+      vidLinks[i].addEventListener("click", removeVidCover);
+    }
+  }
+  function removeVidCover(e) {
+    e.preventDefault();
+    e.target.closest(".videos__item").classList.add("videos__item--play");
+    e.target.removeEventListener("click", removeVidCover);
+  }
+
   // slick
   let slickSettings = {
     arrows: true,
@@ -360,11 +374,11 @@ window.addEventListener("load", function() {
         slidesToShow: 4
       }
     });
-    $(".b-products__slider").slick({
-      ...slickSettings,
-      ...{
-        slidesToShow: 4
-      }
+    $(".products__images__list").slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        dots: true
     });
   } else {
     console.log("no slick or not loaded");
@@ -552,11 +566,4 @@ const productTitles = document.querySelectorAll(".b-products__title");
 for (var i = 0; i < productTitles.length; i++) {
   const productTitle = productTitles[i];
   $clamp(productTitle, {clamp: 2});
-}
-
-// primary-nav hide out (yay!)
-const nav = document.querySelector(".primary-nav__list");
-const navItems = nav.children;
-for (var i = 0; i < navItems.length; i++) {
-  const navItem = navItems[i];
 }

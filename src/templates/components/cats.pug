@@ -1,57 +1,37 @@
 -
   var cats = [
     {
-      title: "Дома из клееного бруса",
-      pic: require("/src/images/content-images/catalog-1.jpg")
+      title: "Кровельные материалы",
+      pic: require("/src/images/content-images/cats-1.jpg")
     },
     {
-      title: "Каркасные дома",
-      pic: require("/src/images/content-images/catalog-2.jpg")
+      title: "Металлопрокат",
+      pic: require("/src/images/content-images/cats-2.jpg")
     },
     {
-      title: "Дома из пеноблоков",
-      pic: require("/src/images/content-images/catalog-3.jpg")
+      title: "Изоляционные материалы",
+      pic: require("/src/images/content-images/cats-3.jpg")
     },
     {
-      title: "Кирпичные дома",
-      pic: require("/src/images/content-images/catalog-4.jpg")
+      title: "Строительные плиты",
+      pic: require("/src/images/content-images/cats-4.jpg")
     },
     {
-      title: "Дома из газобетона",
-      pic: require("/src/images/content-images/catalog-5.jpg")
+      title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic magnam reiciendis quia accusantium blanditiis alias voluptate facilis eos numquam cum, pariatur suscipit inventore, repellat placeat, mollitia laborum! Minus, tenetur quidem.",
+      pic: require("/src/images/content-images/cats-2.png")
     },
     {
-      title: "Дома из бревна",
-      pic: require("/src/images/content-images/catalog-6.jpg")
-    },
-    {
-      title: "Дома из SIP панелей",
-      pic: require("/src/images/content-images/catalog-7.jpg")
-    },
-    {
-      title: "Бани и беседки",
-      pic: require("/src/images/content-images/catalog-8.jpg")
-    },
-    //- {
-    //-   title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic magnam reiciendis quia accusantium blanditiis alias voluptate facilis eos numquam cum, pariatur suscipit inventore, repellat placeat, mollitia laborum! Minus, tenetur quidem.",
-    //-   pic: require("/src/images/content-images/cats-2.png")
-    //- },
-    //- {
-    //-   title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
-    //-   pic: require("/src/images/content-images/prods-1.jpg")
-    //- }
+      title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
+      pic: require("/src/images/content-images/prods-1.jpg")
+    }
   ];
-.section.categories
+.section.scategories.scategories--v1
   .wrap
-    .section__header.cells
-      .cell.section__name
-        .section__title Мы строим
-      //- .cell.section__more
-      //-   a.section__link(href="catalog.html") Перейти в каталог
-      //-     span.section__link__icon
-      //-       include ../../images/inline-svgs/right.svg
-    .categories__list
+    +section-header("Строительные материалы")
+    .categories__list.cells
       each elm, index in cats
-        .categories__item
-          a.categories__link(style="background-image: url(" + elm.pic + ");" href="category.html")
+        .categories__item.cell.cell-sm-6.cell-lg-4.cell-xl-3
+          a.categories__image(href="category.html")
+            img(src=elm.pic)
+          a.categories__link(href="category.html")
             .categories__title= elm.title

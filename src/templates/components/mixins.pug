@@ -1,0 +1,10 @@
+mixin section-header(title, linkName, link)
+  .section__header.cells
+    .cell.section__name.cell-10
+      .section__title= title
+    if linkName
+      .cell.section__more.cell-2
+        a.section__link(href= link)
+          span.section__link__title= linkName
+          span.section__link__icon
+            include ../../images/inline-svgs/section-header-link.svg

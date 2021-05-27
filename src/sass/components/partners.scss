@@ -1,0 +1,33 @@
+.spartners {
+  background: $color-bg;
+}
+.partners__list {
+  align-items: stretch;
+}
+.partners__list:last-child {
+  margin-bottom: -1.9375rem;
+  padding-bottom: 1px;
+}
+.partners__item {
+  margin-bottom: 1.875rem;
+}
+.partners__image {
+  @extend %fx-centered;
+  background: #fff;
+  border-radius: $brad-3;
+  height: 86px;
+  margin-bottom: 0.75rem;
+  padding: 1.25rem 0.5rem;
+
+  img {
+    max-height: 100%;
+  }
+}
+.partners__link {
+  color: inherit;
+  text-align: center;
+}
+.partners__title {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
