@@ -1,0 +1,97 @@
+-
+  var photoes = [
+    {
+      title: "Двухэтажный дом из клееного бруса в п. Западный.",
+      picM: require("/src/images/content-images/folio-1.jpg"),
+      picB: require("/src/images/content-images/folio-1.jpg"),
+      picS: require("/src/images/content-images/folio-1-s.jpg")
+    },
+    {
+      title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic magnam reiciendis quia accusantium blanditiis alias voluptate facilis eos numquam cum, pariatur suscipit inventore, repellat placeat, mollitia laborum! Minus, tenetur quidem.",
+      picM: require("/src/images/content-images/folio-2.jpg"),
+      picB: require("/src/images/content-images/folio-2.jpg"),
+      picS: require("/src/images/content-images/folio-2-s.jpg")
+    },
+    {
+      picM: require("/src/images/content-images/folio-3.jpg"),
+      picB: require("/src/images/content-images/folio-3.jpg"),
+      picS: require("/src/images/content-images/folio-3-s.jpg")
+    },
+    {
+      picM: require("/src/images/content-images/folio-4.jpg"),
+      picB: require("/src/images/content-images/folio-4.jpg"),
+      picS: require("/src/images/content-images/folio-4-s.jpg")
+    },
+    {
+      title: "Двухэтажный дом из клееного бруса в п. Западный.",
+      picM: require("/src/images/content-images/folio-1.jpg"),
+      picB: require("/src/images/content-images/folio-1.jpg"),
+      picS: require("/src/images/content-images/folio-5-s.jpg")
+    },
+    {
+      title: "Металлопрокат",
+      picM: require("/src/images/content-images/folio-2.jpg"),
+      picB: require("/src/images/content-images/folio-2.jpg"),
+      picS: require("/src/images/content-images/folio-6-s.jpg")
+    },
+    {
+      picM: require("/src/images/content-images/folio-3.jpg"),
+      picB: require("/src/images/content-images/folio-3.jpg"),
+      picS: require("/src/images/content-images/folio-7-s.jpg")
+    },
+    {
+      picM: require("/src/images/content-images/folio-4.jpg"),
+      picB: require("/src/images/content-images/folio-4.jpg"),
+      picS: require("/src/images/content-images/folio-8-s.jpg")
+    },
+    {
+      title: "Двухэтажный дом из клееного бруса в п. Западный.",
+      picM: require("/src/images/content-images/folio-1.jpg"),
+      picB: require("/src/images/content-images/folio-1.jpg"),
+      picS: require("/src/images/content-images/folio-9-s.jpg")
+    },
+    {
+      title: "Металлопрокат",
+      picM: require("/src/images/content-images/folio-2.jpg"),
+      picB: require("/src/images/content-images/folio-2.jpg"),
+      picS: require("/src/images/content-images/folio-10-s.jpg")
+    },
+    {
+      picM: require("/src/images/content-images/folio-3.jpg"),
+      picB: require("/src/images/content-images/folio-3.jpg"),
+      picS: require("/src/images/content-images/folio-11-s.jpg")
+    },
+    {
+      picM: require("/src/images/content-images/folio-4.jpg"),
+      picB: require("/src/images/content-images/folio-4.jpg"),
+      picS: require("/src/images/content-images/folio-8-s.jpg")
+    },
+    {
+      title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic magnam reiciendis quia accusantium blanditiis alias voluptate facilis eos numquam cum, pariatur suscipit inventore, repellat placeat, mollitia laborum! Minus, tenetur quidem.",
+      picM: require("/src/images/content-images/cats-2.png"),
+      picB: require("/src/images/content-images/cats-2.png"),
+      picS: require("/src/images/content-images/cats-2.png")
+    },
+    {
+      title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Lorem, ipsum dolor sit amet consectetur adipisicing elit",
+      picM: require("/src/images/content-images/promo-desk.jpg"),
+      picB: require("/src/images/content-images/promo-desk.jpg"),
+      picS: require("/src/images/content-images/promo-mob.jpg")
+    }
+  ];
+.section.sfolio
+  .wrap
+    +section-header("Наши работы")
+    .folio__nav.slider-nav
+      each item in photoes
+        .slider-nav__item
+          .slider-nav__image
+            img(src= item.picS)
+    .folio__images
+      each elm in photoes
+        .folio__images__item
+          a.folio__images__image(href=elm.picB, data-fancybox="folio", data-caption= elm.title)
+            img(src=elm.picM)
+          .folio__images__title= elm.title
+    .section__button
+      a.button.button-secondary(href="folio.html") Перейти в портфолио

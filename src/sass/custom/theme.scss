@@ -21,37 +21,52 @@ a,
 .button-secondary {
   color: $custom-color-1;
 }
+.reviews__cat__text {
+  color: $custom-color-2;
+}
 .connect::before,
 .hero__item,
 .benefits__img,
-.videos__text {
+.videos__text,
+.products__label--sale,
+.news__date {
   background-color: $custom-color-2;
 }
 .button-primary,
 .bcart__button--active::after,
 .form__submit,
 .slick-active button,
-.services__title,
-.videos__cover::after {
+.sservices--v1 .services__title,
+.videos__cover::after,
+.slider-nav .slick-current::after {
   background-color: $custom-color-1;
 }
 .button-primary,
 .form__submit,
-.button-secondary {
+.button-secondary,
+.slider-nav .slick-current .slider-nav__image {
   border-color: $custom-color-1;
+}
+a:hover {
+  color: $custom-color-hover;
 }
 .button-primary:hover,
 .button-secondary:hover,
 .form__submit:hover,
-.services__link:hover .services__title,
+.sservices--v1 .services__link:hover .services__title,
+.sservices--v2 .services__link:hover,
 .videos__link:hover .videos__cover::after {
   background-color: $custom-color-hover;
   border-color: $custom-color-hover;
 }
+a:active {
+  color: $custom-color-active;
+}
 .button-primary:active,
 .button-secondary:active,
 .form__submit:active,
-.services__link:active .services__title,
+.sservices--v1 .services__link:active .services__title,
+.sservices--v2 .services__link:active,
 .videos__link:active .videos__cover::after {
   background-color: $custom-color-active;
   border-color: $custom-color-active;

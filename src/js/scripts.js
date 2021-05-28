@@ -362,23 +362,56 @@ window.addEventListener("load", function() {
         ]
       }
     });
-    $(".categories__slider").slick({
-      ...slickSettings,
-      ...{
-        slidesToShow: 3
+    $(".products__images__list").each(function() {
+      if ($(this).children().length > 1) {
+        $(this).slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            dots: true,
+            infinite: false
+        });
       }
     });
-    $(".b-services__slider").slick({
+    $('.folio__images').slick({
       ...slickSettings,
       ...{
-        slidesToShow: 4
-      }
-    });
-    $(".products__images__list").slick({
         slidesToShow: 1,
         slidesToScroll: 1,
-        arrows: false,
-        dots: true
+        adaptiveHeight: true,
+        arrows: true,
+        dots: false,
+        centerMode: true,
+        centerPadding: "120px",
+        asNavFor: '.folio__nav',
+        responsive: [
+          {
+            breakpoint: 1448,
+            settings: {
+              centerMode: false,
+              arrows: false
+            }
+          }
+        ]
+      }
+    });
+    $('.folio__nav').slick({
+      slidesToShow: 5,
+      slidesToScroll: 1,
+      asNavFor: '.folio__images',
+      arrows: false,
+      dots: false,
+      centerMode: true,
+      centerPadding: "48px",
+      focusOnSelect: true,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            centerPadding: "20px"
+          }
+        }
+      ]
     });
   } else {
     console.log("no slick or not loaded");

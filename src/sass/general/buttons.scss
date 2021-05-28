@@ -39,12 +39,17 @@
 
   &-primary,
   &-secondary {
-    min-height: 2.75rem;
-    padding: 0.6875rem 1.5rem;
+    min-height: 2.25rem;
+    padding: 0.4375rem 1rem;
 
     &:hover,
     &:active {
       color: #fff;
+    }
+
+    @media (min-width: $break-lg) {
+      min-height: 2.75rem;
+      padding: 0.6875rem 1.5rem;
     }
   }
 

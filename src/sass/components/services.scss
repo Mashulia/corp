@@ -13,15 +13,12 @@
   margin-bottom: 1.125rem;
 }
 .services__link {
-  background-repeat: no-repeat;
-  background-size: cover;
   color: inherit;
   display: block;
-  width: 100%;
-  padding-bottom: 70%;
+  height: 100%;
   position: relative;
 
-  &:hover {
+  .sservices--v1 &:hover {
     &::before {
       content: "";
       background-color: rgba(255, 255, 255, 0.25);
@@ -37,18 +34,81 @@
     }
   }
 }
+.services__image {
+  overflow: hidden;
+  position: relative;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
 .services__title {
-  background: $color-text1;
-  border-radius: $brad-1;
-  color: #fff;
   font-weight: 800;
   font-size: 0.9375rem;
   line-height: 1.2;
-  padding: 0.625rem 0.75rem;
-  position: absolute;
-  bottom: 0.75rem;
-  left: 0.75rem;
-  max-width: calc(100% - 1.5rem);
-  z-index: 5;
-  transition: background-color 0.4s;
+}
+.sservices--v1 {
+  .services__image {
+    border-radius: $brad-3;
+    width: 100%;
+    padding-bottom: 70%;
+  }
+  .services__title {
+    background: $color-text1;
+    border-radius: $brad-1;
+    color: #fff;
+    padding: 0.625rem 0.75rem;
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    max-width: calc(100% - 1.5rem);
+    z-index: 5;
+    transition: background-color 0.4s;
+  }
+}
+.sservices--v2 {
+  .section__title {
+    text-align: left;
+  }
+  .services__link {
+    @extend %fx-centered-y;
+    border: 1px solid $color-sep;
+    border-radius: $brad-3;
+    color: $color-textHeader;
+    padding: 0.75rem;
+    transition: background-color 0.4s;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+  .services__image {
+    flex: 0 0 56px;
+    align-self: flex-start;
+    max-width: 56px;
+    border-radius: $brad-1;
+    height: 56px;
+    margin-right: 0.625rem;
+  }
+}
+@media (min-width: $break-md) {
+  .sservices--v2 .services__item {
+    flex-basis: $col-width * 4;
+    max-width: $col-width * 4;
+  }
+}
+@media (min-width: $break-xl) {
+  .sservices--v1 .services__item {
+    flex-basis: $col-width * 4;
+    max-width: $col-width * 4;
+  }
+  .sservices--v2 .services__item {
+    flex-basis: $col-width * 3;
+    max-width: $col-width * 3;
+  }
 }

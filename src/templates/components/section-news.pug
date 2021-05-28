@@ -1,0 +1,50 @@
+-
+  var nws = [
+    {
+      title: "Каркасный дом в п. Западный",
+      text: "Ещё один проект пополнил наше портфолио. Двухэтажный дом для большой семьи в п.Западный.",
+      pic: require("/src/images/content-images/news-1.jpg"),
+      date: "12.12.2020"
+    },
+    {
+      title: "Новинка в строительных материалах",
+      text: "Компания «ZE Стройка» разработала новые сэндвич-панели Sakura. Теперь еще прочнее и экономичнее.",
+      pic: require("/src/images/content-images/news-2.jpg"),
+      date: "1.05.2021"
+    },
+    {
+      title: "ChelBuild. Строительная выставка — Загородный дом 2021",
+      text: "Наша компания приняла участие в выставке инноваций. Расскажем все интересные моменты",
+      pic: require("/src/images/content-images/news-3.jpg"),
+      date: "28.05.2021"
+    },
+    {
+      title: "Egger обнародовал ключевые результаты деятельности",
+      text: "В 2019/2020 финансовом году концерн продемонстрировал высокую стабильность.",
+      pic: require("/src/images/content-images/cats-2.png"),
+      date: "1.05.2021"
+    },
+    {
+      title: "Хватит тянуть!",
+      pic: require("/src/images/content-images/promo-desk.jpg")
+    },
+    {
+      title: "Хватит тянуть!",
+      date: "28 фев."
+    }
+  ];
+.section.snews
+  .wrap
+    +section-header("Новости", "Все новости", "news.html")
+    .cells.news__list
+      each elm, index in nws
+        .cell.cell-sm-6.cell-md-4.news__item
+          .news__bg
+            a.news__image(href="news-item.html", class={"no-image": !elm.pic})
+              if elm.pic
+                img(src=elm.pic)
+            .news__text
+              if elm.date
+                .news__date= elm.date
+              a.news__title(href="news-item.html")= elm.title
+              .news__descr= elm.text

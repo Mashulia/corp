@@ -1,0 +1,35 @@
+.sfolio {
+  background: $color-bg;
+}
+.folio__images {
+  margin-bottom: 1.25rem;
+
+  .slick-track {
+    align-items: flex-start;
+  }
+}
+.folio__images__image {
+  display: block;
+  width: 100%;
+  padding-bottom: 59.3%;
+  margin-bottom: 0.75rem;
+  position: relative;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  img {
+    width: 1005px;
+    height: 100%;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+.folio__images__title {
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-align: center;
+}

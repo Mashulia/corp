@@ -32,20 +32,19 @@
       title: "Бани и беседки",
       pic: require("/src/images/content-images/services-8.jpg")
     },
-    //- {
-    //-   title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic magnam reiciendis quia accusantium blanditiis alias voluptate facilis eos numquam cum, pariatur suscipit inventore, repellat placeat, mollitia laborum! Minus, tenetur quidem.",
-    //-   pic: require("/src/images/content-images/cats-2.png")
-    //- },
-    //- {
-    //-   title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
-    //-   pic: require("/src/images/content-images/prods-1.jpg")
-    //- }
+    {
+      title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic magnam reiciendis quia accusantium blanditiis alias voluptate facilis eos numquam cum, pariatur suscipit inventore, repellat placeat, mollitia laborum! Minus, tenetur quidem.",
+      pic: require("/src/images/content-images/cats-2.png")
+    },
+    {
+      title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
+      pic: require("/src/images/content-images/prods-1.jpg")
+    }
   ];
-.section.sservices.sservices--v1
-  .wrap
-    +section-header("Мы строим")
-    .services__list.cells
-      each elm, index in cats
-        .services__item.cell.cell-sm-6.cell-xl-4
-          a.services__link(style="background-image: url(" + elm.pic + ");" href="service.html")
-            .services__title= elm.title
+.services__list.cells
+  each elm, index in cats
+    .services__item.cell.cell-sm-6
+      a.services__link(href="service.html")
+        .services__image
+          img(src= elm.pic)
+        .services__title= elm.title

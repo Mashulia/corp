@@ -50,3 +50,11 @@
 .section__goto {
   margin-bottom: 1.875rem;
 }
+.section__button {
+  text-align: center;
+}
+.no-image {
+  background-color: $color-text2;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
