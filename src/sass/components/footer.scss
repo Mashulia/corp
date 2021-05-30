@@ -1,3 +1,9 @@
-.footer hr {
-  border-color: #3f3f3f;
+.footer {
+  background: $color-text1;
+  color: #fff;
+  padding: 2.5rem 0;
+
+  hr {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
 }

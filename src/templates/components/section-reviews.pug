@@ -2,7 +2,7 @@
   var rvws = [
     {
       title: "Ольга",
-      text: "Он в реальности намного круче, чем на картинке. Очень мягкая приятная ткань, легко чистится (а у меня кошка), легко раскладывается. Мы взяли независимый пружинный блок, так как будем спать на нем постоянно. Не мягкий, но комфортный. Очень мягкая приятная ткань, легко чистится (а у меня кошка), легко раскладывается.",
+      text: "Мы с мужем обращались в компанию «ZE Строй», чтобы заказать строительство загородного дома. Предложили специалистам готовый проект, купленный в Интернете. Как выяснилось, в нем было много ошибок, но инженеры его доработали. В итоге готовый дом, возведенный профессионалами, оказался идеальным во всех отношениях.",
       pics: require("/src/images/content-images/reviews-1.jpg"),
       date: "12.12.2020",
       cat: "Дом из клееного бруса"
@@ -17,7 +17,6 @@
       title: "Анатолий Петрович",
       pics: require("/src/images/content-images/prods-1.jpg"),
       text: "Хотела оставить исключительно положительный отзыв о работе магазина, от заказа товара до его доставки. Осталось приятное впечатление от профессионализма менеджера магазина Ольги при выборе дивана, с которой обсуждены были все нюансы. Товар был заказан 12 ноября, причем без каких-либо предоплат и доставлен 03 декабря, точно в срок, который был изначально согласован. Оплачены были отдельно доставка, подъем. Осталось приятное впечатление от профессионализма менеджера магазина.",
-      date: "28.02.2021",
       cat: "Дом из клееного бруса Дом из клееного бруса Дом из клееного бруса Дом из клееного бруса"
     },
     {
@@ -32,16 +31,20 @@
 .section.sreviews
   .wrap
     +section-header("Отзывы", "Все отзывы", "reviews.html")
-    .reviews__list
+    .reviews__list.reviews__slider
       each elm in rvws
         .reviews__item
-          .reviews__meta
-            .reviews__cat
-              .reviews__cat__text= elm.cat
-            .reviews__pic
-              img(src= elm.pics)
-              .reviews__pic__decor
-                include ./../../images/inline-svgs/reviews-decor.svg
-            .reviews__date= elm.date
-            .reviews__name= elm.title
-          .reviews__text= elm.text
+          .reviews__bg
+            .reviews__meta
+              if elm.cat
+                .reviews__cat
+                  .reviews__cat__text= elm.cat
+              .reviews__pic(class={"reviews__pic--empty": !elm.pics})
+                if elm.pics
+                  img(src= elm.pics)
+                .reviews__pic__decor
+                  include ./../../images/inline-svgs/reviews-decor.svg
+              .reviews__personal
+                .reviews__date= elm.date
+                .reviews__name= elm.title
+            .reviews__text= elm.text

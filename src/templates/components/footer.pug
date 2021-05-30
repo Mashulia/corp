@@ -1,4 +1,59 @@
 -
+  var menuItems = [
+    {
+      name: "Компания",
+      href: "about.html"
+    },
+    {
+      name: "Магазины",
+      href: "contacts.html"
+    },
+    {
+      name: "Новости",
+      href: "news.html"
+    },
+    {
+      name: "Статьи",
+      href: "articles.html"
+    },
+    {
+      name: "Вопросы и ответы",
+      href: "faq.html"
+    },
+    {
+      name: "Видео",
+      href: "videos.html"
+    },
+    {
+      name: "Услуги",
+      href: "services.html"
+    },
+    {
+      name: "Продукция",
+      href: "catalog.html"
+    },
+    {
+      name: "Проекты",
+      href: "projects.html"
+    },
+    {
+      name: "Отзывы",
+      href: "reviews.html"
+    },
+    {
+      name: "Видео",
+      href: "videos.html"
+    },
+    {
+      name: "Контакты",
+      href: "contacts.html"
+    },
+    {
+      name: "Пункт меню с длинным названием",
+      href: "contacts.html"
+    }
+  ];
+-
   var phns = [
     {
       num: "+7 (351) 778-88-00",
@@ -11,86 +66,93 @@
       label: "бухгалтерия"
     },
     {
-      num: "+7 (351) 778-88-02",
+      num: "+7 (351) 778-88-02 доб. 112",
       href: "+73517788802",
-      label: "приемная"
+      label: "приемная директора очень важной компании Длиннофамильцева Именерека Отчествовича"
     }
   ];
-.footer.bg-inverted
+-
+  var socs = [
+    {
+      name: "fb",
+      title: "Группа в Фейсбук"
+    },
+    {
+      name: "vk",
+      title: "Группа во Вконтакте"
+    },
+    {
+      name: "tw",
+      title: "Страница в Твиттер"
+    },
+    {
+      name:"ok", 
+      title:"Группа в Одноклассниках"
+    }
+  ];
+-
+  var messs = [
+    {
+      name: "tg",
+      title: "Написать в Telegram"
+    },
+    {
+      name: "viber",
+      title: "Написать в Viber"
+    },
+    {
+      name: "whatsapp",
+      title: "Написать в WhatsApp"
+    }
+  ]
+.footer
   .wrap
-    .cells
-      .cell.cell-2
-        .nav.site-nav.footer__site-nav
-          include site-nav.pug
-      .cell.cell-2
+    .to-top 
+      a.to-top__link(href="#top", title="Вернуться к началу страницы")
 
+    .cells
+      .cell.cell-lg-2
+        .nav.footer__nav 
+          ul.fnav__list 
+            each item in menuItems 
+              li.fnav__item 
+                a.fnav__link(href= item.href)= item.name 
       .cell.cell-lg-3.offset-cell-lg-1
-        .footer__connects.connects
-          .addresses.footer__addresses.connects__list
-            .connects__item
-              .connects__label Адрес офиса:
-              .connects__value Москва, ​Профсоюзная, 65 ст2
-          .phones.footer__phones.connects__list
-            each itm in phns
-              .connects__item
-                a.connects__value(href= itm.href)= itm.num
-                .connects__label= itm.label
-          .messengers.footer__messengers.connects__list
-            .messengers__item
-              a.messengers__link.messengers__link--tg(href="")
-                include ../../images/inline-svgs/tg.svg
-            .messengers__item
-              a.messengers__link.messengers__link--viber(href="")
-                include ../../images/inline-svgs/viber.svg
-          .emails.footer__emails.connects__list
-            .connects__item
-              .connects__label Эл. почта:
-              a.connects__value(href="mailto:info@zetrade.com") info@zetrade.com
-      .cell.cell-lg-3.offset-cell-lg-1
-        .subscribe.footer__subscribe
-        .subscribe__title Подпишитесь на акции и новости
-        form.form.subscribe-form
-          label.form__field.required
-            span.form__label Эл. почта
-            input(type="email", name="" required)
-          .form__action
-            button.form__submit.button(type="submit")
-              span.sr-only Подписаться на рассылку
-              include ../../images/inline-svgs/arrow-right.svg
+        .footer__connects
+          .footer__addresses
+            .addresses.connect
+              .connect__item
+                .connect__label Адрес офиса:
+                .connect__value г. Челябинск, ул. Артиллерийская, д. 1
+          .footer__emails
+            .emails.connect
+              .connect__item
+                .connect__label Эл. почта:
+                a.connect__value(href="mailto:info@zetrade.com") info@zetrade.com
+          .footer__socials
+            ul.socials__list
+              each item in socs
+                li.socials__item 
+                  a.socials__link(href="", title= item.title, class="socials__link--" + item.name)
+          .footer__phones
+            .phones
+              .phones__header Возникли вопросы? Звоните.
+              each itm in phns
+                .connect__item
+                  a.connect__value(href= itm.href)= itm.num
+                  .connect__label= itm.label
+          .footer__messengers
+            .messengers
+              each item in messs
+                .messengers__item
+                  a.messengers__link(href="", class="messengers__link--" + item.name)
+                    .messengers__text= item.title
     hr.divider
     .cells.fx-justify-between
-      .cell.cell-auto
-        .footer__legal
-          .footer__copy «ЗЕ» трэйд © 2020
-          .footer__policy
-            a.policy__link(href="policy.html") Политика конфиденциальности
-      .cell.cell-auto
-        .footer__socials.socials
-          .socials__item
-            a.socials__link
-              .socials__icon
-                include ../../images/inline-svgs/fb.svg
-              span.sr-only Ссылка на страницу Facebook
-            a.socials__link
-              .socials__icon
-                include ../../images/inline-svgs/vk.svg
-              span.sr-only Ссылка на страницу Вконтакте
-            a.socials__link
-              .socials__icon
-                include ../../images/inline-svgs/tw.svg
-              span.sr-only Ссылка на страницу Twitter
-            a.socials__link
-              .socials__icon
-                include ../../images/inline-svgs/ok.svg
-              span.sr-only Ссылка на страницу в Одноклассниках
-            a.socials__link
-              .socials__icon
-                include ../../images/inline-svgs/ig.svg
-              span.sr-only Ссылка на страницу Instagram
-            a.socials__link
-              .socials__icon
-                include ../../images/inline-svgs/tb.svg
-              span.sr-only Ссылка на страницу YouTube
-
-
-
+      .cell.cell-auto.footer__copy «ЗЕ Строй» © 2020
+      .cell.cell-auto.footer__legal
+        .legal__list
+          .legal__item
+            a.legal__link(href="") Договор оферты
+          .legal__item
+            a.legal__link(href="") Политика конфиденциальности

@@ -413,6 +413,22 @@ window.addEventListener("load", function() {
         }
       ]
     });
+    $(".reviews__slider").slick({
+      slidesToScroll: 1,
+      slidesToShow: 1,
+      adaptiveHeight: true,
+      infinite: false,
+      arrows: true,
+      dots: true,
+      responsive: [
+        {
+          breakpoint: 1448,
+          settings: {
+            arrows: false
+          }
+        }
+      ]
+    });
   } else {
     console.log("no slick or not loaded");
   }

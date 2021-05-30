@@ -1,0 +1,58 @@
+-
+  var cats = [
+    {
+      title: "Кровельные материалы",
+      pic: require("/src/images/content-images/cats-1.jpg"),
+      subcats: [
+        "Металлочерепица",
+        "Профнастил",
+        "Сэндвич панели",
+        "Водосточные системы"
+      ]
+    },
+    {
+      title: "Металлопрокат",
+      pic: require("/src/images/content-images/cats-2.jpg"),
+      subcats: [
+        "Арматура",
+        "Швиллер",
+        "Двутар"
+      ]
+    },
+    {
+      title: "Изоляционные материалы",
+      pic: require("/src/images/content-images/cats-3.jpg"),
+      subcats: [
+        "Пенопласт, пенополистирол",
+        "Поролон",
+        "Теплоизоляция",
+        "Отражающие материалы",
+        "Пароизоляция",
+        "Гидроизоляция"
+      ]
+    },
+    {
+      title: "Строительные плиты",
+      pic: require("/src/images/content-images/cats-4.jpg"),
+      subcats: [
+        "ОСБ (OSB) плиты",
+        "Фанера",
+        "Фибролитовые плиты",
+        "Декоративные",
+        "Цементно-стружечные плиты (ЦСП)"
+      ]
+    },
+    {
+      title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic magnam reiciendis quia accusantium blanditiis alias voluptate facilis eos numquam cum, pariatur suscipit inventore, repellat placeat, mollitia laborum! Minus, tenetur quidem.",
+      pic: require("/src/images/content-images/cats-2.png")
+    },
+    {
+      title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
+      pic: require("/src/images/content-images/prods-1.jpg")
+    }
+  ];
+.section.scategories.scategories--v2
+  .wrap
+    +section-header("Строительные материалы №2")
+    include categories-list.pug 
+    +categories-list(cats)

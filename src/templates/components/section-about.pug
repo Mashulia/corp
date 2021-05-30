@@ -1,0 +1,49 @@
+-
+  var sbens = [
+    {
+      pic: require("/src/images/content-images/sabout-bens-1.png"),
+      title: "Лет работы в строительстве"
+    },
+    {
+      pic: require("/src/images/content-images/bens-1.png"),
+      title: "Соблюдение сроков строительства"
+    },
+    {
+      pic: require("/src/images/content-images/bens-2.png"),
+      title: "Квалифицированные строители"
+    },
+    {
+      pic: require("/src/images/content-images/bens-3.png"),
+      title: "Персональные скидки клиентам"
+    },
+    {
+      pic: require("/src/images/content-images/bens-4.png"),
+      title: "Гарантия 10 лет на строительные работы"
+    }
+  ];
+.section.sabout
+  .wrap
+    .cells 
+      .cell
+        .section__title О компании
+        .sabout__intro 
+          | Иметь собственный частный дом и обустроить в нем все согласно своим вкусовым пристрастиям, 
+          | наверное, мечтает каждый. Неважно, большим или маленьким он будет, 
+          | главное − создать индивидуальную, неповторимую атмосферу домашнего уюта. 
+          | Компания «ZE Строй» предлагает воплотить мечту в реальность. 
+          | Мы построим качественное, отвечающее всем вашим представлениям 
+          | о гармоничной организации пространства, жилье.
+        .section__goto 
+          a.goto__link(href="") Узнать больше
+            .goto__icon
+              include ../../images/inline-svgs/section-header-link.svg
+      .cell 
+        .sabout__image 
+          img(src=require("/src/images/content-images/about-1.png"))
+      .cell 
+        .sabout__bens.benefits__list
+          each item in sbens 
+            .benefits__item 
+              .benefits__img
+                img(src=item.pic)
+              .benefits__title= item.title

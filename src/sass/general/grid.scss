@@ -15,14 +15,14 @@
 .cells {
   display: flex;
   flex-wrap: wrap;
-  margin-left: -$grid-gap;
-  margin-right: -$grid-gap;
+  margin-left: -9px;
+  margin-right: -9px;
 }
 .cell {
   flex: 0 0 100%;
   max-width: 100%;
-  padding-left: $grid-gap;
-  padding-right: $grid-gap;
+  padding-left: 9px;
+  padding-right: 9px;
 }
 @for $i from 1 through $grid-cols {
   .cell-#{$i} {
@@ -39,6 +39,14 @@
   }
 }
 @media (min-width: $break-sm) {
+  .cells {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+  .cell {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
   @for $i from 1 through $grid-cols {
     .cell-sm-#{$i} {
       flex-basis: ($col-width * $i);
@@ -55,6 +63,14 @@
   }
 }
 @media (min-width: $break-lg) {
+  .cells {
+    margin-left: -$grid-gap;
+    margin-right: -$grid-gap;
+  }
+  .cell {
+    padding-left: $grid-gap;
+    padding-right: $grid-gap;
+  }
   @for $i from 1 through $grid-cols {
     .cell-lg-#{$i} {
       flex-basis: ($col-width * $i);
