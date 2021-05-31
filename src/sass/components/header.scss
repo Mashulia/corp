@@ -1,10 +1,10 @@
 .mheader {
-  padding-bottom: 1.0625rem;
-  padding-top: 1.0625rem;
 }
 .mheader__row {
   @extend %fx-centered-y;
   justify-content: space-between;
+  padding-bottom: 1.0625rem;
+  padding-top: 1.0625rem;
 }
 .mheader__logo,
 .mheader__phones,
@@ -50,12 +50,27 @@
   width: 2.25rem;
   padding: 0;
 }
-.header__contents {
-  display: none;
+.mheader__contents {
+  background: #fff;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(100%);
+  z-index: 10;
+  transition: transform 0.4s;
 
-  &--opened {
-    display: block;
+  .mheader--opened & {
+    transform: translateX(0);
   }
+}
+.mheader .primary-nav__list {
+  flex-direction: column;
+}
+.dheader {
+  display: none;
 }
 .header__top {
   color: $color-text2;

@@ -26,7 +26,6 @@ a,
   color: $custom-color-2;
 }
 .connect::before,
-.hero__item,
 .benefits__img,
 .videos__text,
 .products__label--sale,
@@ -80,4 +79,14 @@ a:active {
 }
 .videos__link:hover .videos__cover::after {
   outline-color: $custom-color-hover;
+}
+@media (max-width: 575px) {
+  .hero__item {
+    background-color: $custom-color-2;
+  }
+}
+@media (min-width: 576px) {
+  .hero__descr {
+    color: $custom-color-2;
+  }
 }

@@ -6,7 +6,7 @@
   }
 
   .slick-dots {
-    bottom: 0;
+    bottom: -0.625rem;
   }
 }
 .reviews__bg {
@@ -17,7 +17,7 @@
 .reviews__meta {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 1.125rem;
+  margin-bottom: 1rem;
 }
 .reviews__cat {
   flex: 0 0 100%;

@@ -44,7 +44,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     outline: 2px solid $color-bg;
-    outline-offset: 0.625rem;
+    outline-offset: 0.5rem;
     transition: background-color 0.4s, outline-offset 0.3s;
 
     .videos__link:hover & {
@@ -86,5 +86,10 @@
 
   .videos__item--play & {
     display: block;
+  }
+}
+@media (min-width: $break-md) {
+  .videos .section__goto {
+    margin-bottom: 0;
   }
 }

@@ -1,3 +1,26 @@
+-
+  var phones = [
+    {
+      number: "+7 (351) 225-07-55",
+      link: "+73512250755"
+    },
+    {
+      number: "+7 (351) 225-07-56",
+      label: "Отдел доставки",
+      descr: "работаем 10:00 - 20:00",
+      link: "+73512250756"
+    },
+    {
+      number: "+7 (351) 778-88-00",
+      label: "Бухгалтерия",
+      link: "+73517788800"
+    },
+    {
+      number: "+73517788810",
+      label: "Директор",
+      link: "+73512250756"
+    }
+  ];
 .header.header--v1.mheader--v1
   .mheader
     .wrap
@@ -24,8 +47,43 @@
         .mheader__opener
           button.header__opener(title="Показать меню")
             include ../../images/inline-svgs/menu.svg
-  .header__contents
-    button.header__closer(title="Скрыть меню")
+    .mheader__contents
+      .wrap
+        .mheader__row
+          .mheader__logo
+            .logo
+              a.logo__link(href="/")
+                .logo__image
+                  include ../../images/theme-images/logo.svg
+          button.header__closer(title="Скрыть меню")
+            include ../../images/inline-svgs/menu-close.svg
+      hr.divider
+      .wrap
+        nav.primary-nav
+          include primary-nav.pug
+        .search
+          form.search__form.form(action="")
+            label.form__field
+              input.form__input(type="text", name="", placeholder="Что ищете")
+            button.form__submit.button(type="submit") Найти на сайте
+      hr.divider
+      .wrap
+        .phones.connect.dropdown
+          each item, index in phones
+            if index == 0
+              .connect__item.dropdown__toggle
+                .connect__text= item.number
+          .dropdown__body
+            each item, index in phones
+              if index != 0
+                a.connect__item(href= "tel:" + item.link)
+                  .connect__text= item.number
+                  .connect__label= item.label
+                  .connect__descr= item.descr
+        .addresses.connect
+          .connect__item
+            .connect__value г. Челябинск, ул. Артиллерийская, д. 1
+  .dheader
     .wrap
       .cells.header__top
         .cell.header__top__col.cell-lg-6

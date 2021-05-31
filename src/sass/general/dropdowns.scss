@@ -11,12 +11,13 @@
   top: 100%;
   right: 0;
   z-index: 1;
+
+  .dropdown--opened & {
+    display: block;
+  }
 }
 .dropdown__toggle {
   display: flex;
-}
-.dropdown:hover .dropdown__body {
-  display: block;
 }
 .dropdown__icon {
   @extend %fx-centered;

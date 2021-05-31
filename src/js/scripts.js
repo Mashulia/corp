@@ -142,8 +142,8 @@ window.addEventListener("load", function() {
 
   // mobile header toggle
   var headerOpener = document.getElementsByClassName("header__opener")[0];
-  var headerContents = headerOpener ? headerOpener.closest(".header").querySelector(".header__contents") : false;
-  var headerCloser = headerContents ? headerContents.querySelector(".header__closer") : false;
+  var mheader = headerOpener ? headerOpener.closest(".mheader") : false;
+  var headerCloser = mheader ? mheader.querySelector(".header__closer") : false;
 
   function initMobileHeader() {
     headerOpener.addEventListener("click", openMobileHeader);
@@ -152,21 +152,21 @@ window.addEventListener("load", function() {
   function detachMobileHeader() {
     headerOpener.removeEventListener("click", openMobileHeader);
     headerCloser.removeEventListener("click", closeMobileHeader);
-    headerContents.classList.remove("header__contents--opened");
+    mheader.classList.remove("mheader--opened");
     let pageOverlay = document.getElementsByClassName("page-overlay")[0];
     if (pageOverlay) {
       pageOverlay.remove();
     }
   }
   function openMobileHeader() {
-    headerContents.classList.add("header__contents--opened");
+    mheader.classList.add("mheader--opened");
     let pageOverlay = document.createElement('div');
     pageOverlay.classList.add('page-overlay');
-    document.getElementsByClassName("site-wrap")[0].appendChild(pageOverlay);
+    document.getElementsByClassName("corp")[0].appendChild(pageOverlay);
     document.getElementsByClassName("page-overlay")[0].addEventListener("click", closeMobileHeader);
   }
   function closeMobileHeader() {
-    headerContents.classList.remove("header__contents--opened");
+    mheader.classList.remove("mheader--opened");
     document.getElementsByClassName("page-overlay")[0].remove();
   }
 
@@ -350,16 +350,17 @@ window.addEventListener("load", function() {
     $(".hero__slider").slick({
       ...slickSettings,
       ...{
+        arrows: false,
         dots: true,
-        adaptiveHeight: false,
-        responsive: [
-          {
-            breakpoint: 576,
-            settings: {
-              adaptiveHeight: true
-            }
-          }
-        ]
+        adaptiveHeight: true,
+        // responsive: [
+        //   {
+        //     breakpoint: 576,
+        //     settings: {
+        //       adaptiveHeight: true
+        //     }
+        //   }
+        // ]
       }
     });
     $(".products__images__list").each(function() {
@@ -543,8 +544,6 @@ window.addEventListener("load", function() {
       searchClose.removeEventListener("click", toggleSearch);
 
       resetSiteNavOverflow();
-
-      headerHeight = headerElem.offsetHeight;
     } else {
       detachMobileHeader();
       searchToggle.addEventListener("click", toggleSearch);
@@ -552,11 +551,7 @@ window.addEventListener("load", function() {
 
       resetSiteNavOverflow();
       handleSiteNavOverflow();
-
-      headerHeight = headerElem.offsetHeight - siteNav.offsetHeight;
     }
-
-    if(heroBg){setHeroTopPos();}
 
     if (touchDevice || window.innerWidth < 1024) {
       attachExpands(expandToggles);

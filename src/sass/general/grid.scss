@@ -55,6 +55,10 @@
   }
 }
 @media (min-width: $break-md) {
+  .wrap {
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+  }
   @for $i from 1 through $grid-cols {
     .cell-md-#{$i} {
       flex-basis: ($col-width * $i);
