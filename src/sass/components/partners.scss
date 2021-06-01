@@ -36,3 +36,17 @@
     height: 120px;
   }
 }
+@media (min-width: $break-lg) {
+  .partners__list:last-child {
+    margin-bottom: -2.5625rem;
+  }
+  .partners__item {
+    margin-bottom: 2.5rem;
+  }
+  .partners__image {
+    margin-bottom: 1rem;
+  }
+  .partners__title {
+    font-size: 1rem;
+  }
+}

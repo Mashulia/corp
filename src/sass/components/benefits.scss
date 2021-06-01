@@ -10,7 +10,6 @@
   @extend %fx-centered-y;
   color: $color-textHeader;
   font-weight: bold;
-  font-size: 0.9375rem;
   margin-bottom: 1.125rem;
   position: relative;
 }
@@ -37,5 +36,36 @@
   }
   .benefits__item {
     margin-bottom: 1.75rem;
+  }
+}
+@media (min-width: $break-lg) {
+  .benefits {
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+  .benefits__img {
+    flex-basis: 3.625rem;
+    max-width: 3.625rem;
+    height: 3.625rem;
+    margin-right: 1rem;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+  .sabout__bens {
+    .benefits__list:last-child {
+      margin-bottom: -1.5625rem;
+    }
+    .benefits__item {
+      margin-bottom: 1.5rem;
+    }
+  }
+}
+@media (min-width: $break-xl) {
+  .benefits__cell {
+    flex-basis: 20%;
+    max-width: 20%;
   }
 }

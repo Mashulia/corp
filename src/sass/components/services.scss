@@ -2,6 +2,7 @@
   background: $color-bg;
 }
 .services__list {
+  justify-content: center;
   margin-bottom: 0.75rem;
 
   &:last-child {
@@ -49,7 +50,6 @@
 }
 .services__title {
   font-weight: 800;
-  font-size: 0.9375rem;
   line-height: 1.2;
 }
 .sservices--v1 {
@@ -102,13 +102,44 @@
     max-width: $col-width * 4;
   }
 }
+@media (min-width: $break-lg) {
+  .sservices--v1 .services__title {
+    bottom: 1.5rem;
+    left: 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.3;
+    padding: 0.9375rem 1rem;
+  }
+  .services__list:last-child {
+    margin-bottom: -1.6125rem;
+  }
+  .services__item {
+    margin-bottom: 1.5625rem;
+  }
+  .sservices--v2 {
+    .services__image {
+      flex-basis: 65px;
+      max-width: 65px;
+      height: 65px;
+      margin-right: 0.875rem;
+    }
+  }
+}
 @media (min-width: $break-xl) {
   .sservices--v1 .services__item {
     flex-basis: $col-width * 4;
     max-width: $col-width * 4;
   }
-  .sservices--v2 .services__item {
-    flex-basis: $col-width * 3;
-    max-width: $col-width * 3;
+  .sservices--v2 {
+    .services__item {
+      flex-basis: $col-width * 3;
+      max-width: $col-width * 3;
+    }
+    .services__image {
+      flex-basis: 106px;
+      max-width: 106px;
+      height: 106px;
+      margin-right: 1.125rem;
+    }
   }
 }

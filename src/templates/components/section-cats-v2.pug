@@ -42,17 +42,32 @@
         "Цементно-стружечные плиты (ЦСП)"
       ]
     },
-    {
-      title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic magnam reiciendis quia accusantium blanditiis alias voluptate facilis eos numquam cum, pariatur suscipit inventore, repellat placeat, mollitia laborum! Minus, tenetur quidem.",
-      pic: require("/src/images/content-images/cats-2.png")
-    },
-    {
-      title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
-      pic: require("/src/images/content-images/prods-1.jpg")
-    }
+    //- {
+    //-   title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic magnam reiciendis quia accusantium blanditiis alias voluptate facilis eos numquam cum, pariatur suscipit inventore, repellat placeat, mollitia laborum! Minus, tenetur quidem.",
+    //-   pic: require("/src/images/content-images/cats-2.png")
+    //- },
+    //- {
+    //-   title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
+    //-   pic: require("/src/images/content-images/prods-1.jpg")
+    //- }
   ];
 .section.scategories.scategories--v2
   .wrap
     +section-header("Строительные материалы №2")
-    include categories-list.pug 
-    +categories-list(cats)
+    .categories__list.cells
+      each elm, index in cats
+        .categories__item.cell.cell-lg-6
+          .categories__bg
+            .cells
+              .cell.cell-sm-4
+                a.categories__image(href="category.html")
+                  img(src=elm.pic)
+              .cell.cell-sm-8
+                .categories__body
+                  a.categories__link(href="category.html")
+                    .categories__title= elm.title
+                  if elm.subcats
+                    ul.categories__subcats.subcats__list
+                      each itm in elm.subcats
+                        li.subcats__item
+                          a.subcats__link(href="subcategory.html")= itm

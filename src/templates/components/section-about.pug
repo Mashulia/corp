@@ -6,11 +6,11 @@
     },
     {
       pic: require("/src/images/content-images/bens-1.png"),
-      title: "Соблюдение сроков строительства"
+      title: "Соблюдение сроков"
     },
     {
       pic: require("/src/images/content-images/bens-2.png"),
-      title: "Квалифицированные строители"
+      title: "Опытные строители"
     },
     {
       pic: require("/src/images/content-images/bens-3.png"),
@@ -18,13 +18,13 @@
     },
     {
       pic: require("/src/images/content-images/bens-5.png"),
-      title: "Гарантия 10 лет на строительные работы"
+      title: "Гарантия 10 лет на наши работы"
     }
   ];
 .section.sabout
   .wrap
     .cells
-      .cell
+      .cell.cell-md-6.cell-xl-4
         .section__title О компании
         .sabout__intro
           | Иметь собственный частный дом и обустроить в нем все согласно своим вкусовым пристрастиям,
@@ -37,13 +37,14 @@
           a.goto__link(href="") Узнать больше
             .goto__icon
               include ../../images/inline-svgs/section-header-link.svg
-      .cell
+      .cell.cell-md-6
         .sabout__image
           img(src=require("/src/images/content-images/about-1.png"))
-      .cell
-        .sabout__bens.benefits__list
-          each item in sbens
-            .benefits__item
-              .benefits__img
-                img(src=item.pic)
-              .benefits__title= item.title
+      .cell.cell-xl-2
+        .sabout__bens
+          .benefits__list.cells
+            each item in sbens
+              .benefits__item.cell.cell-sm-6.cell-md-4.cell-lg-3.cell-xl-12
+                .benefits__img
+                  img(src=item.pic)
+                .benefits__title= item.title

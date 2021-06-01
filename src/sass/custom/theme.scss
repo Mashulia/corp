@@ -18,7 +18,8 @@ $custom-color-21: color.adjust($custom-color-1, $lightness: -15);
 
 a,
 .expand__icon,
-.button-secondary {
+.button-secondary,
+.slick-arrow {
   color: $custom-color-1;
 }
 .reviews__cat__text,
@@ -27,7 +28,6 @@ a,
 }
 .connect::before,
 .benefits__img,
-.videos__text,
 .products__label--sale,
 .news__date {
   background-color: $custom-color-2;
@@ -55,7 +55,8 @@ a:hover {
 .form__submit:hover,
 .sservices--v1 .services__link:hover .services__title,
 .sservices--v2 .services__link:hover,
-.videos__link:hover .videos__cover::after {
+.videos__link:hover .videos__cover::after,
+.slick-arrow:hover {
   background-color: $custom-color-hover;
   border-color: $custom-color-hover;
 }
@@ -67,7 +68,8 @@ a:active {
 .form__submit:active,
 .sservices--v1 .services__link:active .services__title,
 .sservices--v2 .services__link:active,
-.videos__link:active .videos__cover::after {
+.videos__link:active .videos__cover::after,
+.slick-arrow:active {
   background-color: $custom-color-active;
   border-color: $custom-color-active;
 }
@@ -88,5 +90,10 @@ a:active {
 @media (min-width: 576px) {
   .hero__descr {
     color: $custom-color-2;
+  }
+}
+@media (max-width: 1447px) {
+  .videos__text {
+    background-color: $custom-color-2;
   }
 }

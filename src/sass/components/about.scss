@@ -12,3 +12,17 @@
 .sabout__image {
   margin-bottom: 2rem;
 }
+@media (min-width: $break-md) {
+  .sabout__intro {
+    font-size: 1.0625rem;
+  }
+}
+@media (min-width: $break-lg) {
+  .sabout .section__title {
+    margin-bottom: 1.5rem;
+  }
+  .sabout__intro {
+    font-size: 1.125rem;
+    margin-bottom: 2.375rem;
+  }
+}

@@ -383,7 +383,7 @@ window.addEventListener("load", function() {
         arrows: true,
         dots: false,
         centerMode: true,
-        centerPadding: "120px",
+        centerPadding: "228px",
         asNavFor: '.folio__nav',
         responsive: [
           {
@@ -397,38 +397,56 @@ window.addEventListener("load", function() {
       }
     });
     $('.folio__nav').slick({
-      slidesToShow: 5,
+      slidesToShow: 11,
       slidesToScroll: 1,
       asNavFor: '.folio__images',
       arrows: false,
       dots: false,
       centerMode: true,
-      centerPadding: "48px",
+      centerPadding: "70px",
       focusOnSelect: true,
       responsive: [
         {
+          breakpoint: 1448,
+          settings: {
+            centerPadding: "64px",
+            slidesToShow: 7
+          }
+        },
+        {
+          breakpoint: 1024,
+          settings: {
+            centerPadding: "48px",
+            slidesToShow: 9
+          }
+        },
+        {
           breakpoint: 768,
           settings: {
-            centerPadding: "20px"
+            centerPadding: "20px",
+            slidesToShow: 5
           }
         }
       ]
     });
     $(".reviews__slider").slick({
-      slidesToScroll: 1,
-      slidesToShow: 1,
-      adaptiveHeight: true,
-      infinite: false,
-      arrows: true,
-      dots: true,
-      responsive: [
-        {
-          breakpoint: 1448,
-          settings: {
-            arrows: false
+      ...slickSettings,
+      ...{
+        slidesToScroll: 1,
+        slidesToShow: 1,
+        adaptiveHeight: true,
+        infinite: false,
+        arrows: true,
+        dots: true,
+        responsive: [
+          {
+            breakpoint: 1448,
+            settings: {
+              arrows: false
+            }
           }
-        }
-      ]
+        ]
+      }
     });
   } else {
     console.log("no slick or not loaded");

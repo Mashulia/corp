@@ -10,6 +10,7 @@
 }
 .folio__images__image {
   display: block;
+  background: $color-bg;
   width: 100%;
   padding-bottom: 59.3%;
   margin-bottom: 0.75rem;
@@ -32,4 +33,39 @@
   font-weight: 500;
   font-size: 0.875rem;
   text-align: center;
+}
+@media (min-width: $break-md) {
+  .folio__images__image {
+    margin-bottom: 0.625rem;
+  }
+}
+@media (min-width: $break-lg) {
+  .folio__images {
+    margin-bottom: 1.5rem;
+  }
+  .folio__images__image {
+    margin-bottom: 1rem;
+    padding-bottom: 59.8%;
+  }
+  .folio__images__title {
+    font-size: 1rem;
+  }
+}
+@media (min-width: $break-xl) {
+  .folio__images__item {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  .folio__images {
+    .slick-arrow {
+      top: 257px;
+      transform: none;
+    }
+    .slick-prev {
+      left: 6%;
+    }
+    .slick-next {
+      right: 6%;
+    }
+  }
 }
