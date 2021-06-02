@@ -62,6 +62,10 @@
     height: 3rem;
     width: 3rem;
   }
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 .button:focus {
   outline: none;

@@ -18,11 +18,26 @@
   }
 }
 @media (min-width: $break-lg) {
-  .sabout .section__title {
-    margin-bottom: 1.5rem;
+  .sabout {
+    .section__title {
+      margin-bottom: 1.5rem;
+    }
+    .benefits__list:last-child {
+      margin-bottom: -2.4385rem;
+    }
+    .benefits__item {
+      margin-bottom: 2.375rem;
+    }
   }
   .sabout__intro {
     font-size: 1.125rem;
     margin-bottom: 2.375rem;
+  }
+  .sabout__image,
+  .sabout__bens {
+    margin-top: 4.125rem;
+  }
+  .sabout__image {
+    margin-bottom: 0;
   }
 }

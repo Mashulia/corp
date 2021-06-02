@@ -1,0 +1,45 @@
+.search__toggle {
+  display: flex;
+  height: 1rem;
+  width: 1rem;
+  position: relative;
+
+  &::before {
+    content: "";
+    height: 2.5rem;
+    width: 2.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+.search__form {
+  position: relative;
+
+  .form__field {
+    margin-bottom: 0;
+  }
+  .form__input {
+    padding-right: 3rem;
+  }
+  .form__submit {
+    border-radius: 27px 3px 3px 27px;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 2.25rem;
+  }
+}
+.search__text {
+  display: none;
+}
+.search__close {
+  display: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L11 11M11 1L1 11' stroke='black' stroke-width='2'/%3E%3C/svg%3E%0A");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 1.25rem 1.25rem;
+}

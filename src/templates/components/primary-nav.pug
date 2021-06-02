@@ -101,7 +101,7 @@ ul.primary-nav__list
       a.primary-nav__link(class = {"primary-nav__link--active" : val.active, "expand__toggle" : val.dd}, href= val.href)= val.name
         if val.dd
           div.expand__icon
-            include ../../images/inline-svgs/dropdown.svg
+            include ../../images/inline-svgs/expand.svg
       if val.dd
         .expand__body
           ul.primary-nav__list
@@ -110,7 +110,7 @@ ul.primary-nav__list
                 a.primary-nav__link(class = {"primary-nav__link--active" : itm.active, "expand__toggle" : itm.dd}, href= itm.href)= itm.name
                   if itm.dd
                     div.expand__icon
-                      include ../../images/inline-svgs/dropdown.svg
+                      include ../../images/inline-svgs/expand.svg
                 if itm.dd
                   .expand__body
                     ul.primary-nav__list

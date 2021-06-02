@@ -102,6 +102,10 @@
     padding-right: 0.3125rem;
     position: relative;
 
+    &:hover {
+      cursor: pointer;
+    }
+
     @media (min-width: $break-md) {
       padding-left: 0.5625rem;
       padding-right: 0.5625rem;
@@ -125,9 +129,14 @@
     img {
       height: 100%;
       width: 100%;
+      object-fit: cover;
       position: absolute;
       top: 0;
       left: 0;
+    }
+
+    @media (min-width: $break-lg) {
+      border-radius: $brad-3;
     }
   }
 

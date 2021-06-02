@@ -257,40 +257,25 @@ window.addEventListener("load", function() {
   }
 
   // header menu dropdowns
-  var ddTimer = 0;
-  var ddDelay = 200;
-  var ddPrevent = false;
   var expandToggles = document.getElementsByClassName("expand__toggle");
   function attachExpands(elems) {
     for (var i = 0; i < elems.length; i++) {
       elems[i].addEventListener("click", toggleExpand);
-      elems[i].addEventListener("dblclick", followMenuLink);
     }
   }
   function removeExpands(elems) {
     for (var i = 0; i < elems.length; i++) {
       elems[i].removeEventListener("click", toggleExpand);
-      elems[i].removeEventListener("dblclick", followMenuLink);
     }
   }
   function toggleExpand(e) {
     e.preventDefault();
     var expandRoot = e.target.closest(".expand");
-    ddTimer = setTimeout(function() {
-      if (!ddPrevent) {
-        expandRoot.classList.toggle("expand--opened");
-        if(window.innerWidth > 1023 && expandRoot.classList.contains("expand--opened")) {
-          fixDropdown(expandRoot.querySelector(".expand__body"));
-          closeWhatever(expandRoot, "expand--opened");
-        }
-      }
-      ddPrevent = false;
-    }, ddDelay);
-  }
-  function followMenuLink() {
-    clearTimeout(ddTimer);
-    ddPrevent = true;
-    window.location = this.href;
+    expandRoot.classList.toggle("expand--opened");
+    if(window.innerWidth > 1023 && expandRoot.classList.contains("expand--opened")) {
+      fixDropdown(expandRoot.querySelector(".expand__body"));
+      closeWhatever(expandRoot, "expand--opened");
+    }
   }
   function closeMenuExpands() {
     var expandedMenus = document.getElementsByClassName("expand");
@@ -342,36 +327,75 @@ window.addEventListener("load", function() {
 
   // slick
   let slickSettings = {
-    arrows: true,
-    prevArrow: '<button class="slick-prev slick-arrow" aria-label="Предыдущий слайд" type="button"><svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 13L2 7M2 7L7 1M2 7H16" stroke="currentColor" stroke-width="2"/></svg></button>',
-    nextArrow: '<button class="slick-next slick-arrow" aria-label="Следующий слайд" type="button"><svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 13L14 7M14 7L9 1M14 7H0" stroke="currentColor" stroke-width="2"/></svg></button>'
+    prevArrow: '<button class="slick-prev slick-arrow" aria-label="Предыдущий слайд" type="button">' +
+      '<svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<path d="M7 13L2 7M2 7L7 1M2 7H16" stroke="currentColor" stroke-width="2"/>' +
+      '</svg>' +
+      '</button>',
+    nextArrow: '<button class="slick-next slick-arrow" aria-label="Следующий слайд" type="button">' +
+      '<svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<path d="M9 13L14 7M14 7L9 1M14 7H0" stroke="currentColor" stroke-width="2"/>' +
+      '</svg>' +
+      '</button>'
   }
   if (typeof $.fn.slick !== 'undefined') {
     $(".hero__slider").slick({
       ...slickSettings,
       ...{
-        arrows: false,
+        arrows: true,
         dots: true,
         adaptiveHeight: true,
-        // responsive: [
-        //   {
-        //     breakpoint: 576,
-        //     settings: {
-        //       adaptiveHeight: true
-        //     }
-        //   }
-        // ]
+        responsive: [
+          {
+            breakpoint: 1448,
+            settings: {
+              arrows: false
+            }
+          }
+        ]
       }
     });
     $(".products__images__list").each(function() {
-      if ($(this).children().length > 1) {
-        $(this).slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: false,
-            dots: true,
-            infinite: false
+      let $currSlider = $(this);
+      if ($currSlider.children().length > 1) {
+        $currSlider.slick({
+          // prevArrow: '<button class="slick-prev slick-arrow" aria-label="Предыдущий слайд" type="button">' +
+          //   '<svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+          //   '<path d="M1 15L8 8L0.999999 1" stroke="currentColor" stroke-width="2" transform="rotate(180)" transform-origin="50% 50%"/>' +
+          //   '</svg>' +
+          //   '</button>',
+          // nextArrow: '<button class="slick-next slick-arrow" aria-label="Следующий слайд" type="button">' +
+          //   '<svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+          //   '<path d="M1 15L8 8L0.999999 1" stroke="currentColor" stroke-width="2"/>' +
+          //   '</svg>' +
+          //   '</button>',
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+          dots: true,
+          infinite: false,
+          // responsive: [
+          //   {
+          //     breakpoint: 1448,
+          //     settings: {
+          //       arrows: false
+          //     }
+          //   }
+          // ]
         });
+        let oldMousePos = 0;
+        let newMousePos = 0;
+        this.addEventListener('mousemove', function(e) {
+          newMousePos = e.pageX;
+          delay(function(){
+          if (newMousePos < (oldMousePos - 20)) {
+              $currSlider.slick("slickPrev");
+          } else if (newMousePos > (oldMousePos + 20)) {
+              $currSlider.slick("slickNext");
+          }
+          oldMousePos = newMousePos;
+        }, 100);
+      });
       }
     });
     $('.folio__images').slick({

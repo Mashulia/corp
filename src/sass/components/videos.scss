@@ -3,6 +3,38 @@
 }
 .videos__link {
   display: block;
+  position: relative;
+
+  &::after,
+  &::before {
+    content: "";
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+  &::after {
+    background-color: $color-bg;
+    background-image: url("data:image/svg+xml,%3Csvg width='11' height='12' viewBox='0 0 11 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.56656L9.3427 5.99944L1 10.4323V1.56656Z' stroke='white' stroke-width='2'/%3E%3C/svg%3E");
+    height: 2.75rem;
+    width: 2.75rem;
+    transition: background-color 0.4s;
+  }
+
+  &::before {
+    border: 2px solid $color-sep;
+    height: 64px;
+    width: 64px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    transform-origin: 50% 50%;
+  }
+}
+.videos__link:hover::before {
+  animation: play 0.3s forwards;
 }
 .videos__cover,
 .videos__content {
@@ -18,41 +50,20 @@
   position: relative;
   overflow: hidden;
 
-  &::before,
   &::after {
     content: "";
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    position: absolute;
-  }
-
-  &::before {
     background-image: linear-gradient(
       360deg,
       #3c3c3c 0%,
       rgba(65, 65, 65, 0) 100%
     );
+    position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-  }
-  &::after {
-    background-color: $color-bg;
-    background-image: url("data:image/svg+xml,%3Csvg width='11' height='12' viewBox='0 0 11 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.56656L9.3427 5.99944L1 10.4323V1.56656Z' stroke='white' stroke-width='2'/%3E%3C/svg%3E");
-    border-radius: 50%;
-    height: 2.75rem;
-    width: 2.75rem;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    outline: 2px solid $color-bg;
-    outline-offset: 0.5rem;
-    transition: background-color 0.4s, outline-offset 0.3s;
-
-    .videos__link:hover & {
-      outline-offset: -2px;
-    }
   }
 }
 .videos__text {
@@ -94,11 +105,15 @@
   .videos__cover {
     border-radius: $brad-3 $brad-3 0 0;
   }
-  .videos__cover::after {
+  .videos__link::after {
     background-size: 19px 20px;
     height: 4.875rem;
     width: 4.875rem;
     outline-offset: 1rem;
+  }
+  .videos__link::before {
+    height: 7rem;
+    width: 7rem;
   }
   .videos__text {
     border-radius: 0 0 $brad-3 $brad-3;
@@ -130,5 +145,19 @@
     font-weight: 600;
     font-size: 0.8125rem;
     line-height: 1.4;
+  }
+}
+@keyframes play {
+  0% {
+    border-left-color: transparent;
+  }
+  25% {
+    border-width: 3px;
+  }
+  100% {
+    border-width: 3px;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-top-color: transparent;
   }
 }

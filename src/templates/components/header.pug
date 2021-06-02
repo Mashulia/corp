@@ -64,25 +64,26 @@
         .search
           form.search__form.form(action="")
             label.form__field
-              input.form__input(type="text", name="", placeholder="Что ищете")
-            button.form__submit.button(type="submit") Найти на сайте
-      hr.divider
-      .wrap
-        .phones.connect.dropdown
-          each item, index in phones
-            if index == 0
-              .connect__item.dropdown__toggle
+              input.form__input(type="text", name="", placeholder="Введите запрос")
+            button.form__submit.button(type="submit")
+              .search__icon
+                include ../../images/inline-svgs/search.svg
+              .search__text Найти
+        .phones.connect
+          .connect__list
+            each item in phones
+              a.connect__item(href= "tel:" + item.link)
                 .connect__text= item.number
-          .dropdown__body
-            each item, index in phones
-              if index != 0
-                a.connect__item(href= "tel:" + item.link)
-                  .connect__text= item.number
-                  .connect__label= item.label
-                  .connect__descr= item.descr
+                .connect__label= item.label
+                .connect__descr= item.descr
         .addresses.connect
-          .connect__item
-            .connect__value г. Челябинск, ул. Артиллерийская, д. 1
+          .connect__list
+            .connect__item
+              .connect__value г. Челябинск, ул. Артиллерийская, д. 1
+        .emails.connect
+          .connect__list
+            .connect__item
+              a.connect__value(href="mailto:info@zetrade.com") info@zetrade.com
   .dheader
     .wrap
       .cells.header__top

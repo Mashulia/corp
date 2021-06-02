@@ -139,6 +139,24 @@
   }
 }
 @media (min-width: $break-xl) {
+  .hero__slider {
+    .slick-prev {
+      left: -4rem;
+      transition: left 0.4s;
+    }
+    .slick-next {
+      right: -4rem;
+      transition: right 0.4s;
+    }
+  }
+  .hero__slider:hover {
+    .slick-prev {
+      left: 6.5rem;
+    }
+    .slick-next {
+      right: 6.5rem;
+    }
+  }
   .hero__item {
     min-height: 520px;
   }

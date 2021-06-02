@@ -19,7 +19,8 @@ $custom-color-21: color.adjust($custom-color-1, $lightness: -15);
 a,
 .expand__icon,
 .button-secondary,
-.slick-arrow {
+.slick-arrow,
+.expand--opened > .expand__toggle {
   color: $custom-color-1;
 }
 .reviews__cat__text,
@@ -37,14 +38,15 @@ a,
 .form__submit,
 .slick-active button,
 .sservices--v1 .services__title,
-.videos__cover::after,
+.videos__link::after,
 .slider-nav .slick-current::after {
   background-color: $custom-color-1;
 }
 .button-primary,
 .form__submit,
 .button-secondary,
-.slider-nav .slick-current .slider-nav__image {
+.slider-nav .slick-current .slider-nav__image,
+.form__input:hover {
   border-color: $custom-color-1;
 }
 a:hover {
@@ -55,9 +57,20 @@ a:hover {
 .form__submit:hover,
 .sservices--v1 .services__link:hover .services__title,
 .sservices--v2 .services__link:hover,
-.videos__link:hover .videos__cover::after,
-.slick-arrow:hover {
+.videos__link:hover::after,
+.slick-arrow:hover,
+.slick-dots button:hover {
   background-color: $custom-color-hover;
+}
+.button-primary:hover,
+.button-secondary:hover,
+.form__submit:hover,
+.sservices--v1 .services__link:hover .services__title,
+.sservices--v2 .services__link:hover,
+.videos__link:hover::after,
+.slick-arrow:hover,
+.slider-nav__item:hover .slider-nav__image,
+.form__input:focus {
   border-color: $custom-color-hover;
 }
 a:active {
@@ -68,19 +81,24 @@ a:active {
 .form__submit:active,
 .sservices--v1 .services__link:active .services__title,
 .sservices--v2 .services__link:active,
-.videos__link:active .videos__cover::after,
-.slick-arrow:active {
+.videos__link:active::after,
+.slick-arrow:active,
+.slick-dots button:active {
   background-color: $custom-color-active;
+}
+.button-primary:active,
+.button-secondary:active,
+.form__submit:active,
+.sservices--v1 .services__link:active .services__title,
+.sservices--v2 .services__link:active,
+.videos__link:active::after,
+.slick-arrow:active,
+.slider-nav__item:active .slider-nav__image {
   border-color: $custom-color-active;
 }
-.hero__slider .slick-dots button {
+.hero__slider .slick-dots button,
+.videos__link::before {
   border-color: $custom-color-2;
-}
-.videos__cover::after {
-  outline-color: $custom-color-2;
-}
-.videos__link:hover .videos__cover::after {
-  outline-color: $custom-color-hover;
 }
 @media (max-width: 575px) {
   .hero__item {

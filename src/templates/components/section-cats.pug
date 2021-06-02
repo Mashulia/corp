@@ -32,8 +32,8 @@
       each elm, index in cats
         .categories__item.cell.cell-sm-6.cell-lg-4.cell-xl-3
           .categories__bg
-            a.categories__image(href="category.html")
-              img(src=elm.pic)
-            .categories__body
-              a.categories__link(href="category.html")
+            a.categories__link(href="category.html")
+              .categories__image
+                img(src=elm.pic)
+              .categories__body
                 .categories__title= elm.title

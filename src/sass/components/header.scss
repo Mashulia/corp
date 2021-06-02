@@ -69,6 +69,9 @@
 .mheader .primary-nav__list {
   flex-direction: column;
 }
+.mheader .search {
+  margin-bottom: 1.5rem;
+}
 .dheader {
   display: none;
 }
@@ -76,69 +79,6 @@
   color: $color-text2;
   font-weight: 600;
   padding: 0.8125rem 0 0.6875rem;
-}
-.search__toggle {
-  display: flex;
-  height: 1rem;
-  width: 1rem;
-
-  &::before {
-    content: "";
-    height: 2.5rem;
-    width: 2.5rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-}
-.search__body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.85);
-  opacity: 0;
-  padding: 1.5rem;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  transform: translateY(-100%);
-  transition: transform 0.4s, opacity 0.4s;
-  z-index: 15;
-
-  .search--opened & {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-.search__form {
-  background: #fff;
-  border: 1px solid $color-sep;
-  border-radius: $brad-2;
-  position: relative;
-
-  .form__field {
-    margin-bottom: 0;
-  }
-  .form__input {
-    border: 0;
-    padding: 1rem 11rem 1rem 2rem;
-  }
-  .form__submit {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-  }
-}
-.search__close {
-  display: none;
-  background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L11 11M11 1L1 11' stroke='black' stroke-width='2'/%3E%3C/svg%3E%0A");
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: 1.25rem 1.25rem;
 }
 .header__search {
   .search__form {

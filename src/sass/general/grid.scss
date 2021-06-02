@@ -86,16 +86,18 @@
     }
   }
 }
-@media (min-width: $break-xl) {
-  .wrap {
-    padding-left: 0;
-    padding-right: 0;
-  }
+@media (min-width: $break-desk) {
   @for $i from 1 through $grid-cols {
     .cell-xl-#{$i} {
       flex-basis: ($col-width * $i);
       max-width: ($col-width * $i);
     }
+  }
+}
+@media (min-width: $break-xl) {
+  .wrap {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 // flex utils
