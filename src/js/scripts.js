@@ -194,19 +194,20 @@ window.addEventListener("load", function() {
   }
 
   // header menu overflow
-  var siteNav = document.querySelector(".primary-nav > .primary-nav__list");
-  var maxSiteNavWidth = siteNav ? siteNav.offsetWidth : 1000;
+  var siteNav = document.querySelector(".dheader .primary-nav > .primary-nav__list");
+  console.log(siteNav);
+  var maxSiteNavWidth = siteNav ? siteNav.offsetWidth : 600;
   var factSiteNavWidth = 0;
-  var extraSiteNav = document.querySelector(".primary-nav--extra");
+  var extraSiteNav = document.querySelector(".dheader .primary-nav--extra");
   var extraSiteNavUl = extraSiteNav ? extraSiteNav.getElementsByTagName("ul")[0] : 0;
   var siteNavItems = siteNav ? siteNav.children : null;
 
   function handleSiteNavOverflow() {
-    // console.log(maxSiteNavWidth);
+    console.log(maxSiteNavWidth);
     for (var i=0; i<siteNavItems.length; i++) {
       factSiteNavWidth += siteNavItems[i].offsetWidth;
-      // console.log(factSiteNavWidth);
-      // console.log("child " + i + " " + siteNavItems[i].offsetWidth);
+      console.log(factSiteNavWidth);
+      console.log("child " + i + " " + siteNavItems[i].offsetWidth);
       if (factSiteNavWidth > maxSiteNavWidth || (siteNavItems[i].nextElementSibling && factSiteNavWidth > (maxSiteNavWidth - 60))) {
         extraSiteNavUl.appendChild(siteNavItems[i].cloneNode(true));
         siteNavItems[i].style.display="none";
@@ -232,6 +233,7 @@ window.addEventListener("load", function() {
 
   // dropdowns
   function toggleDropdown(e) {
+    e.preventDefault();
     var dropdownRoot = e.target.closest(".dropdown");
     dropdownRoot.classList.toggle("dropdown--opened");
     if(window.innerWidth > 767 && dropdownRoot.classList.contains("dropdown--opened")) {

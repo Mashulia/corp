@@ -8,3 +8,49 @@ mixin section-header(title, linkName, link)
           span.section__link__title= linkName
           span.section__link__icon
             include ../../images/inline-svgs/section-header-link.svg
+-
+  var scls = [
+    {
+      name: "fb",
+      title: "Группа в Facebook"
+     },
+    {
+      name: "vk",
+      title: "Группа во Вконтакте",
+    },
+    {
+      name: "twitter",
+      title: "Группа в Twitter"
+    },
+    {
+      name: "ok",
+      title: "Группа в Одноклассниках"
+    },
+    {
+      name: "instagram",
+      title: "Страница в Instagram"
+    },
+    {
+      name: "youtube",
+      title: "Канал на Youtube"
+    }
+  ];
+mixin icon-fb
+  include ../../images/inline-svgs/fb.svg
+mixin icon-vk
+  include ../../images/inline-svgs/vk.svg
+mixin icon-twitter
+  include ../../images/inline-svgs/tw.svg
+mixin icon-ok
+  include ../../images/inline-svgs/ok.svg
+mixin icon-youtube
+  include ../../images/inline-svgs/youtube.svg
+mixin icon-instagram
+  include ../../images/inline-svgs/ig.svg
+mixin socials
+  .socials
+    .socials__list
+      each item in scls
+        .socials__item
+          a.socials__link(href="", title= item.title)
+            +#{"icon-" + item.name}

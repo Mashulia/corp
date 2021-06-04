@@ -1,6 +1,12 @@
+.site-nav__list {
+  height: 2rem;
+  overflow: hidden;
+}
 .site-nav__item {
-  margin-right: 1rem;
+  margin-right: 1.5rem;
 }
 .site-nav__link {
   color: inherit;
+  display: block;
+  padding: 0.3125rem 0;
 }

@@ -2,7 +2,8 @@
   var phones = [
     {
       number: "+7 (351) 225-07-55",
-      link: "+73512250755"
+      link: "+73512250755",
+      descr: "call-центр"
     },
     {
       number: "+7 (351) 225-07-56",
@@ -16,9 +17,24 @@
       link: "+73517788800"
     },
     {
-      number: "+73517788810",
+      number: "+7 (351) 778-88-10",
       label: "Директор",
       link: "+73512250756"
+    }
+  ];
+-
+  var msngrs = [
+    {
+      name: "tg",
+      title: "Открыть чат в телеграме"
+    },
+    {
+      name: "viber",
+      title: "Открыть чат в Viber"
+    },
+    {
+      name: "whatsapp",
+      title: "Открыть чат в Whatsapp"
     }
   ];
 .header.header--v1.mheader--v1
@@ -32,14 +48,28 @@
                 include ../../images/theme-images/logo.svg
         .mheader__phones
           .phones.connect
-            a.connect__item(href="tel:+73517788800")
-              .connect__text +7 (351) 778-88-00
+            .dropdown
+              a.dropdown__toggle(href="tel:+73517788800") +7 (351) 778-88-00
+                .dropdown__icon
+                  include ../../images/inline-svgs/dropdown.svg
+              .dropdown__body
+                .connect__list
+                  each item, index in phones
+                    if index != 0
+                      .connect__item
+                        a.connect__text(href= "tel:" + item.link)= item.number
+                        if item.label
+                          .connect__label= item.label
+                        if item.descr
+                          .connect__descr= item.descr
+                .callback
+                  button.button.button-secondary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
         .mheader__callback
           button.button.button-primary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
         .mheader__addresses
           .addresses.connect
             .connect__item
-              .connect__value Москва, ​Профсоюзная, 65 ст2
+              .connect__value г. Челябинск, ул. Артиллерийская, д. 1
         .mheader__bcart
           .bcart
             a.button.button-icon.bcart__button.bcart__button--active(title="Перейти в корзину", href="cart.html")
@@ -58,7 +88,7 @@
           button.header__closer(title="Скрыть меню")
             include ../../images/inline-svgs/menu-close.svg
       hr.divider
-      .wrap
+      .wrap.mheader__contents__wrap
         nav.primary-nav
           include primary-nav.pug
         .search
@@ -72,10 +102,18 @@
         .phones.connect
           .connect__list
             each item in phones
-              a.connect__item(href= "tel:" + item.link)
-                .connect__text= item.number
-                .connect__label= item.label
-                .connect__descr= item.descr
+              .connect__item
+                a.connect__text(href= "tel:" + item.link)= item.number
+                if item.label
+                  .connect__label= item.label
+                if item.descr
+                  .connect__descr= item.descr
+        .mheader__messengers
+          .messengers
+            .messengers__list
+              each item in msngrs
+                .messengers__item
+                  a.messengers__link(href="", title= item.title, class= "messengers__link--" + item.name)
         .addresses.connect
           .connect__list
             .connect__item
@@ -84,24 +122,18 @@
           .connect__list
             .connect__item
               a.connect__value(href="mailto:info@zetrade.com") info@zetrade.com
+        +socials
   .dheader
     .wrap
       .cells.header__top
-        .cell.header__top__col.cell-lg-6
+        .cell.header__top__col.cell-xl-6
           .display-flex.fx-align-center
             nav.header__site-nav.site-nav
               include site-nav.pug
             .header__search
-              .search
-                button.search__toggle.button.button-icon
-                  include ../../images/inline-svgs/search.svg
-                .search__body
-                  form.search__form.form(action="")
-                    button.button.button-icon.search__close(type="reset", title="Закрыть форму поиска")
-                    label.form__field
-                      input.form__input(type="text", name="", placeholder="Что ищете")
-                    button.form__submit.button(type="submit") Найти на сайте
-        .header__connects.cell.cell-lg-6
+              button.search__toggle.button.button-icon
+                include ../../images/inline-svgs/search.svg
+        .header__connects.cell.cell-xl-6
           .connects
             .cells.fx-align-center.fx-justify-end
               .header__phones.cell.cell-auto
@@ -129,6 +161,13 @@
             .bcart
               a.button.button-icon.bcart__button.bcart__button--active(title="Перейти в корзину", href="cart.html")
                 include ../../images/inline-svgs/cart-icon.svg
+  .popup-search
+    .wrap
+      form.search__form.form(action="")
+        button.button.button-icon.search__close(type="reset", title="Закрыть форму поиска")
+        label.form__field
+          input.form__input(type="text", name="", placeholder="Что ищете")
+        button.form__submit.button(type="submit") Найти на сайте
   .display-none#callback-form
     .custom-form.collapsing-form
       form(action="")

@@ -2,6 +2,7 @@
   border-bottom: 1px solid $color-sep;
   padding-top: 1.875rem;
   padding-bottom: 1.875rem;
+  position: relative;
 }
 .section__header {
   align-items: center;
@@ -70,6 +71,16 @@
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: 70px 58px;
+}
+.page-overlay {
+  background: #d8d8d8;
+  opacity: 0.9;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
 }
 @media (min-width: $break-md) {
   .section__link__title {

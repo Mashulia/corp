@@ -20,7 +20,8 @@ a,
 .expand__icon,
 .button-secondary,
 .slick-arrow,
-.expand--opened > .expand__toggle {
+.expand--opened > .expand__toggle,
+.dropdown--opened > .dropdown__toggle {
   color: $custom-color-1;
 }
 .reviews__cat__text,
