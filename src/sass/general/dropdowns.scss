@@ -11,8 +11,13 @@
   position: absolute;
   top: 100%;
   top: calc(100% + 0.75rem);
-  right: 0;
-  z-index: 1;
+  left: 0;
+  z-index: 20;
+
+  &.dropdown__body--right {
+    left: auto;
+    right: 0;
+  }
 
   .dropdown--opened & {
     display: block;

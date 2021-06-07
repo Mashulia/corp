@@ -50,6 +50,7 @@
   }
 }
 .connect__descr {
+  font-weight: normal;
   line-height: 1.15;
 }
 .addresses::before {
@@ -129,5 +130,18 @@
   .socials__item {
     padding-left: 0.4375rem;
     padding-right: 0.4375rem;
+  }
+}
+@media (min-width: $break-lg) {
+  .connect::before {
+    margin-right: 0.5rem;
+  }
+}
+@media (min-width: $break-xl) {
+  .connect__item {
+    margin-bottom: 1.125rem;
+  }
+  .connect__label {
+    margin-bottom: 0.25rem;
   }
 }

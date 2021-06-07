@@ -1,12 +1,27 @@
+.site-nav {
+  position: relative;
+}
 .site-nav__list {
-  height: 2rem;
+  color: $color-text2;
+}
+.site-nav > .site-nav__list {
+  height: 3rem;
   overflow: hidden;
 }
 .site-nav__item {
-  margin-right: 1.5rem;
+  padding-right: 1.5rem;
 }
 .site-nav__link {
   color: inherit;
   display: block;
-  padding: 0.3125rem 0;
+  padding: 0.8125rem 0;
+}
+.expand__body {
+  .site-nav__list {
+    display: block;
+  }
+  .site-nav__link {
+    font-size: 1rem;
+    padding: 0.3125rem 1.5rem;
+  }
 }

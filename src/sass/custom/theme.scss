@@ -4,8 +4,8 @@ $custom-color-2: hsl(150, 26%, 36%);
 
 $custom-color-hover: color.adjust(
   $custom-color-1,
-  $saturation: +10,
-  $lightness: -15
+  $lightness: -15,
+  $saturation: +10
 );
 $custom-color-active: color.adjust($custom-color-1, $lightness: -20);
 
@@ -21,7 +21,8 @@ a,
 .button-secondary,
 .slick-arrow,
 .expand--opened > .expand__toggle,
-.dropdown--opened > .dropdown__toggle {
+.dropdown--opened > .dropdown__toggle,
+.hoverable .expand:not(.nav--extra):hover > .expand__toggle {
   color: $custom-color-1;
 }
 .reviews__cat__text,
@@ -40,7 +41,8 @@ a,
 .slick-active button,
 .sservices--v1 .services__title,
 .videos__link::after,
-.slider-nav .slick-current::after {
+.slider-nav .slick-current::after,
+.nav--extra.expand--opened > .expand__toggle {
   background-color: $custom-color-1;
 }
 .button-primary,
@@ -60,7 +62,8 @@ a:hover {
 .sservices--v2 .services__link:hover,
 .videos__link:hover::after,
 .slick-arrow:hover,
-.slick-dots button:hover {
+.slick-dots button:hover,
+.nav--extra:hover > .expand__toggle {
   background-color: $custom-color-hover;
 }
 .button-primary:hover,
@@ -84,7 +87,8 @@ a:active {
 .sservices--v2 .services__link:active,
 .videos__link:active::after,
 .slick-arrow:active,
-.slick-dots button:active {
+.slick-dots button:active,
+.nav--extra .expand__toggle:active {
   background-color: $custom-color-active;
 }
 .button-primary:active,
@@ -98,7 +102,8 @@ a:active {
   border-color: $custom-color-active;
 }
 .hero__slider .slick-dots button,
-.videos__link::before {
+.videos__link::before,
+.primary-nav .expand__body {
   border-color: $custom-color-2;
 }
 @media (max-width: 575px) {

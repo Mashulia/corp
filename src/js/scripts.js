@@ -194,41 +194,44 @@ window.addEventListener("load", function() {
   }
 
   // header menu overflow
-  var siteNav = document.querySelector(".dheader .primary-nav > .primary-nav__list");
-  console.log(siteNav);
-  var maxSiteNavWidth = siteNav ? siteNav.offsetWidth : 600;
-  var factSiteNavWidth = 0;
-  var extraSiteNav = document.querySelector(".dheader .primary-nav--extra");
-  var extraSiteNavUl = extraSiteNav ? extraSiteNav.getElementsByTagName("ul")[0] : 0;
-  var siteNavItems = siteNav ? siteNav.children : null;
+  var primaryNav = document.querySelector(".dheader .primary-nav");
+  var globalNav = this.document.querySelector(".dheader .site-nav");
 
-  function handleSiteNavOverflow() {
-    console.log(maxSiteNavWidth);
-    for (var i=0; i<siteNavItems.length; i++) {
-      factSiteNavWidth += siteNavItems[i].offsetWidth;
-      console.log(factSiteNavWidth);
-      console.log("child " + i + " " + siteNavItems[i].offsetWidth);
-      if (factSiteNavWidth > maxSiteNavWidth || (siteNavItems[i].nextElementSibling && factSiteNavWidth > (maxSiteNavWidth - 60))) {
-        extraSiteNavUl.appendChild(siteNavItems[i].cloneNode(true));
-        siteNavItems[i].style.display="none";
+  function handleNavOverflow(navigation, spacing) {
+    let navList = navigation.querySelector("ul");
+    let maxNavWidth = navigation ? navigation.offsetWidth : 600;
+    // console.log("max width " + maxNavWidth);
+    let navItems = navList ? navList.children : null;
+    let factNavWidth = 0;
+    var extraNav = navigation.querySelector(".nav--extra");
+    var extraNavUl = extraNav ? extraNav.getElementsByTagName("ul")[0] : 0;
+    for (var i=0; i<navItems.length; i++) {
+      factNavWidth += navItems[i].offsetWidth;
+      // console.log("current width " + factNavWidth + " (" + (i + 1) + " elements)");
+      // console.log("child " + i + " " + navItems[i].offsetWidth);
+      if (extraNavUl && (factNavWidth > maxNavWidth || (navItems[i].nextElementSibling && factNavWidth > (maxNavWidth - spacing)))) {
+        extraNavUl.appendChild(navItems[i].cloneNode(true));
+        navItems[i].style.display="none";
       }
     }
-    if(extraSiteNavUl.children.length) {
-      extraSiteNav.style.display = "block";
+    if(extraNavUl && extraNavUl.children.length) {
+      navigation.classList.add("nav--overflown");
     }
-    siteNav.style.overflow = "visible";
-    siteNav.style.paddingRight = "4rem";
+    navigation.classList.add("nav--handled");
   }
-  function resetSiteNavOverflow() {
-    extraSiteNav.style.display = "none";
-    extraSiteNavUl.innerHTML = null;
-    siteNav.style.overflow = "hidden";
-    siteNav.style.paddingRight = "0";
-    for (var i=0; i<siteNavItems.length; i++) {
-      siteNavItems[i].style.display="";
+  function resetNavOverflow(navigation) {
+    let navList = navigation.querySelector("ul");
+    let navItems = navList ? navList.children : null;
+    var extraNav = navigation.querySelector(".nav--extra");
+    var extraNavUl = extraNav ? extraNav.getElementsByTagName("ul")[0] : 0;
+    if (extraNavUl) {
+      navigation.classList.remove("nav--overflown");
+      extraNavUl.innerHTML = null;
     }
-    factSiteNavWidth = 0;
-    maxSiteNavWidth = siteNav ? siteNav.offsetWidth : 850;
+    navigation.classList.remove("nav--handled");
+    for (var i = 0; i < navItems.length; i++) {
+      navItems[i].style.display="";
+    }
   }
 
   // dropdowns
@@ -288,8 +291,7 @@ window.addEventListener("load", function() {
   function fixDropdown(elem) {
     var bounding = elem.getBoundingClientRect();
     if (bounding.right > (window.innerWidth || document.documentElement.clientWidth)) {
-      elem.style.left = "auto";
-      elem.style.right = "0";
+      elem.classList.add("dropdown__body--right");
     }
   }
 
@@ -538,7 +540,8 @@ window.addEventListener("load", function() {
     searchClose.addEventListener("click", toggleSearch);
   }
   if(windowWidth > 1023) {
-    handleSiteNavOverflow();
+    handleNavOverflow(primaryNav, 48);
+    handleNavOverflow(globalNav, 32);
   }
   if(windowWidth < 1024) {
     attachPageNavToggle();
@@ -587,14 +590,17 @@ window.addEventListener("load", function() {
       searchToggle.removeEventListener("click", toggleSearch);
       searchClose.removeEventListener("click", toggleSearch);
 
-      resetSiteNavOverflow();
+      resetNavOverflow(primaryNav);
+      resetNavOverflow(globalNav);
     } else {
       detachMobileHeader();
       searchToggle.addEventListener("click", toggleSearch);
       searchClose.addEventListener("click", toggleSearch);
 
-      resetSiteNavOverflow();
-      handleSiteNavOverflow();
+      resetNavOverflow(primaryNav);
+      resetNavOverflow(globalNav);
+      handleNavOverflow(primaryNav, 48);
+      handleNavOverflow(globalNav, 32);
     }
 
     if (touchDevice || window.innerWidth < 1024) {

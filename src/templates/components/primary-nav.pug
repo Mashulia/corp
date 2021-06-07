@@ -117,7 +117,7 @@ ul.primary-nav__list
                       each item in itm.dd
                         li.primary-nav__item
                           a.primary-nav__link(class = {"primary-nav__link--active" : item.active}, href= item.href)= item.name
-.expand.primary-nav--extra
+.expand.primary-nav--extra.nav--extra
   button.button.button-icon.expand__toggle(title="Показать/скрыть остальные пункты меню")
     include ../../images/inline-svgs/dots.svg
   .expand__body

@@ -68,8 +68,9 @@
           button.button.button-primary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
         .mheader__addresses
           .addresses.connect
-            .connect__item
-              .connect__value г. Челябинск, ул. Артиллерийская, д. 1
+            .connect__list
+              .connect__item
+                .connect__text г. Челябинск, ул. Артиллерийская, д. 1
         .mheader__bcart
           .bcart
             a.button.button-icon.bcart__button.bcart__button--active(title="Перейти в корзину", href="cart.html")
@@ -117,11 +118,11 @@
         .addresses.connect
           .connect__list
             .connect__item
-              .connect__value г. Челябинск, ул. Артиллерийская, д. 1
+              .connect__text г. Челябинск, ул. Артиллерийская, д. 1
         .emails.connect
           .connect__list
             .connect__item
-              a.connect__value(href="mailto:info@zetrade.com") info@zetrade.com
+              a.connect__text(href="mailto:info@zetrade.com") info@zetrade.com
         +socials
   .dheader
     .wrap
@@ -130,6 +131,11 @@
           .display-flex.fx-align-center
             nav.header__site-nav.site-nav
               include site-nav.pug
+              .site-nav--extra.nav--extra.expand
+                button.button.button-icon.expand__toggle(title="Показать/скрыть остальные пункты меню")
+                  include ../../images/inline-svgs/dots.svg
+                .expand__body
+                  ul.site-nav__list
             .header__search
               button.search__toggle.button.button-icon
                 include ../../images/inline-svgs/search.svg
@@ -138,26 +144,41 @@
             .cells.fx-align-center.fx-justify-end
               .header__phones.cell.cell-auto
                 .phones.connect
-                  a.connect__item(href="tel:+73517788800")
-                    .connect__text +7 (351) 778-88-00
+                  .dropdown
+                    a.dropdown__toggle(href="tel:+73517788800") +7 (351) 778-88-00
+                      .dropdown__icon
+                        include ../../images/inline-svgs/dropdown.svg
+                    .dropdown__body
+                      .connect__list
+                        each item, index in phones
+                          if index != 0
+                            .connect__item
+                              a.connect__text(href= "tel:" + item.link)= item.number
+                              if item.label
+                                .connect__label= item.label
+                              if item.descr
+                                .connect__descr= item.descr
+                      .callback
+                        button.button.button-secondary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
               .header__addresses.cell.cell-auto
                 .addresses.connect
-                  .connect__item
-                    .connect__value Москва, ​Профсоюзная, 65 ст2
+                  .connect__list
+                    .connect__item
+                      .connect__text г.Челябинск, ул.Артиллерийская, д. 1
       hr.divider
       .header__body
         .cells.fx-align-center
-          .header__logo.cell.cell-lg-4
+          .header__logo.cell.cell-lg-3
             .logo
               a.logo__link(href="/")
                 .logo__image
                   include ../../images/theme-images/logo.svg
               //-   .logo__text ZE Строй
               .logo__slogan Selling the best goods on Earth since 1900
-          .header__primary-nav.cell.cell-lg-7
+          .header__primary-nav.cell.cell-lg-8
             nav.primary-nav
               include primary-nav.pug
-          .cell.header__bcart.cell-auto
+          .cell.header__bcart.cell-lg-1
             .bcart
               a.button.button-icon.bcart__button.bcart__button--active(title="Перейти в корзину", href="cart.html")
                 include ../../images/inline-svgs/cart-icon.svg
