@@ -12,13 +12,13 @@
       link: "+73512250756"
     },
     {
-      number: "+7 (351) 778-88-00",
+      number: "+7 (351) 778-88-00 доб. 123",
       label: "Бухгалтерия",
       link: "+73517788800"
     },
     {
       number: "+7 (351) 778-88-10",
-      label: "Директор",
+      label: "Директор Длиннофамильцев Имярек Отчествович",
       link: "+73512250756"
     }
   ];
@@ -37,8 +37,14 @@
       title: "Открыть чат в Whatsapp"
     }
   ];
-.header.header--v1.mheader--v1
-  .mheader
+//- - var addr = "г. Челябинск, ул. Артиллерийская, д. 1";
+//- - var phn = "+7 (351) 778-88-00";
+//- - var eml = "info@zetrade.com";
+- var addr = "Российская Федерация, Челябинская область, г. Челябинск, ул. Артиллерийская, стр. 1, корпус 14, офис 202а";
+- var phn = "+7 (351) 778-88-00 доб. 153";
+- var eml = "dlinnofamiltsev@zetrade.com";
+.header
+  .mheader.mheader--v1
     .wrap
       .mheader__row
         .mheader__logo
@@ -49,7 +55,7 @@
         .mheader__phones
           .phones.connect
             .dropdown
-              a.dropdown__toggle(href="tel:+73517788800") +7 (351) 778-88-00
+              a.dropdown__toggle(href="tel:+73517788800")= phn
                 .dropdown__icon
                   include ../../images/inline-svgs/dropdown.svg
               .dropdown__body
@@ -70,7 +76,7 @@
           .addresses.connect
             .connect__list
               .connect__item
-                .connect__text г. Челябинск, ул. Артиллерийская, д. 1
+                .connect__text= addr
         .mheader__bcart
           .bcart
             a.button.button-icon.bcart__button.bcart__button--active(title="Перейти в корзину", href="cart.html")
@@ -118,34 +124,34 @@
         .addresses.connect
           .connect__list
             .connect__item
-              .connect__text г. Челябинск, ул. Артиллерийская, д. 1
+              .connect__text= addr
         .emails.connect
           .connect__list
             .connect__item
-              a.connect__text(href="mailto:info@zetrade.com") info@zetrade.com
+              a.connect__text(href="mailto:info@zetrade.com")= eml
         +socials
-  .dheader
+  .dheader.header--v1
     .wrap
       .cells.header__top
-        .cell.header__top__col.cell-xl-6
+        .cell.header__top__col.cell-xl-5
           .display-flex.fx-align-center
             nav.header__site-nav.site-nav
               include site-nav.pug
-              .site-nav--extra.nav--extra.expand
-                button.button.button-icon.expand__toggle(title="Показать/скрыть остальные пункты меню")
+              .site-nav--extra.nav--extra.dropdown
+                button.button.button-icon.dropdown__toggle(title="Показать/скрыть остальные пункты меню")
                   include ../../images/inline-svgs/dots.svg
-                .expand__body
+                .dropdown__body
                   ul.site-nav__list
             .header__search
               button.search__toggle.button.button-icon
                 include ../../images/inline-svgs/search.svg
-        .header__connects.cell.cell-xl-6
+        .header__connects.cell.cell-xl-7
           .connects
-            .cells.fx-align-center.fx-justify-end
+            .cells.fx-justify-end
               .header__phones.cell.cell-auto
                 .phones.connect
                   .dropdown
-                    a.dropdown__toggle(href="tel:+73517788800") +7 (351) 778-88-00
+                    a.dropdown__toggle(href="tel:+73517788800")= phn
                       .dropdown__icon
                         include ../../images/inline-svgs/dropdown.svg
                     .dropdown__body
@@ -164,7 +170,7 @@
                 .addresses.connect
                   .connect__list
                     .connect__item
-                      .connect__text г.Челябинск, ул.Артиллерийская, д. 1
+                      .connect__text= addr
       hr.divider
       .header__body
         .cells.fx-align-center
@@ -184,11 +190,19 @@
                 include ../../images/inline-svgs/cart-icon.svg
   .popup-search
     .wrap
-      form.search__form.form(action="")
-        button.button.button-icon.search__close(type="reset", title="Закрыть форму поиска")
-        label.form__field
-          input.form__input(type="text", name="", placeholder="Что ищете")
-        button.form__submit.button(type="submit") Найти на сайте
+      .cells.popup-search__row
+        .cell.cell-auto
+          .popup-search__label Поиск
+        .cell.cell-auto.popup-search__body
+          form.search__form.form(action="")
+            label.form__field
+              input.form__input(type="text", name="", placeholder="Введите запрос", tabindex="-1")
+            button.form__submit.button(type="submit", tabindex="-1")
+              .button__icon
+                include ../../images/inline-svgs/search.svg
+              .button__body Найти
+        .cell.cell-auto
+          button.button.button-icon.search__close(type="reset", title="Закрыть форму поиска", tabindex="-1")
   .display-none#callback-form
     .custom-form.collapsing-form
       form(action="")

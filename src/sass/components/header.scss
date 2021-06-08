@@ -17,8 +17,8 @@
   display: none;
 }
 .mheader__logo {
-  max-width: 42%;
-  margin-right: 1.5rem;
+  max-width: 50%;
+  padding-right: 1.25rem;
 }
 .mheader__bcart {
   .bcart__button {
@@ -51,9 +51,6 @@
 .header__closer {
   margin-right: -0.375rem;
 }
-.mheader__addresses {
-  flex-shrink: 1;
-}
 .mheader__contents {
   background: #fff;
   overflow: auto;
@@ -77,8 +74,10 @@
 .mheader .primary-nav__list {
   flex-direction: column;
 }
-.mheader .search {
-  margin-bottom: 1.5rem;
+.mheader {
+  .search {
+    margin-bottom: 1.5rem;
+  }
 }
 .mheader__messengers {
   margin-bottom: 0.875rem;
@@ -88,7 +87,6 @@
   display: none;
 }
 .header__top {
-  align-items: center;
   font-weight: 600;
 }
 .header__search {
@@ -131,6 +129,11 @@
 .logo {
   @extend %fx-centered-y;
 }
+.logo__link,
+.logo__slogan {
+  flex: 1 0 30%;
+  max-width: 100%;
+}
 .logo__link {
   @extend %fx-centered-y;
   color: inherit;
@@ -140,6 +143,10 @@
 }
 .logo__text {
   font-weight: 800;
+}
+.logo__slogan {
+  font-weight: 500;
+  font-size: 0.875rem;
 }
 .header__primary-nav {
   margin-left: auto;
@@ -203,8 +210,8 @@
     margin-left: 0;
   }
   .mheader__logo {
-    flex-basis: 21.5%;
-    margin-right: 2.875rem;
+    flex-basis: 28%;
+    padding-right: 2.875rem;
   }
   .mheader__callback {
     display: none;
@@ -224,14 +231,17 @@
   }
   .mheader__phones,
   .mheader__bcart {
-    margin-right: 1.4375rem;
+    padding-right: 1.4375rem;
   }
   .mheader__phones {
+    max-width: 29%;
+
     .dropdown__toggle {
       font-weight: 800;
       font-size: 0.875rem;
     }
     .dropdown__body {
+      left: auto;
       right: -0.25rem;
     }
     .connect__list {
@@ -242,7 +252,8 @@
     }
   }
   .mheader__addresses {
-    margin-right: 2rem;
+    max-width: 31%;
+    padding-right: 2rem;
 
     .connect {
       align-items: center;
@@ -252,9 +263,6 @@
     .form__input {
       padding-top: 0.75rem;
       padding-bottom: 0.75rem;
-    }
-    .form__submit {
-      width: 2.75rem;
     }
   }
 }
@@ -269,6 +277,12 @@
     display: block;
   }
   .header__phones {
+    max-width: 38%;
+
+    .dropdown__icon {
+      align-self: flex-start;
+      top: 0.25em;
+    }
     .dropdown__body {
       left: auto;
       right: -0.25rem;
@@ -278,6 +292,9 @@
         padding: 0.4375rem 0.9375rem;
       }
     }
+  }
+  .header__addresses {
+    max-width: 62%;
   }
   .header__site-nav {
     &.nav--overflown {
@@ -303,12 +320,28 @@
   }
 }
 @media (min-width: $break-xl) {
+  .header__logo {
+    flex-basis: 36%;
+    max-width: 36%;
+  }
   .header__phones {
     .connect__text {
       font-weight: 800;
     }
   }
+  .logo__link {
+    margin-right: 2.5rem;
+    max-width: 45%;
+  }
+  .logo__slogan {
+    max-width: 50%;
+  }
+  .header__primary-nav {
+    flex-basis: 55%;
+    max-width: 55%;
+  }
   .header__bcart {
     flex-basis: auto;
+    padding-left: 1.5rem;
   }
 }

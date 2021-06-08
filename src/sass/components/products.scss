@@ -55,6 +55,11 @@
     width: 100%;
     object-fit: contain;
   }
+
+  &:focus-visible img {
+    outline: 2px dotted currentColor;
+    outline-offset: -0.5rem;
+  }
 }
 .products__body {
   flex-grow: 1;

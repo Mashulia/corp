@@ -32,6 +32,15 @@
     transform: translate(-50%, -50%) rotate(45deg);
     transform-origin: 50% 50%;
   }
+
+  &:focus-visible {
+    outline: none;
+
+    &::before {
+      border-width: 4px;
+      border-style: dotted;
+    }
+  }
 }
 .videos__link:hover::before {
   animation: play 0.3s forwards;

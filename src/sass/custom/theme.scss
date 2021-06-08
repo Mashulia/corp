@@ -21,8 +21,7 @@ a,
 .button-secondary,
 .slick-arrow,
 .expand--opened > .expand__toggle,
-.dropdown--opened > .dropdown__toggle,
-.hoverable .expand:not(.nav--extra):hover > .expand__toggle {
+.dropdown--opened:not(.nav--extra) > .dropdown__toggle {
   color: $custom-color-1;
 }
 .reviews__cat__text,
@@ -32,7 +31,8 @@ a,
 .connect::before,
 .benefits__img,
 .products__label--sale,
-.news__date {
+.news__date,
+.popup-search {
   background-color: $custom-color-2;
 }
 .button-primary,
@@ -42,7 +42,7 @@ a,
 .sservices--v1 .services__title,
 .videos__link::after,
 .slider-nav .slick-current::after,
-.nav--extra.expand--opened > .expand__toggle {
+.nav--extra.dropdown--opened > .dropdown__toggle {
   background-color: $custom-color-1;
 }
 .button-primary,
@@ -52,7 +52,9 @@ a,
 .form__input:hover {
   border-color: $custom-color-1;
 }
-a:hover {
+a:hover,
+.hoverable .expand:hover > .expand__toggle,
+.search__toggle:hover {
   color: $custom-color-hover;
 }
 .button-primary:hover,
@@ -63,7 +65,7 @@ a:hover {
 .videos__link:hover::after,
 .slick-arrow:hover,
 .slick-dots button:hover,
-.nav--extra:hover > .expand__toggle {
+.nav--extra:hover > .dropdown__toggle {
   background-color: $custom-color-hover;
 }
 .button-primary:hover,
@@ -77,7 +79,8 @@ a:hover {
 .form__input:focus {
   border-color: $custom-color-hover;
 }
-a:active {
+a:active,
+.hoverable .expand__toggle:active {
   color: $custom-color-active;
 }
 .button-primary:active,
@@ -88,7 +91,7 @@ a:active {
 .videos__link:active::after,
 .slick-arrow:active,
 .slick-dots button:active,
-.nav--extra .expand__toggle:active {
+.nav--extra .dropdown__toggle:active {
   background-color: $custom-color-active;
 }
 .button-primary:active,
@@ -100,6 +103,9 @@ a:active {
 .slick-arrow:active,
 .slider-nav__item:active .slider-nav__image {
   border-color: $custom-color-active;
+}
+.search__toggle:active {
+  color: $custom-color-active;
 }
 .hero__slider .slick-dots button,
 .videos__link::before,

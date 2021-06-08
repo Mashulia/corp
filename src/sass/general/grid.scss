@@ -86,7 +86,7 @@
     }
   }
 }
-@media (min-width: $break-desk) {
+@media (min-width: $break-xl) {
   @for $i from 1 through $grid-cols {
     .cell-xl-#{$i} {
       flex-basis: ($col-width * $i);
@@ -94,7 +94,7 @@
     }
   }
 }
-@media (min-width: $break-xl) {
+@media (min-width: $break-desk) {
   .wrap {
     padding-left: 0;
     padding-right: 0;

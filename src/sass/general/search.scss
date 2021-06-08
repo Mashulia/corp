@@ -6,12 +6,20 @@
 
   &::before {
     content: "";
+    border-radius: 50%;
     height: 2.5rem;
     width: 2.5rem;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+  &:focus-visible {
+    outline: none;
+
+    &::before {
+      outline: 2px dotted currentColor;
+    }
   }
 }
 .search__form {
@@ -25,24 +33,66 @@
   }
   .form__submit {
     border-radius: 27px 3px 3px 27px;
-    padding: 0;
+    padding: 0.5rem 0.625rem;
     position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
-    width: 2.25rem;
   }
 }
 .search__text {
   display: none;
 }
 .search__close {
-  display: none;
-  background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L11 11M11 1L1 11' stroke='black' stroke-width='2'/%3E%3C/svg%3E%0A");
+  display: block;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.25 1.25L10 10M18.75 18.75L10 10M10 10L18.75 1.25M10 10L1.25 18.75' stroke='white' stroke-opacity='0.6' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  background-size: 1.25rem 1.25rem;
+  background-size: 1.125rem 1.125rem;
+  height: 3.75rem;
+  width: 3.75rem;
 }
 .popup-search {
-  display: none;
+  padding: 2.375rem 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  transform: translate(0, -100%);
+  transition: transform 0.4s;
+
+  &--opened {
+    transform: translate(0, 0);
+  }
+}
+.popup-search__row {
+  align-items: center;
+  justify-content: space-between;
+}
+.popup-search__label {
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+.popup-search__body {
+  flex-grow: 1;
+  max-width: $col-width * 10;
+
+  .form__input {
+    background-color: #fff;
+    font-size: 1.25rem;
+  }
+  .form__submit {
+    font-weight: 500;
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    right: 0.5rem;
+  }
+  .button__icon {
+    margin-right: 0.5rem;
+  }
 }

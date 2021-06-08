@@ -15,13 +15,18 @@
   color: inherit;
   display: block;
   padding: 0.8125rem 0;
-}
-.expand__body {
-  .site-nav__list {
-    display: block;
+
+  &:focus-visible {
+    outline-offset: -2px;
   }
+}
+.dropdown__body {
   .site-nav__link {
     font-size: 1rem;
-    padding: 0.3125rem 1.5rem;
+    padding: 0.5625rem 1.5rem;
   }
+}
+.site-nav .dropdown__toggle {
+  height: 2rem;
+  width: 2rem;
 }

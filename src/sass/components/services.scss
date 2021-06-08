@@ -18,6 +18,12 @@
   display: block;
   height: 100%;
   position: relative;
+  outline: none;
+
+  &:focus-visible .services__title {
+    outline: 2px dotted currentColor;
+    outline-offset: -0.5rem;
+  }
 
   .sservices--v1 &:hover {
     &::before {

@@ -160,7 +160,7 @@ hr {
   display: none;
 }
 *:focus {
-  outline: none;
+  outline: 10px solid yellow;
 }
 *:focus-visible {
   outline: 2px dotted currentColor;
