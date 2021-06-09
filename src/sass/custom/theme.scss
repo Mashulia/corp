@@ -1,6 +1,6 @@
 @use "sass:color";
-$custom-color-1: hsl(29, 78%, 58%);
-$custom-color-2: hsl(150, 26%, 36%);
+$custom-color-1: hsla(29, 78%, 58%, 1);
+$custom-color-2: hsla(150, 26%, 36%, 1);
 
 $custom-color-hover: color.adjust(
   $custom-color-1,
@@ -9,32 +9,13 @@ $custom-color-hover: color.adjust(
 );
 $custom-color-active: color.adjust($custom-color-1, $lightness: -20);
 
-$custom-color-21: color.adjust($custom-color-1, $lightness: -15);
+$custom-color-21: color.adjust($custom-color-2, $lightness: -15);
 
 .corp {
   --custom-color-1: #{$custom-color-1};
   --custom-color-2: #{$custom-color-2};
 }
 
-a,
-.expand__icon,
-.button-secondary,
-.slick-arrow,
-.expand--opened > .expand__toggle,
-.dropdown--opened:not(.nav--extra) > .dropdown__toggle {
-  color: $custom-color-1;
-}
-.reviews__cat__text,
-.reviews__pic__decor {
-  color: $custom-color-2;
-}
-.connect::before,
-.benefits__img,
-.products__label--sale,
-.news__date,
-.popup-search {
-  background-color: $custom-color-2;
-}
 .button-primary,
 .bcart__button--active::after,
 .form__submit,
@@ -42,7 +23,8 @@ a,
 .sservices--v1 .services__title,
 .videos__link::after,
 .slider-nav .slick-current::after,
-.nav--extra.dropdown--opened > .dropdown__toggle {
+.nav--extra.dropdown--opened > .dropdown__toggle,
+.to-top__link {
   background-color: $custom-color-1;
 }
 .button-primary,
@@ -52,10 +34,32 @@ a,
 .form__input:hover {
   border-color: $custom-color-1;
 }
-a:hover,
-.hoverable .expand:hover > .expand__toggle,
-.search__toggle:hover {
-  color: $custom-color-hover;
+a,
+.expand__icon,
+.button-secondary,
+.slick-arrow,
+.expand--opened > .expand__toggle,
+.dropdown--opened:not(.nav--extra) > .dropdown__toggle,
+.footer__emails .connect__text {
+  color: $custom-color-1;
+}
+.connect::before,
+.benefits__img,
+.products__label--sale,
+.news__date,
+.popup-search,
+.reviews__pic--empty {
+  background-color: $custom-color-2;
+}
+.hero__slider .slick-dots button,
+.videos__link::before,
+.primary-nav .expand__body,
+.primary-nav .dropdown__body {
+  border-color: $custom-color-2;
+}
+.reviews__cat__text,
+.reviews__pic__decor {
+  color: $custom-color-2;
 }
 .button-primary:hover,
 .button-secondary:hover,
@@ -65,7 +69,10 @@ a:hover,
 .videos__link:hover::after,
 .slick-arrow:hover,
 .slick-dots button:hover,
-.nav--extra:hover > .dropdown__toggle {
+.nav--extra:hover > .dropdown__toggle,
+.to-top__link:hover,
+.socials__link:hover,
+.messengers__link:hover {
   background-color: $custom-color-hover;
 }
 .button-primary:hover,
@@ -79,9 +86,11 @@ a:hover,
 .form__input:focus {
   border-color: $custom-color-hover;
 }
-a:active,
-.hoverable .expand__toggle:active {
-  color: $custom-color-active;
+a:hover,
+.hoverable .expand:hover > .expand__toggle,
+.search__toggle:hover,
+.footer__emails .connect__text:hover {
+  color: $custom-color-hover;
 }
 .button-primary:active,
 .button-secondary:active,
@@ -91,7 +100,10 @@ a:active,
 .videos__link:active::after,
 .slick-arrow:active,
 .slick-dots button:active,
-.nav--extra .dropdown__toggle:active {
+.nav--extra .dropdown__toggle:active,
+.to-top__link:active,
+.socials__link:active,
+.messengers__link:active {
   background-color: $custom-color-active;
 }
 .button-primary:active,
@@ -104,13 +116,19 @@ a:active,
 .slider-nav__item:active .slider-nav__image {
   border-color: $custom-color-active;
 }
-.search__toggle:active {
+a:active,
+.hoverable .expand__toggle:active,
+.search__toggle:active,
+.footer__emails .connect__text:active {
   color: $custom-color-active;
 }
-.hero__slider .slick-dots button,
-.videos__link::before,
-.primary-nav .expand__body {
-  border-color: $custom-color-2;
+.footer {
+  background-color: $custom-color-21;
+  background-image: radial-gradient(
+    closest-corner at 60% 120%,
+    rgba($color: $custom-color-1, $alpha: 0.3) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
 }
 @media (max-width: 575px) {
   .hero__item {

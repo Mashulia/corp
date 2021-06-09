@@ -574,7 +574,7 @@ window.addEventListener("load", function() {
 
   let toTopElem = document.querySelector(".to-top");
   if (toTopElem) {
-    toTopElem.addEventListener("click", function(e) {
+    toTopElem.querySelector(".to-top__link").addEventListener("click", function(e) {
       e.preventDefault();
       window.scrollTo(0, 0);
     });
@@ -587,7 +587,7 @@ window.addEventListener("load", function() {
   }
 
   function showToTop() {
-    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+    if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
       toTopElem.classList.add("to-top--visible");
     } else {
       toTopElem.classList.remove("to-top--visible");

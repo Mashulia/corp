@@ -1,4 +1,5 @@
 .reviews__slider {
+  height: 450px;
   padding-bottom: 1.875rem;
 
   .slick-track {
@@ -66,10 +67,12 @@
     }
   }
 }
-.reviews__pic--empty .reviews__pic__decor {
-  right: 0;
-  height: 100%;
-  width: 100%;
+.reviews__pic--empty {
+  background-image: url("data:image/svg+xml,%3Csvg width='25' height='30' viewBox='0 0 25 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M20.0003 7.5C20.0003 11.6362 16.6366 15 12.5003 15C8.36406 15 5.00031 11.6362 5.00031 7.5C5.00031 3.36375 8.36406 0 12.5003 0C16.6366 0 20.0003 3.36375 20.0003 7.5ZM25 28.375C25 29.272 24.2018 30 23.2143 30H1.78571C0.798214 30 0 29.272 0 28.375C0 22.1025 5.60893 17 12.5 17C19.3911 17 25 22.1025 25 28.375Z' fill='white' fill-opacity='0.33'/%3E%3C/svg%3E%0A");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 1.5625rem 1.875rem;
+  border-radius: 50%;
 }
 .reviews__personal {
   flex: 1 1 auto;
@@ -91,6 +94,9 @@
   font-size: 1rem;
 }
 @media (min-width: $break-md) {
+  .reviews__slider {
+    height: 250px;
+  }
   .reviews__bg {
     padding: 1.875rem 1.875rem 1.6875rem;
   }

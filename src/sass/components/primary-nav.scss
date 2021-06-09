@@ -226,6 +226,7 @@
       background: $color-bg;
     }
     .dropdown__body {
+      border-top: 1px solid $color-sep;
       color: $color-textHeader;
       font-size: 1.125rem;
       font-weight: 800;

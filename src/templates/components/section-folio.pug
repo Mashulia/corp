@@ -82,12 +82,12 @@
 .section.sfolio
   .wrap
     +section-header("Наши работы")
-    .folio__nav.slider-nav
+    .folio__nav.slider-nav.slider
       each item in photoes
         .slider-nav__item
           .slider-nav__image
             img(src= item.picS)
-    .folio__images
+    .folio__images.slider
       each elm in photoes
         .folio__images__item
           a.folio__images__image(href=elm.picB, data-fancybox="folio", data-caption= elm.title)

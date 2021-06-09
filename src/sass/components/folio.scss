@@ -1,7 +1,11 @@
 .sfolio {
   background: $color-bg;
 }
+.folio__nav {
+  height: 65px;
+}
 .folio__images {
+  height: 250px;
   margin-bottom: 1.25rem;
 
   .slick-track {
@@ -35,6 +39,9 @@
   text-align: center;
 }
 @media (min-width: $break-md) {
+  .folio__images {
+    height: 550px;
+  }
   .folio__images__image {
     margin-bottom: 0.625rem;
   }

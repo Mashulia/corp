@@ -106,7 +106,7 @@
 }
 .header__search {
   flex-shrink: 0;
-  // margin-left: 1rem;
+  margin: 1rem 0;
 }
 .header__site-nav {
   flex-grow: 1;
@@ -128,18 +128,30 @@
 }
 .logo {
   @extend %fx-centered-y;
+
+  img,
+  svg {
+    max-height: 100%;
+  }
 }
 .logo__link,
 .logo__slogan {
-  flex: 1 0 30%;
+  flex: 0 0 auto;
   max-width: 100%;
 }
 .logo__link {
   @extend %fx-centered-y;
-  color: inherit;
+  color: $color-textHeader;
 }
-.logo svg {
-  max-height: 100%;
+.logo__image {
+  flex-shrink: 0;
+  min-width: 3rem;
+  margin-right: 1rem;
+  width: 100%;
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 .logo__text {
   font-weight: 800;
@@ -246,6 +258,10 @@
     }
     .connect__list {
       margin-bottom: 1.25rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
     .connect {
       align-items: center;
@@ -265,6 +281,9 @@
       padding-bottom: 0.75rem;
     }
   }
+  .logo__text {
+    font-size: 1.25rem;
+  }
 }
 @media (min-width: $break-lg) {
   .mheader {
@@ -275,6 +294,10 @@
   }
   .hoverable .expand:hover > .expand__body {
     display: block;
+  }
+  .header__phones:first-child:last-child,
+  .header__addresses:first-child:last-child {
+    max-width: 100%;
   }
   .header__phones {
     max-width: 38%;
@@ -305,6 +328,9 @@
       flex-grow: 0;
     }
   }
+  .logo__text {
+    font-size: 1.5rem;
+  }
 }
 @media (max-width: $break-xl) {
   .header__top__col {
@@ -321,7 +347,7 @@
 }
 @media (min-width: $break-xl) {
   .header__logo {
-    flex-basis: 36%;
+    flex-basis: auto;
     max-width: 36%;
   }
   .header__phones {
@@ -331,14 +357,16 @@
   }
   .logo__link {
     margin-right: 2.5rem;
-    max-width: 45%;
+  }
+  .logo__text {
+    font-size: 2rem;
   }
   .logo__slogan {
     max-width: 50%;
   }
   .header__primary-nav {
-    flex-basis: 55%;
-    max-width: 55%;
+    flex: 1 0 55%;
+    max-width: 75%;
   }
   .header__bcart {
     flex-basis: auto;

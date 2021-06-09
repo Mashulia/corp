@@ -1,49 +1,5 @@
--
-  var phones = [
-    {
-      number: "+7 (351) 225-07-55",
-      link: "+73512250755",
-      descr: "call-центр"
-    },
-    {
-      number: "+7 (351) 225-07-56",
-      label: "Отдел доставки",
-      descr: "работаем 10:00 - 20:00",
-      link: "+73512250756"
-    },
-    {
-      number: "+7 (351) 778-88-00 доб. 123",
-      label: "Бухгалтерия",
-      link: "+73517788800"
-    },
-    {
-      number: "+7 (351) 778-88-10",
-      label: "Директор Длиннофамильцев Имярек Отчествович",
-      link: "+73512250756"
-    }
-  ];
--
-  var msngrs = [
-    {
-      name: "tg",
-      title: "Открыть чат в телеграме"
-    },
-    {
-      name: "viber",
-      title: "Открыть чат в Viber"
-    },
-    {
-      name: "whatsapp",
-      title: "Открыть чат в Whatsapp"
-    }
-  ];
-//- - var addr = "г. Челябинск, ул. Артиллерийская, д. 1";
-//- - var phn = "+7 (351) 778-88-00";
-//- - var eml = "info@zetrade.com";
-- var addr = "Российская Федерация, Челябинская область, г. Челябинск, ул. Артиллерийская, стр. 1, корпус 14, офис 202а";
-- var phn = "+7 (351) 778-88-00 доб. 153";
-- var eml = "dlinnofamiltsev@zetrade.com";
-.header
+- var logoImage = require("/src/images/theme-images/logo-sq.png");
+.header#top
   .mheader.mheader--v1
     .wrap
       .mheader__row
@@ -52,31 +8,26 @@
             a.logo__link(href="/")
               .logo__image
                 include ../../images/theme-images/logo.svg
+              //-   img(src= logoImage)
+              //- .logo__text ZE Строй
         .mheader__phones
           .phones.connect
-            .dropdown
-              a.dropdown__toggle(href="tel:+73517788800")= phn
-                .dropdown__icon
-                  include ../../images/inline-svgs/dropdown.svg
-              .dropdown__body
-                .connect__list
-                  each item, index in phones
-                    if index != 0
-                      .connect__item
-                        a.connect__text(href= "tel:" + item.link)= item.number
-                        if item.label
-                          .connect__label= item.label
-                        if item.descr
-                          .connect__descr= item.descr
-                .callback
-                  button.button.button-secondary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
+            if cnncts.phones.length > 1
+              .dropdown
+                a.dropdown__toggle(href="tel:+73517788800")= cnncts.phones[0].number
+                  .dropdown__icon
+                    include ../../images/inline-svgs/dropdown.svg
+                .dropdown__body
+                  +connectList("phones", true)
+                  .callback
+                    button.button.button-secondary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
+            else
+              +connectList("phones", false)
         .mheader__callback
           button.button.button-primary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
         .mheader__addresses
           .addresses.connect
-            .connect__list
-              .connect__item
-                .connect__text= addr
+            +connectList("addresses", false)
         .mheader__bcart
           .bcart
             a.button.button-icon.bcart__button.bcart__button--active(title="Перейти в корзину", href="cart.html")
@@ -92,6 +43,8 @@
               a.logo__link(href="/")
                 .logo__image
                   include ../../images/theme-images/logo.svg
+                //-   img(src= logoImage)
+                //- .logo__text ZE Строй
           button.header__closer(title="Скрыть меню")
             include ../../images/inline-svgs/menu-close.svg
       hr.divider
@@ -107,28 +60,13 @@
                 include ../../images/inline-svgs/search.svg
               .search__text Найти
         .phones.connect
-          .connect__list
-            each item in phones
-              .connect__item
-                a.connect__text(href= "tel:" + item.link)= item.number
-                if item.label
-                  .connect__label= item.label
-                if item.descr
-                  .connect__descr= item.descr
+          +connectList("phones")
         .mheader__messengers
-          .messengers
-            .messengers__list
-              each item in msngrs
-                .messengers__item
-                  a.messengers__link(href="", title= item.title, class= "messengers__link--" + item.name)
+          +messengers
         .addresses.connect
-          .connect__list
-            .connect__item
-              .connect__text= addr
+          +connectList("addresses")
         .emails.connect
-          .connect__list
-            .connect__item
-              a.connect__text(href="mailto:info@zetrade.com")= eml
+          +connectList("emails")
         +socials
   .dheader.header--v1
     .wrap
@@ -150,27 +88,20 @@
             .cells.fx-justify-end
               .header__phones.cell.cell-auto
                 .phones.connect
-                  .dropdown
-                    a.dropdown__toggle(href="tel:+73517788800")= phn
-                      .dropdown__icon
-                        include ../../images/inline-svgs/dropdown.svg
-                    .dropdown__body
-                      .connect__list
-                        each item, index in phones
-                          if index != 0
-                            .connect__item
-                              a.connect__text(href= "tel:" + item.link)= item.number
-                              if item.label
-                                .connect__label= item.label
-                              if item.descr
-                                .connect__descr= item.descr
-                      .callback
-                        button.button.button-secondary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
+                  if cnncts.phones.length > 1
+                    .dropdown
+                      a.dropdown__toggle(href="tel:+73517788800")= cnncts.phones[0].number
+                        .dropdown__icon
+                          include ../../images/inline-svgs/dropdown.svg
+                      .dropdown__body
+                        +connectList("phones", true)
+                        .callback
+                          button.button.button-secondary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
+                  else
+                    +connectList("phones")
               .header__addresses.cell.cell-auto
                 .addresses.connect
-                  .connect__list
-                    .connect__item
-                      .connect__text= addr
+                  +connectList("addresses")
       hr.divider
       .header__body
         .cells.fx-align-center
@@ -179,7 +110,8 @@
               a.logo__link(href="/")
                 .logo__image
                   include ../../images/theme-images/logo.svg
-              //-   .logo__text ZE Строй
+                //-   img(src= logoImage)
+                //- .logo__text ZE Строй
               .logo__slogan Selling the best goods on Earth since 1900
           .header__primary-nav.cell.cell-lg-8
             nav.primary-nav
@@ -188,39 +120,4 @@
             .bcart
               a.button.button-icon.bcart__button.bcart__button--active(title="Перейти в корзину", href="cart.html")
                 include ../../images/inline-svgs/cart-icon.svg
-  .popup-search
-    .wrap
-      .cells.popup-search__row
-        .cell.cell-auto
-          .popup-search__label Поиск
-        .cell.cell-auto.popup-search__body
-          form.search__form.form(action="")
-            label.form__field
-              input.form__input(type="text", name="", placeholder="Введите запрос", tabindex="-1")
-            button.form__submit.button(type="submit", tabindex="-1")
-              .button__icon
-                include ../../images/inline-svgs/search.svg
-              .button__body Найти
-        .cell.cell-auto
-          button.button.button-icon.search__close(type="reset", title="Закрыть форму поиска", tabindex="-1")
-  .display-none#callback-form
-    .custom-form.collapsing-form
-      form(action="")
-        .form__title Заказать звонок
-        .form__bg
-          .form__body
-            label.form__field
-              span.form__label Имя
-              input.form__input(type="text")
-            label.form__field.form__field--required
-              span.form__label Телефон
-              input.form__input(type="tel", required)
-            .form__submit
-              button.button.button-submit(type="submit") Отправить
-            .form__note Нажимая на кнопку «Отправить», подтверждаю свое согласие с&nbsp;
-              a(href="policy.html") условиями обработки персональных данных
-          .form__message
-            .form__success
-              .form__message__title Ваша заявка принята!
-              .form__message__text Наши менеджеры свяжутся с Вами
 

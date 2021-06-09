@@ -1,0 +1,36 @@
+.popup-search#popup-search
+  .wrap
+    .cells.popup-search__row
+      .cell.cell-auto
+        .popup-search__label Поиск
+      .cell.cell-auto.popup-search__body
+        form.search__form.form(action="")
+          label.form__field
+            input.form__input(type="text", name="", placeholder="Введите запрос", tabindex="-1")
+          button.form__submit.button(type="submit", tabindex="-1")
+            .button__icon
+              include ../../images/inline-svgs/search.svg
+            .button__body Найти
+      .cell.cell-auto
+        button.button.button-icon.search__close(type="reset", title="Закрыть форму поиска", tabindex="-1")
+.display-none#callback-form
+  .custom-form.collapsing-form
+    form(action="")
+      .form__title Заказать звонок
+      .form__description Заполните форму, и наш менеджер свяжется с Вами в ближайшее время
+      .form__bg
+        .form__body
+          label.form__field
+            span.form__label Ваше имя
+            input.form__input(type="text")
+          label.form__field.form__field--required
+            span.form__label Телефон
+            input.form__input(type="tel", required)
+          .form__submit
+            button.button.button-submit(type="submit") Отправить
+          .form__note Нажимая на кнопку «Отправить», подтверждаю свое согласие с&nbsp;
+            a(href="policy.html") условиями обработки персональных данных
+        .form__message
+          .form__success
+            .form__message__title Ваша заявка принята!
+            .form__message__text Наши менеджеры свяжутся с Вами

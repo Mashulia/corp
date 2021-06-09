@@ -97,33 +97,34 @@
   .wrap
     +section-header("Продукция собственного производства")
     .products__list.cells
-      each itm in prds
-        .products__item.cell.cell-sm-6.cell-md-4.cell-xl-3
-          .products__bg
-            .products__labels
-              if itm.sale
-                .products__label.products__label--sale Акция
-            .products__images
-              .products__images__list
-                if itm.pic
-                  each pic in itm.pic
+      each itm, index in prds
+        if index < 8
+          .products__item.cell.cell-sm-6.cell-md-4.cell-xl-3
+            .products__bg
+              .products__labels
+                if itm.sale
+                  .products__label.products__label--sale Акция
+              .products__images
+                .products__images__list.slider
+                  if itm.pic
+                    each pic in itm.pic
+                      .products__images__item
+                        a.products__images__link(href="product.html")
+                          img(src= pic)
+                  else
                     .products__images__item
-                      a.products__images__link(href="product.html")
-                        img(src= pic)
-                else
-                  .products__images__item
-                      a.products__images__link.no-image(href="product.html")
-            .products__body
-              .products__cat= itm.cat
-              a.products__title(href="product.html")= itm.title
-              .products__action.cells
-                .products__prices.cell.cell-auto
-                    .products__prices__old= itm.oprice
-                    .products__prices__new= itm.price || "По запросу"
-                .products__button.cell.cell-auto
-                  button.button.button-primary
-                    span.button__body Заказать
-                    span.button__loader
+                        a.products__images__link.no-image(href="product.html")
+              .products__body
+                .products__cat= itm.cat
+                a.products__title(href="product.html")= itm.title
+                .products__action.cells
+                  .products__prices.cell.cell-auto
+                      .products__prices__old= itm.oprice
+                      .products__prices__new= itm.price || "По запросу"
+                  .products__button.cell.cell-auto
+                    button.button.button-primary
+                      span.button__body Заказать
+                      span.button__loader
     .section__button
       a.button.button-secondary(href="catalog.html") Смотреть в каталоге
 

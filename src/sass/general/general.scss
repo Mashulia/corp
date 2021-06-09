@@ -10,6 +10,7 @@
 html {
   font-size: 100%;
   line-height: 1.4;
+  scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
 body {
@@ -160,7 +161,7 @@ hr {
   display: none;
 }
 *:focus {
-  outline: 10px solid yellow;
+  outline: none;
 }
 *:focus-visible {
   outline: 2px dotted currentColor;

@@ -53,106 +53,42 @@
       href: "contacts.html"
     }
   ];
--
-  var phns = [
-    {
-      num: "+7 (351) 778-88-00",
-      href: "+73517788800",
-      label: "call-центр"
-    },
-    {
-      num: "+7 (351) 778-88-01",
-      href: "+73517788801",
-      label: "бухгалтерия"
-    },
-    {
-      num: "+7 (351) 778-88-02 доб. 112",
-      href: "+73517788802",
-      label: "приемная директора очень важной компании Длиннофамильцева Именерека Отчествовича"
-    }
-  ];
--
-  var socs = [
-    {
-      name: "fb",
-      title: "Группа в Фейсбук"
-    },
-    {
-      name: "vk",
-      title: "Группа во Вконтакте"
-    },
-    {
-      name: "tw",
-      title: "Страница в Твиттер"
-    },
-    {
-      name:"ok", 
-      title:"Группа в Одноклассниках"
-    }
-  ];
--
-  var messs = [
-    {
-      name: "tg",
-      title: "Написать в Telegram"
-    },
-    {
-      name: "viber",
-      title: "Написать в Viber"
-    },
-    {
-      name: "whatsapp",
-      title: "Написать в WhatsApp"
-    }
-  ]
 .footer
   .wrap
-    .to-top 
+    .to-top
       a.to-top__link(href="#top", title="Вернуться к началу страницы")
-
     .cells
-      .cell.cell-lg-2
-        .nav.footer__nav 
-          ul.fnav__list 
-            each item in menuItems 
-              li.fnav__item 
-                a.fnav__link(href= item.href)= item.name 
-      .cell.cell-lg-3.offset-cell-lg-1
-        .footer__connects
-          .footer__addresses
-            .addresses.connect
-              .connect__item
-                .connect__label Адрес офиса:
-                .connect__value г. Челябинск, ул. Артиллерийская, д. 1
-          .footer__emails
-            .emails.connect
-              .connect__item
-                .connect__label Эл. почта:
-                a.connect__value(href="mailto:info@zetrade.com") info@zetrade.com
-          .footer__socials
-            ul.socials__list
-              each item in socs
-                li.socials__item 
-                  a.socials__link(href="", title= item.title, class="socials__link--" + item.name)
-          .footer__phones
-            .phones
-              .phones__header Возникли вопросы? Звоните.
-              each itm in phns
-                .connect__item
-                  a.connect__value(href= itm.href)= itm.num
-                  .connect__label= itm.label
-          .footer__messengers
-            .messengers
-              each item in messs
-                .messengers__item
-                  a.messengers__link(href="", class="messengers__link--" + item.name)
-                    .messengers__text= item.title
+      .cell.cell-lg-6
+        .nav.footer__nav
+          ul.fnav__list
+            each item in menuItems
+              li.fnav__item
+                a.fnav__link(href= item.href)= item.name
+      .cell.cell-lg-6
+        .cells.footer__connects
+          .cell.cell-md-6
+            .footer__addresses
+              .addresses.connect
+                +connectList("addresses")
+            .footer__emails
+              .emails.connect
+                +connectList("emails")
+            .footer__socials
+              +socials
+          .cell.cell-md-6
+            .footer__phones
+              .phones.connect
+                +connectList("phones")
+            .footer__messengers
+              +messengers
     hr.divider
     .cells.fx-justify-between
-      .cell.cell-auto.footer__copy «ЗЕ Строй» © 2020
       .cell.cell-auto.footer__legal
         .legal__list
           .legal__item
-            a.legal__link(href="") Договор оферты
+            a.legal__link(href="oferta.html") Договор оферты
           .legal__item
-            a.legal__link(href="") Политика конфиденциальности
+            a.legal__link(href="policy.html") Политика конфиденциальности
+          //- .legal__item
+          //-   a.legal__link(href="") Публичная оферта
+      .cell.cell-auto.footer__copy «Компания с длинным названием» © 2020

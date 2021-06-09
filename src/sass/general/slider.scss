@@ -1,6 +1,9 @@
-.slick-slider {
+.slider {
   overflow: hidden;
   position: relative;
+}
+.slick-slider.slick-initialized {
+  height: auto;
 }
 .slick-track {
   display: flex;
@@ -54,6 +57,10 @@
 }
 .slick-next {
   right: 0;
+}
+.slick-arrow.slick-disabled {
+  color: $color-sep;
+  pointer-events: none;
 }
 .slick-dots {
   display: flex;

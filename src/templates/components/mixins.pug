@@ -54,3 +54,81 @@ mixin socials
         .socials__item
           a.socials__link(href="", title= item.title)
             +#{"icon-" + item.name}
+-
+  var msngrs = [
+    {
+      name: "tg",
+      title: "Написать в Telegram"
+    },
+    {
+      name: "viber",
+      title: "Написать в Viber"
+    },
+    {
+      name: "whatsapp",
+      title: "Написать в Whatsapp"
+    }
+  ];
+mixin messengers
+  .messengers
+    .messengers__list
+      each item in msngrs
+        .messengers__item
+          a.messengers__link(href="", title= item.title, class= "messengers__link--" + item.name)
+            .messengers__text= item.title
+-
+  var cnncts = {
+    phones: [
+      //- {
+      //-   number: "+7 (351) 778-88-00 доб. 153",
+      //-   link: "+73512250755",
+      //-   descr: "call-центр"
+      //- },
+      {
+        number: "+7 (351) 225-07-55",
+        link: "+73512250755",
+        descr: "call-центр"
+      },
+      {
+        number: "+7 (351) 225-07-56",
+        label: "Отдел доставки",
+        descr: "работаем 10:00 - 20:00",
+        link: "+73512250756"
+      },
+      {
+        number: "+7 (351) 778-88-00 доб. 123",
+        label: "Бухгалтерия",
+        link: "+73517788800"
+      },
+      {
+        number: "+7 (351) 778-88-10",
+        label: "Директор Длиннофамильцев Имярек Отчествович",
+        link: "+73512250756"
+      }
+    ],
+    emails: [
+      "info@zetrade.com",
+      //- "dlinnofamiltsev@zetrade.com"
+    ],
+    addresses: [
+      "г. Челябинск, ул. Артиллерийская, д. 1",
+      //- "Российская Федерация, Челябинская область, г. Челябинск, ул. Артиллерийская, стр. 1, корпус 14, офис 202а"
+    ]
+  };
+mixin connectList(type, noFirst)
+  - var noShowItem = noFirst ? 0 : 100;
+  .connect__list
+    each item, index in cnncts[type]
+      if index != noShowItem
+        .connect__item
+          case type
+            when "phones"
+              a.connect__text(href= "tel:" + item.link)= item.number
+            when "emails"
+              a.connect__text(href="mailto:" + item)= item
+            default
+              .connect__text= item
+          if item.label
+            .connect__label= item.label
+          if item.descr
+            .connect__descr= item.descr

@@ -3,7 +3,163 @@
   color: #fff;
   padding: 2.5rem 0;
 
-  hr {
+  .divider {
     border-color: rgba(255, 255, 255, 0.1);
+  }
+}
+.to-top {
+  position: fixed;
+  right: 1.25rem;
+  bottom: -3rem;
+  z-index: 10;
+  transition: bottom 0.4s;
+
+  &__link {
+    display: block;
+    background-image: url("data:image/svg+xml,%3Csvg width='14' height='8' viewBox='0 0 14 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.45825 6.375L6.99992 1.625L12.5416 6.375' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 0.75rem 0.5rem;
+    border-radius: 50%;
+    color: #fff;
+    height: 2.375rem;
+    width: 2.375rem;
+    opacity: 0.7;
+    transition: opacity 0.4s;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+  &--visible {
+    bottom: 1.25rem;
+  }
+}
+.footer__nav {
+  margin-bottom: 2.0625rem;
+
+  .fnav__list {
+    display: block;
+  }
+}
+.fnav__list {
+  columns: 2 auto;
+  margin-top: -0.4375rem; // compensate for __item.pt
+}
+.fnav__link {
+  color: inherit;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.4375rem 0;
+}
+.footer__connects {
+  .connect {
+    color: #fff;
+    flex-direction: column;
+
+    &::before {
+      flex-basis: auto;
+      background: none;
+      font-weight: 600;
+      font-size: 0.8125rem;
+      height: auto;
+      width: auto;
+      margin-bottom: 0.375rem;
+      margin-right: 0;
+      opacity: 0.6;
+    }
+  }
+  .addresses::before {
+    content: "Адрес офиса:";
+  }
+  .emails::before {
+    content: "Эл. почта:";
+  }
+  .phones::before {
+    content: "Возникли вопросы? Звоните.";
+  }
+  .connect__item {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .connect__label {
+    color: #fff;
+    margin-top: 0.125em;
+    margin-bottom: 0;
+    margin-left: 0.5rem;
+    opacity: 0.6;
+  }
+  .connect__label::before {
+    content: "\2014\00A0";
+  }
+  .connect__descr {
+    display: none;
+  }
+}
+.footer__addresses {
+  margin-bottom: 0.875rem;
+}
+.footer__emails,
+.footer__socials,
+.footer__phones,
+.footer__messengers,
+.footer .divider {
+  margin-bottom: 1.875rem;
+}
+.footer .socials__link {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+.footer__messengers {
+  font-size: 0.8125rem;
+
+  .messengers__link {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 2.5rem;
+    color: rgba(255, 255, 255, 0.6);
+    padding-left: 2rem;
+    padding-right: 0.75rem;
+    width: auto;
+  }
+  .messengers__text {
+    display: block;
+  }
+}
+.footer__legal,
+.footer__copy {
+  font-weight: 600;
+  font-size: 0.8125rem;
+}
+.legal__item {
+  margin-bottom: 0.875rem;
+}
+.legal__link {
+  color: inherit;
+  opacity: 0.6;
+}
+.footer__copy {
+  opacity: 0.6;
+}
+@media (min-width: $break-md) {
+  .fnav__list {
+    column-count: 3;
+  }
+  .footer__legal {
+    order: 1;
+  }
+  .legal__list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .legal__item {
+    margin-right: 1rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  .footer__copy {
+    margin-bottom: 0.875rem;
   }
 }

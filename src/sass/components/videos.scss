@@ -105,13 +105,15 @@
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 5;
 
   .videos__item--play & {
     display: block;
   }
 }
 @media (min-width: $break-lg) {
-  .videos__cover {
+  .videos__cover,
+  .videos__content {
     border-radius: $brad-3 $brad-3 0 0;
   }
   .videos__link::after {
@@ -133,7 +135,8 @@
   .svideos .h2 {
     margin-bottom: 1.5rem;
   }
-  .videos__cover {
+  .videos__cover,
+  .videos__content {
     border-radius: $brad-3;
     padding-bottom: 53.7%;
   }
