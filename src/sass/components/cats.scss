@@ -124,6 +124,9 @@
       margin-top: 0.25rem;
     }
   }
+  .scategories--v1 .categories__body {
+    padding-bottom: 1.4375rem;
+  }
 }
 @media (min-width: $break-lg) {
   .categories__list:last-child {

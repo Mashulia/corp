@@ -127,6 +127,8 @@ if (!Array.prototype.includes) {
 
 window.addEventListener("load", function() {
   var windowWidth =  window.innerWidth;
+  var rootElem = document.querySelector(".corp");
+  var documentHeight = rootElem.clientHeight;
 
   // touch device detection
   var touchDevice = false;
@@ -573,6 +575,8 @@ window.addEventListener("load", function() {
   }).mask(telSelector);
 
   let toTopElem = document.querySelector(".to-top");
+  // document.querySelector(".footer").offsetTop - window.innerHeight - point at which one can see footer
+  let footerElm = document.querySelector(".footer");
   if (toTopElem) {
     toTopElem.querySelector(".to-top__link").addEventListener("click", function(e) {
       e.preventDefault();
@@ -587,10 +591,20 @@ window.addEventListener("load", function() {
   }
 
   function showToTop() {
+    let fixinPoint = window.innerWidth < 1024 ? footerElm.offsetTop - window.innerHeight + footerElm.offsetHeight * 0.3 : footerElm.offsetTop - window.innerHeight;
+    if(window.innerWidth > 1447) {
+      fixinPoint = footerElm.offsetTop - window.innerHeight + footerElm.offsetHeight * 0.5;
+    }
     if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
       toTopElem.classList.add("to-top--visible");
+      if(document.body.scrollTop > fixinPoint || document.documentElement.scrollTop > fixinPoint) {
+        toTopElem.classList.add("to-top--footed");
+      } else {
+        toTopElem.classList.remove("to-top--footed");
+      }
     } else {
       toTopElem.classList.remove("to-top--visible");
+      toTopElem.classList.remove("to-top--footed");
     }
   }
 
@@ -602,6 +616,8 @@ window.addEventListener("load", function() {
   };
 
   var delayedFunctions = function () {
+    windowWidth = window.innerWidth;
+    documentHeight = rootElem.clientHeight;
     removeExpands(expandToggles);
 
     if (window.innerWidth < 1024) {

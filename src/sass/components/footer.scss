@@ -1,7 +1,7 @@
 .footer {
   background: $color-text1;
   color: #fff;
-  padding: 2.5rem 0;
+  padding: 2rem 0;
 
   .divider {
     border-color: rgba(255, 255, 255, 0.1);
@@ -82,6 +82,7 @@
   .connect__item {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 0.675rem;
   }
   .connect__label {
     color: #fff;
@@ -101,11 +102,12 @@
   margin-bottom: 0.875rem;
 }
 .footer__emails,
-.footer__socials,
 .footer__phones,
-.footer__messengers,
 .footer .divider {
   margin-bottom: 1.875rem;
+}
+.footer__socials {
+  margin-bottom: 1.125rem;
 }
 .footer .socials__link {
   background-color: rgba(255, 255, 255, 0.1);
@@ -113,6 +115,7 @@
 }
 .footer__messengers {
   font-size: 0.8125rem;
+  margin-bottom: 1.125rem;
 
   .messengers__link {
     background-color: rgba(255, 255, 255, 0.1);
@@ -142,6 +145,11 @@
   opacity: 0.6;
 }
 @media (min-width: $break-md) {
+  .footer {
+    padding-top: 2.875rem;
+    padding-bottom: 1rem;
+    position: relative;
+  }
   .fnav__list {
     column-count: 3;
   }
@@ -161,5 +169,38 @@
   }
   .footer__copy {
     margin-bottom: 0.875rem;
+  }
+  .to-top--visible {
+    bottom: 1.5rem;
+  }
+  .to-top--footed {
+    position: absolute;
+    bottom: 70%;
+  }
+}
+@media (min-width: $break-lg) {
+  .footer {
+    padding-top: 3.75rem;
+  }
+  .footer__emails,
+  .footer__socials,
+  .footer__phones,
+  .footer__messengers,
+  .footer__addresses {
+    margin-bottom: 2rem;
+  }
+  .to-top--footed {
+    bottom: calc(100% + 1.5rem);
+  }
+}
+@media (min-width: $break-desk) {
+  .footer__connects .cell {
+    padding-right: 3.5rem;
+  }
+  .to-top {
+    right: calc(50% - #{$cont-1 / 2});
+  }
+  .to-top--footed {
+    bottom: 50%;
   }
 }

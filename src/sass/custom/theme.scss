@@ -125,8 +125,8 @@ a:active,
 .footer {
   background-color: $custom-color-21;
   background-image: radial-gradient(
-    closest-corner at 60% 120%,
-    rgba($color: $custom-color-1, $alpha: 0.3) 0%,
+    90% 30% at 120% 90%,
+    rgba(231, 145, 64, 0.3) 0%,
     rgba(0, 0, 0, 0) 100%
   );
 }
@@ -138,6 +138,24 @@ a:active,
 @media (min-width: 576px) {
   .hero__descr {
     color: $custom-color-2;
+  }
+}
+@media (min-width: 768px) {
+  .footer {
+    background-image: radial-gradient(
+      35% 60% at 50% 128%,
+      rgba(231, 145, 64, 0.3) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+}
+@media (min-width: 1024px) {
+  .footer {
+    background-image: radial-gradient(
+      30% 60% at 60% 120%,
+      rgba(231, 145, 64, 0.3) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
   }
 }
 @media (max-width: 1447px) {

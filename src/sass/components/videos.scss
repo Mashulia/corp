@@ -111,6 +111,11 @@
     display: block;
   }
 }
+@media (min-width: $break-md) {
+  .svideos .section__goto {
+    margin-bottom: 0;
+  }
+}
 @media (min-width: $break-lg) {
   .videos__cover,
   .videos__content {

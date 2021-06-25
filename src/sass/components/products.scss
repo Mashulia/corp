@@ -121,11 +121,18 @@
   padding: 0.25rem 0.5rem;
 }
 @media (min-width: $break-md) {
+  .products__images__list {
+    height: 165px;
+  }
   .products__title {
     min-height: 2.75rem;
   }
   .products__action {
-    flex-wrap: nowrap;
+    margin-bottom: -0.5rem;
+  }
+  .products__prices,
+  .products__button {
+    margin-bottom: 0.5rem;
   }
   .products__button .button {
     padding: 0.4375rem;

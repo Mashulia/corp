@@ -148,12 +148,13 @@
 }
 @media (min-width: $break-md) {
   .socials__list {
-    margin-left: -0.4375rem;
-    margin-right: -0.4375rem;
+    margin-left: -0.25rem;
+    margin-right: -0.25rem;
   }
   .socials__item {
-    padding-left: 0.4375rem;
-    padding-right: 0.4375rem;
+    margin-bottom: 0.5rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
   }
 }
 @media (min-width: $break-lg) {
