@@ -2,7 +2,6 @@
   background: $color-bg;
 }
 .services__list {
-  justify-content: center;
   margin-bottom: 0.75rem;
 
   &:last-child {
@@ -59,6 +58,9 @@
   line-height: 1.2;
 }
 .sservices--v1 {
+  .services__list {
+    justify-content: center;
+  }
   .services__image {
     border-radius: $brad-3;
     width: 100%;

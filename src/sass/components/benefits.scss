@@ -37,11 +37,19 @@
   .benefits__item {
     margin-bottom: 1.75rem;
   }
+  .sabout__bens {
+    .benefits__list:last-child {
+      margin-bottom: -1.3125rem;
+    }
+    .benefits__item {
+      margin-bottom: 1.25rem;
+    }
+  }
 }
 @media (min-width: $break-lg) {
   .benefits {
     padding-top: 1.75rem;
-    padding-bottom: 1.75rem;
+    padding-bottom: 1.8125rem;
   }
   .benefits__img {
     flex-basis: 3.625rem;

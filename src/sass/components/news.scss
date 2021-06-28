@@ -59,6 +59,14 @@
 .news__descr {
   font-size: 0.75rem;
 }
+@media (min-width: $break-md) {
+  .news__text {
+    padding-top: 1.3125rem;
+  }
+  .news__date {
+    transform: translate(0, -50%);
+  }
+}
 @media (min-width: $break-lg) {
   .news__list:last-child {
     margin-bottom: -1.5625rem;

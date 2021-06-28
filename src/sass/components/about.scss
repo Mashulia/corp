@@ -28,31 +28,43 @@
     .section__title {
       margin-bottom: 1.5rem;
     }
-    .benefits__list:last-child {
-      margin-bottom: -2.4385rem;
-    }
-    .benefits__item {
-      margin-bottom: 2.375rem;
-    }
   }
   .sabout__intro {
     font-size: 1.125rem;
     margin-bottom: 2.375rem;
   }
-  .sabout__image,
-  .sabout__bens {
-    margin-top: 4.125rem;
-  }
   .sabout__image {
     margin-bottom: 0;
 
     img {
-      max-width: 400px;
+      max-height: 400px;
     }
+  }
+  .sabout__bens {
+    margin-bottom: 0.3125rem;
   }
 }
 @media (min-width: $break-xl) {
+  .sabout__image,
+  .sabout__bens {
+    margin-top: 4.125rem;
+  }
   .sabout__image img {
     max-height: 500px;
+  }
+}
+@media (min-width: $break-desk) {
+  .sabout__image {
+    margin-right: 2.5rem;
+  }
+  .sabout__bens {
+    margin-bottom: 0;
+
+    .benefits__list:last-child {
+      margin-bottom: -2.5rem;
+    }
+    .benefits__item {
+      margin-bottom: 2.4375rem;
+    }
   }
 }

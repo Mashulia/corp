@@ -161,6 +161,17 @@
   .connect::before {
     margin-right: 0.5rem;
   }
+  .socials__link {
+    height: 2rem;
+    width: 2rem;
+  }
+  .messengers__item {
+    margin-bottom: 0.5rem;
+  }
+  .messengers__link,
+  .messengers__link::before {
+    height: 2rem;
+  }
 }
 @media (min-width: $break-xl) {
   .connect__item {
