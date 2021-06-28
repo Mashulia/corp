@@ -1,15 +1,29 @@
-@use "sass:color";
-$custom-color-1: hsla(29, 78%, 58%, 1);
-$custom-color-2: hsla(150, 26%, 36%, 1);
+// @use "sass:color";
+$custom-color-1-h: 29;
+$custom-color-1-s: 78%;
+$custom-color-1-l: 58%;
+$custom-color-1: hsl($custom-color-1-h, $custom-color-1-s, $custom-color-1-l);
+$custom-color-2-h: 150;
+$custom-color-2-s: 26%;
+$custom-color-2-l: 36%;
+$custom-color-2: hsl($custom-color-2-h, $custom-color-2-s, $custom-color-2-l);
 
-$custom-color-hover: color.adjust(
-  $custom-color-1,
-  $lightness: -15,
-  $saturation: +10
+$custom-color-hover: hsl(
+  $custom-color-1-h,
+  $custom-color-1-s + 10,
+  $custom-color-1-l - 15
 );
-$custom-color-active: color.adjust($custom-color-1, $lightness: -20);
+$custom-color-active: hsl(
+  $custom-color-1-h,
+  $custom-color-1-s,
+  $custom-color-1-l - 20
+);
 
-$custom-color-21: color.adjust($custom-color-2, $lightness: -15);
+$custom-color-21: hsl(
+  $custom-color-2-h,
+  $custom-color-2-s,
+  $custom-color-2-l - 15
+);
 
 .corp {
   --custom-color-1: #{$custom-color-1};
@@ -48,13 +62,15 @@ a,
 .products__label--sale,
 .news__date,
 .popup-search,
-.reviews__pic--empty {
+.reviews__pic--empty,
+.mheader--v2 .mheader__bg {
   background-color: $custom-color-2;
 }
 .hero__slider .slick-dots button,
 .videos__link::before,
 .primary-nav .expand__body,
-.primary-nav .dropdown__body {
+.primary-nav .dropdown__body,
+.mheader--v2 .bcart__button--active::after {
   border-color: $custom-color-2;
 }
 .reviews__cat__text,
@@ -126,8 +142,16 @@ a:active,
   background-color: $custom-color-21;
   background-image: radial-gradient(
     90% 30% at 120% 90%,
-    rgba(231, 145, 64, 0.3) 0%,
+    hsla($custom-color-1-h, $custom-color-1-s, $custom-color-1-l, 0.3) 0%,
     rgba(0, 0, 0, 0) 100%
+  );
+}
+.mheader--v2 .mheader__phones .connect::before {
+  background-color: hsla(
+    $custom-color-2-h,
+    $custom-color-2-s,
+    $custom-color-2-l - 15,
+    0.5
   );
 }
 @media (max-width: 575px) {
@@ -144,7 +168,7 @@ a:active,
   .footer {
     background-image: radial-gradient(
       35% 60% at 50% 128%,
-      rgba(231, 145, 64, 0.3) 0%,
+      hsla($custom-color-1-h, $custom-color-1-s, $custom-color-1-l, 0.3) 0%,
       rgba(0, 0, 0, 0) 100%
     );
   }
@@ -153,7 +177,7 @@ a:active,
   .footer {
     background-image: radial-gradient(
       30% 60% at 60% 120%,
-      rgba(231, 145, 64, 0.3) 0%,
+      hsla($custom-color-1-h, $custom-color-1-s, $custom-color-1-l, 0.3) 0%,
       rgba(0, 0, 0, 0) 100%
     );
   }

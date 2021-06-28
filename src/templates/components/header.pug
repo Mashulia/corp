@@ -1,123 +1,58 @@
 - var logoImage = require("/src/images/theme-images/logo-sq.png");
-.header
-  .mheader.mheader--v1
-    .wrap
-      .mheader__row
-        .mheader__logo
-          .logo
-            a.logo__link(href="/")
-              .logo__image
-                include ../../images/theme-images/logo.svg
-              //-   img(src= logoImage)
-              //- .logo__text ZE Строй
-        .mheader__phones
-          .phones.connect
-            if cnncts.phones.length > 1
-              .dropdown
-                a.dropdown__toggle(href="tel:+73517788800")= cnncts.phones[0].number
-                  .dropdown__icon
-                    include ../../images/inline-svgs/dropdown.svg
-                .dropdown__body
-                  +connectList("phones", true)
-                  .callback
-                    button.button.button-secondary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
-            else
-              +connectList("phones", false)
-        .mheader__callback
-          button.button.button-primary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
-        .mheader__addresses
-          .addresses.connect
-            +connectList("addresses", false)
-        .mheader__bcart
-          .bcart
-            a.button.button-icon.bcart__button.bcart__button--active(title="Перейти в корзину", href="cart.html")
-              include ../../images/inline-svgs/cart-icon.svg
-        .mheader__opener
-          button.header__opener(title="Показать меню")
-            include ../../images/inline-svgs/menu.svg
-    .mheader__contents
+mixin header-var(mvar="mheader--v1", dvar="dheader--v1")
+  .header
+    include mobile-header.pug
+    +mobile-header(class=mvar)
+    .dheader(class=dvar)
       .wrap
-        .mheader__row
-          .mheader__logo
-            .logo
-              a.logo__link(href="/")
-                .logo__image
-                  include ../../images/theme-images/logo.svg
-                //-   img(src= logoImage)
-                //- .logo__text ZE Строй
-          button.header__closer(title="Скрыть меню")
-            include ../../images/inline-svgs/menu-close.svg
-      hr.divider
-      .wrap.mheader__contents__wrap
-        nav.primary-nav
-          include primary-nav.pug
-        .search
-          form.search__form.form(action="")
-            label.form__field
-              input.form__input(type="text", name="", placeholder="Введите запрос")
-            button.form__submit.button(type="submit")
-              .search__icon
-                include ../../images/inline-svgs/search.svg
-              .search__text Найти
-        .phones.connect
-          +connectList("phones")
-        .mheader__messengers
-          +messengers
-        .addresses.connect
-          +connectList("addresses")
-        .emails.connect
-          +connectList("emails")
-        +socials
-  .dheader.header--v1
-    .wrap
-      .cells.header__top
-        .cell.header__top__col.cell-xl-5
-          .display-flex.fx-align-center
-            nav.header__site-nav.site-nav
-              include site-nav.pug
-              .site-nav--extra.nav--extra.dropdown
-                button.button.button-icon.dropdown__toggle(title="Показать/скрыть остальные пункты меню")
-                  include ../../images/inline-svgs/dots.svg
-                .dropdown__body
-                  ul.site-nav__list
-            .header__search
-              button.search__toggle.button.button-icon
-                include ../../images/inline-svgs/search.svg
-        .header__connects.cell.cell-xl-7
-          .connects
-            .cells.fx-justify-end
-              .header__phones.cell.cell-auto
-                .phones.connect
-                  if cnncts.phones.length > 1
-                    .dropdown
-                      a.dropdown__toggle(href="tel:+73517788800")= cnncts.phones[0].number
-                        .dropdown__icon
-                          include ../../images/inline-svgs/dropdown.svg
-                      .dropdown__body
-                        +connectList("phones", true)
-                        .callback
-                          button.button.button-secondary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
-                  else
-                    +connectList("phones")
-              .header__addresses.cell.cell-auto
-                .addresses.connect
-                  +connectList("addresses")
-      hr.divider
-      .header__body
-        .cells.fx-align-center
-          .header__logo.cell.cell-lg-3
-            .logo
-              a.logo__link(href="/")
-                .logo__image
-                  include ../../images/theme-images/logo.svg
-                //-   img(src= logoImage)
-                //- .logo__text ZE Строй
-              .logo__slogan Selling the best goods on Earth since 1900
-          .header__primary-nav.cell.cell-lg-8
-            nav.primary-nav
-              include primary-nav.pug
-          .cell.header__bcart.cell-lg-1
-            .bcart
-              a.button.button-icon.bcart__button.bcart__button--active(title="Перейти в корзину", href="cart.html")
-                include ../../images/inline-svgs/cart-icon.svg
+        .cells.header__top
+          .cell.header__top__col.cell-xl-5
+            .display-flex.fx-align-center
+              nav.header__site-nav.site-nav
+                include site-nav.pug
+                .site-nav--extra.nav--extra.dropdown
+                  button.button.button-icon.dropdown__toggle(title="Показать/скрыть остальные пункты меню")
+                    include ../../images/inline-svgs/dots.svg
+                  .dropdown__body
+                    ul.site-nav__list
+              .header__search
+                button.search__toggle.button.button-icon
+                  include ../../images/inline-svgs/search.svg
+          .header__connects.cell.cell-xl-7
+            .connects
+              .cells.fx-justify-end
+                .header__phones.cell.cell-auto
+                  .phones.connect
+                    if cnncts.phones.length > 1
+                      .dropdown
+                        a.dropdown__toggle(href="tel:+73517788800")= cnncts.phones[0].number
+                          .dropdown__icon
+                            include ../../images/inline-svgs/dropdown.svg
+                        .dropdown__body
+                          +connectList("phones", true)
+                          .callback
+                            button.button.button-secondary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
+                    else
+                      +connectList("phones")
+                .header__addresses.cell.cell-auto
+                  .addresses.connect
+                    +connectList("addresses")
+        hr.divider
+        .header__body
+          .cells.fx-align-center
+            .header__logo.cell.cell-lg-3
+              .logo
+                a.logo__link(href="/")
+                  .logo__image
+                    include ../../images/theme-images/logo.svg
+                  //-   img(src= logoImage)
+                  //- .logo__text ZE Строй
+                .logo__slogan Selling the best goods on Earth since 1900
+            .header__primary-nav.cell.cell-lg-8
+              nav.primary-nav
+                include primary-nav.pug
+            .cell.header__bcart.cell-lg-1
+              .bcart
+                a.button.button-icon.bcart__button.bcart__button--active(title="Перейти в корзину", href="cart.html")
+                  include ../../images/inline-svgs/cart-icon.svg
 
