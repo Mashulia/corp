@@ -53,6 +53,7 @@ a,
 .button-secondary,
 .slick-arrow,
 .expand--opened > .expand__toggle,
+.connect .dropdown__toggle,
 .dropdown--opened:not(.nav--extra) > .dropdown__toggle,
 .footer__emails .connect__text {
   color: $custom-color-1;
@@ -63,7 +64,8 @@ a,
 .news__date,
 .popup-search,
 .reviews__pic--empty,
-.mheader--v2 .mheader__bg {
+.mheader--v2 .mheader__bg,
+.dheader--v2 .dheader__bg {
   background-color: $custom-color-2;
 }
 .hero__slider .slick-dots button,
@@ -146,7 +148,9 @@ a:active,
     rgba(0, 0, 0, 0) 100%
   );
 }
-.mheader--v2 .mheader__phones .connect::before {
+.mheader--v2 .mheader__phones .connect::before,
+.dheader--v2 .header__phones .connect::before,
+.dheader--v2 .header__addresses .connect::before {
   background-color: hsla(
     $custom-color-2-h,
     $custom-color-2-s,

@@ -215,7 +215,7 @@ window.addEventListener("load", function () {
   }
 
   // search toggle
-  var searchToggle = document.getElementsByClassName("search__toggle")[0];
+  var searchToggles = document.getElementsByClassName("search__toggle");
   var searchBody = document.querySelector(".popup-search");
   var searchClose = searchBody ? searchBody.querySelector(".search__close") : 0;
 
@@ -243,8 +243,8 @@ window.addEventListener("load", function () {
   }
 
   // header menu overflow
-  var primaryNav = document.querySelector(".dheader .primary-nav");
-  var globalNav = this.document.querySelector(".dheader .site-nav");
+  let primaryNavs = document.querySelectorAll(".dheader .primary-nav");
+  let globalNavs = this.document.querySelectorAll(".dheader .site-nav");
 
   function handleNavOverflow(navigation, spacing) {
     let navList = navigation.querySelector("ul");
@@ -602,13 +602,34 @@ window.addEventListener("load", function () {
   if (headerOpeners && windowWidth < 1024) {
     initMobileHeader();
   }
-  if (searchToggle && searchBody && searchClose && windowWidth > 1023) {
-    searchToggle.addEventListener("click", toggleSearch);
+  if (searchToggles && searchBody && windowWidth > 1023) {
+    for (let i = 0; i < searchToggles.length; i++) {
+      searchToggles[i].addEventListener("click", toggleSearch);
+    }
     searchClose.addEventListener("click", toggleSearch);
   }
   if (windowWidth > 1023) {
-    handleNavOverflow(primaryNav, 48);
-    handleNavOverflow(globalNav, 32);
+    // fonts influence elements' sizes, so wait till font has loaded and then fix the menu overflow
+    document.fonts.load('1rem "Manrope"').then(
+      () => {
+        console.log("font loaded");
+        for (let i = 0; i < primaryNavs.length; i++) {
+          handleNavOverflow(primaryNavs[i], 48);
+        }
+        for (let i = 0; i < globalNavs.length; i++) {
+          handleNavOverflow(globalNavs[i], 32);
+        }
+      },
+      () => {
+        console.log("font not loaded");
+        for (let i = 0; i < primaryNavs.length; i++) {
+          handleNavOverflow(primaryNavs[i], 40);
+        }
+        for (let i = 0; i < globalNavs.length; i++) {
+          handleNavOverflow(globalNavs[i], 24);
+        }
+      }
+    );
   }
   if (windowWidth < 1024) {
     attachPageNavToggle();
@@ -682,20 +703,32 @@ window.addEventListener("load", function () {
 
     if (window.innerWidth < 1024) {
       initMobileHeader();
-      searchToggle.removeEventListener("click", toggleSearch);
+      for (let i = 0; i < searchToggles.length; i++) {
+        searchToggles[i].removeEventListener("click", toggleSearch);
+      }
       searchClose.removeEventListener("click", toggleSearch);
 
-      resetNavOverflow(primaryNav);
-      resetNavOverflow(globalNav);
+      for (let i = 0; i < primaryNavs.length; i++) {
+        resetNavOverflow(primaryNavs[i]);
+      }
+      for (let i = 0; i < globalNavs.length; i++) {
+        resetNavOverflow(globalNavs[i]);
+      }
     } else {
       detachMobileHeader();
-      searchToggle.addEventListener("click", toggleSearch);
+      for (let i = 0; i < searchToggles.length; i++) {
+        searchToggles[i].addEventListener("click", toggleSearch);
+      }
       searchClose.addEventListener("click", toggleSearch);
 
-      resetNavOverflow(primaryNav);
-      resetNavOverflow(globalNav);
-      handleNavOverflow(primaryNav, 48);
-      handleNavOverflow(globalNav, 32);
+      for (let i = 0; i < primaryNavs.length; i++) {
+        resetNavOverflow(primaryNavs[i]);
+        handleNavOverflow(primaryNavs[i], 48);
+      }
+      for (let i = 0; i < globalNavs.length; i++) {
+        resetNavOverflow(globalNavs[i]);
+        handleNavOverflow(globalNavs[i], 32);
+      }
     }
 
     if (touchDevice || window.innerWidth < 1024) {

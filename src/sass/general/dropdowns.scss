@@ -24,8 +24,12 @@
   }
 }
 .dropdown__toggle {
-  display: flex;
-  align-items: center;
+  @extend %fx-centered-y;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
 
   &:hover {
     text-decoration: none;
@@ -33,11 +37,10 @@
 }
 .dropdown__icon {
   @extend %fx-centered;
-  margin-left: 0.25rem;
   height: 1rem;
   width: 1rem;
+  margin-left: 0.25rem;
   position: relative;
-  top: 0.1em;
   transition: transform 0.4s;
 }
 .dropdown--opened {
