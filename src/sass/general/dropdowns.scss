@@ -7,6 +7,7 @@
   border-radius: 0 0 $brad-2 $brad-2;
   box-shadow: (0px 2px 7px rgba(50, 52, 52, 0.25));
   max-width: 20rem;
+  min-width: 100%;
   padding: 0.75rem 1.25rem 1.25rem;
   position: absolute;
   top: 100%;
@@ -28,6 +29,7 @@
   background: transparent;
   border: 0;
   cursor: pointer;
+  font-weight: inherit;
   padding: 0;
   text-align: left;
 

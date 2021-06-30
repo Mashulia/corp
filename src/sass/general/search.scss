@@ -21,6 +21,10 @@
       outline: 2px dotted currentColor;
     }
   }
+  svg {
+    height: 1rem;
+    width: 1rem;
+  }
 }
 .search__form {
   position: relative;
@@ -38,6 +42,11 @@
     top: 0;
     bottom: 0;
     right: 0;
+
+    svg {
+      height: 1rem;
+      width: 1rem;
+    }
   }
 }
 .search__text {

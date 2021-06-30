@@ -1,9 +1,20 @@
 .site-nav {
+  display: flex;
+  align-items: center;
   font-weight: 600;
   position: relative;
+
+  &.nav--overflown {
+    flex-grow: 0;
+  }
 }
 .site-nav__list {
+  flex: 1 0 auto;
   color: $color-text2;
+
+  .nav--overflown & {
+    max-width: calc(100% - 2rem);
+  }
 }
 .site-nav > .site-nav__list {
   height: 3rem;
@@ -21,6 +32,9 @@
   display: block;
   padding: 0.8125rem 0;
 
+  &:hover {
+    text-decoration: none;
+  }
   &:focus-visible {
     outline-offset: -2px;
   }

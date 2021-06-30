@@ -38,7 +38,8 @@ $custom-color-21: hsl(
 .videos__link::after,
 .slider-nav .slick-current::after,
 .nav--extra.dropdown--opened > .dropdown__toggle,
-.to-top__link {
+.to-top__link,
+.header--v3 .search__toggle {
   background-color: $custom-color-1;
 }
 .button-primary,
@@ -64,15 +65,14 @@ a,
 .news__date,
 .popup-search,
 .reviews__pic--empty,
-.mheader--v2 .mheader__bg,
-.dheader--v2 .dheader__bg {
+.header--v2 .header__bg {
   background-color: $custom-color-2;
 }
 .hero__slider .slick-dots button,
 .videos__link::before,
 .primary-nav .expand__body,
 .primary-nav .dropdown__body,
-.mheader--v2 .bcart__button--active::after {
+.header--v2 .bcart__button--active::after {
   border-color: $custom-color-2;
 }
 .reviews__cat__text,
@@ -90,7 +90,8 @@ a,
 .nav--extra:hover > .dropdown__toggle,
 .to-top__link:hover,
 .socials__link:hover,
-.messengers__link:hover {
+.messengers__link:hover,
+.header--v3 .search__toggle:hover {
   background-color: $custom-color-hover;
 }
 .button-primary:hover,
@@ -121,7 +122,8 @@ a:hover,
 .nav--extra .dropdown__toggle:active,
 .to-top__link:active,
 .socials__link:active,
-.messengers__link:active {
+.messengers__link:active,
+.header--v3 .search__toggle:active {
   background-color: $custom-color-active;
 }
 .button-primary:active,
@@ -148,9 +150,9 @@ a:active,
     rgba(0, 0, 0, 0) 100%
   );
 }
-.mheader--v2 .mheader__phones .connect::before,
-.dheader--v2 .header__phones .connect::before,
-.dheader--v2 .header__addresses .connect::before {
+.header--v2 .mheader__phones .connect::before,
+.header--v2 .header__phones .connect::before,
+.header--v2 .header__addresses .connect::before {
   background-color: hsla(
     $custom-color-2-h,
     $custom-color-2-s,

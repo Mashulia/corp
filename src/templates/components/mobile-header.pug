@@ -1,6 +1,6 @@
 mixin mobile-header
-  .mheader(class!=attributes.class)
-    .mheader__bg
+  .mheader
+    .header__bg
       .wrap
         .mheader__row.cells
           .mheader__logo.cell.cell-auto
@@ -11,7 +11,7 @@ mixin mobile-header
                 //-   img(src= logoImage)
                 //- .logo__text ZE Строй
           .mheader__contacts.cell.cell-auto
-            .cells.fx-align-center
+            .cells.fx-align-center.fx-justify-center
               .mheader__phones.cell.cell-auto
                 .phones.connect
                   if cnncts.phones.length > 1

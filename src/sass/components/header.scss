@@ -7,6 +7,10 @@
 .mheader__phones,
 .mheader__addresses {
   display: none;
+
+  .connect {
+    font-size: 0.875rem;
+  }
 }
 .mheader__logo {
   max-width: 45%;
@@ -128,10 +132,10 @@
 }
 .logo__link,
 .logo__slogan {
-  flex: 0 0 auto;
   max-width: 100%;
 }
 .logo__link {
+  flex: 0 0 auto;
   @extend %fx-centered-y;
   color: $color-textHeader;
 }
@@ -149,6 +153,7 @@
   font-weight: 800;
 }
 .logo__slogan {
+  flex: 0 1 auto;
   font-weight: 500;
   font-size: 0.875rem;
 }
@@ -165,14 +170,6 @@
 .bcart__button {
   border-color: $color-sep;
   color: inherit;
-
-  &:hover {
-  }
-  svg {
-    position: relative;
-    top: 0.1em;
-    left: -0.1em;
-  }
 }
 .bcart__button--active::after {
   content: "";
@@ -185,8 +182,8 @@
   right: 50%;
   transform: translate(125%, -110%);
 }
-.mheader--v2 {
-  .mheader__bg {
+.header--v2 {
+  .header__bg {
     color: #fff;
 
     .connect {
@@ -204,8 +201,8 @@
     }
   }
 }
-.mheader--v3 {
-  .mheader__bg {
+.header--v3 {
+  .header__bg {
     background-color: $color-bg;
   }
 
@@ -238,19 +235,26 @@
   }
 }
 @media (min-width: $break-md) {
+  .header .connect {
+    .dropdown__body {
+      min-width: calc(100% + 2.5rem);
+      left: auto;
+      right: -0.25rem;
+    }
+  }
   .mheader__row {
-    padding-bottom: 1.25rem;
-    padding-top: 1.125rem;
+    padding-bottom: 1rem;
+    padding-top: 1.1875rem;
   }
   .mheader__contents__wrap {
     max-width: 69.675%;
     margin-left: 0;
   }
   .mheader__logo {
-    flex-basis: 28%;
+    flex-basis: 25%;
   }
   .mheader__contacts {
-    max-width: 56%;
+    max-width: 58%;
   }
   .mheader__callback {
     display: none;
@@ -275,10 +279,6 @@
       font-weight: 800;
       font-size: 0.875rem;
     }
-    .dropdown__body {
-      left: auto;
-      right: -0.25rem;
-    }
     .connect__list {
       margin-bottom: 1.25rem;
 
@@ -292,10 +292,11 @@
   }
   .mheader__addresses,
   .mheader__callback {
-    max-width: 40%;
+    max-width: 50%;
     max-width: calc(100% - 13rem);
   }
   .mheader__addresses {
+    flex: 1 1 auto;
     .connect {
       align-items: center;
     }
@@ -309,7 +310,7 @@
   .logo__text {
     font-size: 1.25rem;
   }
-  .mheader--v2 {
+  .header--v2 {
     .mheader__phones .dropdown__toggle {
       color: inherit;
     }
@@ -320,7 +321,7 @@
       display: block;
     }
   }
-  .mheader--v3 {
+  .header--v3 {
     .mheader__logo {
       order: -2;
     }
@@ -350,7 +351,7 @@
     }
   }
   .header__phones {
-    max-width: 14rem;
+    max-width: 15rem;
 
     .dropdown__icon {
       align-self: flex-start;
@@ -367,25 +368,21 @@
     }
   }
   .header__addresses {
-    max-width: calc(100% - 14rem);
-  }
-  .header__site-nav {
-    &.nav--overflown {
-      padding-right: 1.5rem;
-    }
-    &.nav--handled {
-      flex-grow: 0;
-    }
+    flex-shrink: 1;
+    max-width: 62%;
   }
   .logo__text {
     font-size: 1.5rem;
   }
-  .dheader--v2 {
-    .dheader__bg {
-      color: #fff;
+  .bcart__button {
+    svg {
+      position: relative;
+      top: 0.1em;
+      left: -0.1em;
     }
+  }
+  .header--v2 {
     .header__logo {
-      --custom-color-2: #fff;
       margin-top: 0.625rem;
       margin-bottom: 0.625rem;
     }
@@ -396,22 +393,138 @@
     .header__addresses {
       max-width: 38%;
     }
-    .header__callback {
-      max-width: calc(100% - 38% - 14rem);
-    }
     .divider {
       opacity: 0.15;
+    }
+    .header__bottom {
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header__primary-nav {
+      flex-basis: 81%;
+      max-width: 81%;
+      margin-left: 0;
+    }
+    .primary-nav {
+      justify-content: flex-start;
+      color: #fff;
+      font-size: 1rem;
+    }
+    .primary-nav > .primary-nav__list {
+      justify-content: flex-start;
+      height: 3.6875rem;
+    }
+    .primary-nav__item {
+      padding-right: 1.875rem;
+    }
+    .expand__body .primary-nav__item,
+    .nav--extra li {
+      padding-right: 0;
+    }
+    .primary-nav__link {
+      padding-top: 1.125rem;
+      padding-bottom: 1.125rem;
+    }
+    .primary-nav--extra .primary-nav__link {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+    .expand__body .primary-nav__link {
+      padding-top: 0.375rem;
+      padding-bottom: 0.375rem;
+    }
+    .primary-nav--extra .dropdown__body {
+      font-size: 1rem;
+    }
+    .primary-nav--extra > .dropdown__toggle {
+      background: rgba(255, 255, 255, 0.1);
+      height: 2.1875rem;
+      width: 2.1875rem;
+    }
+    .search__toggle {
+      height: 3rem;
+      width: 3rem;
+
+      svg {
+        height: 1.25rem;
+        width: 1.25rem;
+      }
+    }
+    .bcart__button {
+      border-color: rgba(0, 0, 0, 0);
+      width: 1.5625rem;
+    }
+  }
+  .header__connects__row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: -1.25rem;
+    margin-right: -1.25rem;
+  }
+  .header__connects__col {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  .header--v3 {
+    .header__bg {
+      background-color: $color-bg;
+    }
+    .header__top {
+      justify-content: space-between;
+    }
+    .header__connects {
+      flex-basis: auto;
+      max-width: 63%;
+    }
+    .connect {
+      font-size: 0.875rem;
+    }
+    .header__addresses {
+      max-width: 65%;
+    }
+    .header__socials {
+      margin-top: 0.625rem;
+      margin-bottom: 0.625rem;
+      margin-left: -0.375rem;
+      margin-right: -0.375rem;
+    }
+    .header__socials .socials__list {
+      margin-bottom: -0.5rem;
+    }
+    .header__socials .socials__item {
+      padding-left: 0.375rem;
+      padding-right: 0.375rem;
+    }
+    .socials__link {
+      background-color: $color-sep;
+    }
+    .header__search {
+      margin-top: 0.375rem;
+      margin-bottom: 0.375rem;
+    }
+    .search__toggle {
+      border-radius: 27px 3px 3px 27px;
+      color: #fff;
+      height: 2.25rem;
+      width: 2.25rem;
+
+      &:hover {
+        color: #fff;
+      }
     }
   }
 }
 @media (max-width: $break-xl) {
-  .header__top__col {
-    flex-basis: 39%;
-    max-width: 39%;
-  }
-  .header__connects {
-    flex-basis: 61%;
-    max-width: 61%;
+  .header--v1 {
+    .header__top__col {
+      flex-basis: 39%;
+      max-width: 39%;
+    }
+    .header__connects {
+      flex-basis: 61%;
+      max-width: 61%;
+    }
   }
   .dheader .logo__slogan {
     display: none;
@@ -421,6 +534,10 @@
   .header__logo {
     flex-basis: auto;
     max-width: 36%;
+  }
+  .header--v2 .header__connects {
+    flex-basis: 100% - 36%;
+    max-width: 100% - 36%;
   }
   .header__phones {
     .connect__text {

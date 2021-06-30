@@ -12,6 +12,10 @@
   justify-content: space-between;
   padding: 0.4375rem 0;
 
+  &:hover {
+    text-decoration: none;
+  }
+
   &:focus-visible {
     outline-offset: -2px;
   }
@@ -70,11 +74,6 @@
 .nav--extra {
   display: none;
   align-items: center;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 1;
 
   .dropdown__body {
     padding: 0.75rem 0;
@@ -117,13 +116,21 @@
 }
 @media (min-width: $break-lg) {
   .primary-nav {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
     font-size: 1.125rem;
     padding: 0;
   }
   .primary-nav > .primary-nav__list {
+    flex: 1 0 auto;
     justify-content: flex-end;
     height: 5.3125rem;
     overflow: hidden;
+  }
+  .nav--overflown.primary-nav > .primary-nav__list {
+    flex-grow: 0;
+    max-width: calc(100% - 3rem);
   }
   .primary-nav__item {
     padding-right: 1.5rem;
@@ -149,7 +156,7 @@
     }
   }
   .expand__icon {
-    margin-left: 0.5rem;
+    margin-left: 0.25rem;
 
     svg {
       width: 0.5rem;
@@ -178,8 +185,6 @@
     content: none;
   }
   .nav--overflown {
-    padding-right: 3rem;
-
     .nav--extra {
       display: flex;
     }
