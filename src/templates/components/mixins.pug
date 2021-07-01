@@ -69,50 +69,70 @@ mixin socials
       title: "Написать в Whatsapp"
     }
   ];
+mixin icon-tg
+  include ../../images/inline-svgs/tg.svg
+mixin icon-viber
+  include ../../images/inline-svgs/viber.svg
+mixin icon-whatsapp
+  include ../../images/inline-svgs/whatsapp.svg
 mixin messengers
   .messengers
     .messengers__list
       each item in msngrs
         .messengers__item
-          a.messengers__link(href="", title= item.title, class= "messengers__link--" + item.name)
+          a.messengers__link(href="", title= item.title, class="messengers__link--" + item.name)
+            .messengers__icon
+              +#{"icon-" + item.name}
             .messengers__text= item.title
 -
   var cnncts = {
     phones: [
-      //- {
-      //-   number: "+7 (351) 778-88-00 доб. 153",
-      //-   link: "+73512250755",
-      //-   descr: "call-центр"
-      //- },
       {
-        number: "+7 (351) 225-07-55",
+        value: "+7 (351) 225-07-55",
         link: "+73512250755",
         label: "call-центр"
       },
-      {
-        number: "+7 (351) 225-07-56",
-        label: "Отдел доставки",
-        descr: "работаем 10:00 - 20:00",
-        link: "+73512250756"
-      },
-      {
-        number: "+7 (351) 778-88-00 доб. 123",
-        label: "Бухгалтерия",
-        link: "+73517788800"
-      },
-      {
-        number: "+7 (351) 778-88-10",
-        label: "Директор Длиннофамильцев Имярек Отчествович",
-        link: "+73512250756"
-      }
+      //- {
+      //-   value: "+7 (351) 225-07-56",
+      //-   label: "Отдел доставки",
+      //-   descr: "работаем 10:00 - 20:00",
+      //-   link: "+73512250756"
+      //- },
+      //- {
+      //-   value: "+7 (351) 778-88-00 доб. 123",
+      //-   label: "Бухгалтерия",
+      //-   link: "+73517788800"
+      //- },
+      //- {
+      //-   value: "+7 (351) 778-88-10",
+      //-   label: "Директор Длиннофамильцев Имярек Отчествович",
+      //-   link: "+73512250756"
+      //- }
     ],
     emails: [
-      "info@zetrade.com",
-      //- "dlinnofamiltsev@zetrade.com"
+      {
+        value: "info@zetrade.com"
+      },
+      {
+        value: "dlinnofamiltsev@zetrade.com"
+      }
     ],
     addresses: [
-      "г.Челябинск, ул. Артиллерийская, д. 1",
-      "Российская Федерация, Челябинская область, г. Челябинск, ул. Артиллерийская, стр. 1, корпус 14, офис 202а"
+      {
+        value: "г.Челябинск, ул. Артиллерийская, д. 1",
+        descr: "Пн - Пт: 9.00 - 18.00 Сб - Вс: выходные"
+      },
+      //- {
+      //-   value: "Российская Федерация, Челябинская область, г. Челябинск, ул. Артиллерийская, стр. 1, корпус 14, офис 202а",
+      //-   descr: "Пн - Пт: 9.00 - 18.00 Сб - Вс: выходные"
+      //- },
+      //- {
+      //-   value: "г. Екатеринбург, ул. Новоградская, 3, офис 123",
+      //-   descr: "Какая-то подпись, если надо"
+      //- },
+      //- {
+      //-   value: "г. Екатеринбург, ул. 1-ая Электровозная, 3, офис 123"
+      //- }
     ]
   };
 mixin connectList(type, noFirst)
@@ -123,12 +143,41 @@ mixin connectList(type, noFirst)
         .connect__item
           case type
             when "phones"
-              a.connect__text(href= "tel:" + item.link)= item.number
+              a.connect__text(href= "tel:" + item.link)= item.value
             when "emails"
-              a.connect__text(href="mailto:" + item)= item
+              a.connect__text(href="mailto:" + item.value)= item.value
             default
-              .connect__text= item
-          if item.label
-            .connect__label= item.label
-          if item.descr
-            .connect__descr= item.descr
+              .connect__text= item.value
+          if cnncts[type].length > 1
+            if item.label
+              .connect__label= item.label
+            if item.descr
+              .connect__descr= item.descr
+- var logoImage = require("/src/images/theme-images/logo-sq.png");
+mixin logo
+  .logo
+    a.logo__link(href="/")
+      .logo__image
+        include ../../images/theme-images/logo.svg
+      //-   img(src= logoImage)
+      //- .logo__text ZE Строй
+    .logo__slogan Selling the best goods on Earth since 1900
+mixin connectsDropdown(type)
+  .connect(class=type)
+    if cnncts[type].length > 1
+      .dropdown
+        case type
+          when "phones"
+            a.dropdown__toggle(href=cnncts[type][0].link)= cnncts[type][0].value
+          when "addresses"
+            button.dropdown__toggle= cnncts[type][0].value
+        .dropdown__icon
+          include ../../images/inline-svgs/dropdown.svg
+        .dropdown__body
+          case type
+            when "phones"
+              +connectList(type)
+            when "addresses"
+              +connectList(type, true)
+    else
+      +connectList(type)

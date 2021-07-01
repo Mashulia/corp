@@ -197,6 +197,7 @@ window.addEventListener("load", function () {
     this.closest(".mheader").classList.remove("mheader--opened");
   }
   function createPageOverlay() {
+    console.log("created");
     let pageOverlay = document.createElement("div");
     pageOverlay.classList.add("page-overlay");
     document.getElementsByClassName("corp")[0].appendChild(pageOverlay);

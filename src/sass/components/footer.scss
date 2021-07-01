@@ -125,9 +125,13 @@
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 2.5rem;
     color: rgba(255, 255, 255, 0.6);
-    padding-left: 2rem;
+    padding-left: 0.75rem;
     padding-right: 0.75rem;
     width: auto;
+  }
+  .messengers__icon {
+    color: #fff;
+    margin-right: 0.5rem;
   }
   .messengers__text {
     display: block;

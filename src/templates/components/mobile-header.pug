@@ -2,64 +2,36 @@ mixin mobile-header
   .mheader
     .header__bg
       .wrap
-        .mheader__row.cells
-          .mheader__logo.cell.cell-auto
-            .logo
-              a.logo__link(href="/")
-                .logo__image
-                  include ../../images/theme-images/logo.svg
-                //-   img(src= logoImage)
-                //- .logo__text ZE Строй
-          .mheader__contacts.cell.cell-auto
+        .header__row.cells
+          .header__logo.cell
+            +logo
+          .header__contacts.cell
             .cells.fx-align-center.fx-justify-center
-              .mheader__phones.cell.cell-auto
-                .phones.connect
-                  if cnncts.phones.length > 1
-                    .dropdown
-                      a.dropdown__toggle(href="tel:+73517788800")= cnncts.phones[0].number
-                        .dropdown__icon
-                          include ../../images/inline-svgs/dropdown.svg
-                      .dropdown__body
-                        +connectList("phones", true)
-                        .callback
-                          button.button.button-secondary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
-                  else
-                    +connectList("phones", false)
-              .mheader__callback.cell.cell-auto
+              .header__phones.cell.cell-auto
+                +connectsDropdown("phones")
+              .header__callback.cell.cell-auto
                 button.button.button-primary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
-              .mheader__addresses.cell.cell-auto
-                .addresses.connect
-                  if cnncts.addresses.length > 1
-                    .dropdown
-                      button.dropdown__toggle= cnncts.addresses[0]
-                        .dropdown__icon
-                          include ../../images/inline-svgs/dropdown.svg
-                      .dropdown__body
-                        +connectList("addresses", true)
+              .header__addresses.cell
+                +connectsDropdown("addresses")
           .cell.cell-auto
             .cells.fx-align-center
-              .mheader__bcart.cell.cell-auto
+              .header__bcart.cell.cell-auto
                 .bcart
                   a.button.button-icon.bcart__button.bcart__button--active(title="Перейти в корзину", href="cart.html")
                     include ../../images/inline-svgs/cart-icon.svg
-              .mheader__opener.cell.cell-auto
+              .cell.cell-auto
                 button.header__opener(title="Показать меню")
                   include ../../images/inline-svgs/menu.svg
-    .mheader__contents
+    .header__contents
       .wrap
-        .mheader__row.cells
-          .mheader__logo.cell
-            .logo
-              a.logo__link(href="/")
-                .logo__image
-                  include ../../images/theme-images/logo.svg
-                //-   img(src= logoImage)
-                //- .logo__text ZE Строй
+        .header__row.cells
+          .header__logo.cell
+            +logo
           .cell.cell-auto
             button.header__closer(title="Скрыть меню")
               include ../../images/inline-svgs/menu-close.svg
       hr.divider
-      .wrap.mheader__contents__wrap
+      .wrap.header__contents__wrap
         nav.primary-nav
           include primary-nav.pug
         .search
@@ -72,7 +44,7 @@ mixin mobile-header
               .search__text Найти
         .phones.connect
           +connectList("phones")
-        .mheader__messengers
+        .header__messengers
           +messengers
         .addresses.connect
           +connectList("addresses")

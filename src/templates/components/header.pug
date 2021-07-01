@@ -1,4 +1,3 @@
-- var logoImage = require("/src/images/theme-images/logo-sq.png");
 mixin header-var(hvar="header--v1")
   .header(class=hvar)
     include mobile-header.pug
@@ -8,7 +7,7 @@ mixin header-var(hvar="header--v1")
         when "header--v1"
           .wrap
             .cells.header__top
-              .cell.header__top__col.cell-xl-5
+              .header__top__col.cell.cell-xl-5
                 .display-flex.fx-align-center
                   nav.header__site-nav.site-nav
                     include site-nav.pug
@@ -26,11 +25,11 @@ mixin header-var(hvar="header--v1")
                     .phones.connect
                       if cnncts.phones.length > 1
                         .dropdown
-                          a.dropdown__toggle(href="tel:+73517788800")= cnncts.phones[0].number
+                          a.dropdown__toggle(href="tel:+73517788800")= cnncts.phones[0].value
                             .dropdown__icon
                               include ../../images/inline-svgs/dropdown.svg
                           .dropdown__body
-                            +connectList("phones", true)
+                            +connectList("phones")
                             .callback
                               button.button.button-secondary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
                       else
@@ -39,22 +38,19 @@ mixin header-var(hvar="header--v1")
                     .addresses.connect
                       if cnncts.addresses.length > 1
                         .dropdown
-                          a.dropdown__toggle(href="tel:+73517788800")= cnncts.addresses[0]
+                          button.dropdown__toggle= cnncts.addresses[0].value
                             .dropdown__icon
                               include ../../images/inline-svgs/dropdown.svg
                           .dropdown__body
                             +connectList("addresses", true)
+                      else
+                        +connectList("addresses")
             hr.divider
             .header__body
               .cells.fx-align-center
                 .header__logo.cell.cell-lg-3
                   .logo
-                    a.logo__link(href="/")
-                      .logo__image
-                        include ../../images/theme-images/logo.svg
-                      //-   img(src= logoImage)
-                      //- .logo__text ZE Строй
-                    .logo__slogan Selling the best goods on Earth since 1900
+                    +logo
                 .header__primary-nav.cell.cell-lg-8
                   nav.primary-nav
                     include primary-nav.pug
@@ -69,32 +65,20 @@ mixin header-var(hvar="header--v1")
                 .cells.fx-align-center
                   .header__logo.cell.cell-lg-3
                     .logo
-                      a.logo__link(href="/")
-                        .logo__image
-                          include ../../images/theme-images/logo.svg
-                        //-   img(src= logoImage)
-                        //- .logo__text ZE Строй
-                      .logo__slogan Selling the best goods on Earth since 1900
+                      +logo
                   .header__connects.cell.cell-lg-9
                     .header__connects__row
                       .header__addresses.header__connects__col
-                        .addresses.connect
-                          if cnncts.addresses.length > 1
-                            .dropdown
-                              a.dropdown__toggle(href="tel:+73517788800")= cnncts.addresses[0]
-                                .dropdown__icon
-                                  include ../../images/inline-svgs/dropdown.svg
-                              .dropdown__body
-                                +connectList("addresses", true)
+                        +connectsDropdown("addresses")
                       .header__phones.header__connects__col
                         .phones.connect
                           if cnncts.phones.length > 1
                             .dropdown
-                              a.dropdown__toggle(href="tel:+73517788800")= cnncts.phones[0].number
+                              a.dropdown__toggle(href="tel:+73517788800")= cnncts.phones[0].value
                                 .dropdown__icon
                                   include ../../images/inline-svgs/dropdown.svg
                               .dropdown__body
-                                +connectList("phones", true)
+                                +connectList("phones")
                                 .callback
                                   button.button.button-secondary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
                           else
@@ -126,26 +110,29 @@ mixin header-var(hvar="header--v1")
                       .addresses.connect
                         if cnncts.addresses.length > 1
                           .dropdown
-                            button.dropdown__toggle= cnncts.addresses[0]
+                            button.dropdown__toggle= cnncts.addresses[0].value
                               .dropdown__icon
                                 include ../../images/inline-svgs/dropdown.svg
                             .dropdown__body
                               +connectList("addresses", true)
+                        else
+                          +connectList("addresses")
                     .header__phones.cell.cell-auto
                       .phones.connect
                         if cnncts.phones.length > 1
                           .dropdown
-                            a.dropdown__toggle(href="tel:+73517788800")= cnncts.phones[0].number
+                            a.dropdown__toggle(href="tel:+73517788800")= cnncts.phones[0].value
                               .dropdown__icon
                                 include ../../images/inline-svgs/dropdown.svg
                             .dropdown__body
-                              +connectList("phones", true)
+                              +connectList("phones")
                               .callback
                                 button.button.button-secondary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
                         else
                           +connectList("phones")
                 .cell.cell-auto.header__socials
                   +socials
+                  +messengers
                 .cell.cell-auto.header__search
                   button.search__toggle.button.button-icon
                     include ../../images/inline-svgs/search.svg
