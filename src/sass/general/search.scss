@@ -34,6 +34,10 @@
   }
   .form__input {
     padding-right: 3rem;
+
+    @media (min-width: $break-xl) {
+      padding-right: 6.5rem;
+    }
   }
   .form__submit {
     border-radius: 27px 3px 3px 27px;
@@ -90,7 +94,6 @@
   max-width: $col-width * 10;
 
   .form__input {
-    background-color: #fff;
     font-size: 1.25rem;
   }
   .form__submit {
@@ -100,8 +103,5 @@
     top: 0.5rem;
     bottom: 0.5rem;
     right: 0.5rem;
-  }
-  .button__icon {
-    margin-right: 0.5rem;
   }
 }

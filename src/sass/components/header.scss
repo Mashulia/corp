@@ -30,7 +30,6 @@
   max-width: 100%;
 }
 .logo__link {
-  flex: 0 0 auto;
   @extend %fx-centered-y;
   color: $color-textHeader;
 }
@@ -38,13 +37,14 @@
   flex-shrink: 0;
   min-width: 3rem;
   margin-right: 1rem;
-  width: 100%;
 
   &:last-child {
     margin-right: 0;
+    width: 100%;
   }
 }
 .logo__text {
+  font-size: 1.25rem;
   font-weight: 800;
 }
 .logo__slogan {
@@ -80,8 +80,12 @@
     --custom-color-2: #fff;
     color: #fff;
 
-    .connect {
+    .connect,
+    .logo__link {
       color: #fff;
+    }
+    .dropdown__body {
+      color: $color-textHeader;
     }
     .bcart,
     .header__opener {
@@ -101,13 +105,12 @@
 @media (min-width: $break-md) {
   .header .connect {
     .dropdown__body {
-      min-width: calc(100% + 2.5rem);
-      left: auto;
-      right: -0.25rem;
+      min-width: calc(100% + 2.75rem);
+      left: -2.5rem;
     }
   }
   .logo__text {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 }
 @media (min-width: $break-lg) {
@@ -116,25 +119,15 @@
   }
   .header__top {
     align-items: center;
-  }
-  .header__search {
-    .search__form {
-      width: 100%;
-      max-width: 40rem;
-    }
-    .search__close {
-      display: block;
-      position: absolute;
-      top: -4rem;
-      right: -0.75rem;
-    }
+    min-height: 3rem;
   }
   .header__body {
+    align-items: center;
+    min-height: 5.4375rem;
     padding: 0;
   }
   .header__search {
     flex-shrink: 0;
-    margin: auto 0;
   }
   .header__site-nav {
     flex-grow: 1;
@@ -145,15 +138,8 @@
       width: 2rem;
     }
   }
-  .header__connects {
-    margin: 0.75rem 0;
-  }
   .header__phones .dropdown__body .connect__list {
     margin-bottom: 1.25rem;
-  }
-  .header__logo {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
   }
   .hoverable .expand:hover > .expand__body {
     display: block;
@@ -169,15 +155,11 @@
     }
   }
   .header__phones {
-    max-width: 30%;
     .dropdown__icon {
       align-self: flex-start;
       top: 0.25em;
     }
     .dropdown__body {
-      left: auto;
-      right: -0.25rem;
-
       .button-callback {
         min-height: 0;
         padding: 0.4375rem 0.9375rem;
@@ -188,7 +170,7 @@
     max-width: 70%;
   }
   .logo__text {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
   .bcart__button {
     svg {
@@ -198,15 +180,15 @@
     }
   }
   .header--v2 {
-    .header__logo {
-      margin-top: 0.625rem;
-      margin-bottom: 0.625rem;
+    .header__body {
+      min-height: 4.75rem;
     }
     .header__addresses .dropdown__toggle,
     .header__phones .dropdown__toggle {
       color: #fff;
     }
     .header__addresses {
+      display: block;
       max-width: 50%;
     }
     .divider {
@@ -215,6 +197,7 @@
     .header__bottom {
       align-items: center;
       justify-content: space-between;
+      min-height: 3.6875rem;
     }
     .header__primary-nav {
       flex-basis: 81%;
@@ -283,11 +266,9 @@
     padding-right: 1.25rem;
   }
   .header--v3 {
-    .header__bg {
-      background-color: $color-bg;
-    }
     .header__top {
       justify-content: space-between;
+      min-height: 3.0625rem;
     }
     .header__connects {
       flex: 1 1 50%;
@@ -308,9 +289,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-top: 0.625rem;
-      margin-bottom: 0.625rem;
 
+      &:first-child {
+        justify-content: flex-start;
+      }
       .socials__list,
       .messengers__list {
         flex-wrap: nowrap;
@@ -335,7 +317,6 @@
     }
     .messengers__item {
       margin-right: 0;
-      margin-bottom: 0.5rem;
       padding-left: 0.25rem;
       padding-right: 0.25rem;
     }
@@ -347,10 +328,6 @@
         width: 0.875rem;
       }
     }
-    .header__search {
-      margin-top: 0.375rem;
-      margin-bottom: 0.375rem;
-    }
     .search__toggle {
       border-radius: 27px 3px 3px 27px;
       color: #fff;
@@ -360,6 +337,9 @@
       &:hover {
         color: #fff;
       }
+    }
+    .search__form {
+      display: none;
     }
   }
 }
@@ -393,7 +373,7 @@
     margin-right: 2.5rem;
   }
   .logo__text {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   .logo__slogan {
     display: block;
@@ -411,5 +391,34 @@
   .header--v2 .header__primary-nav {
     flex-basis: 90%;
     max-width: 90%;
+  }
+  .header--v3 {
+    .header__connects {
+      flex-basis: 33.333%;
+      max-width: 40%;
+    }
+    .header__search {
+      flex-basis: 30%;
+    }
+    .search__toggle {
+      display: none;
+    }
+    .search__form {
+      display: block;
+
+      .form__input {
+        font-size: 0.875rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        padding-right: 3rem;
+
+        &:not(:focus) {
+          border-color: #fff;
+        }
+      }
+      .button__body {
+        display: none;
+      }
+    }
   }
 }

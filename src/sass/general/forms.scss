@@ -3,17 +3,27 @@
   margin-bottom: 1rem;
 }
 .form__input {
-  background: transparent;
+  background: #fff;
   border: 1px solid $color-sep;
   border-radius: $brad-2;
+  color: inherit;
   padding: 0.5em 1.25em;
   width: 100%;
 
   &:focus {
     outline: none;
   }
+  &::placeholder {
+    color: $color-text2;
+  }
 }
 .form__submit {
   color: #fff;
   padding: 0.5rem 1rem;
+}
+@media (min-width: $break-lg) {
+  .form__input {
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+  }
 }

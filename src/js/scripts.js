@@ -197,7 +197,6 @@ window.addEventListener("load", function () {
     this.closest(".mheader").classList.remove("mheader--opened");
   }
   function createPageOverlay() {
-    console.log("created");
     let pageOverlay = document.createElement("div");
     pageOverlay.classList.add("page-overlay");
     document.getElementsByClassName("corp")[0].appendChild(pageOverlay);
@@ -219,6 +218,7 @@ window.addEventListener("load", function () {
   var searchToggles = document.getElementsByClassName("search__toggle");
   var searchBody = document.querySelector(".popup-search");
   var searchClose = searchBody ? searchBody.querySelector(".search__close") : 0;
+  let searchBodyButtons = searchBody.querySelectorAll("button");
 
   function toggleSearch() {
     searchBody.classList.toggle("popup-search--opened");
@@ -226,7 +226,13 @@ window.addEventListener("load", function () {
       let pageOverlay = createPageOverlay();
       pageOverlay.addEventListener("click", closeSearchPopup);
       searchBody.querySelector("input").focus({ preventScroll: true });
+      for (let i = 0; i < searchBodyButtons.length; i++) {
+        searchBodyButtons[i].setAttribute("tabindex", 0);
+      }
     } else {
+      for (let i = 0; i < searchBodyButtons.length; i++) {
+        searchBodyButtons[i].setAttribute("tabindex", -1);
+      }
       let pageOverlay = document.getElementsByClassName("page-overlay")[0];
       if (pageOverlay) {
         pageOverlay.removeEventListener("click", closeSearchPopup);
@@ -613,7 +619,6 @@ window.addEventListener("load", function () {
     // fonts influence elements' sizes, so wait till font has loaded and then fix the menu overflow
     document.fonts.load('1rem "Manrope"').then(
       () => {
-        console.log("font loaded");
         for (let i = 0; i < primaryNavs.length; i++) {
           handleNavOverflow(primaryNavs[i], 48);
         }
@@ -622,7 +627,6 @@ window.addEventListener("load", function () {
         }
       },
       () => {
-        console.log("font not loaded");
         for (let i = 0; i < primaryNavs.length; i++) {
           handleNavOverflow(primaryNavs[i], 40);
         }
@@ -643,15 +647,14 @@ window.addEventListener("load", function () {
   }).mask(telSelector);
 
   let toTopElem = document.querySelector(".to-top");
+  let toTopLink = toTopElem.querySelector(".to-top__link");
   // document.querySelector(".footer").offsetTop - window.innerHeight - point at which one can see footer
   let footerElm = document.querySelector(".footer");
   if (toTopElem) {
-    toTopElem
-      .querySelector(".to-top__link")
-      .addEventListener("click", function (e) {
-        e.preventDefault();
-        window.scrollTo(0, 0);
-      });
+    toTopLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      window.scrollTo(0, 0);
+    });
 
     this.window.onscroll = function (event) {
       delay(function () {
@@ -676,6 +679,7 @@ window.addEventListener("load", function () {
       document.documentElement.scrollTop > 400
     ) {
       toTopElem.classList.add("to-top--visible");
+      toTopLink.setAttribute("tabindex", "0");
       if (
         document.body.scrollTop > fixinPoint ||
         document.documentElement.scrollTop > fixinPoint
@@ -685,10 +689,28 @@ window.addEventListener("load", function () {
         toTopElem.classList.remove("to-top--footed");
       }
     } else {
+      toTopLink.setAttribute("tabindex", "-1");
       toTopElem.classList.remove("to-top--visible");
       toTopElem.classList.remove("to-top--footed");
     }
   }
+
+  class sectionNavigator {
+    constructor(el) {
+      Object.assign(this, {
+        $wrapper: el
+      });
+      this.$trigger = this.$wrapper.querySelector(".snavigation__toggle");
+      this.$trigger.onclick = () => this.toggle();
+    }
+    toggle() {
+      this.$wrapper.classList.toggle(`snavigation--opened`);
+    }
+  }
+
+  document.querySelectorAll(".snavigation").forEach((el) => {
+    new sectionNavigator(el);
+  });
 
   // functions on resize
   window.onresize = function (event) {

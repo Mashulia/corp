@@ -1,15 +1,85 @@
 extends ../layout
 
-block content
-  main.main
-    h1 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-    p.
-      Quas iusto laborum qui quibusdam ipsa, nesciunt ex dolorum repellendus accusantium, provident consequuntur aliquam necessitatibus.
-      Pariatur facere debitis nostrum modi quod eius.
-    p.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Odio corporis a molestias illum voluptas numquam alias veniam qui aut laborum doloremque, repudiandae ea sit dolorum in adipisci nam ipsum ducimus!
-      Quae nam quod dicta temporibus voluptatum a deleniti veniam rerum possimus perferendis reiciendis, nobis deserunt explicabo libero odio!
-      Rem facere laboriosam nesciunt nemo labore omnis numquam impedit. Numquam, quod quisquam?
-      Eligendi officia nam earum delectus, ad harum rem rerum recusandae commodi, obcaecati voluptatem hic, eius autem ipsa accusamus aliquam?
-      At temporibus omnis perspiciatis ratione quia, odio nobis blanditiis impedit aspernatur!
+block title
+  - var pageTitle = 'Компания «Ze Строй»';
+  - var crumbs = [];
+  +page-header(pageTitle, crumbs)
+block contentBody
+  div
+    img(src=require("/src/images/content-images/about-1.jpg"))
+  p.
+    Компания «Ze Строй» основана в апреле 2016 года. Мы строим малоэтажные дома — коттеджи, таунхаусы,
+    беседки, бани, а также возводим промышленные объекты.
+  p.
+    Наш конек — это дома под ключ и коттеджные поселки. Мы берем на себя весь цикл работ –
+    от разработки проекта и закладки фундамента до внутренней отделки.
+    Но если нужно, сможем реализовать любой проект малоэтажного здания за авторством другого архитектора или дизайнера.
+  h2 Строительство домов и продажа строительных материалов
+  p.
+    В своём стремлении улучшить пользовательский опыт мы упускаем,
+    что диаграммы связей освещают чрезвычайно интересные особенности картины в целом,
+    однако конкретные выводы, разумеется, ограничены исключительно образом мышления.
+    Интерактивные прототипы формируют глобальную экономическую сеть и при этом -
+    рассмотрены исключительно в разрезе маркетинговых и финансовых предпосылок.
+    Постоянный количественный рост и сфера нашей активности прекрасно подходит для реализации позиций,
+    занимаемых участниками в отношении поставленных задач. Сложно сказать, почему диаграммы связей,
+    которые представляют собой яркий пример континентально-европейского типа политической культуры,
+    будут заблокированы в рамках своих собственных рациональных ограничений.
+  h3 Почему мы?
+  p.
+    Мы производим стройматериалы в Челябинске и осуществляем их доставку по городу и области. Почему стоит выбрать имеено нас?:
+  ul
+    li
+      b Наша репутация говорит за нас.
+      | Мы завоевали уважение и доверие сотен клиентов на Челябинском рынке;
+    li
+      b Мы всегда идём на встречу заказчику,
+      | делая ему самые выгодные и интересные предложения по сотрудничеству;
+    li
+      b Мы – профессионалы своего дела.
+      | Более чем за 7 лет мы полностью изучили рынок стройматериалов в Челябинске и области, а потому знаем, что Вам предложить.
+  h4 Мы предлагаем
+  p.
+    В своём стремлении улучшить пользовательский опыт мы упускаем,
+    что диаграммы связей освещают чрезвычайно интересные особенности картины в целом,
+    однако конкретные выводы, разумеется, ограничены исключительно образом мышления.
+    Интерактивные прототипы формируют глобальную экономическую сеть и при этом -
+    рассмотрены исключительно в разрезе маркетинговых и финансовых предпосылок.
+  h5 Производство строительных материалов
+  .float-right
+    img(src=require("/src/images/content-images/about-2.jpg"))
+  p.
+    В своём стремлении улучшить пользовательский опыт мы упускаем,
+    что диаграммы связей освещают чрезвычайно интересные особенности картины в целом,
+    однако конкретные выводы, разумеется, ограничены исключительно образом мышления.
+    Интерактивные прототипы формируют глобальную экономическую сеть и при этом -  рассмотрены исключительно в разрезе маркетинговых и финансовых предпосылок.
+block contentAside
+  -
+    var items = [
+      {
+        value: "О компании",
+        link: "about.html"
+      },
+      {
+        value: "Партнеры",
+        link: "partners.html"
+      },
+      {
+        value: "Отзывы клиентов",
+        link: "reviews.html"
+      },
+      {
+        value: "Сотрудники",
+        link: "stuff.html"
+      },
+      {
+        value: "Сертификаты и лицензии",
+        link: "certs.html"
+      },
+      {
+        value: "Реквизиты",
+        link: "reqs.html"
+      }
+    ];
+  - var currentIndex = 0;
+  +section-navi(pageTitle, items, currentIndex)

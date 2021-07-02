@@ -4,7 +4,7 @@
       .cell.cell-auto
         .popup-search__label Поиск
       .cell.cell-auto.popup-search__body
-        form.search__form.form(action="")
+        form#form_id.search__form.form(action="")
           label.form__field
             input.form__input(type="text", name="", placeholder="Введите запрос", tabindex="-1")
           button.form__submit.button(type="submit", tabindex="-1")
@@ -12,7 +12,7 @@
               include ../../images/inline-svgs/search.svg
             .button__body Найти
       .cell.cell-auto
-        button.button.button-icon.search__close(type="reset", title="Закрыть форму поиска", tabindex="-1")
+        button.button.button-icon.search__close(title="Закрыть форму поиска", tabindex="-1", form="form_id")
 .display-none#callback-form
   .custom-form.collapsing-form
     form(action="")

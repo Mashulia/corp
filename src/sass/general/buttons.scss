@@ -87,6 +87,9 @@
 .button-icon:focus-visible {
   color: #000;
 }
+.button__icon + .button__body {
+  margin-left: 0.5rem;
+}
 button.button:disabled,
 .button.button--loading {
   background-color: $color-sep;

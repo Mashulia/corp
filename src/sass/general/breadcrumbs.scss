@@ -1,0 +1,41 @@
+.breadcrumbs {
+  color: $color-text2;
+  display: none;
+  list-style: none;
+  margin: 0 0 0.5rem;
+  padding: 0;
+
+  .page-header--v1 & {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  @media (min-width: $break-lg) {
+    display: flex;
+  }
+}
+.breadcrumbs__item {
+  display: flex;
+  align-items: center;
+  margin-right: 0.5rem;
+
+  &::after {
+    content: "-";
+    margin-left: 0.5rem;
+  }
+  &:last-child {
+    margin-right: 0;
+
+    &::after {
+      content: none;
+    }
+  }
+}
+.breadcrumbs__link {
+  color: inherit;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.2;
+
+  &--current {
+    pointer-events: none;
+  }
+}

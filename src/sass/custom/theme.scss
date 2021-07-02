@@ -54,9 +54,9 @@ a,
 .button-secondary,
 .slick-arrow,
 .expand--opened > .expand__toggle,
-.connect .dropdown__toggle,
 .dropdown--opened:not(.nav--extra) > .dropdown__toggle,
-.footer__emails .connect__text {
+.footer__emails .connect__text,
+.snavigation__link--current {
   color: $custom-color-1;
 }
 .connect::before,
@@ -65,7 +65,11 @@ a,
 .news__date,
 .popup-search,
 .reviews__pic--empty,
-.header--v2 .header__bg {
+.header--v2 .header__bg,
+.addresses .dropdown__body .connect__item::before,
+.page-header__bg,
+.snavigation__toggle,
+.snavigation__link--current::before {
   background-color: $custom-color-2;
 }
 .hero__slider .slick-dots button,
@@ -158,6 +162,13 @@ a:active,
     $custom-color-2-s,
     $custom-color-2-l - 15,
     0.5
+  );
+}
+.snavigation__toggle {
+  background-image: radial-gradient(
+    12% 85% at 100% 7%,
+    hsla($custom-color-1-h, $custom-color-1-s, $custom-color-1-l, 0.3) 0%,
+    rgba(0, 0, 0, 0) 100%
   );
 }
 @media (max-width: 575px) {

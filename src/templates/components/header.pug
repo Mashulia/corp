@@ -7,7 +7,7 @@ mixin header-var(hvar="header--v1")
         when "header--v1"
           .wrap
             .cells.header__top
-              .header__top__col.cell.cell-xl-5
+              .header__top__col.cell.cell-xl-6
                 .display-flex.fx-align-center
                   nav.header__site-nav.site-nav
                     include site-nav.pug
@@ -19,73 +19,40 @@ mixin header-var(hvar="header--v1")
                   .header__search
                     button.search__toggle.button.button-icon
                       include ../../images/inline-svgs/search.svg
-              .header__connects.cell.cell-xl-7
+              .header__connects.cell.cell-xl-6
                 .cells.fx-justify-end.fx-align-center
                   .header__phones.cell.cell-auto
-                    .phones.connect
-                      if cnncts.phones.length > 1
-                        .dropdown
-                          a.dropdown__toggle(href="tel:+73517788800")= cnncts.phones[0].value
-                            .dropdown__icon
-                              include ../../images/inline-svgs/dropdown.svg
-                          .dropdown__body
-                            +connectList("phones")
-                            .callback
-                              button.button.button-secondary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
-                      else
-                        +connectList("phones")
+                    +connectsDropdown("phones")
                   .header__addresses.cell.cell-auto
-                    .addresses.connect
-                      if cnncts.addresses.length > 1
-                        .dropdown
-                          button.dropdown__toggle= cnncts.addresses[0].value
-                            .dropdown__icon
-                              include ../../images/inline-svgs/dropdown.svg
-                          .dropdown__body
-                            +connectList("addresses", true)
-                      else
-                        +connectList("addresses")
+                    +connectsDropdown("addresses")
             hr.divider
-            .header__body
-              .cells.fx-align-center
-                .header__logo.cell.cell-lg-3
-                  .logo
-                    +logo
-                .header__primary-nav.cell.cell-lg-8
-                  nav.primary-nav
-                    include primary-nav.pug
-                .cell.header__bcart.cell-lg-1
-                  .bcart
-                    a.button.button-icon.bcart__button.bcart__button--active(title="Перейти в корзину", href="cart.html")
-                      include ../../images/inline-svgs/cart-icon.svg
+            .header__body.cells
+              .header__logo.cell.cell-lg-3
+                .logo
+                  +logo
+              .header__primary-nav.cell.cell-lg-8
+                nav.primary-nav
+                  include primary-nav.pug
+              .cell.header__bcart.cell-lg-1
+                .bcart
+                  a.button.button-icon.bcart__button.bcart__button--active(title="Перейти в корзину", href="cart.html")
+                    include ../../images/inline-svgs/cart-icon.svg
         when "header--v2"
           .header__bg
             .wrap
-              .header__body
-                .cells.fx-align-center
-                  .header__logo.cell.cell-lg-3
-                    .logo
-                      +logo
-                  .header__connects.cell.cell-lg-9
-                    .header__connects__row
-                      .header__addresses.header__connects__col
-                        +connectsDropdown("addresses")
-                      .header__phones.header__connects__col
-                        .phones.connect
-                          if cnncts.phones.length > 1
-                            .dropdown
-                              a.dropdown__toggle(href="tel:+73517788800")= cnncts.phones[0].value
-                                .dropdown__icon
-                                  include ../../images/inline-svgs/dropdown.svg
-                              .dropdown__body
-                                +connectList("phones")
-                                .callback
-                                  button.button.button-secondary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
-                          else
-                            +connectList("phones")
-                      .header__connects__col.header__callback
-                        .callback
-                          button.button.button-primary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
+              .header__body.cells
+                .header__logo.cell.cell-lg-3
+                  .logo
+                    +logo
+                .header__connects.cell.cell-lg-9
+                  .header__connects__row
+                    .header__addresses.header__connects__col
+                      +connectsDropdown("addresses")
+                    .header__phones.header__connects__col
+                      +connectsDropdown("phones")
+                    .header__connects__col.header__callback
+                      .callback
+                        button.button.button-primary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
               hr.divider
               .cells.header__bottom
                 .header__primary-nav.cell
@@ -107,50 +74,30 @@ mixin header-var(hvar="header--v1")
                 .header__connects.cell
                   .cells.fx-align-center
                     .header__addresses.cell.cell-auto
-                      .addresses.connect
-                        if cnncts.addresses.length > 1
-                          .dropdown
-                            button.dropdown__toggle= cnncts.addresses[0].value
-                              .dropdown__icon
-                                include ../../images/inline-svgs/dropdown.svg
-                            .dropdown__body
-                              +connectList("addresses", true)
-                        else
-                          +connectList("addresses")
+                      +connectsDropdown("addresses")
                     .header__phones.cell.cell-auto
-                      .phones.connect
-                        if cnncts.phones.length > 1
-                          .dropdown
-                            a.dropdown__toggle(href="tel:+73517788800")= cnncts.phones[0].value
-                              .dropdown__icon
-                                include ../../images/inline-svgs/dropdown.svg
-                            .dropdown__body
-                              +connectList("phones")
-                              .callback
-                                button.button.button-secondary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
-                        else
-                          +connectList("phones")
+                      +connectsDropdown("phones")
                 .cell.cell-auto.header__socials
                   +socials
                   +messengers
                 .cell.cell-auto.header__search
                   button.search__toggle.button.button-icon
                     include ../../images/inline-svgs/search.svg
+                  form.search__form.form(action="")
+                    label.form__field
+                      input.form__input(type="text", name="", placeholder="Введите запрос")
+                    button.form__submit.button(type="submit")
+                      .button__icon
+                        include ../../images/inline-svgs/search.svg
+                      .button__body Найти
           .wrap
-            .header__body
-              .cells.fx-align-center
-                .header__logo.cell.cell-lg-3
-                  .logo
-                    a.logo__link(href="/")
-                      .logo__image
-                        include ../../images/theme-images/logo.svg
-                      //-   img(src= logoImage)
-                      //- .logo__text ZE Строй
-                    .logo__slogan Selling the best goods on Earth since 1900
-                .header__primary-nav.cell.cell-lg-8
-                  nav.primary-nav
-                    include primary-nav.pug
-                .cell.header__bcart.cell-lg-1
-                  .bcart
-                    a.button.button-icon.bcart__button.bcart__button--active(title="Перейти в корзину", href="cart.html")
-                      include ../../images/inline-svgs/cart-icon.svg
+            .header__body.cells
+              .header__logo.cell.cell-lg-3
+                +logo
+              .header__primary-nav.cell.cell-lg-8
+                nav.primary-nav
+                  include primary-nav.pug
+              .cell.header__bcart.cell-lg-1
+                .bcart
+                  a.button.button-icon.bcart__button.bcart__button--active(title="Перейти в корзину", href="cart.html")
+                    include ../../images/inline-svgs/cart-icon.svg

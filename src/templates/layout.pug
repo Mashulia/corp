@@ -15,7 +15,14 @@ html(lang="ru")
       block header
         include components/header
         +header-var
+      block title
       block content
+        .wrap
+          .content
+            .content__aside
+              block contentAside
+            .content__body
+              block contentBody
       block footer
         include components/footer
         include components/popups

@@ -4,13 +4,13 @@
   font-weight: 600;
   position: relative;
 
-  &.nav--overflown {
+  &.nav--handled {
     flex-grow: 0;
   }
 }
 .site-nav__list {
   flex: 1 0 auto;
-  color: $color-text2;
+  color: $color-text1;
 
   .nav--overflown & {
     max-width: calc(100% - 2rem);

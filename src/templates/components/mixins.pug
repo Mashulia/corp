@@ -92,22 +92,22 @@ mixin messengers
         link: "+73512250755",
         label: "call-центр"
       },
-      //- {
-      //-   value: "+7 (351) 225-07-56",
-      //-   label: "Отдел доставки",
-      //-   descr: "работаем 10:00 - 20:00",
-      //-   link: "+73512250756"
-      //- },
-      //- {
-      //-   value: "+7 (351) 778-88-00 доб. 123",
-      //-   label: "Бухгалтерия",
-      //-   link: "+73517788800"
-      //- },
-      //- {
-      //-   value: "+7 (351) 778-88-10",
-      //-   label: "Директор Длиннофамильцев Имярек Отчествович",
-      //-   link: "+73512250756"
-      //- }
+      {
+        value: "+7 (351) 225-07-56",
+        label: "Отдел доставки",
+        descr: "работаем 10:00 - 20:00",
+        link: "+73512250756"
+      },
+      {
+        value: "+7 (351) 778-88-00 доб. 123",
+        label: "Бухгалтерия",
+        link: "+73517788800"
+      },
+      {
+        value: "+7 (351) 778-88-10",
+        label: "Директор Длиннофамильцев Имярек Отчествович",
+        link: "+73512250756"
+      }
     ],
     emails: [
       {
@@ -122,17 +122,17 @@ mixin messengers
         value: "г.Челябинск, ул. Артиллерийская, д. 1",
         descr: "Пн - Пт: 9.00 - 18.00 Сб - Вс: выходные"
       },
-      //- {
-      //-   value: "Российская Федерация, Челябинская область, г. Челябинск, ул. Артиллерийская, стр. 1, корпус 14, офис 202а",
-      //-   descr: "Пн - Пт: 9.00 - 18.00 Сб - Вс: выходные"
-      //- },
-      //- {
-      //-   value: "г. Екатеринбург, ул. Новоградская, 3, офис 123",
-      //-   descr: "Какая-то подпись, если надо"
-      //- },
-      //- {
-      //-   value: "г. Екатеринбург, ул. 1-ая Электровозная, 3, офис 123"
-      //- }
+      {
+        value: "Российская Федерация, Челябинская область, г. Челябинск, ул. Артиллерийская, стр. 1, корпус 14, офис 202а",
+        descr: "Пн - Пт: 9.00 - 18.00 Сб - Вс: выходные"
+      },
+      {
+        value: "г. Екатеринбург, ул. Новоградская, 3, офис 123",
+        descr: "Какая-то подпись, если надо"
+      },
+      {
+        value: "г. Екатеринбург, ул. 1-ая Электровозная, 3, офис 123"
+      }
     ]
   };
 mixin connectList(type, noFirst)
@@ -153,15 +153,16 @@ mixin connectList(type, noFirst)
               .connect__label= item.label
             if item.descr
               .connect__descr= item.descr
-- var logoImage = require("/src/images/theme-images/logo-sq.png");
+//- - var logoImage = require("/src/images/theme-images/logo-sq.png");
+- var logoImage = require("/src/images/content-images/parts-1.png");
 mixin logo
   .logo
     a.logo__link(href="/")
       .logo__image
         include ../../images/theme-images/logo.svg
-      //-   img(src= logoImage)
-      //- .logo__text ZE Строй
-    .logo__slogan Selling the best goods on Earth since 1900
+    //-     img(src= logoImage)
+    //-   .logo__text ZE Строй
+    //- .logo__slogan Selling the best goods on Earth since 1900
 mixin connectsDropdown(type)
   .connect(class=type)
     if cnncts[type].length > 1
@@ -169,10 +170,12 @@ mixin connectsDropdown(type)
         case type
           when "phones"
             a.dropdown__toggle(href=cnncts[type][0].link)= cnncts[type][0].value
+              .dropdown__icon
+                include ../../images/inline-svgs/dropdown.svg
           when "addresses"
             button.dropdown__toggle= cnncts[type][0].value
-        .dropdown__icon
-          include ../../images/inline-svgs/dropdown.svg
+              .dropdown__icon
+                include ../../images/inline-svgs/dropdown.svg
         .dropdown__body
           case type
             when "phones"
@@ -181,3 +184,27 @@ mixin connectsDropdown(type)
               +connectList(type, true)
     else
       +connectList(type)
+mixin section-navi(title, items, currentIndex)
+  .snavigation
+    button.snavigation__toggle= title
+      .snavigation__icon
+        include ../../images/inline-svgs/dropdown.svg
+    .snavigation__body
+      ul.snavigation__list
+        each item, index in items
+          li.snavigation__item
+            a.snavigation__link(href=item.link, class={"snavigation__link--current": index == currentIndex})= item.value
+mixin page-header(title, crumbs, variant="page-header--v1")
+  .page-header(class= variant)
+    .page-header__bg
+      .wrap
+        ol.breadcrumbs
+          li.breadcrumbs__item
+              a.breadcrumbs__link(href="/") Главная
+          if crumbs.length
+            each item in crumbs
+              li.breadcrumbs__item
+                a.breadcrumbs__link(href=crumbs.link)= items.value
+          li.breadcrumbs__item
+              a.breadcrumbs__link.breadcrumbs__link--current(href="/")=title
+        h1= title
