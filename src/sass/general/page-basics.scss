@@ -87,6 +87,12 @@
     opacity: 0.9;
   }
 }
+.content {
+  margin-bottom: 3.75rem;
+}
+.content__body {
+  line-height: 1.5;
+}
 @media (min-width: $break-md) {
   .section__link__title {
     display: block;
@@ -124,6 +130,25 @@
   .goto__icon {
     margin-top: 0;
     margin-left: 0.75rem;
+  }
+  .content {
+    display: flex;
+    margin-bottom: 5rem;
+    margin-left: -$grid-gap;
+    margin-right: -$grid-gap;
+  }
+  .content__aside,
+  .content__body {
+    padding-left: $grid-gap;
+    padding-right: $grid-gap;
+  }
+  .content__aside {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .content__body {
+    flex: 1 0 75%;
+    max-width: 100%;
   }
 }
 @media (min-width: $break-xl) {

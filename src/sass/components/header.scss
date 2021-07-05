@@ -123,6 +123,7 @@
   }
   .header__body {
     align-items: center;
+    justify-content: space-between;
     min-height: 5.4375rem;
     padding: 0;
   }
@@ -155,10 +156,6 @@
     }
   }
   .header__phones {
-    .dropdown__icon {
-      align-self: flex-start;
-      top: 0.25em;
-    }
     .dropdown__body {
       .button-callback {
         min-height: 0;
@@ -179,6 +176,9 @@
       left: -0.1em;
     }
   }
+  // .header__primary-nav {
+  //   overflow: hidden;
+  // }
   .header--v2 {
     .header__body {
       min-height: 4.75rem;

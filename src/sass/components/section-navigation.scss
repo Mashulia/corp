@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.125rem 1.25rem;
+  padding: 1.0625rem 1.25rem;
   width: 100%;
 }
 .snavigation__icon {
@@ -49,7 +49,7 @@
 .snavigation__link {
   color: inherit;
   display: block;
-  padding: 1.125rem 1.25rem;
+  padding: 1.125rem 1.25rem 1.0625rem;
   position: relative;
 
   &--current {
@@ -65,5 +65,32 @@
       bottom: 1.0625rem;
       left: 0;
     }
+  }
+  &:hover {
+    text-decoration: none;
+  }
+}
+@media (min-width: $break-lg) {
+  .snavigation {
+    margin-right: 1rem;
+  }
+  .snavigation__toggle {
+    display: none;
+  }
+  .snavigation__body {
+    max-height: none;
+  }
+}
+@media (min-width: $break-xl) {
+  .snavigation {
+    font-size: 1.125rem;
+    margin-right: 2.875rem;
+  }
+  .snavigation__link {
+    padding: 1.25rem 1.5rem 1.125rem;
+  }
+  .snavigation__link--current::before {
+    top: 1.25rem;
+    bottom: 1.25rem;
   }
 }

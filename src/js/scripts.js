@@ -657,12 +657,10 @@ window.addEventListener("load", function () {
     });
 
     this.window.onscroll = function (event) {
-      delay(function () {
-        showToTop();
-      }, 200);
+      // no delay() here cause needed a smooth transition between fixed and absolute at footer
+      showToTop();
     };
   }
-
   function showToTop() {
     let fixinPoint =
       window.innerWidth < 1024
@@ -707,7 +705,6 @@ window.addEventListener("load", function () {
       this.$wrapper.classList.toggle(`snavigation--opened`);
     }
   }
-
   document.querySelectorAll(".snavigation").forEach((el) => {
     new sectionNavigator(el);
   });

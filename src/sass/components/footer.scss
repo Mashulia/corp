@@ -8,11 +8,12 @@
   }
 }
 .to-top {
+  opacity: 0;
   position: fixed;
   right: 1.25rem;
   bottom: -3rem;
   z-index: 10;
-  transition: bottom 0.4s;
+  transition: opacity 0.4s, bottom 0.4s;
 
   &__link {
     display: block;
@@ -33,6 +34,7 @@
   }
   &--visible {
     bottom: 1.25rem;
+    opacity: 1;
   }
 }
 .footer__nav {
@@ -182,6 +184,7 @@
     right: 1.75rem;
   }
   .to-top--visible {
+    transition: none;
     bottom: 1.5rem;
   }
   .to-top--footed {

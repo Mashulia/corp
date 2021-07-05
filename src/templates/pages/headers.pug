@@ -1,11 +1,49 @@
 extends ../layout
 
-block content
+block header
+  .wrap
+    p
+    h1 Шапка вариант 1
+    p
+  hr.divider
+  +header-var
   hr.divider
   .wrap
+    p
     h1 Шапка вариант 2
+    p
   +header-var("header--v2")
   hr.divider
   .wrap
+    p
     h1 Шапка вариант 3
+    p
   +header-var("header--v3")
+block title
+  - var pageTitle = 'Компания «Ze Строй»';
+  -
+    var crumbs = [
+      {
+        value: "Catalog",
+        link: ""
+      },
+      {
+        value: "Category",
+        link: ""
+      }
+    ];
+  .wrap
+    p
+    h1 Заголовок страницы вариант 1
+    p
+  +page-header(pageTitle, crumbs, "page-header--v1")
+  .wrap
+    p
+    h1 Заголовок страницы вариант 2
+    p
+  +page-header(pageTitle, crumbs, "page-header--v2")
+  .wrap
+    p
+    h1 Заголовок страницы вариант 3
+    p
+  +page-header(pageTitle, crumbs, "page-header--v3")

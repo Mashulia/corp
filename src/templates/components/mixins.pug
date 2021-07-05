@@ -157,12 +157,12 @@ mixin connectList(type, noFirst)
 - var logoImage = require("/src/images/content-images/parts-1.png");
 mixin logo
   .logo
-    a.logo__link(href="/")
+    a.logo__link(href="index.html")
       .logo__image
         include ../../images/theme-images/logo.svg
     //-     img(src= logoImage)
     //-   .logo__text ZE Строй
-    //- .logo__slogan Selling the best goods on Earth since 1900
+    .logo__slogan Selling the best goods on Earth since 1900
 mixin connectsDropdown(type)
   .connect(class=type)
     if cnncts[type].length > 1
@@ -200,11 +200,11 @@ mixin page-header(title, crumbs, variant="page-header--v1")
       .wrap
         ol.breadcrumbs
           li.breadcrumbs__item
-              a.breadcrumbs__link(href="/") Главная
+              a.breadcrumbs__link(href="index.html") Главная
           if crumbs.length
             each item in crumbs
               li.breadcrumbs__item
-                a.breadcrumbs__link(href=crumbs.link)= items.value
+                a.breadcrumbs__link(href=item.link)= item.value
           li.breadcrumbs__item
               a.breadcrumbs__link.breadcrumbs__link--current(href="/")=title
         h1= title

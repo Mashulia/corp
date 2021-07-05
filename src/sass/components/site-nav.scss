@@ -12,7 +12,7 @@
   flex: 1 0 auto;
   color: $color-text1;
 
-  .nav--overflown & {
+  .nav--overflown > & {
     max-width: calc(100% - 2rem);
   }
 }

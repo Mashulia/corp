@@ -33,6 +33,29 @@ h5,
 .h5,
 h6,
 .h6,
+.h7,
+p,
+ul,
+ol {
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6,
 .h7 {
   color: $color-textHeader;
 }
@@ -64,7 +87,7 @@ h1,
 .h1,
 h2,
 .h2 {
-  margin-top: 1.25rem;
+  margin-top: 1.375rem;
   margin-bottom: 1.25rem;
 }
 h1,
@@ -179,8 +202,89 @@ hr {
   overflow: visible;
 }
 p,
-ul {
+ul,
+ol {
   margin: 0.875rem 0;
+}
+ol,
+ul {
+  list-style: none;
+  padding: 0;
+
+  li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.625rem;
+    position: relative;
+  }
+  ol,
+  ul {
+    padding-left: 1rem;
+  }
+}
+ol {
+  counter-reset: customOl;
+}
+ol li::before {
+  counter-increment: customOl;
+  content: counter(customOl) ".";
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+ul li::before {
+  content: "";
+  background: currentColor;
+  border-radius: $brad-1;
+  height: 2px;
+  width: 0.875rem;
+  position: absolute;
+  top: 0.7em;
+  left: 0;
+}
+table {
+  border-spacing: 0;
+  display: block;
+  margin: 0 0 1rem 0;
+  overflow: auto;
+  width: 100%;
+}
+td,
+th {
+  padding: 0.75rem 1.25rem;
+}
+th {
+  border: 1px solid $color-bg;
+  background: #f9f9f9;
+  color: $color-textHeader;
+  text-align: left;
+}
+tr:first-child th {
+  &:first-child {
+    border-radius: 6px 0px 0px 0px;
+  }
+  &:last-child {
+    border-radius: 0px 6px 0px 0px;
+  }
+}
+td {
+  border: 1px solid $color-sep;
+  border-width: 0 1px 1px 0;
+
+  &:last-child {
+    border-right-width: 0;
+  }
+}
+thead {
+  position: relative;
+}
+thead tr:last-child::after {
+  content: "";
+  height: 2px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
 }
 [hidden] {
   display: none;
@@ -199,17 +303,68 @@ ul {
   width: 100%;
   overflow: hidden;
 }
+.text-aux {
+  color: $color-text2;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+nav ul,
+.nav ul,
+.snavigation__list,
+.breadcrumbs {
+  margin: 0;
+
+  li {
+    margin-bottom: 0;
+    padding-left: 0;
+
+    &::before {
+      content: none;
+    }
+  }
+}
 nav ul,
 .nav ul {
   display: flex;
   flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+}
+@media (min-width: $break-md) {
+  table {
+    display: table;
+  }
+  .float-left {
+    float: left;
+    margin-right: 1rem;
+  }
+  .float-right {
+    float: right;
+    margin-left: 1rem;
+  }
 }
 @media (min-width: $break-lg) {
   body {
     font-size: 1rem;
+  }
+  h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4,
+  h5,
+  .h5,
+  h6,
+  .h6,
+  .h7 {
+    margin-bottom: 1.25rem;
+  }
+  h1,
+  .h1,
+  h2,
+  .h2 {
+    margin-top: 1.875rem;
   }
   h1,
   .h1 {
@@ -236,6 +391,16 @@ nav ul,
   h3,
   .h3 {
     font-size: 1.75rem;
+    margin-top: 1.625rem;
+  }
+  h4,
+  .h4,
+  h5,
+  .h5,
+  h6,
+  .h6,
+  .h7 {
+    margin-top: 1.5rem;
   }
   h4,
   .h4 {
@@ -252,5 +417,16 @@ nav ul,
   .h7 {
     font-size: 1rem;
     line-height: 1.4;
+  }
+  p,
+  ul,
+  ol {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  ul,
+  ol,
+  table {
+    margin-bottom: 1.5rem;
   }
 }
