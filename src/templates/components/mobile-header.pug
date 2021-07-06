@@ -10,7 +10,7 @@ mixin mobile-header
               .header__phones.cell.cell-auto
                 +connectsDropdown("phones")
               .header__callback.cell.cell-auto
-                button.button.button-primary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form") Заказать звонок
+                button.button.button-primary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form", data-touch="false") Заказать звонок
               .header__addresses.cell
                 +connectsDropdown("addresses")
           .cell.cell-auto
@@ -38,7 +38,7 @@ mixin mobile-header
           form.search__form.form(action="")
             label.form__field
               input.form__input(type="text", name="", placeholder="Введите запрос")
-            button.form__submit.button(type="submit")
+            button.button-submit.button(type="submit")
               .button__icon
                 include ../../images/inline-svgs/search.svg
               .button__body Найти

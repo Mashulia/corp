@@ -32,7 +32,7 @@ $custom-color-21: hsl(
 
 .button-primary,
 .bcart__button--active::after,
-.form__submit,
+.button-submit,
 .slick-active button,
 .sservices--v1 .services__title,
 .videos__link::after,
@@ -43,7 +43,7 @@ $custom-color-21: hsl(
   background-color: $custom-color-1;
 }
 .button-primary,
-.form__submit,
+.button-submit,
 .button-secondary,
 .slider-nav .slick-current .slider-nav__image,
 .form__input:hover {
@@ -89,7 +89,7 @@ ul li::before {
 }
 .button-primary:hover,
 .button-secondary:hover,
-.form__submit:hover,
+.button-submit:hover,
 .sservices--v1 .services__link:hover .services__title,
 .sservices--v2 .services__link:hover,
 .videos__link:hover::after,
@@ -104,7 +104,7 @@ ul li::before {
 }
 .button-primary:hover,
 .button-secondary:hover,
-.form__submit:hover,
+.button-submit:hover,
 .sservices--v1 .services__link:hover .services__title,
 .sservices--v2 .services__link:hover,
 .videos__link:hover::after,
@@ -121,7 +121,7 @@ a:hover,
 }
 .button-primary:active,
 .button-secondary:active,
-.form__submit:active,
+.button-submit:active,
 .sservices--v1 .services__link:active .services__title,
 .sservices--v2 .services__link:active,
 .videos__link:active::after,
@@ -136,7 +136,7 @@ a:hover,
 }
 .button-primary:active,
 .button-secondary:active,
-.form__submit:active,
+.button-submit:active,
 .sservices--v1 .services__link:active .services__title,
 .sservices--v2 .services__link:active,
 .videos__link:active::after,

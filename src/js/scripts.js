@@ -65,6 +65,7 @@ if (!Element.prototype.closest) {
 }
 
 // ie11 polyfill .forEach
+// note that forEach works for .querySelectorAll, but doesn't on getElementsByClassName
 if ("NodeList" in window && !NodeList.prototype.forEach) {
   console.info("polyfill for IE11");
   NodeList.prototype.forEach = function (callback, thisArg) {
@@ -217,7 +218,9 @@ window.addEventListener("load", function () {
   // search toggle
   var searchToggles = document.getElementsByClassName("search__toggle");
   var searchBody = document.querySelector(".popup-search");
-  var searchClose = searchBody ? searchBody.querySelector(".search__close") : 0;
+  var searchClose = searchBody
+    ? searchBody.querySelector(".search__close")
+    : [];
   let searchBodyButtons = searchBody.querySelectorAll("button");
 
   function toggleSearch() {
@@ -240,7 +243,7 @@ window.addEventListener("load", function () {
       }
     }
   }
-  function closeSearchPopup(e) {
+  function closeSearchPopup() {
     searchBody.classList.remove("popup-search--opened");
     let pageOverlay = document.getElementsByClassName("page-overlay")[0];
     if (pageOverlay) {
@@ -257,22 +260,22 @@ window.addEventListener("load", function () {
     let navList = navigation.querySelector("ul");
     let maxNavWidth = navigation ? navigation.offsetWidth : 600;
     // console.log("max width " + maxNavWidth);
-    let navItems = navList ? navList.children : null;
+    let navItems = navList ? navList.children : [];
     let factNavWidth = 0;
     var extraNav = navigation.querySelector(".nav--extra");
-    var extraNavUl = extraNav ? extraNav.getElementsByTagName("ul")[0] : 0;
-    for (var i = 0; i < navItems.length; i++) {
-      factNavWidth += navItems[i].offsetWidth;
+    var extraNavUl = extraNav ? extraNav.getElementsByTagName("ul")[0] : [];
+    for (let i = 0; i < navItems.length; i++) {
+      let el = navItems[i];
+      factNavWidth += el.offsetWidth;
       // console.log("current width " + factNavWidth + " (" + (i + 1) + " elements)");
-      // console.log("child " + i + " " + navItems[i].offsetWidth);
+      // console.log("child " + i + " " + el.offsetWidth);
       if (
         extraNavUl &&
         (factNavWidth > maxNavWidth ||
-          (navItems[i].nextElementSibling &&
-            factNavWidth > maxNavWidth - spacing))
+          (el.nextElementSibling && factNavWidth > maxNavWidth - spacing))
       ) {
-        extraNavUl.appendChild(navItems[i].cloneNode(true));
-        navItems[i].style.display = "none";
+        extraNavUl.appendChild(el.cloneNode(true));
+        el.style.display = "none";
       }
     }
     if (extraNavUl && extraNavUl.children.length) {
@@ -282,16 +285,17 @@ window.addEventListener("load", function () {
   }
   function resetNavOverflow(navigation) {
     let navList = navigation.querySelector("ul");
-    let navItems = navList ? navList.children : null;
+    let navItems = navList ? navList.children : [];
     var extraNav = navigation.querySelector(".nav--extra");
-    var extraNavUl = extraNav ? extraNav.getElementsByTagName("ul")[0] : 0;
+    var extraNavUl = extraNav ? extraNav.getElementsByTagName("ul")[0] : [];
     if (extraNavUl) {
       navigation.classList.remove("nav--overflown");
       extraNavUl.innerHTML = null;
     }
     navigation.classList.remove("nav--handled");
-    for (var i = 0; i < navItems.length; i++) {
-      navItems[i].style.display = "";
+    for (let i = 0; i < navItems.length; i++) {
+      let el = navItems[i];
+      el.style.display = "";
     }
   }
 
@@ -577,14 +581,14 @@ window.addEventListener("load", function () {
       "</button>",
     smallBtn:
       '<button data-fancybox-close class="fancy-close fancy-close--content" title="Закрыть">' +
-      '<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-      '<path d="M24 1L12.5 12.5M12.5 12.5L24 24M12.5 12.5L1 1M12.5 12.5L1 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>' +
+      '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<path d="M1.271 1.27075L5.50016 5.49992M9.72933 9.72908L5.50016 5.49992M5.50016 5.49992L9.72933 1.27075M5.50016 5.49992L1.271 9.72908" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>' +
       "</svg>" +
       "</button>",
     close:
       '<button data-fancybox-close class="fancy-close" title="Закрыть">' +
-      '<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-      '<path d="M24 1L12.5 12.5M12.5 12.5L24 24M12.5 12.5L1 1M12.5 12.5L1 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>' +
+      '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<path d="M1.271 1.27075L5.50016 5.49992M9.72933 9.72908L5.50016 5.49992M5.50016 5.49992L9.72933 1.27075M5.50016 5.49992L1.271 9.72908" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>' +
       "</svg>" +
       "</button>"
   };
@@ -609,7 +613,7 @@ window.addEventListener("load", function () {
   if (headerOpeners && windowWidth < 1024) {
     initMobileHeader();
   }
-  if (searchToggles && searchBody && windowWidth > 1023) {
+  if (searchToggles && windowWidth > 1023) {
     for (let i = 0; i < searchToggles.length; i++) {
       searchToggles[i].addEventListener("click", toggleSearch);
     }
@@ -620,17 +624,21 @@ window.addEventListener("load", function () {
     document.fonts.load('1rem "Manrope"').then(
       () => {
         for (let i = 0; i < primaryNavs.length; i++) {
-          handleNavOverflow(primaryNavs[i], 48);
+          let el = primaryNavs[i];
+          handleNavOverflow(el, 48);
         }
         for (let i = 0; i < globalNavs.length; i++) {
-          handleNavOverflow(globalNavs[i], 32);
+          let el = globalNavs[i];
+          handleNavOverflow(el, 32);
         }
       },
       () => {
         for (let i = 0; i < primaryNavs.length; i++) {
-          handleNavOverflow(primaryNavs[i], 40);
+          let el = primaryNavs[i];
+          handleNavOverflow(el, 40);
         }
         for (let i = 0; i < globalNavs.length; i++) {
+          let el = globalNavs[i];
           handleNavOverflow(globalNavs[i], 24);
         }
       }
@@ -693,21 +701,28 @@ window.addEventListener("load", function () {
     }
   }
 
-  class sectionNavigator {
-    constructor(el) {
-      Object.assign(this, {
-        $wrapper: el
-      });
-      this.$trigger = this.$wrapper.querySelector(".snavigation__toggle");
-      this.$trigger.onclick = () => this.toggle();
-    }
-    toggle() {
-      this.$wrapper.classList.toggle(`snavigation--opened`);
+  // aside navigation toggling on mobile
+  let asideNavToggles = document.querySelectorAll(".snavigation__toggle");
+  if (asideNavToggles && windowWidth < 1024) {
+    for (let i = 0; i < asideNavToggles.length; i++) {
+      let el = asideNavToggles[i];
+      el.addEventListener("click", toggleAsideNav);
     }
   }
-  document.querySelectorAll(".snavigation").forEach((el) => {
-    new sectionNavigator(el);
-  });
+  function toggleAsideNav(e) {
+    e.preventDefault();
+    e.target.closest(".snavigation").classList.toggle("snavigation--opened");
+  }
+
+  // $("form").submit(function (e) {
+  //   $(this)
+  //     .slideUp(function () {
+  //       $(this).addClass("custom-form--handled");
+  //     })
+  //     .slideDown();
+
+  //   e.preventDefault();
+  // });
 
   // functions on resize
   window.onresize = function (event) {
@@ -721,43 +736,62 @@ window.addEventListener("load", function () {
     documentHeight = rootElem.clientHeight;
     removeExpands(expandToggles);
 
-    if (window.innerWidth < 1024) {
+    if (windowWidth < 1024) {
       initMobileHeader();
       for (let i = 0; i < searchToggles.length; i++) {
-        searchToggles[i].removeEventListener("click", toggleSearch);
+        let el = searchToggles[i];
+        el.removeEventListener("click", toggleSearch);
+        closeSearchPopup();
       }
       searchClose.removeEventListener("click", toggleSearch);
 
       for (let i = 0; i < primaryNavs.length; i++) {
-        resetNavOverflow(primaryNavs[i]);
+        let el = primaryNavs[i];
+        resetNavOverflow(el);
       }
+
       for (let i = 0; i < globalNavs.length; i++) {
-        resetNavOverflow(globalNavs[i]);
+        let el = globalNavs[i];
+        resetNavOverflow(el);
+      }
+
+      for (let i = 0; i < asideNavToggles.length; i++) {
+        let el = asideNavToggles[i];
+        el.addEventListener("click", toggleAsideNav);
       }
     } else {
       detachMobileHeader();
       for (let i = 0; i < searchToggles.length; i++) {
-        searchToggles[i].addEventListener("click", toggleSearch);
+        let el = searchToggles[i];
+        el.addEventListener("click", toggleSearch);
       }
       searchClose.addEventListener("click", toggleSearch);
 
       for (let i = 0; i < primaryNavs.length; i++) {
-        resetNavOverflow(primaryNavs[i]);
-        handleNavOverflow(primaryNavs[i], 48);
+        let el = primaryNavs[i];
+        resetNavOverflow(el);
+        handleNavOverflow(el, 48);
       }
+
       for (let i = 0; i < globalNavs.length; i++) {
-        resetNavOverflow(globalNavs[i]);
-        handleNavOverflow(globalNavs[i], 32);
+        let el = globalNavs[i];
+        resetNavOverflow(el);
+        handleNavOverflow(el, 32);
+      }
+
+      for (let i = 0; i < asideNavToggles.length; i++) {
+        let el = asideNavToggles[i];
+        el.removeEventListener("click", toggleAsideNav);
       }
     }
 
-    if (touchDevice || window.innerWidth < 1024) {
+    if (touchDevice || windowWidth < 1024) {
       attachExpands(expandToggles);
       closeMenuExpands();
     }
 
     clearPageNavToggle();
-    if (window.innerWidth < 1024) {
+    if (windowWidth < 1024) {
       attachPageNavToggle();
     }
   };

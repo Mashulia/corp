@@ -180,6 +180,7 @@ mixin connectsDropdown(type)
           case type
             when "phones"
               +connectList(type)
+              button.button.button-primary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form", data-touch="false") Заказать звонок
             when "addresses"
               +connectList(type, true)
     else

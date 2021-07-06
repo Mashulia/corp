@@ -7,7 +7,7 @@
         form#form_id.search__form.form(action="")
           label.form__field
             input.form__input(type="text", name="", placeholder="Введите запрос", tabindex="-1")
-          button.form__submit.button(type="submit", tabindex="-1")
+          button.button-submit.button(type="submit", tabindex="-1")
             .button__icon
               include ../../images/inline-svgs/search.svg
             .button__body Найти
@@ -16,8 +16,12 @@
 .display-none#callback-form
   .custom-form.collapsing-form
     form(action="")
-      .form__title Заказать звонок
-      .form__description Заполните форму, и наш менеджер свяжется с Вами в ближайшее время
+      .form__header
+        .form__title Заказать звонок
+        .form__description Заполните форму, и наш менеджер свяжется с Вами в ближайшее время
+        .form__message
+          .form__success
+            .form__message__text Ваша заявка успешно отправлена!
       .form__bg
         .form__body
           label.form__field
@@ -30,7 +34,3 @@
             button.button.button-submit(type="submit") Отправить
           .form__note Нажимая на кнопку «Отправить», подтверждаю свое согласие с&nbsp;
             a(href="policy.html") условиями обработки персональных данных
-        .form__message
-          .form__success
-            .form__message__title Ваша заявка принята!
-            .form__message__text Наши менеджеры свяжутся с Вами
