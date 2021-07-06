@@ -150,6 +150,9 @@
     font-size: 1.25rem;
   }
   .header--v2 {
+    .header__phones .connect__list {
+      margin-bottom: 0;
+    }
     .header__addresses {
       display: none;
     }

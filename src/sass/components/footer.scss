@@ -1,11 +1,15 @@
 .footer {
-  background: $color-text1;
-  color: #fff;
-  padding: 2rem 0;
-
   .divider {
     border-color: rgba(255, 255, 255, 0.1);
   }
+}
+.footer__bg {
+  background: #eaeaea;
+  padding: 2rem 0;
+}
+.footer__bg--v2 {
+  background: $color-text1;
+  color: #fff;
 }
 .to-top {
   opacity: 0;

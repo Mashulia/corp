@@ -13,6 +13,7 @@ html(lang="ru")
     .corp#top
       include components/mixins
       include components/header
+      include components/footer
       block header
         +header-var
       block title
@@ -24,8 +25,8 @@ html(lang="ru")
             .content__body
               block contentBody
       block footer
-        include components/footer
-        include components/popups
+        +footer-var
+      include components/popups
     script(src="assets/js/vendor/jquery-3.6.0.min.js")
     script(src="assets/js/vendor/jquery.fancybox.min.js")
     script(src="assets/js/vendor/slick.min.js")

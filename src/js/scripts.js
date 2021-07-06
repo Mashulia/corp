@@ -560,7 +560,7 @@ window.addEventListener("load", function () {
   // fancybox
   $.fancybox.defaults.autoFocus = false;
   $.fancybox.defaults.backFocus = false;
-  $.fancybox.defaults.idvarime = 0;
+  $.fancybox.defaults.idleTime = 0;
   $.fancybox.defaults.infobar = false;
   $.fancybox.defaults.smallBtn = "auto";
   $.fancybox.defaults.toolbar = "auto";
@@ -569,14 +569,14 @@ window.addEventListener("load", function () {
     // Arrows
     arrowLeft:
       '<button data-fancybox-prev class="fancy-arrow fancy-arrow--left" title="Предыдущий">' +
-      '<svg width="18" height="32" viewBox="0 0 18 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-      '<path d="M17 1L2 16L17 31" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>' +
+      '<svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<path d="M7 13L2 7M2 7L7 1M2 7H16" stroke="currentColor" stroke-width="2"/>' +
       "</svg>" +
       "</button>",
     arrowRight:
       '<button data-fancybox-next class="fancy-arrow fancy-arrow--right" title="Следующий">' +
-      '<svg width="18" height="32" viewBox="0 0 18 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-      '<path d="M1 1L16 16L1 31" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>' +
+      '<svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<path d="M9 13L14 7M14 7L9 1M14 7H0" stroke="currentColor" stroke-width="2"/>' +
       "</svg>" +
       "</button>",
     smallBtn:
@@ -587,8 +587,8 @@ window.addEventListener("load", function () {
       "</button>",
     close:
       '<button data-fancybox-close class="fancy-close" title="Закрыть">' +
-      '<svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-      '<path d="M1.271 1.27075L5.50016 5.49992M9.72933 9.72908L5.50016 5.49992M5.50016 5.49992L9.72933 1.27075M5.50016 5.49992L1.271 9.72908" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>' +
+      '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<path d="M1.1665 1.16669L6.99984 7.00002M12.8332 12.8334L6.99984 7.00002M6.99984 7.00002L12.8332 1.16669M6.99984 7.00002L1.1665 12.8334" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>' +
       "</svg>" +
       "</button>"
   };

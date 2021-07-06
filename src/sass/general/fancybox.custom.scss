@@ -4,24 +4,91 @@
 .fancybox-slide--html {
   padding: 1.25rem 0.625rem;
 }
+.fancybox-slide--image {
+  padding: 4rem 1.5rem 3rem;
+}
 .fancybox-content {
   background-color: transparent;
   overflow: visible;
   padding: 0;
 }
+.fancy-arrow,
+.fancy-close {
+  @extend %fx-centered;
+  background: rgba(255, 255, 255, 0.75);
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 2.5rem;
+  width: 2.5rem;
+  z-index: 99997;
+
+  &:hover {
+    color: #fff;
+  }
+  @media (min-width: $break-lg) {
+    height: 3rem;
+    width: 3rem;
+  }
+}
+.fancy-arrow {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &--left {
+    left: 1.5rem;
+  }
+  &--right {
+    right: 1.5rem;
+  }
+  @media (min-width: $break-lg) {
+    display: flex;
+  }
+}
 .fancy-arrow:disabled {
   display: none;
 }
 .fancy-close {
-  @extend %fx-centered;
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-  height: 2rem;
-  width: 2rem;
+  .fancy-form & {
+    @media (min-width: $break-lg) {
+      height: 2.5rem;
+      width: 2.5rem;
+      top: 0;
+      left: 100%;
+      left: calc(100% + 1rem);
+      right: auto;
+
+      svg {
+        height: 0.75rem;
+        width: 0.75rem;
+      }
+    }
+  }
+  &--content {
+    position: absolute;
+    top: 0.625rem;
+    right: 0.625rem;
+  }
 }
-.fancy-close--content {
-  position: absolute;
-  top: 0.625rem;
-  right: 0.625rem;
+.fancybox-toolbar {
+  top: 1.5rem;
+  right: 1.5rem;
+}
+.fancybox-caption {
+  background: transparent;
+  color: $color-textHeader;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+@media (max-width: $break-lg - 1) {
+  .fancy-form .fancy-close {
+    background-color: transparent;
+    border-color: transparent;
+    color: #fff;
+    height: 2rem;
+    width: 2rem;
+  }
 }

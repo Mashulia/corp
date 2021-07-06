@@ -53,42 +53,109 @@
       href: "contacts.html"
     }
   ];
-.footer
-  .wrap
-    .to-top
-      a.to-top__link(href="#top", title="Вернуться к началу страницы", tabindex="-1")
-    .cells
-      .cell.cell-lg-6
-        .nav.footer__nav
-          ul.fnav__list
-            each item in menuItems
-              li.fnav__item
-                a.fnav__link(href= item.href)= item.name
-      .cell.cell-lg-6
-        .cells.footer__connects
-          .cell.cell-md-6
-            .footer__addresses
-              .addresses.connect
-                +connectList("addresses")
-            .footer__emails
-              .emails.connect
-                +connectList("emails")
-            .footer__socials
-              +socials
-          .cell.cell-md-6
-            .footer__phones
-              .phones.connect
-                +connectList("phones")
-            .footer__messengers
-              +messengers
-    hr.divider
-    .cells.fx-justify-between
-      .cell.cell-auto.footer__legal
-        .legal__list
-          .legal__item
-            a.legal__link(href="oferta.html") Договор оферты
-          .legal__item
-            a.legal__link(href="policy.html") Политика конфиденциальности
-          //- .legal__item
-          //-   a.legal__link(href="") Публичная оферта
-      .cell.cell-auto.footer__copy «Компания с длинным названием» © 2020
+-
+  var menuItems2 = [
+    {
+      name: "Компания",
+      href: "about.html"
+    },
+    {
+      name: "Каталог",
+      href: "catalog.html"
+    },
+    {
+      name: "Услуги",
+      href: "services.html"
+    },
+    {
+      name: "Проекты",
+      href: "folio.html"
+    },
+    {
+      name: "Акции",
+      href: "sale.html"
+    },
+    {
+      name: "Отзывы",
+      href: "reviews.html"
+    },
+    {
+      name: "Контакты",
+      href: "contacts.html"
+    }
+  ];
+mixin footer-var(fvar="footer--v1", fbg="footer__bg--v1")
+  .footer(class=fvar)
+    .footer__bg(class=fbg)
+      .wrap
+        .to-top
+          a.to-top__link(href="#top", title="Вернуться к началу страницы", tabindex="-1")
+        case fvar
+          when "footer-v1"
+            .cells
+              .cell.cell-lg-6
+                .nav.footer__nav
+                  ul.fnav__list
+                    each item in menuItems
+                      li.fnav__item
+                        a.fnav__link(href= item.href)= item.name
+              .cell.cell-lg-6
+                .cells.footer__connects
+                  .cell.cell-md-6
+                    .footer__addresses
+                      .addresses.connect
+                        +connectList("addresses")
+                    .footer__emails
+                      .emails.connect
+                        +connectList("emails")
+                    .footer__socials
+                      +socials
+                  .cell.cell-md-6
+                    .footer__phones
+                      .phones.connect
+                        +connectList("phones")
+                    .footer__messengers
+                      +messengers
+          default
+            .cells
+              .cell.cell-lg-9
+                .nav.footer__nav
+                  ul.fnav__list
+                    each item in menuItems
+                      li.fnav__item
+                        a.fnav__link(href= item.href)= item.name
+                .footer__socials
+                  +socials
+              .cell.cell-lg-3.footer__connects
+                .footer__phones
+                  .phones.connect
+                    +connectList("phones")
+                    a(data-fancybox, data-type="inline", data-src="#callback-form", data-touch="false", href="#callback-form") Заказать звонок
+                .footer__addresses
+                  .addresses.connect
+                    +connectList("addresses")
+                .footer__emails
+                  .emails.connect
+                    +connectList("emails")
+        hr.divider
+        .cells.fx-justify-between
+          .cell.cell-auto.footer__legal
+            .legal__list
+              .legal__item
+                a.legal__link(href="oferta.html") Договор оферты
+              .legal__item
+                a.legal__link(href="policy.html") Политика конфиденциальности
+              //- .legal__item
+              //-   a.legal__link(href="") Публичная оферта
+          .cell.cell-auto.footer__copy «Компания с длинным названием» © 2020
+          .cell.cell-auto.footer__dev
+            .dev
+              .dev__text
+                | Интернет-агентство Tian Group:
+                br
+                a(href="it-tian.ru") создание
+                |
+                | и
+                a(href="it-tian.ru")  продвижение
+                |
+                | сайтов

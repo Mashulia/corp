@@ -32,18 +32,27 @@ block title
         link: ""
       }
     ];
+  +page-header("Заголовок страницы вариант 1", crumbs, "page-header--v1")
+  +page-header("Заголовок страницы вариант 2", crumbs, "page-header--v2")
+  +page-header("Заголовок страницы вариант 3", crumbs, "page-header--v3")
+block footer
   .wrap
     p
-    h1 Заголовок страницы вариант 1
+    h1 Футер вариант 1, фон 1
     p
-  +page-header(pageTitle, crumbs, "page-header--v1")
+  +footer-var
   .wrap
     p
-    h1 Заголовок страницы вариант 2
+    h1 Футер вариант 1, фон 2
     p
-  +page-header(pageTitle, crumbs, "page-header--v2")
+  +footer-var("footer--v1", "footer__bg--v2")
   .wrap
     p
-    h1 Заголовок страницы вариант 3
+    h1 Футер вариант 2, фон 1
     p
-  +page-header(pageTitle, crumbs, "page-header--v3")
+  +footer-var("footer--v2", "footer__bg--v1")
+  .wrap
+    p
+    h1 Футер вариант 2, фон 2
+    p
+  +footer-var("footer--v2", "footer__bg--v2")

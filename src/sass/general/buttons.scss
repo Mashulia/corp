@@ -119,6 +119,10 @@ button.button:disabled,
   min-height: 2.25rem;
   padding: 0.25rem 1rem;
   white-space: nowrap;
+
+  &:focus-visible {
+    outline-color: #fff;
+  }
 }
 @media (min-width: $break-xl) {
   .button-callback {

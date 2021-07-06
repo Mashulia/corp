@@ -39,14 +39,16 @@ $custom-color-21: hsl(
 .slider-nav .slick-current::after,
 .nav--extra.dropdown--opened > .dropdown__toggle,
 .to-top__link,
-.header--v3 .search__toggle {
+.header--v3 .search__toggle,
+.fancy-arrow:hover {
   background-color: $custom-color-1;
 }
 .button-primary,
 .button-submit,
 .button-secondary,
 .slider-nav .slick-current .slider-nav__image,
-.form__input:hover {
+.form__input:hover,
+.fancy-arrow:hover {
   border-color: $custom-color-1;
 }
 a,
@@ -57,7 +59,9 @@ a,
 .dropdown--opened:not(.nav--extra) > .dropdown__toggle,
 .footer__emails .connect__text,
 .snavigation__link--current,
-.dropdown__icon {
+.dropdown__icon,
+.fancy-close,
+.fancy-arrow {
   color: $custom-color-1;
 }
 .connect::before,
@@ -71,7 +75,8 @@ a,
 .page-header__bg,
 .snavigation__toggle,
 .snavigation__link--current::before,
-thead tr:last-child::after {
+thead tr:last-child::after,
+.form__header {
   background-color: $custom-color-2;
 }
 .hero__slider .slick-dots button,
@@ -99,7 +104,8 @@ ul li::before {
 .to-top__link:hover,
 .socials__link:hover,
 .messengers__link:hover,
-.header--v3 .search__toggle:hover {
+.header--v3 .search__toggle:hover,
+.fancy-close:hover {
   background-color: $custom-color-hover;
 }
 .button-primary:hover,
@@ -110,7 +116,8 @@ ul li::before {
 .videos__link:hover::after,
 .slick-arrow:hover,
 .slider-nav__item:hover .slider-nav__image,
-.form__input:focus {
+.form__input:focus,
+.fancy-close:hover {
   border-color: $custom-color-hover;
 }
 a:hover,
@@ -131,7 +138,8 @@ a:hover,
 .to-top__link:active,
 .socials__link:active,
 .messengers__link:active,
-.header--v3 .search__toggle:active {
+.header--v3 .search__toggle:active,
+.fancy-arrow:active {
   background-color: $custom-color-active;
 }
 .button-primary:active,
@@ -141,7 +149,8 @@ a:hover,
 .sservices--v2 .services__link:active,
 .videos__link:active::after,
 .slick-arrow:active,
-.slider-nav__item:active .slider-nav__image {
+.slider-nav__item:active .slider-nav__image,
+.fancy-arrow:active {
   border-color: $custom-color-active;
 }
 a:active,
@@ -150,7 +159,7 @@ a:active,
 .footer__emails .connect__text:active {
   color: $custom-color-active;
 }
-.footer {
+.footer__bg--v2 {
   background-color: $custom-color-21;
   background-image: radial-gradient(
     90% 30% at 120% 90%,
@@ -186,7 +195,7 @@ a:active,
   }
 }
 @media (min-width: 768px) {
-  .footer {
+  .footer__bg--v2 {
     background-image: radial-gradient(
       35% 60% at 50% 128%,
       hsla($custom-color-1-h, $custom-color-1-s, $custom-color-1-l, 0.3) 0%,
@@ -195,7 +204,7 @@ a:active,
   }
 }
 @media (min-width: 1024px) {
-  .footer {
+  .footer__bg--v2 {
     background-image: radial-gradient(
       30% 60% at 60% 120%,
       hsla($custom-color-1-h, $custom-color-1-s, $custom-color-1-l, 0.3) 0%,

@@ -92,6 +92,9 @@
       color: inherit;
     }
   }
+  .phones .button-callback {
+    display: none;
+  }
 }
 .header--v3 {
   .header__bg {
@@ -278,10 +281,10 @@
       font-size: 0.875rem;
     }
     .header__phones {
-      max-width: 35%;
+      max-width: 40%;
     }
     .header__addresses {
-      max-width: 65%;
+      max-width: 60%;
     }
     .header__socials {
       flex: 1 0 auto;
