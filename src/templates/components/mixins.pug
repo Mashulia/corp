@@ -135,24 +135,25 @@ mixin messengers
       }
     ]
   };
-mixin connectList(type, noFirst)
+mixin connectList(type, noFirst, limit=100)
   - var noShowItem = noFirst ? 0 : 100;
-  .connect__list
-    each item, index in cnncts[type]
-      if index != noShowItem
-        .connect__item
-          case type
-            when "phones"
-              a.connect__text(href= "tel:" + item.link)= item.value
-            when "emails"
-              a.connect__text(href="mailto:" + item.value)= item.value
-            default
-              .connect__text= item.value
-          if cnncts[type].length > 1
-            if item.label
-              .connect__label= item.label
-            if item.descr
-              .connect__descr= item.descr
+  .connect(class=type)
+    .connect__list
+      each item, index in cnncts[type]
+        if index != noShowItem && index < limit
+          .connect__item
+            case type
+              when "phones"
+                a.connect__text(href= "tel:" + item.link)= item.value
+              when "emails"
+                a.connect__text(href="mailto:" + item.value)= item.value
+              default
+                .connect__text= item.value
+            if cnncts[type].length > 1
+              if item.label
+                .connect__label= item.label
+              if item.descr
+                .connect__descr= item.descr
 //- - var logoImage = require("/src/images/theme-images/logo-sq.png");
 - var logoImage = require("/src/images/content-images/parts-1.png");
 mixin logo
@@ -164,27 +165,26 @@ mixin logo
     //-   .logo__text ZE Строй
     .logo__slogan Selling the best goods on Earth since 1900
 mixin connectsDropdown(type)
-  .connect(class=type)
-    if cnncts[type].length > 1
-      .dropdown
+  if cnncts[type].length > 1
+    .dropdown
+      case type
+        when "phones"
+          a.dropdown__toggle(href=cnncts[type][0].link)= cnncts[type][0].value
+            .dropdown__icon
+              include ../../images/inline-svgs/dropdown.svg
+        when "addresses"
+          button.dropdown__toggle= cnncts[type][0].value
+            .dropdown__icon
+              include ../../images/inline-svgs/dropdown.svg
+      .dropdown__body
         case type
           when "phones"
-            a.dropdown__toggle(href=cnncts[type][0].link)= cnncts[type][0].value
-              .dropdown__icon
-                include ../../images/inline-svgs/dropdown.svg
+            +connectList(type)
+            button.button.button-primary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form", data-touch="false") Заказать звонок
           when "addresses"
-            button.dropdown__toggle= cnncts[type][0].value
-              .dropdown__icon
-                include ../../images/inline-svgs/dropdown.svg
-        .dropdown__body
-          case type
-            when "phones"
-              +connectList(type)
-              button.button.button-primary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form", data-touch="false") Заказать звонок
-            when "addresses"
-              +connectList(type, true)
-    else
-      +connectList(type)
+            +connectList(type, true)
+  else
+    +connectList(type)
 mixin section-navi(title, items, currentIndex)
   .snavigation
     button.snavigation__toggle= title

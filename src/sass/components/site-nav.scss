@@ -9,8 +9,10 @@
   }
 }
 .site-nav__list {
+  @extend %fx-centered-y;
   flex: 1 0 auto;
   color: $color-text1;
+  margin: 0;
 
   .nav--overflown > & {
     max-width: calc(100% - 2rem);

@@ -57,7 +57,7 @@ a,
 .slick-arrow,
 .expand--opened > .expand__toggle,
 .dropdown--opened:not(.nav--extra) > .dropdown__toggle,
-.footer__emails .connect__text,
+.footer--v1 .footer__emails .connect,
 .snavigation__link--current,
 .dropdown__icon,
 .fancy-close,
@@ -76,7 +76,8 @@ a,
 .snavigation__toggle,
 .snavigation__link--current::before,
 thead tr:last-child::after,
-.form__header {
+.form__header,
+.footer--v2 .footer__phones .connect__button::before {
   background-color: $custom-color-2;
 }
 .hero__slider .slick-dots button,
@@ -159,7 +160,7 @@ a:active,
 .footer__emails .connect__text:active {
   color: $custom-color-active;
 }
-.footer__bg--v2 {
+.footer__bg--v1 {
   background-color: $custom-color-21;
   background-image: radial-gradient(
     90% 30% at 120% 90%,
@@ -195,7 +196,7 @@ a:active,
   }
 }
 @media (min-width: 768px) {
-  .footer__bg--v2 {
+  .footer__bg--v1 {
     background-image: radial-gradient(
       35% 60% at 50% 128%,
       hsla($custom-color-1-h, $custom-color-1-s, $custom-color-1-l, 0.3) 0%,
@@ -204,7 +205,7 @@ a:active,
   }
 }
 @media (min-width: 1024px) {
-  .footer__bg--v2 {
+  .footer__bg--v1 {
     background-image: radial-gradient(
       30% 60% at 60% 120%,
       hsla($custom-color-1-h, $custom-color-1-s, $custom-color-1-l, 0.3) 0%,

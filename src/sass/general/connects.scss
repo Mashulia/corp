@@ -17,7 +17,7 @@
   }
 }
 .connect__item {
-  margin-bottom: 0.875rem;
+  margin-bottom: 0.625rem;
 
   &:last-child {
     margin-bottom: 0;
@@ -27,14 +27,16 @@
     text-decoration: none;
   }
 }
+.connect__text,
+.connect__label,
+.connect__descr,
+.connect__button {
+  margin-bottom: 0.25rem;
+}
 .connect__text {
   color: inherit;
   display: block;
-  margin-bottom: 0.25rem;
 
-  &:last-child {
-    margin-bottom: 0;
-  }
   .dropdown__body & {
     min-width: 13rem;
   }
@@ -46,11 +48,6 @@
 }
 .connect__label {
   font-weight: 600;
-  margin-bottom: 0.25rem;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
 }
 .connect__descr {
   font-weight: normal;
@@ -155,6 +152,9 @@
   }
 }
 @media (min-width: $break-md) {
+  .connect__text + .connect__button {
+    margin-top: 0.5rem;
+  }
   .socials__list {
     margin-left: -0.25rem;
     margin-right: -0.25rem;
@@ -181,9 +181,6 @@
 }
 @media (min-width: $break-xl) {
   .connect__item {
-    margin-bottom: 1.125rem;
-  }
-  .connect__label {
-    margin-bottom: 0.25rem;
+    margin-bottom: 1rem;
   }
 }

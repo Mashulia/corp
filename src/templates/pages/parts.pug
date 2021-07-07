@@ -3,6 +3,7 @@ extends ../layout
 block header
   .wrap
     p
+    h1 Шапки
     h1 Шапка вариант 1
     p
   hr.divider
@@ -19,6 +20,7 @@ block header
     h1 Шапка вариант 3
     p
   +header-var("header--v3")
+  hr.divider
 block title
   - var pageTitle = 'Компания «Ze Строй»';
   -
@@ -32,12 +34,18 @@ block title
         link: ""
       }
     ];
+  .wrap
+    p
+    h1 Заголовки
   +page-header("Заголовок страницы вариант 1", crumbs, "page-header--v1")
   +page-header("Заголовок страницы вариант 2", crumbs, "page-header--v2")
+  hr.divider
   +page-header("Заголовок страницы вариант 3", crumbs, "page-header--v3")
+  hr.divider
 block footer
   .wrap
     p
+    h1 Футеры
     h1 Футер вариант 1, фон 1
     p
   +footer-var

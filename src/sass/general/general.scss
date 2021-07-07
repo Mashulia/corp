@@ -34,9 +34,7 @@ h5,
 h6,
 .h6,
 .h7,
-p,
-ul,
-ol {
+p {
   &:first-child {
     margin-top: 0;
   }
@@ -207,12 +205,6 @@ ol,
 ul {
   list-style: none;
   padding: 0;
-
-  li {
-    margin-bottom: 0.5rem;
-    padding-left: 1.625rem;
-    position: relative;
-  }
   ol,
   ul {
     padding-left: 1rem;
@@ -220,6 +212,11 @@ ul {
 }
 ol {
   counter-reset: customOl;
+}
+li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.625rem;
+  position: relative;
 }
 ol li::before {
   counter-increment: customOl;
@@ -305,8 +302,8 @@ thead tr:last-child::after {
   font-size: 0.875rem;
   font-weight: 400;
 }
-nav ul,
-.nav ul,
+nav,
+.nav,
 .snavigation__list,
 .breadcrumbs {
   margin: 0;
@@ -319,11 +316,6 @@ nav ul,
       content: none;
     }
   }
-}
-nav ul,
-.nav ul {
-  display: flex;
-  flex-wrap: wrap;
 }
 @media (min-width: $break-md) {
   table {

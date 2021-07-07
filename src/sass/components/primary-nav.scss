@@ -5,6 +5,9 @@
   position: relative;
   padding: 1.0625rem 0;
 }
+.primary-nav__list {
+  margin: 0;
+}
 .primary-nav__link {
   color: inherit;
   display: flex;
@@ -131,7 +134,11 @@
     flex-grow: 0;
     max-width: calc(100% - 3rem);
   }
+  .primary-nav__list {
+    display: flex;
+  }
   .primary-nav__item {
+    flex: 0 0 auto;
     padding-right: 1.5rem;
   }
   .primary-nav__link {

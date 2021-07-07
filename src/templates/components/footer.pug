@@ -82,7 +82,11 @@
     {
       name: "Контакты",
       href: "contacts.html"
-    }
+    },
+    //- {
+    //-   name: "Пункт меню с длинным-предлинным названием",
+    //-   href: "contacts.html"
+    //- }
   ];
 mixin footer-var(fvar="footer--v1", fbg="footer__bg--v1")
   .footer(class=fvar)
@@ -91,7 +95,7 @@ mixin footer-var(fvar="footer--v1", fbg="footer__bg--v1")
         .to-top
           a.to-top__link(href="#top", title="Вернуться к началу страницы", tabindex="-1")
         case fvar
-          when "footer-v1"
+          when "footer--v1"
             .cells
               .cell.cell-lg-6
                 .nav.footer__nav
@@ -103,42 +107,44 @@ mixin footer-var(fvar="footer--v1", fbg="footer__bg--v1")
                 .cells.footer__connects
                   .cell.cell-md-6
                     .footer__addresses
-                      .addresses.connect
-                        +connectList("addresses")
+                      +connectList("addresses", false, 1)
                     .footer__emails
-                      .emails.connect
-                        +connectList("emails")
+                      +connectList("emails", false, 1)
                     .footer__socials
                       +socials
                   .cell.cell-md-6
                     .footer__phones
-                      .phones.connect
-                        +connectList("phones")
+                      +connectList("phones", false, 2)
                     .footer__messengers
                       +messengers
           default
-            .cells
-              .cell.cell-lg-9
+            .cells.footer__body
+              .cell.cell-md-6.cell-lg-9
                 .nav.footer__nav
                   ul.fnav__list
-                    each item in menuItems
+                    each item in menuItems2
                       li.fnav__item
                         a.fnav__link(href= item.href)= item.name
                 .footer__socials
                   +socials
-              .cell.cell-lg-3.footer__connects
+              .cell.cell-md-6.cell-lg-3.footer__connects
                 .footer__phones
                   .phones.connect
-                    +connectList("phones")
-                    a(data-fancybox, data-type="inline", data-src="#callback-form", data-touch="false", href="#callback-form") Заказать звонок
+                    .connect__list
+                      each item, index in cnncts.phones
+                        if index < 1
+                          .connect__item
+                            a.connect__text(href= "item.link")= item.value
+                            if index == 0
+                              .connect__button
+                                a(data-fancybox, data-type="inline", data-src="#callback-form", data-touch="false", href="#callback-form") Заказать звонок
                 .footer__addresses
-                  .addresses.connect
-                    +connectList("addresses")
+                  +connectList("addresses", false, 1)
                 .footer__emails
-                  .emails.connect
-                    +connectList("emails")
+                  +connectList("emails", false, 1)
         hr.divider
-        .cells.fx-justify-between
+        .cells.fx-justify-between.fx-align-center
+          .cell.cell-auto.footer__copy «Компания с длинным названием» © #{(new Date()).getFullYear()}
           .cell.cell-auto.footer__legal
             .legal__list
               .legal__item
@@ -147,15 +153,17 @@ mixin footer-var(fvar="footer--v1", fbg="footer__bg--v1")
                 a.legal__link(href="policy.html") Политика конфиденциальности
               //- .legal__item
               //-   a.legal__link(href="") Публичная оферта
-          .cell.cell-auto.footer__copy «Компания с длинным названием» © 2020
           .cell.cell-auto.footer__dev
             .dev
+              .dev__icon
+                include ../../images/inline-svgs/tian.svg
               .dev__text
                 | Интернет-агентство Tian Group:
                 br
                 a(href="it-tian.ru") создание
                 |
                 | и
-                a(href="it-tian.ru")  продвижение
+                |
+                a(href="it-tian.ru") продвижение
                 |
                 | сайтов

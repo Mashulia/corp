@@ -359,14 +359,10 @@
   }
 }
 @media (min-width: $break-xl) {
-  .header__logo {
-    flex-basis: auto;
-    max-width: 36%;
-  }
-  .header--v2 .header__connects {
-    flex-basis: 100% - 36%;
-    max-width: 100% - 36%;
-  }
+  // .header__logo {
+  //   flex-basis: auto;
+  //   max-width: 36%;
+  // }
   .header__phones {
     .connect__text {
       font-weight: 800;
@@ -380,11 +376,11 @@
   }
   .logo__slogan {
     display: block;
-    max-width: 50%;
+    max-width: 45%;
   }
   .header__primary-nav {
     flex: 1 0 55%;
-    max-width: 75%;
+    margin-left: auto;
   }
   .header__bcart {
     flex-basis: auto;
