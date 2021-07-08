@@ -714,6 +714,55 @@ window.addEventListener("load", function () {
     e.target.closest(".snavigation").classList.toggle("snavigation--opened");
   }
 
+  // reviews pictures number overflow
+  let reviewPictures = document.querySelectorAll(".reviews__images");
+  function resetReviewPictures() {
+    for (let i = 0; i < reviewPictures.length; i++) {
+      reviewPictures[i].style.height = "";
+      let moreLink = reviewPictures[i].getElementsByClassName(
+        "reviews__image--more"
+      );
+      if (moreLink.length) {
+        moreLink[0].removeEventListener("click", handleReviewPicturesMore);
+        moreLink[0].classList.remove("reviews__image--more");
+      }
+    }
+  }
+  function handleReviewPicturesOverflow() {
+    reviewPictures.forEach((el) => {
+      let elPics = el.getElementsByClassName("reviews__image");
+      let hiddenEls = Array.from(elPics).filter((el) => {
+        return el.offsetTop > 45;
+      });
+      if (hiddenEls.length) {
+        let index = elPics.length - hiddenEls.length - 1;
+        elPics[index].classList.add("reviews__image--more");
+        elPics[index].getElementsByClassName(
+          "reviews__image__overflow"
+        )[0].innerHTML = "+ " + hiddenEls.length + " фото";
+      }
+    });
+  }
+  function attachReviewsImagesMore() {
+    let reviewPicturesMore = document.getElementsByClassName(
+      "reviews__image--more"
+    );
+    for (let i = 0; i < reviewPicturesMore.length; i++) {
+      reviewPicturesMore[i].addEventListener("click", handleReviewPicturesMore);
+    }
+  }
+  function handleReviewPicturesMore(e) {
+    e.preventDefault();
+    let closestLink = e.target.closest("a");
+    closestLink.classList.remove("reviews__image--more");
+    closestLink.removeEventListener("click", handleReviewPicturesMore);
+    e.target.closest(".reviews__images").style.height = "auto";
+  }
+  if (reviewPictures.length) {
+    handleReviewPicturesOverflow();
+    attachReviewsImagesMore();
+  }
+
   // $("form").submit(function (e) {
   //   $(this)
   //     .slideUp(function () {
@@ -735,6 +784,12 @@ window.addEventListener("load", function () {
     windowWidth = window.innerWidth;
     documentHeight = rootElem.clientHeight;
     removeExpands(expandToggles);
+
+    if (reviewPictures.length) {
+      resetReviewPictures();
+      handleReviewPicturesOverflow();
+      attachReviewsImagesMore();
+    }
 
     if (windowWidth < 1024) {
       initMobileHeader();

@@ -1,0 +1,50 @@
+extends ../layout
+
+block title
+  - var pageTitle = 'Отзывы';
+  - var crumbs = [];
+  +page-header(pageTitle, crumbs)
+block contentBody
+  .reviews__intro
+    .reviews__intro__title
+      .reviews__intro__icon
+        include /./../../images/inline-svgs/reviews-intro.svg
+      | Мы всегда рады обратной связи от наших клиентов
+    .reviews__intro__text
+      |Если хотите оставить подробный отзыв, то просим направить письмо на наш электронный адрес
+      |
+      a(href="mailto:email@mail.com") ZeStroi@gmail.com
+      |.
+    .reviews__intro__note После успешной проверки отзыв будет добавлен на сайт в течении 3-х дней.
+  +reviewsList(100)
+  +pagination(1)
+block contentAside
+  -
+    var items = [
+      {
+        value: "О компании",
+        link: "about.html"
+      },
+      {
+        value: "Партнеры",
+        link: "partners.html"
+      },
+      {
+        value: "Отзывы клиентов",
+        link: "reviews.html"
+      },
+      {
+        value: "Сотрудники",
+        link: "stuff.html"
+      },
+      {
+        value: "Сертификаты и лицензии",
+        link: "certs.html"
+      },
+      {
+        value: "Реквизиты",
+        link: "reqs.html"
+      }
+    ];
+  - var currentIndex = 2;
+  +section-navi(pageTitle, items, currentIndex)
