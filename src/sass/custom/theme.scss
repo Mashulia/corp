@@ -64,7 +64,7 @@ a,
 .fancy-arrow {
   color: $custom-color-1;
 }
-.connect::before,
+.connect:not(.connect--labeled)::before,
 .benefits__img,
 .products__label--sale,
 .news__date,

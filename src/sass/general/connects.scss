@@ -94,6 +94,49 @@
   background-image: url("data:image/svg+xml,%3Csvg width='12' height='10' viewBox='0 0 12 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10 2L6.28286 4.91439C6.10743 5.02854 5.89257 5.02854 5.71714 4.91439L2 2H10ZM10.2 0H1.8C0.8076 0 0 0.84125 0 1.875V8.125C0 9.15875 0.8076 10 1.8 10H10.2C11.1924 10 12 9.15875 12 8.125V1.875C12 0.84125 11.1924 0 10.2 0Z' fill='white'/%3E%3C/svg%3E");
   background-size: 0.75rem 0.625rem;
 }
+
+.connect--labeled {
+  flex-direction: column;
+
+  &::before {
+    flex-basis: auto;
+    background: none;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    height: auto;
+    width: auto;
+    margin-bottom: 0.375rem;
+    margin-right: 0;
+  }
+  &.addresses::before {
+    content: "Адрес офиса:";
+  }
+  &.emails::before {
+    content: "Эл. почта:";
+  }
+  &.phones::before {
+    content: "Возникли вопросы? Звоните.";
+  }
+  .connect__descr {
+    display: none;
+  }
+}
+.connect--inlined {
+  .connect__item {
+    @extend %fx-centered-y;
+    flex-wrap: wrap;
+  }
+  .connect__text,
+  .connect__label {
+    margin-bottom: 0.125rem;
+  }
+  .connect__text {
+    margin-right: 0.25rem;
+  }
+  .connect__label::before {
+    content: "\2014\00A0";
+  }
+}
 .messengers__list {
   @extend %fx-centered-y;
   flex-wrap: wrap;

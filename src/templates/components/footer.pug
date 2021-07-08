@@ -96,7 +96,7 @@ mixin footer-var(fvar="footer--v1", fbg="footer__bg--v1")
           a.to-top__link(href="#top", title="Вернуться к началу страницы", tabindex="-1")
         case fvar
           when "footer--v1"
-            .cells
+            .cells.footer__body
               .cell.cell-lg-6
                 .nav.footer__nav
                   ul.fnav__list
@@ -107,14 +107,14 @@ mixin footer-var(fvar="footer--v1", fbg="footer__bg--v1")
                 .cells.footer__connects
                   .cell.cell-md-6
                     .footer__addresses
-                      +connectList("addresses", false, 1)
+                      +connectList("addresses", false, 1)(class="connect--labeled")
                     .footer__emails
-                      +connectList("emails", false, 1)
+                      +connectList("emails", false, 1)(class="connect--labeled")
                     .footer__socials
                       +socials
                   .cell.cell-md-6
                     .footer__phones
-                      +connectList("phones", false, 2)
+                      +connectList("phones", false, 2)(class="connect--labeled connect--inlined")
                     .footer__messengers
                       +messengers
           default

@@ -59,45 +59,6 @@
   font-size: 1rem;
   padding: 0.4375rem 0;
 }
-.footer--v1 {
-  .connect {
-    flex-direction: column;
-
-    &::before {
-      flex-basis: auto;
-      background: none;
-      font-weight: 600;
-      font-size: 0.8125rem;
-      height: auto;
-      width: auto;
-      margin-bottom: 0.375rem;
-      margin-right: 0;
-    }
-  }
-  .addresses::before {
-    content: "Адрес офиса:";
-  }
-  .emails::before {
-    content: "Эл. почта:";
-  }
-  .phones::before {
-    content: "Возникли вопросы? Звоните.";
-  }
-  .connetct__text {
-    margin-right: 0.25rem;
-  }
-  .connect__label::before {
-    content: "\2014\00A0";
-  }
-  .connect__descr {
-    display: none;
-  }
-}
-.footer--v1 .footer__phones .connect__item {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
 .footer__addresses {
   margin-bottom: 0.625rem;
 }
@@ -301,12 +262,6 @@
   .footer__bg {
     padding-top: 3.75rem;
   }
-  .footer__emails,
-  .footer__socials,
-  .footer__messengers,
-  .footer__addresses {
-    margin-bottom: 1.875rem;
-  }
   .to-top {
     right: 2.75rem;
   }
@@ -317,6 +272,17 @@
   .to-top--footed {
     bottom: calc(100% + 2rem);
   }
+  .footer__body {
+    margin-bottom: 3.1875rem;
+  }
+  .footer__emails,
+  .footer__addresses {
+    margin-bottom: 1.875rem;
+  }
+  .footer__nav,
+  .footer__connects {
+    margin-bottom: 0;
+  }
   .footer__nav {
     margin-top: -0.375rem; // compensate for a.pt
   }
@@ -324,12 +290,18 @@
     padding-top: 0.375rem;
     padding-bottom: 0.375rem;
   }
-  .footer__phones {
-    margin-bottom: 1.25rem;
-  }
   .footer {
     .connect__item {
       margin-bottom: 0.25rem;
+    }
+    .divider {
+      margin-bottom: 1rem;
+    }
+  }
+  .footer__phones {
+    margin-bottom: 1.5rem;
+    .connect__item {
+      margin-bottom: 0.375rem;
     }
   }
   .footer--v1 .connect::before {
@@ -338,6 +310,9 @@
   .footer--v2 {
     .footer__bg {
       padding-top: 4rem;
+    }
+    .footer__body {
+      margin-bottom: 3.5rem;
     }
     .footer__nav {
       max-width: 80%;
@@ -349,17 +324,16 @@
     .footer__addresses {
       margin-bottom: 1.25rem;
     }
-    .footer__socials {
-      margin-bottom: 3.25rem;
-    }
-    .footer__emails {
-      margin-bottom: 3.625rem;
-    }
   }
 }
 @media (min-width: $break-xl) {
   .footer__nav {
     margin-bottom: 3.5rem;
+  }
+  .footer--v2 {
+    .fnav__item {
+      margin-right: 2.5625rem;
+    }
   }
 }
 @media (min-width: $break-desk) {
@@ -382,7 +356,12 @@
     margin-bottom: 1.25rem;
   }
   .footer--v2 {
+    .footer__addresses {
+      margin-bottom: 1.5rem;
+    }
     .footer__phones {
+      margin-bottom: 1rem;
+
       .connect__item {
         display: flex;
         align-items: center;
@@ -402,6 +381,9 @@
         width: 0.25rem;
         margin-left: 0.5rem;
         margin-right: 0.5rem;
+      }
+      .connect__text + .connect__button {
+        margin-top: 0;
       }
     }
   }

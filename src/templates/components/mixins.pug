@@ -137,7 +137,7 @@ mixin messengers
   };
 mixin connectList(type, noFirst, limit=100)
   - var noShowItem = noFirst ? 0 : 100;
-  .connect(class=type)
+  .connect(class=type, class!=attributes.class)
     .connect__list
       each item, index in cnncts[type]
         if index != noShowItem && index < limit
