@@ -107,14 +107,17 @@ mixin footer-var(fvar="footer--v1", fbg="footer__bg--v1")
                 .cells.footer__connects
                   .cell.cell-md-6
                     .footer__addresses
-                      +connectList("addresses", false, 1)(class="connect--labeled")
+                      .addresses.connect.connect--labeled
+                        +connectList("addresses", false, 1)
                     .footer__emails
-                      +connectList("emails", false, 1)(class="connect--labeled")
+                      .connect.emails.connect--labeled
+                        +connectList("emails", false, 1)
                     .footer__socials
                       +socials
                   .cell.cell-md-6
                     .footer__phones
-                      +connectList("phones", false, 2)(class="connect--labeled connect--inlined")
+                      .connect.phones.connect--labeled.connect--inlined
+                        +connectList("phones", false, 2)
                     .footer__messengers
                       +messengers
           default
@@ -139,9 +142,11 @@ mixin footer-var(fvar="footer--v1", fbg="footer__bg--v1")
                               .connect__button
                                 a(data-fancybox, data-type="inline", data-src="#callback-form", data-touch="false", href="#callback-form") Заказать звонок
                 .footer__addresses
-                  +connectList("addresses", false, 1)
+                  .connect.addresses
+                    +connectList("addresses", false, 1)
                 .footer__emails
-                  +connectList("emails", false, 1)
+                  .connect.emails
+                    +connectList("emails", false, 1)
         hr.divider
         .cells.fx-justify-between.fx-align-center
           .cell.cell-auto.footer__copy «Компания с длинным названием» © #{(new Date()).getFullYear()}

@@ -757,6 +757,10 @@ window.addEventListener("load", function () {
     closestLink.classList.remove("reviews__image--more");
     closestLink.removeEventListener("click", handleReviewPicturesMore);
     e.target.closest(".reviews__images").style.height = "auto";
+    // let reviewsSlider = e.target.closest(".slick-list");
+    // if (reviewsSlider) {
+    //   reviewsSlider.style.height = "auto";
+    // }
   }
   if (reviewPictures.length) {
     handleReviewPicturesOverflow();

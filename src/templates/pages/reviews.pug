@@ -6,18 +6,21 @@ block title
   +page-header(pageTitle, crumbs)
 block contentBody
   .reviews__intro
-    .reviews__intro__title
-      .reviews__intro__icon
-        include /./../../images/inline-svgs/reviews-intro.svg
-      | Мы всегда рады обратной связи от наших клиентов
-    .reviews__intro__text
-      |Если хотите оставить подробный отзыв, то просим направить письмо на наш электронный адрес
-      |
-      a(href="mailto:email@mail.com") ZeStroi@gmail.com
-      |.
-    .reviews__intro__note После успешной проверки отзыв будет добавлен на сайт в течении 3-х дней.
+    .cells.fx-align-center
+      .cell.cell-xl-5
+        .reviews__intro__title
+          .reviews__intro__icon
+            include /./../../images/inline-svgs/reviews-intro.svg
+          | Мы всегда рады обратной связи от наших клиентов
+      .cell.cell-xl-7
+        .reviews__intro__text
+          |Если хотите оставить подробный отзыв, то просим направить письмо на наш электронный адрес
+          |
+          a(href="mailto:email@mail.com") ZeStroi@gmail.com
+          |.
+        .reviews__intro__note После успешной проверки отзыв будет добавлен на сайт в течении 3-х дней.
   +reviewsList(100)
-  +pagination(1)
+  +pagination(0)
 block contentAside
   -
     var items = [
@@ -46,5 +49,4 @@ block contentAside
         link: "reqs.html"
       }
     ];
-  - var currentIndex = 2;
-  +section-navi(pageTitle, items, currentIndex)
+  +section-navi('Компания «Ze Строй»', items, 2)

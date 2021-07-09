@@ -42,9 +42,12 @@ mixin mobile-header
               .button__icon
                 include ../../images/inline-svgs/search.svg
               .button__body Найти
-        +connectList("phones")
+        .connect.phones
+          +connectList("phones")
         .header__messengers
           +messengers
-        +connectList("addresses")
-        +connectList("emails")
+        .connect.addresses
+          +connectList("addresses")
+        .connect.emails
+          +connectList("emails")
         +socials

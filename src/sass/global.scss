@@ -8,8 +8,8 @@
 @import "./general/fancybox.custom.scss";
 @import "./general/dropdowns.scss";
 @import "./general/tabs.scss";
-@import "./general/connects.scss";
-@import "./general/search.scss";
+@import "./components/connects.scss";
+@import "./components/search.scss";
 @import "./general/utils.scss";
 
 @import "./components/site-nav.scss";
@@ -19,8 +19,9 @@
 @import "./components/header.scss";
 
 @import "./components/page-header.scss";
-@import "./general/breadcrumbs.scss";
+@import "./components/breadcrumbs.scss";
 @import "./components/section-navigation.scss";
+@import "./components/pagination.scss";
 
 @import "./components/hero.scss";
 @import "./components/cats.scss";

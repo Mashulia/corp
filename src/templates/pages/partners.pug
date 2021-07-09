@@ -1,0 +1,63 @@
+extends ../layout
+
+block title
+  - var pageTitle = 'Партнеры';
+  - var crumbs = [];
+  +page-header(pageTitle, crumbs)
+block contentBody
+  .partners__list.cells
+    each item in partnrs
+      .partners__item.cell.cell-sm-6.cell-md-4
+        .partners__bg
+          .partners__image(class={"no-image": !item.pic})
+            img(src= item.pic)
+          if item.name
+            .partners__name= item.name
+          if item.text
+            .partners__text= item.text
+          .partners__connects
+            if item.link
+              .partners__connect.partners__link
+                .partners__connect__icon
+                  include ../../images/inline-svgs/partners-web.svg
+                a.partners__connect__value(href= item.link, target="_blank")= item.link
+            if item.phone
+              .partners__connect.partners__phone
+                .partners__connect__icon
+                  include ../../images/inline-svgs/partners-phone.svg
+                .partners__connect__value= item.phone
+            if item.email
+              .partners__connect.partners__email
+                .partners__connect__icon
+                  include ../../images/inline-svgs/partners-email.svg
+                a.partners__connect__value(href="mailto:" + item.email)= item.email
+  //- +pagination(0)
+block contentAside
+  -
+    var items = [
+      {
+        value: "О компании",
+        link: "about.html"
+      },
+      {
+        value: "Партнеры",
+        link: "partners.html"
+      },
+      {
+        value: "Отзывы клиентов",
+        link: "reviews.html"
+      },
+      {
+        value: "Сотрудники",
+        link: "stuff.html"
+      },
+      {
+        value: "Сертификаты и лицензии",
+        link: "certs.html"
+      },
+      {
+        value: "Реквизиты",
+        link: "reqs.html"
+      }
+    ];
+  +section-navi('Компания «Ze Строй»', items, 1)

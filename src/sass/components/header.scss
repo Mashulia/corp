@@ -379,8 +379,9 @@
     max-width: 45%;
   }
   .header__primary-nav {
-    flex: 1 0 55%;
+    flex-basis: 60%;
     margin-left: auto;
+    max-width: 60%;
   }
   .header__bcart {
     flex-basis: auto;

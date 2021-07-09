@@ -48,7 +48,8 @@ $custom-color-21: hsl(
 .button-secondary,
 .slider-nav .slick-current .slider-nav__image,
 .form__input:hover,
-.fancy-arrow:hover {
+.fancy-arrow:hover,
+.pagination__link--active {
   border-color: $custom-color-1;
 }
 a,
@@ -61,7 +62,8 @@ a,
 .snavigation__link--current,
 .dropdown__icon,
 .fancy-close,
-.fancy-arrow {
+.fancy-arrow,
+.pagination__link--active {
   color: $custom-color-1;
 }
 .connect:not(.connect--labeled)::before,
@@ -107,7 +109,8 @@ ul li::before,
 .socials__link:hover,
 .messengers__link:hover,
 .header--v3 .search__toggle:hover,
-.fancy-close:hover {
+.fancy-close:hover,
+.pagination__link:hover {
   background-color: $custom-color-hover;
 }
 .button-primary:hover,
@@ -119,7 +122,8 @@ ul li::before,
 .slick-arrow:hover,
 .slider-nav__item:hover .slider-nav__image,
 .form__input:focus,
-.fancy-close:hover {
+.fancy-close:hover,
+.pagination__link:hover {
   border-color: $custom-color-hover;
 }
 a:hover,
@@ -141,7 +145,8 @@ a:hover,
 .socials__link:active,
 .messengers__link:active,
 .header--v3 .search__toggle:active,
-.fancy-arrow:active {
+.fancy-arrow:active,
+.pagination__link:active {
   background-color: $custom-color-active;
 }
 .button-primary:active,
@@ -152,7 +157,8 @@ a:hover,
 .videos__link:active::after,
 .slick-arrow:active,
 .slider-nav__item:active .slider-nav__image,
-.fancy-arrow:active {
+.fancy-arrow:active,
+.pagination__link:active {
   border-color: $custom-color-active;
 }
 a:active,

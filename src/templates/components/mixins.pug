@@ -122,38 +122,37 @@ mixin messengers
         value: "г.Челябинск, ул. Артиллерийская, д. 1",
         descr: "Пн - Пт: 9.00 - 18.00 Сб - Вс: выходные"
       },
-      {
-        value: "Российская Федерация, Челябинская область, г. Челябинск, ул. Артиллерийская, стр. 1, корпус 14, офис 202а",
-        descr: "Пн - Пт: 9.00 - 18.00 Сб - Вс: выходные"
-      },
-      {
-        value: "г. Екатеринбург, ул. Новоградская, 3, офис 123",
-        descr: "Какая-то подпись, если надо"
-      },
-      {
-        value: "г. Екатеринбург, ул. 1-ая Электровозная, 3, офис 123"
-      }
+      //- {
+      //-   value: "Российская Федерация, Челябинская область, г. Челябинск, ул. Артиллерийская, стр. 1, корпус 14, офис 202а",
+      //-   descr: "Пн - Пт: 9.00 - 18.00 Сб - Вс: выходные"
+      //- },
+      //- {
+      //-   value: "г. Екатеринбург, ул. Новоградская, 3, офис 123",
+      //-   descr: "Какая-то подпись, если надо"
+      //- },
+      //- {
+      //-   value: "г. Екатеринбург, ул. 1-ая Электровозная, 3, офис 123"
+      //- }
     ]
   };
 mixin connectList(type, noFirst, limit=100)
   - var noShowItem = noFirst ? 0 : 100;
-  .connect(class=type, class!=attributes.class)
-    .connect__list
-      each item, index in cnncts[type]
-        if index != noShowItem && index < limit
-          .connect__item
-            case type
-              when "phones"
-                a.connect__text(href= "tel:" + item.link)= item.value
-              when "emails"
-                a.connect__text(href="mailto:" + item.value)= item.value
-              default
-                .connect__text= item.value
-            if cnncts[type].length > 1
-              if item.label
-                .connect__label= item.label
-              if item.descr
-                .connect__descr= item.descr
+  .connect__list
+    each item, index in cnncts[type]
+      if index != noShowItem && index < limit
+        .connect__item
+          case type
+            when "phones"
+              a.connect__text(href= "tel:" + item.link)= item.value
+            when "emails"
+              a.connect__text(href="mailto:" + item.value)= item.value
+            default
+              .connect__text= item.value
+          if cnncts[type].length > 1
+            if item.label
+              .connect__label= item.label
+            if item.descr
+              .connect__descr= item.descr
 //- - var logoImage = require("/src/images/theme-images/logo-sq.png");
 - var logoImage = require("/src/images/content-images/parts-1.png");
 mixin logo
@@ -165,26 +164,27 @@ mixin logo
     //-   .logo__text ZE Строй
     .logo__slogan Selling the best goods on Earth since 1900
 mixin connectsDropdown(type)
-  if cnncts[type].length > 1
-    .dropdown
-      case type
-        when "phones"
-          a.dropdown__toggle(href=cnncts[type][0].link)= cnncts[type][0].value
-            .dropdown__icon
-              include ../../images/inline-svgs/dropdown.svg
-        when "addresses"
-          button.dropdown__toggle= cnncts[type][0].value
-            .dropdown__icon
-              include ../../images/inline-svgs/dropdown.svg
-      .dropdown__body
+  .connect(class=type, class!=attributes.class)
+    if cnncts[type].length > 1
+      .dropdown
         case type
           when "phones"
-            +connectList(type)
-            button.button.button-primary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form", data-touch="false") Заказать звонок
+            a.dropdown__toggle(href=cnncts[type][0].link)= cnncts[type][0].value
+              .dropdown__icon
+                include ../../images/inline-svgs/dropdown.svg
           when "addresses"
-            +connectList(type, true)
-  else
-    +connectList(type)
+            button.dropdown__toggle= cnncts[type][0].value
+              .dropdown__icon
+                include ../../images/inline-svgs/dropdown.svg
+        .dropdown__body
+          case type
+            when "phones"
+              +connectList(type)
+              button.button.button-primary.button-callback(data-fancybox, data-type="inline", data-src="#callback-form", data-touch="false") Заказать звонок
+            when "addresses"
+              +connectList(type, true)
+    else
+      +connectList(type)
 mixin section-navi(title, items, currentIndex)
   .snavigation
     button.snavigation__toggle= title
@@ -320,10 +320,28 @@ mixin page-header(title, crumbs, variant="page-header--v1")
       date: "10.10.2021"
     },
     {
-      text: 'Мы с мужем обращались в компанию «ZE Строй», чтобы заказать строительство загородного дома. Предложили специалистам готовый проект, купленный в Интернете.'
+      text: 'Мы с мужем обращались в компанию «ZE Строй», чтобы заказать строительство загородного дома. Предложили специалистам готовый проект, купленный в Интернете.',
+      pics: [
+        {
+          xs: require("/src/images/content-images/about-1.jpg"),
+          lg: require("/src/images/content-images/folio-1.jpg")
+        },
+        {
+          xs: require("/src/images/content-images/about-1.png"),
+          lg: require("/src/images/content-images/folio-2.jpg")
+        },
+        {
+          xs: require("/src/images/content-images/cats-2.png"),
+          lg: require("/src/images/content-images/prods-1.jpg")
+        },
+        {
+          xs: require("/src/images/content-images/prods-1.jpg"),
+          lg: require("/src/images/content-images/folio-3.jpg")
+        }
+      ],
     }
   ];
-mixin reviewsList(limit)
+mixin reviewsList(limit, printPics=true)
   .reviews__list(class!=attributes.class)
     each elm, index in rvws
       if index < limit
@@ -342,23 +360,82 @@ mixin reviewsList(limit)
                 .reviews__date= elm.date
                 .reviews__name= elm.title
             .reviews__text= elm.text
-            if elm.pics
-              .reviews__images
-                each item in elm.pics
-                  a.reviews__image(href=item.lg, data-fancybox="review-" + index)
-                    img(src= item.xs)
-                    .reviews__image__overflow
-- var pgntn = [1, 2, 3, 4, "...", 10];
+            if printPics
+              if elm.pics
+                .reviews__images
+                  each item in elm.pics
+                    .reviews__images__item
+                      a.reviews__image(href=item.lg, data-fancybox="review-" + index)
+                        img(src= item.xs)
+                        .reviews__image__overflow
+- var pgntn = [1, 2, 3, "...", 10];
 mixin pagination(current)
   .pagination
     ol.pagination__list
-      li.pagination__item(class={"pagination__item--disabled": current == 1})
-        a.pagination__link(href="", title="Предыдущая страница")
+      li.pagination__item
+        a.pagination__link(href="", title="Предыдущая страница", class={"pagination__link--disabled": current == 0})
+          include ./../../images/inline-svgs/pagination-left.svg
       each item, index in pgntn
         li.pagination__item
-          if index != 4
-            a.pagination__link(href="")= item
+          if index != 3
+            a.pagination__link(href="", class={"pagination__link--active": index == current})= item
           else
             span.pagination__gap= item
-      li.pagination__item(class={"pagination__item--disabled": current == pgntn.length})
-        a.pagination__link(href="", title="Следующая страница")
+      li.pagination__item
+        a.pagination__link(href="", title="Следующая страница", class={"pagination__link--disabled": current == pgntn.length - 1})
+          include ./../../images/inline-svgs/pagination-right.svg
+-
+  var partnrs = [
+    {
+      pic: require("/src/images/content-images/partners-1.png"),
+      name: "Rubytech",
+      text: "Системный интегратор с глубокой экспертизой в построении ИТ-инфраструктуры, проектировании ЦОДов, создании сетевых решений и технологий в сфере ИБ",
+      link: "rubytech.ru",
+      phone: "+7 (495) 788-99-99",
+      email: "info@rubytech.ru"
+    },
+    {
+      pic: require("/src/images/content-images/partners-2.png"),
+      name: "Arenadata ",
+      text: "Ведущий разработчик платформы сбора и хранения данных",
+      link: "arenadata.tech",
+      phone: "+7 (495) 260-20-25",
+      email: "support@arenadata.io"
+    },
+    {
+      pic: require("/src/images/content-images/partners-3.png"),
+      name: "Бюджетные и Финансовые Технологии",
+      link: "bftcom.com",
+      phone: "+7(495) 784-70-00",
+      email: "ineed@bftcom.com"
+    },
+    {
+      pic: require("/src/images/content-images/partners-4.png"),
+      text: "Крупнейший частный поставщик строительных решений в Великобритании",
+      link: "laingorourke.com"
+    },
+    {
+      pic: require("/src/images/content-images/partners-5.png"),
+      name: "Avanpost ",
+      phone: "+7 (495) 641-80-80",
+      email: "info@avanpost.ru"
+    },
+    {
+      pic: require("/src/images/content-images/partners-6.png"),
+      name: "IT_ONE",
+      email: "info@it-one.ru"
+    },
+    {
+      pic: require("/src/images/content-images/partners-7.png"),
+      name: "ФомЛайн",
+      text: "Крупнейший российский производитель эластичного пенополиуретана"
+    },
+    {
+      pic: require("/src/images/content-images/partners-8.png"),
+      name: "Leroy Merlin",
+      link: "leroymerlin.ru"
+    },
+    {
+      name: "Компания"
+    }
+  ];

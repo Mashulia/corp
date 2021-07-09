@@ -13,10 +13,8 @@
     margin-bottom: 0;
   }
 }
-.reviews__list:last-child {
-  border-bottom: 1px solid transparent;
-  margin-bottom: -1.25rem;
-  padding-bottom: 1px;
+.reviews__list {
+  margin-bottom: 1.875rem;
 }
 .reviews__item {
   margin-bottom: 1.125rem;
@@ -29,7 +27,7 @@
 .reviews__meta {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 .reviews__cat {
   flex: 0 0 100%;
@@ -43,6 +41,7 @@
   font-size: 0.75rem;
   line-height: 1.3;
   padding: 0.3125rem 0.625rem;
+  text-align: right;
 }
 .reviews__pic {
   flex: 0 0 58px;
@@ -86,8 +85,7 @@
   border-radius: 50%;
 }
 .reviews__personal {
-  flex: 1 1 auto;
-  align-self: center;
+  flex: 1 1 50%;
 }
 .reviews__date {
   color: $color-text2;
@@ -99,10 +97,11 @@
   color: $color-textHeader;
   font-weight: bold;
   font-size: 1rem;
-  line-height: 1.2;
+  line-height: 1.3;
 }
 .reviews__text {
   font-size: 1rem;
+  line-height: 1.4;
   margin-bottom: 1.25rem;
 
   &:last-child {
@@ -114,15 +113,23 @@
   flex-wrap: wrap;
   height: 50px;
   width: 100%;
+  margin-left: -6px;
+  margin-right: -6px;
   overflow: hidden;
   position: relative;
 }
+.reviews__images__item {
+  flex: 0 0 auto;
+  margin-bottom: 0.75rem;
+  padding-left: 6px;
+  padding-right: 6px;
+}
 .reviews__image {
-  flex: 0 0 50px;
   border-radius: $brad-1;
+  background: $color-bg;
+  display: block;
   height: 50px;
-  margin-bottom: 0.875rem;
-  margin-right: 13px;
+  width: 50px;
   overflow: hidden;
   position: relative;
 
@@ -180,6 +187,7 @@
   margin-bottom: 0.5rem;
 }
 .reviews__intro__note {
+  color: $color-text2;
   font-size: 0.75rem;
   font-weight: 500;
 }
@@ -188,7 +196,7 @@
     height: 250px;
   }
   .reviews__bg {
-    padding: 1.875rem 1.875rem 1.6875rem;
+    padding: 1.875rem 1.875rem 1.8125rem;
   }
   .reviews__meta {
     margin-bottom: 0.8125rem;
@@ -204,10 +212,47 @@
     flex: 0 0 auto;
     max-width: 40%;
   }
+  .reviews__images {
+    margin-left: -8px;
+    margin-right: -8px;
+  }
+  .reviews__images__item {
+    margin-bottom: 1rem;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .reviews__intro {
+    border-radius: $brad-3;
+    padding: 1.875rem;
+  }
+  .reviews__intro__title {
+    font-size: 1.25rem;
+  }
+  .reviews__intro__icon {
+    margin-right: 1rem;
+  }
+  .reviews__intro__text {
+    font-size: 1rem;
+    margin-bottom: 0.625rem;
+  }
+  .reviews__intro__note {
+    font-size: 0.875rem;
+  }
 }
 @media (min-width: $break-lg) {
+  .reviews__list {
+    margin-bottom: 2.5rem;
+  }
+  .reviews__item {
+    margin-bottom: 1.5rem;
+  }
   .reviews__bg {
-    padding: 3.125rem 3.125rem 3.125rem 160px;
+    padding: 2.5rem 2.5rem 2.5rem 150px;
+    position: relative;
+
+    .sreviews & {
+      padding: 3.125rem 3.125rem 3.125rem 160px;
+    }
   }
   .reviews__pic {
     max-width: none;
@@ -215,16 +260,26 @@
     height: 86px;
     margin-right: 0;
     position: absolute;
-    top: 3.125rem;
-    left: 3.125rem;
+    top: 2.5rem;
+    left: 2.5rem;
+
+    .sreviews & {
+      top: 3.125rem;
+      left: 3.125rem;
+    }
   }
   .reviews__text {
     font-weight: 300;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     line-height: 1.5;
+    margin-bottom: 1.875rem;
+
+    .sreviews & {
+      font-size: 1.25rem;
+    }
   }
   .reviews__meta {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.125rem;
   }
   .reviews__cat__text,
   .reviews__date {
@@ -240,23 +295,64 @@
   .reviews__pic__decor {
     right: 0;
   }
+  .reviews__images {
+    height: 84px;
+  }
+  .reviews__image {
+    height: 84px;
+    width: 84px;
+  }
   .reviews__slider {
     padding-bottom: 3rem;
   }
+  .reviews__intro {
+    margin-bottom: 2.25rem;
+    padding: 2.5rem;
+  }
 }
 @media (min-width: $break-xl) {
-  .reviews__bg {
+  .sreviews .reviews__bg {
     max-width: 73.5rem;
     margin-left: auto;
     margin-right: auto;
     padding-top: 3rem;
-    position: relative;
   }
   .reviews__slider {
     padding-bottom: 3.125rem;
 
     .slick-arrow {
       transform: translateY(-100%);
+    }
+  }
+  .reviews__text {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    margin-bottom: 1.625rem;
+  }
+  .reviews__images {
+    margin-left: -11px;
+    margin-right: -11px;
+  }
+  .reviews__images__item {
+    margin-bottom: 1.25rem;
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+  .reviews__intro {
+    border-radius: $brad-3;
+    padding: 50px;
+  }
+  .reviews__intro__title {
+    margin-bottom: 0;
+  }
+  .reviews__intro__icon {
+    margin-right: 1.5rem;
+    height: 3rem;
+    width: 3rem;
+
+    svg {
+      height: 1.25rem;
+      width: 1.25rem;
     }
   }
 }

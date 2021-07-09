@@ -1,45 +1,10 @@
--
-  var parts = [
-    {
-      title: "Rubytech",
-      pic: require("/src/images/content-images/parts-1.png")
-    },
-    {
-      title: "Arenadata",
-      pic: require("/src/images/content-images/parts-2.png")
-    },
-    {
-      title: "БФТ",
-      pic: require("/src/images/content-images/parts-3.png")
-    },
-    {
-      title: "Laing O’Rourke",
-      pic: require("/src/images/content-images/parts-4.png")
-    },
-    {
-      title: "Avanpost",
-      pic: require("/src/images/content-images/parts-5.png")
-    },
-    {
-      title: "IT_ONE",
-      pic: require("/src/images/content-images/parts-6.png")
-    },
-    //- {
-    //-   title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic magnam reiciendis quia accusantium blanditiis alias voluptate facilis eos numquam cum, pariatur suscipit inventore, repellat placeat, mollitia laborum! Minus, tenetur quidem.",
-    //-   pic: require("/src/images/content-images/cats-2.png")
-    //- },
-    //- {
-    //-   title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
-    //-   pic: require("/src/images/content-images/prods-1.jpg")
-    //- }
-  ];
 .section.spartners
   .wrap
     +section-header("Наши партнеры", "Все партнеры", "partners.html")
-    .partners__list.cells
-      each elm in parts
-        .partners__item.cell.cell-6.cell-md-4.cell-lg-3.cell-xl-2
-          .partners__image
+    .spartners__list.cells
+      each elm in partnrs
+        .spartners__item.cell.cell-6.cell-md-4.cell-lg-3.cell-xl-2
+          a.spartners__image(class={"no-image": !elm.pic}, href= elm.link)
             img(src= elm.pic)
-          a.partners__link(href="", target="_blank")
-            .partners__title= elm.title
+          a.spartners__link(href= elm.link, target="_blank")
+            .spartners__title= elm.name

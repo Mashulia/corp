@@ -11,8 +11,10 @@
 .site-nav__list {
   @extend %fx-centered-y;
   flex: 1 0 auto;
+  flex-wrap: wrap;
   color: $color-text1;
   margin: 0;
+  max-width: 100%;
 
   .nav--overflown > & {
     max-width: calc(100% - 2rem);
