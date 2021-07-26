@@ -2,36 +2,46 @@ extends ../layout
 
 block title
   - var pageTitle = 'Партнеры';
-  - var crumbs = [];
+  -
+    var crumbs = [
+      {
+        value: 'Компания «Ze Строй»',
+        link: "about.html"
+      }
+    ];
   +page-header(pageTitle, crumbs)
 block contentBody
-  .partners__list.cells
+  .partners__list.card__list.cells
     each item in partnrs
-      .partners__item.cell.cell-sm-6.cell-md-4
-        .partners__bg
-          .partners__image(class={"no-image": !item.pic})
-            img(src= item.pic)
+      .partners__item.card.cell.cell-sm-6.cell-md-4
+        .partners__bg.card__outline
+          .partners__image.card__image(class={"no-image": !item.pic})
+            // картинка размером 208х94
+            if item.pic
+              img(src= item.pic, loading="lazy")
           if item.name
-            .partners__name= item.name
+            .partners__name.card__name= item.name
           if item.text
-            .partners__text= item.text
-          .partners__connects
-            if item.link
-              .partners__connect.partners__link
-                .partners__connect__icon
-                  include ../../images/inline-svgs/partners-web.svg
-                a.partners__connect__value(href= item.link, target="_blank")= item.link
-            if item.phone
-              .partners__connect.partners__phone
-                .partners__connect__icon
-                  include ../../images/inline-svgs/partners-phone.svg
-                .partners__connect__value= item.phone
-            if item.email
-              .partners__connect.partners__email
-                .partners__connect__icon
-                  include ../../images/inline-svgs/partners-email.svg
-                a.partners__connect__value(href="mailto:" + item.email)= item.email
+            .partners__text.card__text= item.text
+          if item.link || item.phone || item.email
+            .card__connects
+              if item.link
+                .card__connect.card__link
+                  .card__connect__icon
+                    include ../../images/inline-svgs/partners-web.svg
+                  a.card__connect__value(href= item.link, target="_blank")= item.link
+              if item.phone
+                .card__connect.card__phone
+                  .card__connect__icon
+                    include ../../images/inline-svgs/partners-phone.svg
+                  a.card__connect__value(href="tel:")= item.phone
+              if item.email
+                .card__connect.card__email
+                  .card__connect__icon
+                    include ../../images/inline-svgs/partners-email.svg
+                  a.card__connect__value(href="mailto:" + item.email)= item.email
   //- +pagination(0)
+  //- +seo
 block contentAside
   -
     var items = [
@@ -49,7 +59,7 @@ block contentAside
       },
       {
         value: "Сотрудники",
-        link: "stuff.html"
+        link: "staff.html"
       },
       {
         value: "Сертификаты и лицензии",

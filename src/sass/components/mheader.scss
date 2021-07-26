@@ -11,10 +11,6 @@
 .header__phones,
 .header__addresses {
   display: none;
-
-  .connect {
-    font-size: 0.875rem;
-  }
 }
 .mheader {
   .bcart__button {
@@ -115,15 +111,10 @@
     }
 
     .connect__item {
-      font-size: 0.875rem;
       font-weight: 600;
     }
   }
   .header__phones {
-    .dropdown__toggle {
-      font-weight: 800;
-      font-size: 0.875rem;
-    }
     .connect__list {
       margin-bottom: 1.25rem;
 
@@ -172,6 +163,15 @@
 @media (min-width: 768px) and (max-width: 1023px) {
   .header__logo {
     max-width: 25%;
+  }
+}
+@media (max-width: $break-lg - 1) {
+  .header__phones,
+  .header__addresses {
+    .connect,
+    .dropdown__toggle {
+      font-size: 0.875rem;
+    }
   }
 }
 @media (min-width: $break-lg) {

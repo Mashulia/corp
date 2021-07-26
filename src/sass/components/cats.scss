@@ -4,11 +4,6 @@
 }
 .categories__list {
   margin-bottom: 0.75rem;
-
-  &:last-child {
-    margin-bottom: -1.1875rem;
-    padding-bottom: 1px;
-  }
 }
 .categories__item {
   margin-bottom: 1.125rem;
@@ -136,9 +131,6 @@
   }
 }
 @media (min-width: $break-lg) {
-  .categories__list:last-child {
-    margin-bottom: -1.5625rem;
-  }
   .categories__item {
     margin-bottom: 1.5rem;
   }

@@ -39,7 +39,7 @@
               include ../../images/inline-svgs/section-header-link.svg
       .cell.cell-md-6
         .sabout__image
-          img(src=require("/src/images/content-images/about-1.png"))
+          img(src=require("/src/images/content-images/about-1.png"), loading="lazy")
           //- img(src=require("/src/images/content-images/cats-2.png"))
           //- img(src=require("/src/images/content-images/promo-desk.jpg"))
       .cell.cell-xl-2
@@ -48,5 +48,5 @@
             each item in sbens
               .benefits__item.cell.cell-sm-6.cell-md-4.cell-lg-3.cell-xl-12
                 .benefits__img
-                  img(src=item.pic)
+                  img(src=item.pic, loading="lazy")
                 .benefits__title= item.title

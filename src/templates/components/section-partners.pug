@@ -5,6 +5,6 @@
       each elm in partnrs
         .spartners__item.cell.cell-6.cell-md-4.cell-lg-3.cell-xl-2
           a.spartners__image(class={"no-image": !elm.pic}, href= elm.link)
-            img(src= elm.pic)
+            img(src= elm.pic, loading="lazy")
           a.spartners__link(href= elm.link, target="_blank")
             .spartners__title= elm.name

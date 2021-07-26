@@ -93,6 +93,16 @@
 .content__body {
   line-height: 1.5;
 }
+.content__body__block {
+  margin-bottom: 0.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+.epilog {
+  margin-top: 1.25rem;
+}
 @media (min-width: $break-md) {
   .section__link__title {
     display: block;
@@ -149,6 +159,12 @@
   .content__body {
     flex: 1 0 75%;
     max-width: 100%;
+  }
+  .content__body__block {
+    margin-bottom: 1rem;
+  }
+  .epilog {
+    margin-top: 1.875rem;
   }
 }
 @media (min-width: $break-xl) {

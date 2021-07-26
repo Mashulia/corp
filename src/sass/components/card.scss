@@ -1,0 +1,124 @@
+.card__list {
+  align-items: stretch;
+}
+.card {
+  margin-bottom: 1.25rem;
+}
+.card__outline {
+  border: 1px solid $color-sep;
+  border-radius: $brad-3;
+  display: block;
+  font-size: 0.875rem;
+  height: 100%;
+  line-height: 1.4;
+  padding: 1.25rem;
+}
+.card__image,
+.card__text,
+.card__name,
+.card__connect {
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+.card__image,
+.card__text,
+.card__subtitle {
+  margin-bottom: 1rem;
+}
+.card__image {
+  border-radius: $brad-1;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  img {
+    max-height: 100%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+.card__name,
+.card__connect {
+  margin-bottom: 0.5rem;
+}
+.card__name {
+  color: $color-textHeader;
+  font-weight: bold;
+  line-height: 1.35;
+}
+.card__text {
+  line-height: 1.45;
+}
+.card__connect {
+  @extend %fx-centered-y;
+  color: $color-textHeader;
+  font-weight: 600;
+}
+.card__connect__icon {
+  flex-shrink: 0;
+  margin-right: 0.75rem;
+}
+.card__connect__value {
+  color: inherit;
+}
+.card__email,
+.card__link {
+  word-break: break-all;
+}
+@media (min-width: $break-sm) {
+  .card__outline {
+    display: flex;
+    flex-direction: column;
+  }
+  .card__connects {
+    margin-top: auto;
+  }
+}
+@media (min-width: $break-md) {
+  .card__subtitle {
+    margin-bottom: 1.675rem;
+  }
+  .card__connects {
+    font-size: 0.75rem;
+  }
+  .card__connect__icon {
+    margin-right: 0.5rem;
+  }
+}
+@media (min-width: $break-lg) {
+  .card {
+    margin-bottom: 1.5rem;
+  }
+  .card__image {
+    margin-bottom: 1.25rem;
+  }
+  .card__name {
+    margin-bottom: 0.625rem;
+  }
+  .card__text {
+    margin-bottom: 1.5rem;
+  }
+}
+@media (min-width: $break-xl) {
+  .card__outline {
+    padding: 1.875rem 1.875rem 2rem;
+  }
+  .card__image {
+    margin-bottom: 1.25rem;
+  }
+  .card__name {
+    font-size: 1rem;
+  }
+  .card__connects {
+    font-size: 0.875rem;
+  }
+  .card__connect {
+    margin-bottom: 0.5625rem;
+  }
+  .card__connect__icon {
+    margin-right: 0.625rem;
+  }
+}

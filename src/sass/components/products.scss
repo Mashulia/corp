@@ -6,10 +6,6 @@
   justify-content: center;
   margin-bottom: 0.125rem;
 }
-.products__list:last-child {
-  margin-bottom: -1.1875rem;
-  padding-bottom: 1px;
-}
 .products__item {
   margin-bottom: 1.125rem;
 }
@@ -145,10 +141,6 @@
 @media (min-width: $break-lg) {
   .products__list {
     margin-bottom: 0.875rem;
-
-    &:last-child {
-      margin-bottom: -1.5625rem;
-    }
   }
   .products__images__list {
     height: 200px;

@@ -1,10 +1,5 @@
 .news__list {
   align-items: stretch;
-
-  &:last-child {
-    margin-bottom: -1.1875rem;
-    padding-bottom: 1px;
-  }
 }
 .news__item {
   margin-bottom: 1.125rem;
@@ -68,9 +63,6 @@
   }
 }
 @media (min-width: $break-lg) {
-  .news__list:last-child {
-    margin-bottom: -1.5625rem;
-  }
   .news__item {
     margin-bottom: 1.5rem;
   }

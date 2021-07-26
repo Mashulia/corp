@@ -110,7 +110,7 @@
                     each pic in itm.pic
                       .products__images__item
                         a.products__images__link(href="product.html")
-                          img(src= pic)
+                          img(src= pic, loading="lazy")
                   else
                     .products__images__item
                         a.products__images__link.no-image(href="product.html")

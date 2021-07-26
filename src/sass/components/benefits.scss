@@ -1,10 +1,5 @@
 .benefits__list {
   margin-bottom: 0.75rem;
-
-  &:last-child {
-    margin-bottom: -1.1875rem;
-    padding-bottom: 1px;
-  }
 }
 .benefits__item {
   @extend %fx-centered-y;
@@ -31,16 +26,10 @@
   }
 }
 @media (min-width: $break-md) {
-  .benefits__list:last-child {
-    margin-bottom: -1.875rem;
-  }
   .benefits__item {
     margin-bottom: 1.75rem;
   }
   .sabout__bens {
-    .benefits__list:last-child {
-      margin-bottom: -1.3125rem;
-    }
     .benefits__item {
       margin-bottom: 1.25rem;
     }
@@ -63,9 +52,6 @@
     }
   }
   .sabout__bens {
-    .benefits__list:last-child {
-      margin-bottom: -1.5625rem;
-    }
     .benefits__item {
       margin-bottom: 1.5rem;
     }

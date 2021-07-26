@@ -42,7 +42,7 @@
           .news__bg
             a.news__image(href="news-item.html", class={"no-image": !elm.pic})
               if elm.pic
-                img(src=elm.pic)
+                img(src=elm.pic, loading="lazy")
             .news__text
               if elm.date
                 .news__date= elm.date

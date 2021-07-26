@@ -1,0 +1,136 @@
+extends ../layout
+
+block title
+  - var pageTitle = 'Сотрудники';
+  -
+    var crumbs = [
+      {
+        value: 'Компания «Ze Строй»',
+        link: "about.html"
+      }
+    ];
+  +page-header(pageTitle, crumbs)
+block contentBody
+  -
+    var stf = [
+      {
+        name: "Зёмин Пётр Викторович",
+        position: "Генеральный директор",
+        pic: require("/src/images/content-images/staff-1.jpg"),
+        phone: "+7 (900) 888-99-99",
+        email: "Sotrudnik@yandex.ru"
+      },
+      {
+        name: "Волочкова Наталья Валерьевна",
+        position: "Руководитель отдела розничных продаж",
+        pic: require("/src/images/content-images/staff-2.jpg"),
+        phone: "+7 (900) 888-99-99 доб. 122",
+        email: "SotrudnikWithALongerName@yandex.ru"
+      },
+      {
+        name: "Калачев Константин Алексеевич",
+        position: "Генеральный директор генподрядной структуры",
+        pic: require("/src/images/content-images/staff-3.jpg"),
+        phone: "+79008889999",
+        email: "Sotrudnik@dlinnayakompaniya.ru"
+      },
+      {
+        name: "Нгуамба Мигель",
+        position: "Менеджер проектов",
+        pic: require("/src/images/content-images/staff-4.jpg"),
+        phone: "+7 (900) 888-99-99",
+        email: "Sotrudnik@yandex.ru"
+      },
+      {
+        name: "Ищук Лариса Максимовна",
+        position: "Архитектор",
+        pic: require("/src/images/content-images/staff-5.jpg"),
+        phone: "+7 (900) 888-99-99"
+      },
+      {
+        name: "Левков Александр",
+        pic: require("/src/images/content-images/staff-6.jpg"),
+        email: "Sotrudnik@yandex.ru"
+      },
+      {
+        name: "Грезева Светлана",
+        position: "Визуализатор",
+        pic: require("/src/images/content-images/staff-7.jpg")
+      },
+      {
+        name: "Зубарев Виктор",
+        position: "Прораб",
+        pic: require("/src/images/content-images/staff-8.jpg"),
+        email: "Sotrudnik@yandex.ru"
+      },
+      {
+        name: "Длиннофамильцев Имя Отчествович",
+        position: "Заместитель заместителя менеджера по уборке территории",
+        email: "Sotrudnik@yandex.ru"
+      }
+    ];
+  mixin staff-item(item)
+    .staff__item.card.cell.cell-sm-6.cell-md-4
+      .staff__bg.card__outline
+        .staff__image.card__image(class={"staff__image--empty": !item.pic})
+          // картинка размером 276x265
+          if item.pic
+            img(src= item.pic, loading="lazy")
+        if item.name
+          .staff__name.card__name= item.name
+        if item.position
+          .card__subtitle.staff__position= item.position
+        .staff__connects.card__connects
+          if item.phone
+            .card__connect.card__phone
+              .card__connect__icon
+                include ../../images/inline-svgs/partners-phone.svg
+              a.card__connect__value(href="tel:")= item.phone
+          if item.email
+            .card__connect.card__email
+              .card__connect__icon
+                include ../../images/inline-svgs/partners-email.svg
+              a.card__connect__value(href="mailto:" + item.email)= item.email
+  .content__body__block
+    .h3 Руководство
+    .staff__list.card__list.cells
+      each item, index in stf
+        if index < 3
+          +staff-item(item)
+  .content__body__block
+    .h3 Команда опытных специалистов
+    .staff__list.card__list.cells
+      each item, index in stf
+        if index > 2
+          +staff-item(item)
+  //- +pagination(0)
+  +seo
+block contentAside
+  -
+    var items = [
+      {
+        value: "О компании",
+        link: "about.html"
+      },
+      {
+        value: "Партнеры",
+        link: "partners.html"
+      },
+      {
+        value: "Отзывы клиентов",
+        link: "reviews.html"
+      },
+      {
+        value: "Сотрудники",
+        link: "staff.html"
+      },
+      {
+        value: "Сертификаты и лицензии",
+        link: "certs.html"
+      },
+      {
+        value: "Реквизиты",
+        link: "reqs.html"
+      }
+    ];
+  +section-navi('Компания «Ze Строй»', items, 3)

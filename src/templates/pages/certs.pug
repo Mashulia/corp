@@ -1,0 +1,104 @@
+extends ../layout
+
+block title
+  - var pageTitle = 'Сертификаты и лицензии';
+  -
+    var crumbs = [
+      {
+        value: 'Компания «Ze Строй»',
+        link: "about.html"
+      }
+    ];
+  +page-header(pageTitle, crumbs)
+block contentBody
+  -
+    var crts = [
+      {
+        name: "Сертификат участника выставки «Деревянный дом»",
+        type: "jpg",
+        pic: require("/src/images/content-images/about-1.png"),
+        fncbx: "certs-1"
+      },
+      {
+        name: "Сертификаты на газобетон AEROС",
+        type: "jpg",
+        pic: require("/src/images/content-images/staff-2.jpg"),
+        fncbx: "certs-1"
+      },
+      {
+        name: "Сертификат «Доступное и комфортное жилье - гражданам России»",
+        type: "jpg",
+        pic: require("/src/images/content-images/folio-3.jpg"),
+        fncbx: "certs-1"
+      },
+      {
+        name: "Сертификаты на металлочерепицу",
+        pic: "assets/content-images/constitution.pdf",
+        type: "pdf"
+      },
+      {
+        name: "Лицензия министерства регионального развития Российской Федерации",
+        type: "jpg",
+        pic: require("/src/images/content-images/staff-5.jpg"),
+        fncbx: "certs-2"
+      },
+      {
+        name: "Лицензия на техническое обслуживание",
+        pic: require("/src/images/content-images/staff-6.jpg"),
+        type: "jpg",
+        fncbx: "certs-2"
+      },
+      {
+        name: "Длиннофамильцев Имя Отчествович",
+        pic: "assets/content-images/constitution.pdf",
+        type: "pdf"
+      }
+    ];
+  mixin cert-item(item)
+    .cert__item.card.cell.cell-sm-6.cell-xl-4
+      a.card__outline.cert__bg(href= item.pic, target= item.type=="jpg" ? "_self" : "_blank", data-fancybox=item.fncbx || false)
+        .cert__body(class= "cert__body--" + item.type)
+          .cert__name= item.name
+  .content__body__block
+    .h3 Сертификаты
+    .certs__list.card__list.cells
+      each item, index in crts
+        if index < 4
+          +cert-item(item)
+  .content__body__block
+    .h3 Лицензии
+    .certs__list.card__list.cells
+      each item, index in crts
+        if index > 3
+          +cert-item(item)
+  //- +pagination(0)
+  +seo
+block contentAside
+  -
+    var items = [
+      {
+        value: "О компании",
+        link: "about.html"
+      },
+      {
+        value: "Партнеры",
+        link: "partners.html"
+      },
+      {
+        value: "Отзывы клиентов",
+        link: "reviews.html"
+      },
+      {
+        value: "Сотрудники",
+        link: "staff.html"
+      },
+      {
+        value: "Сертификаты и лицензии",
+        link: "certs.html"
+      },
+      {
+        value: "Реквизиты",
+        link: "reqs.html"
+      }
+    ];
+  +section-navi('Компания «Ze Строй»', items, 4)

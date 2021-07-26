@@ -52,7 +52,7 @@
                 if elm.picM
                   source(media="(max-width: 767px)" srcset=elm.picM)
                 source(media="(min-width: 768px)" srcset=elm.picD)
-                img(src=elm.picD)
+                img(src=elm.picD, loading="lazy")
           if elm.descr || elm.title || elm.btn
             .wrap.hero__wrap
               .hero__text
