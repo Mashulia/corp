@@ -1,0 +1,19 @@
+extends ../layout
+
+block title
+  - var pageTitle = 'Новости';
+  -
+    var crumbs = [];
+  +page-header(pageTitle, crumbs)
+block contentBody
+  .prologue
+    p.
+      На нашем youtube-канале вы можете не только посмотреть ход строительства данных домов,
+      но и бесплатно получить проект и смету. Переходите на наш youtube-канал,
+      оставляйте вашу почту в комментариях к понравившемуся дома и мы вышлем вам проект и смету.
+  .cells.news__list.card__list
+    each item in vds
+      p yay
+      //- +news-item(item)(class="cell cell-sm-6 cell-md-4")
+  +pagination(1)
+  +seo

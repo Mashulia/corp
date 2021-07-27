@@ -10,8 +10,10 @@ html(lang="ru")
       link(rel="stylesheet", href="assets/css/vendor/jquery.fancybox.css")
       title Tian Corp Front
   body
+    block essentials
+      include components/vars.pug
+        include components/mixins.pug
     .corp#top
-      include components/mixins
       include components/header
       include components/footer
       block header
@@ -20,10 +22,12 @@ html(lang="ru")
       block content
         .wrap
           .content
-            .content__aside
-              block contentAside
+            block contentNav
+              //- .content__nav
             .content__body
               block contentBody
+            block contentAside
+              //- .content__aside
       block footer
         +footer-var
       include components/popups

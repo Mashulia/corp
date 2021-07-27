@@ -239,6 +239,7 @@ ul li::before {
 table {
   border-spacing: 0;
   display: block;
+  line-height: 1.4;
   margin: 0 0 1rem 0;
   overflow: auto;
   width: 100%;
@@ -246,14 +247,33 @@ table {
 td,
 th {
   padding: 0.75rem 1.25rem;
+
+  tr:first-child & {
+    border-top-width: 1px;
+  }
 }
 th {
-  border: 1px solid $color-bg;
-  background: #f9f9f9;
-  color: $color-textHeader;
+  border: 1px solid $color-sep;
+  border-width: 0 1px 1px 0;
+  font-weight: bold;
   text-align: left;
+
+  &:last-child {
+    border-right-width: 0;
+  }
+  thead & {
+    background: #f9f9f9;
+    color: $color-textHeader;
+
+    &:first-child {
+      border-left-width: 1px;
+    }
+    &:last-child {
+      border-right-width: 1px;
+    }
+  }
 }
-tr:first-child th {
+thead tr:first-child th {
   &:first-child {
     border-radius: 6px 0px 0px 0px;
   }
@@ -276,7 +296,7 @@ thead tr:last-child::after {
   content: "";
   height: 2px;
   position: absolute;
-  top: 100%;
+  bottom: 0;
   left: 0;
   right: 0;
 }
@@ -317,7 +337,16 @@ nav,
     }
   }
 }
+.mb-space1 {
+  margin-bottom: 1.5rem;
+}
 @media (min-width: $break-md) {
+  h5,
+  .h5,
+  h6,
+  .h6 {
+    margin-top: 1.25rem;
+  }
   table {
     display: table;
   }
@@ -417,5 +446,20 @@ nav,
   ol,
   table {
     margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  td,
+  th {
+    padding: 0.9375rem 1.5rem 1rem;
+  }
+  .mb-space1 {
+    margin-bottom: 2.5rem;
+  }
+}
+@media (min-width: $break-xl) {
+  ul,
+  ol,
+  table {
+    margin-bottom: 1.375rem;
   }
 }

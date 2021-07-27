@@ -21,7 +21,7 @@ block contentBody
         .reviews__intro__note После успешной проверки отзыв будет добавлен на сайт в течении 3-х дней.
   +reviewsList(100)
   +pagination(0)
-block contentAside
+block contentNav
   -
     var items = [
       {
@@ -49,4 +49,5 @@ block contentAside
         link: "reqs.html"
       }
     ];
-  +section-navi('Компания «Ze Строй»', items, 2)
+  .content__nav
+    +section-navi('Компания «Ze Строй»', items, 2)

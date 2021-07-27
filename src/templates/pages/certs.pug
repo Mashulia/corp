@@ -37,6 +37,12 @@ block contentBody
         type: "pdf"
       },
       {
+        name: "Сертификат «Технологий малоэтажного деревянного строительства»",
+        pic: require("/src/images/content-images/reviews-3.jpg"),
+        type: "jpg",
+        fncbx: "certs-1"
+      },
+      {
         name: "Лицензия министерства регионального развития Российской Федерации",
         type: "jpg",
         pic: require("/src/images/content-images/staff-5.jpg"),
@@ -49,7 +55,7 @@ block contentBody
         fncbx: "certs-2"
       },
       {
-        name: "Длиннофамильцев Имя Отчествович",
+        name: "Декларация о соответствии КОМБИКОРМ ПОЛНОРАЦИОННЫЙ ДЛЯ сельскохозяйственной ПТИЦЫ",
         pic: "assets/content-images/constitution.pdf",
         type: "pdf"
       }
@@ -57,23 +63,25 @@ block contentBody
   mixin cert-item(item)
     .cert__item.card.cell.cell-sm-6.cell-xl-4
       a.card__outline.cert__bg(href= item.pic, target= item.type=="jpg" ? "_self" : "_blank", data-fancybox=item.fncbx || false)
-        .cert__body(class= "cert__body--" + item.type)
-          .cert__name= item.name
+        .cert__body.fdown(class= "fdown--" + item.type)
+          .cert__name.fdown__name= item.name
+        .cert__enlarge
+          include ./../../images/inline-svgs/icon-enlarge-cert.svg
   .content__body__block
     .h3 Сертификаты
     .certs__list.card__list.cells
       each item, index in crts
-        if index < 4
+        if index < 5
           +cert-item(item)
   .content__body__block
     .h3 Лицензии
     .certs__list.card__list.cells
       each item, index in crts
-        if index > 3
+        if index > 4
           +cert-item(item)
-  //- +pagination(0)
-  +seo
-block contentAside
+  +pagination(1)
+  //- +seo
+block contentNav
   -
     var items = [
       {
@@ -101,4 +109,5 @@ block contentAside
         link: "reqs.html"
       }
     ];
-  +section-navi('Компания «Ze Строй»', items, 4)
+  .content__nav
+    +section-navi('Компания «Ze Строй»', items, 4)

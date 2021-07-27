@@ -1,0 +1,13 @@
+extends ../layout
+
+block title
+  - var pageTitle = 'Новости';
+  -
+    var crumbs = [];
+  +page-header(pageTitle, crumbs)
+block contentBody
+  .cells.news__list.card__list
+    each item in nws
+      +news-item(item)(class="cell cell-sm-6 cell-md-4")
+  +pagination(1)
+  //- +seo

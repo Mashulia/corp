@@ -40,11 +40,7 @@
   position: relative;
 
   img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
+    @extend %absolute-img;
     object-fit: cover;
   }
 }

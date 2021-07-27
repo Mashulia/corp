@@ -1,0 +1,75 @@
+extends ../layout
+
+block title
+  - var pageTitle = 'Сертификаты и лицензии';
+  -
+    var crumbs = [
+      {
+        value: 'Компания «Ze Строй»',
+        link: "about.html"
+      }
+    ];
+  +page-header(pageTitle, crumbs)
+block contentBody
+  table.mb-space1
+    tr
+      th Лицензия на техническое обслуживание:
+      td Общество с ограниченной ответственностью «ZE Строй»
+    tr
+      th Сокращенное наименование:
+      td OOO «ZE Строй»
+    tr
+      th ИНН/КПП
+      td 7999001099/999707007
+    tr
+      th ОГРН:
+      td 9911001123456
+    tr
+      th Юридический адрес:
+      td г. Челябинск, ул. ул. Артиллерийская, д. 1, офис 5
+    tr
+      th Фактический адрес:
+      td г. Челябинск, ул. ул. Артиллерийская, д. 1, офис 5
+    tr
+      th Телефон, факс:
+      td +7 (351) 225-07-55
+    tr
+      th Электронная почта:
+      td info@zestroy.com
+    tr
+      th Банковские реквизиты:
+      td Реквизиты
+  div
+    a.fdown.fdown--pdf(href="assets/content-images/constitution.pdf", target="__blank")
+      .fdown__name Реквизиты OOO «ZE Строй»
+        .fdown__size 128 кб
+block contentNav
+  -
+    var items = [
+      {
+        value: "О компании",
+        link: "about.html"
+      },
+      {
+        value: "Партнеры",
+        link: "partners.html"
+      },
+      {
+        value: "Отзывы клиентов",
+        link: "reviews.html"
+      },
+      {
+        value: "Сотрудники",
+        link: "staff.html"
+      },
+      {
+        value: "Сертификаты и лицензии",
+        link: "certs.html"
+      },
+      {
+        value: "Реквизиты",
+        link: "reqs.html"
+      }
+    ];
+  .content__nav
+    +section-navi('Компания «Ze Строй»', items, 5)

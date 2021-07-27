@@ -43,7 +43,7 @@
   border-bottom: 1px solid $color-sep;
 
   &:last-child {
-    border-bottom-color: transparent;
+    border-bottom-width: 0;
   }
 }
 .snavigation__link {
@@ -84,7 +84,6 @@
 @media (min-width: $break-xl) {
   .snavigation {
     font-size: 1.125rem;
-    margin-right: 2.875rem;
   }
   .snavigation__link {
     padding: 1.25rem 1.5rem 1.125rem;

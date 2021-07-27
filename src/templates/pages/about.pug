@@ -98,7 +98,7 @@ block contentBody
         td 11 480,00
         td 80
   p.text-aux *Цены уточняйте по телефону: +7 (351) 225-07-55
-block contentAside
+block contentNav
   -
     var items = [
       {
@@ -127,4 +127,5 @@ block contentAside
       }
     ];
   - var currentIndex = 0;
-  +section-navi(pageTitle, items, currentIndex)
+  .content__nav
+    +section-navi(pageTitle, items, currentIndex)

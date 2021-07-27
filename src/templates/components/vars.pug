@@ -1,0 +1,373 @@
+-
+  var scls = [
+    {
+      name: "fb",
+      title: "Группа в Facebook"
+     },
+    {
+      name: "vk",
+      title: "Группа во Вконтакте",
+    },
+    {
+      name: "twitter",
+      title: "Группа в Twitter"
+    },
+    {
+      name: "ok",
+      title: "Группа в Одноклассниках"
+    },
+    {
+      name: "instagram",
+      title: "Страница в Instagram"
+    },
+    {
+      name: "youtube",
+      title: "Канал на Youtube"
+    }
+  ];
+-
+  var msngrs = [
+    {
+      name: "tg",
+      title: "Написать в Telegram"
+    },
+    {
+      name: "viber",
+      title: "Написать в Viber"
+    },
+    {
+      name: "whatsapp",
+      title: "Написать в Whatsapp"
+    }
+  ];
+-
+  var cnncts = {
+    phones: [
+      {
+        value: "+7 (351) 225-07-55",
+        link: "+73512250755",
+        label: "call-центр"
+      },
+      {
+        value: "+7 (351) 225-07-56",
+        label: "Отдел доставки",
+        descr: "работаем 10:00 - 20:00",
+        link: "+73512250756"
+      },
+      {
+        value: "+7 (351) 778-88-00 доб. 123",
+        label: "Бухгалтерия",
+        link: "+73517788800"
+      },
+      {
+        value: "+7 (351) 778-88-10",
+        label: "Директор Длиннофамильцев Имярек Отчествович",
+        link: "+73512250756"
+      }
+    ],
+    emails: [
+      {
+        value: "info@zetrade.com"
+      },
+      {
+        value: "dlinnofamiltsev@zetrade.com"
+      }
+    ],
+    addresses: [
+      {
+        value: "г.Челябинск, ул. Артиллерийская, д.1",
+        descr: "Пн - Пт: 9.00 - 18.00 Сб - Вс: выходные"
+      },
+      //- {
+      //-   value: "Российская Федерация, Челябинская область, г. Челябинск, ул. Артиллерийская, стр. 1, корпус 14, офис 202а",
+      //-   descr: "Пн - Пт: 9.00 - 18.00 Сб - Вс: выходные"
+      //- },
+      //- {
+      //-   value: "г. Екатеринбург, ул. Новоградская, 3, офис 123",
+      //-   descr: "Какая-то подпись, если надо"
+      //- },
+      //- {
+      //-   value: "г. Екатеринбург, ул. 1-ая Электровозная, 3, офис 123"
+      //- }
+    ]
+  };
+//- - var logoImage = require("/src/images/theme-images/logo-sq.png");
+- var logoImage = require("/src/images/content-images/parts-1.png");
+-
+  var rvws = [
+    {
+      title: "Ольга",
+      text: "Мы с мужем обращались в компанию «ZE Строй», чтобы заказать строительство загородного дома. Предложили специалистам готовый проект, купленный в Интернете. Как выяснилось, в нем было много ошибок, но инженеры его доработали. В итоге готовый дом, возведенный профессионалами, оказался идеальным во всех отношениях.",
+      ava: require("/src/images/content-images/reviews-1.jpg"),
+      pics: [
+        {
+          xs: require("/src/images/content-images/reviews-folio-1-xs.jpg"),
+          lg: require("/src/images/content-images/folio-1.jpg")
+        },
+        {
+          xs: require("/src/images/content-images/reviews-folio-2-xs.jpg"),
+          lg: require("/src/images/content-images/folio-2.jpg")
+        },
+        {
+          xs: require("/src/images/content-images/reviews-folio-3-xs.jpg"),
+          lg: require("/src/images/content-images/prods-1.jpg")
+        },
+        {
+          xs: require("/src/images/content-images/reviews-folio-4-xs.jpg"),
+          lg: require("/src/images/content-images/folio-3.jpg")
+        }
+      ],
+      date: "12.12.2020",
+      cat: "Дом из клееного бруса"
+    },
+    {
+      title: "Анатолий Антатолий",
+      text: 'Свой дом на 240 кв.м. в стиле "Шале" мне посчастливилось строить с командой «ZE Строй». Основной стеновой материал - керамические блоки. Из особенностей - полноценный цокольный этаж на участке с уклоном. В процессе работы особенно понравилось: грамотно подобранная профессиональная бригада; глубокое знание всех технологий проекта со стороны руководителя; отсутствие задержек строительного процесса; развернутые ответы на любые мои вопросы.Уверенно могу рекомендовать компанию для строительства больших и технически сложных домов - ребята не оставляют никаких "белых пятен" в отношении к своей работе и не заставляют беспокоиться о результате.',
+      ava: require("/src/images/content-images/reviews-2.jpg"),
+      pics: [
+        {
+          xs: require("/src/images/content-images/reviews-folio-5-xs.jpg"),
+          lg: require("/src/images/content-images/folio-1.jpg")
+        },
+        {
+          xs: require("/src/images/content-images/reviews-folio-6-xs.jpg"),
+          lg: require("/src/images/content-images/folio-2.jpg")
+        },
+      ],
+      date: "15.04.2019"
+    },
+    {
+      title: "Анатолий Петрович",
+      ava: require("/src/images/content-images/reviews-3.jpg"),
+      text: "Арматура как арматура. Не ржавая и ровная, советую надевать перчатки перед погрузкой",
+      cat: "Дом из клееного бруса Дом из клееного бруса Дом из клееного бруса Дом из клееного бруса"
+    },
+    {
+      title: "Тамара Шевченко",
+      text: 'Была у нас большая мечта построить уютный теплый и красивый дом. С помощью МЕЧТЫ она превратилась в реальность. Живем на 130 кв. метрах в коттедже из газоблоков. Получилось в точности по проекту, который согласовали, без задержек и накладок',
+      date: "15 апр. 2019",
+      pics: [
+        {
+          xs: require("/src/images/content-images/reviews-folio-7-xs.jpg"),
+          lg: require("/src/images/content-images/folio-1.jpg")
+        },
+        {
+          xs: require("/src/images/content-images/reviews-folio-8-xs.jpg"),
+          lg: require("/src/images/content-images/folio-2.jpg")
+        },
+        {
+          xs: require("/src/images/content-images/reviews-folio-9-xs.jpg"),
+          lg: require("/src/images/content-images/prods-1.jpg")
+        },
+        {
+          xs: require("/src/images/content-images/reviews-folio-10-xs.jpg"),
+          lg: require("/src/images/content-images/folio-3.jpg")
+        },
+        {
+          xs: require("/src/images/content-images/reviews-folio-11-xs.jpg"),
+          lg: require("/src/images/content-images/folio-4.jpg")
+        },
+        {
+          xs: require("/src/images/content-images/reviews-folio-12-xs.jpg"),
+          lg: require("/src/images/content-images/folio-2.jpg")
+        },
+        {
+          xs: require("/src/images/content-images/reviews-folio-13-xs.jpg"),
+          lg: require("/src/images/content-images/prods-1.jpg")
+        },
+        {
+          xs: require("/src/images/content-images/reviews-folio-10-xs.jpg"),
+          lg: require("/src/images/content-images/folio-3.jpg")
+        },
+        {
+          xs: require("/src/images/content-images/reviews-folio-9-xs.jpg"),
+          lg: require("/src/images/content-images/prods-1.jpg")
+        },
+        {
+          xs: require("/src/images/content-images/reviews-folio-10-xs.jpg"),
+          lg: require("/src/images/content-images/folio-3.jpg")
+        },
+        {
+          xs: require("/src/images/content-images/reviews-folio-11-xs.jpg"),
+          lg: require("/src/images/content-images/folio-1.jpg")
+        },
+        {
+          xs: require("/src/images/content-images/reviews-folio-12-xs.jpg"),
+          lg: require("/src/images/content-images/folio-2.jpg")
+        }
+      ]
+    },
+    {
+      title: "Олеся, 34 года",
+      ava: require("/src/images/content-images/reviews-4.jpg"),
+      text: 'Мы с мужем обращались в компанию «ZE Строй», чтобы заказать строительство загородного дома. Предложили специалистам готовый проект, купленный в Интернете. Как выяснилось, в нем было много ошибок, но инженеры его доработали. В итоге готовый дом, возведенный профессионалами, оказался идеальным во всех отношениях.',
+      date: "10.10.2021"
+    },
+    {
+      text: 'Мы с мужем обращались в компанию «ZE Строй», чтобы заказать строительство загородного дома. Предложили специалистам готовый проект, купленный в Интернете.',
+      pics: [
+        {
+          xs: require("/src/images/content-images/about-1.jpg"),
+          lg: require("/src/images/content-images/folio-1.jpg")
+        },
+        {
+          xs: require("/src/images/content-images/about-1.png"),
+          lg: require("/src/images/content-images/folio-2.jpg")
+        },
+        {
+          xs: require("/src/images/content-images/cats-2.png"),
+          lg: require("/src/images/content-images/prods-1.jpg")
+        },
+        {
+          xs: require("/src/images/content-images/prods-1.jpg"),
+          lg: require("/src/images/content-images/folio-3.jpg")
+        }
+      ],
+    }
+  ];
+- var pgntn = [1, 2, 3, "...", 10];
+-
+  var partnrs = [
+    {
+      pic: require("/src/images/content-images/partners-1.png"),
+      name: "Rubytech",
+      text: "Системный интегратор с глубокой экспертизой в построении ИТ-инфраструктуры, проектировании ЦОДов, создании сетевых решений и технологий в сфере ИБ",
+      link: "rubytech.ru",
+      phone: "+7 (495) 788-99-99",
+      email: "info@rubytech.ru"
+    },
+    {
+      pic: require("/src/images/content-images/partners-2.png"),
+      name: "Arenadata ",
+      text: "Ведущий разработчик платформы сбора и хранения данных",
+      link: "arenadata.tech",
+      phone: "+7 (495) 260-20-25",
+      email: "support@arenadata.io"
+    },
+    {
+      pic: require("/src/images/content-images/partners-3.png"),
+      name: "Бюджетные и Финансовые Технологии",
+      link: "bftcom.com",
+      phone: "+7(495) 784-70-00",
+      email: "ineed@bftcom.com"
+    },
+    {
+      pic: require("/src/images/content-images/partners-4.png"),
+      text: "Крупнейший частный поставщик строительных решений в Великобритании",
+      link: "laingorourke.com"
+    },
+    {
+      pic: require("/src/images/content-images/partners-5.png"),
+      name: "Avanpost ",
+      phone: "+7 (495) 641-80-80",
+      email: "info@avanpost.ru"
+    },
+    {
+      pic: require("/src/images/content-images/partners-6.png"),
+      name: "IT_ONE",
+      email: "info@it-one.ru"
+    },
+    {
+      pic: require("/src/images/content-images/partners-7.png"),
+      name: "ФомЛайн",
+      text: "Крупнейший российский производитель эластичного пенополиуретана"
+    },
+    {
+      pic: require("/src/images/content-images/partners-8.png"),
+      name: "Leroy Merlin",
+      link: "leroymerlin.ru"
+    },
+    {
+      name: "Компания"
+    }
+  ];
+-
+  var nws = [
+    {
+      title: "Каркасный дом в п. Западный",
+      text: "Ещё один проект пополнил наше портфолио. Двухэтажный дом для большой семьи в п.Западный.",
+      pic: require("/src/images/content-images/news-1.jpg"),
+      date: "12.12.2020"
+    },
+    {
+      title: "Новинка в строительных материалах",
+      text: "Компания «ZE Стройка» разработала новые сэндвич-панели Sakura. Теперь еще прочнее и экономичнее.",
+      pic: require("/src/images/content-images/news-2.jpg"),
+      date: "1.05.2021"
+    },
+    {
+      title: "ChelBuild. Строительная выставка — Загородный дом 2021",
+      text: "Наша компания приняла участие в выставке инноваций. Расскажем все интересные моменты",
+      pic: require("/src/images/content-images/news-3.jpg"),
+      date: "28.05.2021"
+    },
+    {
+      title: "Стильный каркасный дом по проекту от клиента",
+      text: "Легкий, просторный, светлый дом. На двух жилых этажах расположены 3 уютных спальни, 2 просторных холла, кухня, прихожая, санузел, подсобные помещения.",
+      pic: require("/src/images/content-images/news-4.jpg"),
+      date: "1.08.2021"
+    },
+    {
+      title: "Дом из бруса для постоянного проживания в Ленинградской области",
+      text: "В галерею добавлен еще один проект, который покорил сердце наших клиентов.",
+      pic: require("/src/images/content-images/news-5.jpg"),
+      date: "28.05.2021"
+    },
+    {
+      title: "Egger обнародовал ключевые результаты деятельности",
+      text: "В 2019/2020 финансовом году концерн продемонстрировал высокую стабильность.",
+      pic: require("/src/images/content-images/cats-2.png"),
+      date: "1.05.2021"
+    },
+    {
+      title: "Хватит тянуть!",
+      pic: require("/src/images/content-images/promo-desk.jpg")
+    },
+    {
+      title: "Хватит тянуть!",
+      date: "28 фев."
+    }
+  ];
+-
+  var vds = [
+    {
+      link: "4TH9mFgjdaI",
+      title: "Дом мечты. От проекта до реализации",
+      descr: "Заведующий производством рассказывает о технологиях и процессах",
+      cover: "https://img.youtube.com/vi/4TH9mFgjdaI/maxresdefault.jpg"
+    },
+    //- {
+    //-   link: "jKw3n1Gsrtw",
+    //-   title: "Дом из клееного бруса 15x10 м по индивидуальному проекту",
+    //-   descr: "В этом видеоролике мы показываем, как работает наша строительная бригада, и в какие сроки на участке вырастает каркасный дом, готовый для жизни.",
+    //-   cover: "https://img.youtube.com/vi/jKw3n1Gsrtw/maxresdefault.jpg"
+    //- },
+    //- {
+    //-   link: "WYk-ezOLrqs",
+    //-   title: "Строительство дома из SIP панелей",
+    //-   descr: "На видео мы сжали время, чтобы продемонстрировать, как рождается очередной дом.",
+    //-   cover: "https://img.youtube.com/vi/WYk-ezOLrqs/maxresdefault.jpg"
+    //- },
+    //- {
+    //-   link: "OAPb_cZlmbU",
+    //-   title: "Дачный дом по проекту «Заря»",
+    //-   descr: "Завершили возведение дачного дома по проекту «Заря». Размеры дома 6х6. Общая площадь 57 м2.",
+    //-   cover: "https://img.youtube.com/vi/OAPb_cZlmbU/maxresdefault.jpg"
+    //- },
+    //- {
+    //-   link: "WYk-ezOLrqs",
+    //-   title: "Новинка – норвежский дом: проекты и цены под ключ",
+    //-   descr: "Подходит к своему логическому завершению строительство дома по индивидуальному проекту.",
+    //-   cover: "https://img.youtube.com/vi/WYk-ezOLrqs/maxresdefault.jpg"
+    //- },
+    //- {
+    //-   link: "OAPb_cZlmbU",
+    //-   title: "Обычные, но очень интересные проекты наших домов",
+    //-   descr: "Представляем видео ролик нашего строительства. Данные проекты очень интересны и просты!",
+    //-   cover: "https://img.youtube.com/vi/OAPb_cZlmbU/maxresdefault.jpg"
+    //- },
+    //- {
+    //-   link: "OAPb_cZlmbU",
+    //-   title: "Обычные, но очень интересные проекты наших домов"
+    //- }
+  ];

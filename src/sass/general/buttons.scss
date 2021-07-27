@@ -98,10 +98,11 @@ button.button:disabled,
   pointer-events: none;
 }
 .button--loading {
-  & .button__body {
+  .button__body,
+  .button__icon {
     visibility: hidden;
   }
-  & .button__spinner {
+  .button__spinner {
     display: block;
   }
 }

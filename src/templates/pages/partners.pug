@@ -42,7 +42,7 @@ block contentBody
                   a.card__connect__value(href="mailto:" + item.email)= item.email
   //- +pagination(0)
   //- +seo
-block contentAside
+block contentNav
   -
     var items = [
       {
@@ -70,4 +70,5 @@ block contentAside
         link: "reqs.html"
       }
     ];
-  +section-navi('Компания «Ze Строй»', items, 1)
+  .content__nav
+    +section-navi('Компания «Ze Строй»', items, 1)

@@ -2,15 +2,19 @@
   align-items: stretch;
 }
 .card {
-  margin-bottom: 1.25rem;
+  font-size: 0.875rem;
+  margin-bottom: 1.125rem;
 }
+.icard,
 .card__outline {
   border: 1px solid $color-sep;
   border-radius: $brad-3;
   display: block;
-  font-size: 0.875rem;
   height: 100%;
-  line-height: 1.4;
+  line-height: 1.45;
+  overflow: hidden;
+}
+.card__outline {
   padding: 1.25rem;
 }
 .card__image,
@@ -26,11 +30,15 @@
 .card__subtitle {
   margin-bottom: 1rem;
 }
-.card__image {
-  border-radius: $brad-1;
+.card__image,
+.icard__image {
+  display: block;
   overflow: hidden;
   position: relative;
   width: 100%;
+}
+.card__image {
+  border-radius: $brad-1;
 
   img {
     max-height: 100%;
@@ -46,11 +54,10 @@
 }
 .card__name {
   color: $color-textHeader;
+  display: block;
+  font-size: 0.875rem;
   font-weight: bold;
   line-height: 1.35;
-}
-.card__text {
-  line-height: 1.45;
 }
 .card__connect {
   @extend %fx-centered-y;
@@ -67,6 +74,34 @@
 .card__email,
 .card__link {
   word-break: break-all;
+}
+.icard {
+  font-size: 0.75rem;
+}
+.icard__body {
+  padding: 1.25rem;
+  position: relative;
+}
+.icard__image {
+  padding-bottom: 54.6%;
+
+  img {
+    @extend %absolute-img;
+    object-fit: cover;
+  }
+}
+.icard__date {
+  background: $color-text2;
+  border-radius: 2px;
+  color: #fff;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.75rem;
+  padding: 0.1875rem 0.375rem;
+  position: absolute;
+  top: 0;
+  left: 1.25rem;
+  transform: translate(0, -50%);
 }
 @media (min-width: $break-sm) {
   .card__outline {
@@ -87,6 +122,9 @@
   .card__connect__icon {
     margin-right: 0.5rem;
   }
+  .icard__body {
+    padding-top: 1.3125rem;
+  }
 }
 @media (min-width: $break-lg) {
   .card {
@@ -97,9 +135,24 @@
   }
   .card__name {
     margin-bottom: 0.625rem;
+
+    .icard & {
+      font-size: 1rem;
+    }
   }
   .card__text {
     margin-bottom: 1.5rem;
+  }
+  .icard__date {
+    padding: 0.25rem 0.5rem;
+    left: 1.5rem;
+    transform: translate(0, -50%);
+  }
+  .icard__body {
+    padding: 1.5rem;
+  }
+  .icard__descr {
+    font-size: 0.875rem;
   }
 }
 @media (min-width: $break-xl) {
@@ -120,5 +173,11 @@
   }
   .card__connect__icon {
     margin-right: 0.625rem;
+  }
+  .icard__body {
+    padding: 1.5rem 2.5rem 2.5rem;
+  }
+  .icard__date {
+    left: 2.5rem;
   }
 }

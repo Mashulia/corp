@@ -8,33 +8,6 @@ mixin section-header(title, linkName, link)
           span.section__link__title= linkName
           span.section__link__icon
             include ../../images/inline-svgs/section-header-link.svg
--
-  var scls = [
-    {
-      name: "fb",
-      title: "Группа в Facebook"
-     },
-    {
-      name: "vk",
-      title: "Группа во Вконтакте",
-    },
-    {
-      name: "twitter",
-      title: "Группа в Twitter"
-    },
-    {
-      name: "ok",
-      title: "Группа в Одноклассниках"
-    },
-    {
-      name: "instagram",
-      title: "Страница в Instagram"
-    },
-    {
-      name: "youtube",
-      title: "Канал на Youtube"
-    }
-  ];
 mixin icon-fb
   include ../../images/inline-svgs/fb.svg
 mixin icon-vk
@@ -54,21 +27,6 @@ mixin socials
         .socials__item
           a.socials__link(href="", title= item.title)
             +#{"icon-" + item.name}
--
-  var msngrs = [
-    {
-      name: "tg",
-      title: "Написать в Telegram"
-    },
-    {
-      name: "viber",
-      title: "Написать в Viber"
-    },
-    {
-      name: "whatsapp",
-      title: "Написать в Whatsapp"
-    }
-  ];
 mixin icon-tg
   include ../../images/inline-svgs/tg.svg
 mixin icon-viber
@@ -84,57 +42,6 @@ mixin messengers
             .messengers__icon
               +#{"icon-" + item.name}
             .messengers__text= item.title
--
-  var cnncts = {
-    phones: [
-      {
-        value: "+7 (351) 225-07-55",
-        link: "+73512250755",
-        label: "call-центр"
-      },
-      {
-        value: "+7 (351) 225-07-56",
-        label: "Отдел доставки",
-        descr: "работаем 10:00 - 20:00",
-        link: "+73512250756"
-      },
-      {
-        value: "+7 (351) 778-88-00 доб. 123",
-        label: "Бухгалтерия",
-        link: "+73517788800"
-      },
-      {
-        value: "+7 (351) 778-88-10",
-        label: "Директор Длиннофамильцев Имярек Отчествович",
-        link: "+73512250756"
-      }
-    ],
-    emails: [
-      {
-        value: "info@zetrade.com"
-      },
-      {
-        value: "dlinnofamiltsev@zetrade.com"
-      }
-    ],
-    addresses: [
-      {
-        value: "г.Челябинск, ул. Артиллерийская, д.1",
-        descr: "Пн - Пт: 9.00 - 18.00 Сб - Вс: выходные"
-      },
-      //- {
-      //-   value: "Российская Федерация, Челябинская область, г. Челябинск, ул. Артиллерийская, стр. 1, корпус 14, офис 202а",
-      //-   descr: "Пн - Пт: 9.00 - 18.00 Сб - Вс: выходные"
-      //- },
-      //- {
-      //-   value: "г. Екатеринбург, ул. Новоградская, 3, офис 123",
-      //-   descr: "Какая-то подпись, если надо"
-      //- },
-      //- {
-      //-   value: "г. Екатеринбург, ул. 1-ая Электровозная, 3, офис 123"
-      //- }
-    ]
-  };
 mixin connectList(type, noFirst, limit=100)
   - var noShowItem = noFirst ? 0 : 100;
   .connect__list
@@ -153,8 +60,6 @@ mixin connectList(type, noFirst, limit=100)
               .connect__label= item.label
             if item.descr
               .connect__descr= item.descr
-//- - var logoImage = require("/src/images/theme-images/logo-sq.png");
-- var logoImage = require("/src/images/content-images/parts-1.png");
 mixin logo
   .logo
     a.logo__link(href="index.html")
@@ -209,138 +114,6 @@ mixin page-header(title, crumbs, variant="page-header--v1")
           li.breadcrumbs__item
               a.breadcrumbs__link.breadcrumbs__link--current(href="/")=title
         h1= title
--
-  var rvws = [
-    {
-      title: "Ольга",
-      text: "Мы с мужем обращались в компанию «ZE Строй», чтобы заказать строительство загородного дома. Предложили специалистам готовый проект, купленный в Интернете. Как выяснилось, в нем было много ошибок, но инженеры его доработали. В итоге готовый дом, возведенный профессионалами, оказался идеальным во всех отношениях.",
-      ava: require("/src/images/content-images/reviews-1.jpg"),
-      pics: [
-        {
-          xs: require("/src/images/content-images/reviews-folio-1-xs.jpg"),
-          lg: require("/src/images/content-images/folio-1.jpg")
-        },
-        {
-          xs: require("/src/images/content-images/reviews-folio-2-xs.jpg"),
-          lg: require("/src/images/content-images/folio-2.jpg")
-        },
-        {
-          xs: require("/src/images/content-images/reviews-folio-3-xs.jpg"),
-          lg: require("/src/images/content-images/prods-1.jpg")
-        },
-        {
-          xs: require("/src/images/content-images/reviews-folio-4-xs.jpg"),
-          lg: require("/src/images/content-images/folio-3.jpg")
-        }
-      ],
-      date: "12.12.2020",
-      cat: "Дом из клееного бруса"
-    },
-    {
-      title: "Анатолий Антатолий",
-      text: 'Свой дом на 240 кв.м. в стиле "Шале" мне посчастливилось строить с командой «ZE Строй». Основной стеновой материал - керамические блоки. Из особенностей - полноценный цокольный этаж на участке с уклоном. В процессе работы особенно понравилось: грамотно подобранная профессиональная бригада; глубокое знание всех технологий проекта со стороны руководителя; отсутствие задержек строительного процесса; развернутые ответы на любые мои вопросы.Уверенно могу рекомендовать компанию для строительства больших и технически сложных домов - ребята не оставляют никаких "белых пятен" в отношении к своей работе и не заставляют беспокоиться о результате.',
-      ava: require("/src/images/content-images/reviews-2.jpg"),
-      pics: [
-        {
-          xs: require("/src/images/content-images/reviews-folio-5-xs.jpg"),
-          lg: require("/src/images/content-images/folio-1.jpg")
-        },
-        {
-          xs: require("/src/images/content-images/reviews-folio-6-xs.jpg"),
-          lg: require("/src/images/content-images/folio-2.jpg")
-        },
-      ],
-      date: "15.04.2019"
-    },
-    {
-      title: "Анатолий Петрович",
-      ava: require("/src/images/content-images/reviews-3.jpg"),
-      text: "Арматура как арматура. Не ржавая и ровная, советую надевать перчатки перед погрузкой",
-      cat: "Дом из клееного бруса Дом из клееного бруса Дом из клееного бруса Дом из клееного бруса"
-    },
-    {
-      title: "Тамара Шевченко",
-      text: 'Была у нас большая мечта построить уютный теплый и красивый дом. С помощью МЕЧТЫ она превратилась в реальность. Живем на 130 кв. метрах в коттедже из газоблоков. Получилось в точности по проекту, который согласовали, без задержек и накладок',
-      date: "15 апр. 2019",
-      pics: [
-        {
-          xs: require("/src/images/content-images/reviews-folio-7-xs.jpg"),
-          lg: require("/src/images/content-images/folio-1.jpg")
-        },
-        {
-          xs: require("/src/images/content-images/reviews-folio-8-xs.jpg"),
-          lg: require("/src/images/content-images/folio-2.jpg")
-        },
-        {
-          xs: require("/src/images/content-images/reviews-folio-9-xs.jpg"),
-          lg: require("/src/images/content-images/prods-1.jpg")
-        },
-        {
-          xs: require("/src/images/content-images/reviews-folio-10-xs.jpg"),
-          lg: require("/src/images/content-images/folio-3.jpg")
-        },
-        {
-          xs: require("/src/images/content-images/reviews-folio-11-xs.jpg"),
-          lg: require("/src/images/content-images/folio-4.jpg")
-        },
-        {
-          xs: require("/src/images/content-images/reviews-folio-12-xs.jpg"),
-          lg: require("/src/images/content-images/folio-2.jpg")
-        },
-        {
-          xs: require("/src/images/content-images/reviews-folio-13-xs.jpg"),
-          lg: require("/src/images/content-images/prods-1.jpg")
-        },
-        {
-          xs: require("/src/images/content-images/reviews-folio-10-xs.jpg"),
-          lg: require("/src/images/content-images/folio-3.jpg")
-        },
-        {
-          xs: require("/src/images/content-images/reviews-folio-9-xs.jpg"),
-          lg: require("/src/images/content-images/prods-1.jpg")
-        },
-        {
-          xs: require("/src/images/content-images/reviews-folio-10-xs.jpg"),
-          lg: require("/src/images/content-images/folio-3.jpg")
-        },
-        {
-          xs: require("/src/images/content-images/reviews-folio-11-xs.jpg"),
-          lg: require("/src/images/content-images/folio-1.jpg")
-        },
-        {
-          xs: require("/src/images/content-images/reviews-folio-12-xs.jpg"),
-          lg: require("/src/images/content-images/folio-2.jpg")
-        }
-      ]
-    },
-    {
-      title: "Олеся, 34 года",
-      ava: require("/src/images/content-images/reviews-4.jpg"),
-      text: 'Мы с мужем обращались в компанию «ZE Строй», чтобы заказать строительство загородного дома. Предложили специалистам готовый проект, купленный в Интернете. Как выяснилось, в нем было много ошибок, но инженеры его доработали. В итоге готовый дом, возведенный профессионалами, оказался идеальным во всех отношениях.',
-      date: "10.10.2021"
-    },
-    {
-      text: 'Мы с мужем обращались в компанию «ZE Строй», чтобы заказать строительство загородного дома. Предложили специалистам готовый проект, купленный в Интернете.',
-      pics: [
-        {
-          xs: require("/src/images/content-images/about-1.jpg"),
-          lg: require("/src/images/content-images/folio-1.jpg")
-        },
-        {
-          xs: require("/src/images/content-images/about-1.png"),
-          lg: require("/src/images/content-images/folio-2.jpg")
-        },
-        {
-          xs: require("/src/images/content-images/cats-2.png"),
-          lg: require("/src/images/content-images/prods-1.jpg")
-        },
-        {
-          xs: require("/src/images/content-images/prods-1.jpg"),
-          lg: require("/src/images/content-images/folio-3.jpg")
-        }
-      ],
-    }
-  ];
 mixin reviewsList(limit, printPics=true)
   .reviews__list(class!=attributes.class)
     each elm, index in rvws
@@ -368,7 +141,6 @@ mixin reviewsList(limit, printPics=true)
                       a.reviews__image(href=item.lg, data-fancybox="review-" + index)
                         img(src= item.xs)
                         .reviews__image__overflow
-- var pgntn = [1, 2, 3, "...", 10];
 mixin pagination(current)
   .pagination
     ol.pagination__list
@@ -384,63 +156,8 @@ mixin pagination(current)
       li.pagination__item
         a.pagination__link(href="", title="Следующая страница", class={"pagination__link--disabled": current == pgntn.length - 1})
           include ./../../images/inline-svgs/pagination-right.svg
--
-  var partnrs = [
-    {
-      pic: require("/src/images/content-images/partners-1.png"),
-      name: "Rubytech",
-      text: "Системный интегратор с глубокой экспертизой в построении ИТ-инфраструктуры, проектировании ЦОДов, создании сетевых решений и технологий в сфере ИБ",
-      link: "rubytech.ru",
-      phone: "+7 (495) 788-99-99",
-      email: "info@rubytech.ru"
-    },
-    {
-      pic: require("/src/images/content-images/partners-2.png"),
-      name: "Arenadata ",
-      text: "Ведущий разработчик платформы сбора и хранения данных",
-      link: "arenadata.tech",
-      phone: "+7 (495) 260-20-25",
-      email: "support@arenadata.io"
-    },
-    {
-      pic: require("/src/images/content-images/partners-3.png"),
-      name: "Бюджетные и Финансовые Технологии",
-      link: "bftcom.com",
-      phone: "+7(495) 784-70-00",
-      email: "ineed@bftcom.com"
-    },
-    {
-      pic: require("/src/images/content-images/partners-4.png"),
-      text: "Крупнейший частный поставщик строительных решений в Великобритании",
-      link: "laingorourke.com"
-    },
-    {
-      pic: require("/src/images/content-images/partners-5.png"),
-      name: "Avanpost ",
-      phone: "+7 (495) 641-80-80",
-      email: "info@avanpost.ru"
-    },
-    {
-      pic: require("/src/images/content-images/partners-6.png"),
-      name: "IT_ONE",
-      email: "info@it-one.ru"
-    },
-    {
-      pic: require("/src/images/content-images/partners-7.png"),
-      name: "ФомЛайн",
-      text: "Крупнейший российский производитель эластичного пенополиуретана"
-    },
-    {
-      pic: require("/src/images/content-images/partners-8.png"),
-      name: "Leroy Merlin",
-      link: "leroymerlin.ru"
-    },
-    {
-      name: "Компания"
-    }
-  ];
 mixin seo
-  .epilog
+  .epilogue
     h1 Lorem ipsum dolor sit amet consectetur adipisicing elit.
     p.
       Illum nihil nemo ab, aliquam in alias aut architecto repellat debitis, quia deleniti ipsum ratione.
@@ -461,3 +178,20 @@ mixin seo
       Magnam saepe beatae quis doloribus officiis earum possimus voluptas voluptatem labore quae,
       minus modi facilis at deserunt placeat ullam tenetur animi repellat alias.
       Voluptates corrupti minus tenetur? Accusantium, cupiditate neque?
+mixin news-item(item)
+  .card(class!=attributes.class)
+    .icard
+      a.icard__image(href="news-item.html", class={"no-image": !item.pic})
+        if item.pic
+          img(src=item.pic, loading="lazy")
+      .icard__body
+        if item.date
+          .icard__date= item.date
+        a.card__name(href="news-item.html")= item.title
+        .icard__descr= item.text
+mixin back-button(title, link)
+  .article__button
+    a.button.button-secondary(href= link)
+      .button__icon
+        include ./../../images/inline-svgs/icon-arrow-back.svg
+      .button__body= title

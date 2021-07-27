@@ -105,7 +105,7 @@ block contentBody
           +staff-item(item)
   //- +pagination(0)
   +seo
-block contentAside
+block contentNav
   -
     var items = [
       {
@@ -133,4 +133,5 @@ block contentAside
         link: "reqs.html"
       }
     ];
-  +section-navi('Компания «Ze Строй»', items, 3)
+  .content__nav
+    +section-navi('Компания «Ze Строй»', items, 3)
