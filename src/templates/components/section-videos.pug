@@ -1,5 +1,6 @@
 .section.svideos
   .wrap
+    +empty
     .cells
       .cell.cell-md-6.cell-lg-5
         .h2 Надежный дом за один сезон «под ключ»
@@ -12,12 +13,12 @@
       .cell.cell-md-6.cell-lg-7
         each itm, index in vds
           if index == 0
-            p yay
-            //- .videos__item
-            //-   a.videos__link(href="https://www.youtube.com/watch?v=" + itm.link)
-            //-     .videos__cover(style="background-image: url(" + itm.cover + ")")
-            //-   .videos__text
-            //-     .videos__title= itm.title
-            //-     .videos__descr= itm.descr
-            //-   .videos__content
-            //-     iframe(width="560", height="315", src= "https://www.youtube.com/embed/" + itm.link, title="YouTube video player", frameborder="0", allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
+            .videos__item
+              .icard
+                a.videos__link(href="https://www.youtube.com/watch?v=" + itm.link)
+                  .videos__cover(style="background-image: url(" + itm.cover + ")")
+                .icard__body
+                  .card__name= itm.title
+                  .card__descr= itm.descr
+                .videos__content
+                  iframe(width="560", height="315", src= "https://www.youtube.com/embed/" + itm.link, title="YouTube video player", frameborder="0", allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)

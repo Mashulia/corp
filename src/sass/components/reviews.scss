@@ -44,20 +44,14 @@
   text-align: right;
 }
 .reviews__pic {
+  @extend .constrained-image;
   flex: 0 0 58px;
   max-width: 58px;
   height: 58px;
   margin-right: 1.5rem;
-  position: relative;
 
   img {
     border-radius: 50%;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
   }
 
   &__decor {
@@ -125,18 +119,12 @@
   padding-right: 6px;
 }
 .reviews__image {
+  @extend .constrained-image;
   border-radius: $brad-1;
   background: $color-bg;
-  display: block;
   height: 50px;
   width: 50px;
-  overflow: hidden;
-  position: relative;
 
-  img {
-    @extend %absolute-img;
-    object-fit: contain;
-  }
   &:last-child {
     margin-right: 0;
   }

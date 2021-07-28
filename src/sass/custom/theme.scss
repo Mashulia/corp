@@ -70,7 +70,7 @@ a,
 .connect:not(.connect--labeled)::before,
 .benefits__img,
 .products__label--sale,
-.icard__date,
+.card__date,
 .news-nav__date,
 .popup-search,
 .reviews__pic--empty,
@@ -81,14 +81,16 @@ a,
 .snavigation__link--current::before,
 thead tr:last-child::after,
 .form__header,
-.footer--v2 .footer__phones .connect__button::before {
+.footer--v2 .footer__phones .connect__button::before,
+.cards__list--accented1 .cards__item:first-child .icard__body {
   background-color: $custom-color-2;
 }
 .hero__slider .slick-dots button,
 .videos__link::before,
 .primary-nav .expand__body,
 .primary-nav .dropdown__body,
-.header--v2 .bcart__button--active::after {
+.header--v2 .bcart__button--active::after,
+.cards__list--accented1 .cards__item:first-child .icard__body {
   border-color: $custom-color-2;
 }
 .reviews__cat__text,
@@ -220,10 +222,5 @@ a:active,
       hsla($custom-color-1-h, $custom-color-1-s, $custom-color-1-l, 0.3) 0%,
       rgba(0, 0, 0, 0) 100%
     );
-  }
-}
-@media (max-width: 1447px) {
-  .videos__text {
-    background-color: $custom-color-2;
   }
 }

@@ -1,19 +1,29 @@
 extends ../layout
+block prepend head
+  - pageName = "Видео"
 
 block title
-  - var pageTitle = 'Новости';
   -
     var crumbs = [];
-  +page-header(pageTitle, crumbs)
+  +page-header(pageName, crumbs)
 block contentBody
   .prologue
-    p.
-      На нашем youtube-канале вы можете не только посмотреть ход строительства данных домов,
-      но и бесплатно получить проект и смету. Переходите на наш youtube-канал,
-      оставляйте вашу почту в комментариях к понравившемуся дома и мы вышлем вам проект и смету.
-  .cells.news__list.card__list
+    p
+      | На нашем youtube-канале вы можете не только посмотреть ход строительства данных домов,
+      | но и бесплатно получить проект и смету. Переходите на наш
+      |
+      a(href="") youtube-канал,
+      | оставляйте вашу почту в комментариях к понравившемуся дома и мы вышлем вам проект и смету.
+  .cells.videos__list.cards__list.cards__list--accented1
     each item in vds
-      p yay
-      //- +news-item(item)(class="cell cell-sm-6 cell-md-4")
-  +pagination(1)
-  +seo
+      .cell.cards__item.cell-sm-6.cell-xl-3.videos__item
+        .icard
+          a.videos__link(href="https://www.youtube.com/watch?v=" + item.link)
+            .videos__cover(style= item.cover ? "background-image: url(" + item.cover + ")" : "", loading="lazy")
+          .icard__body
+            .card__name= item.title
+            .card__text= item.descr
+          .videos__content
+            iframe(width="560", height="315", src= "https://www.youtube.com/embed/" + item.link, title="YouTube video player", frameborder="0", allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
+  //- +pagination(1)
+  //- +seo

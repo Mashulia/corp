@@ -34,6 +34,10 @@
 .partners__image {
   height: 112px;
   padding: 0.9375rem 1.75rem;
+
+  img {
+    position: relative;
+  }
 }
 .partners__list .no-image,
 .spartners__list .no-image {

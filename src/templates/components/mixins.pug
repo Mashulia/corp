@@ -179,19 +179,41 @@ mixin seo
       minus modi facilis at deserunt placeat ullam tenetur animi repellat alias.
       Voluptates corrupti minus tenetur? Accusantium, cupiditate neque?
 mixin news-item(item)
-  .card(class!=attributes.class)
+  .cards__item(class!=attributes.class)
     .icard
       a.icard__image(href="news-item.html", class={"no-image": !item.pic})
         if item.pic
           img(src=item.pic, loading="lazy")
       .icard__body
         if item.date
-          .icard__date= item.date
+          .card__date= item.date
         a.card__name(href="news-item.html")= item.title
-        .icard__descr= item.text
-mixin back-button(title, link)
+        .card__descr= item.text
+mixin back-button(title, link="")
   .article__button
     a.button.button-secondary(href= link)
       .button__icon
         include ./../../images/inline-svgs/icon-arrow-back.svg
       .button__body= title
+mixin empty
+  //- doesn't add anything but makes vars from vars.pug accessible to components that don't need any mixins.
+  //- otherways, for some reason, component doesn/t have access to those vars
+mixin custom-card
+  .cards__list
+    .cards__item
+      .card
+        .card__image
+          img(src="")
+        .card__body
+          .card__date
+          .card__name
+          .card__text
+mixin custom-card--big-pic
+  .cards__list
+    .cards__item
+      .icard
+        .icard__image
+          img(src="")
+        .icard__body
+          .card__name
+          .card__text

@@ -61,21 +61,21 @@ block contentBody
       }
     ];
   mixin cert-item(item)
-    .cert__item.card.cell.cell-sm-6.cell-xl-4
-      a.card__outline.cert__bg(href= item.pic, target= item.type=="jpg" ? "_self" : "_blank", data-fancybox=item.fncbx || false)
+    .cert__item.cards__item.cell.cell-sm-6.cell-xl-4
+      a.card.cert__bg(href= item.pic, target= item.type=="jpg" ? "_self" : "_blank", data-fancybox=item.fncbx || false)
         .cert__body.fdown(class= "fdown--" + item.type)
           .cert__name.fdown__name= item.name
         .cert__enlarge
           include ./../../images/inline-svgs/icon-enlarge-cert.svg
   .content__body__block
     .h3 Сертификаты
-    .certs__list.card__list.cells
+    .certs__list.cards__list.cells
       each item, index in crts
         if index < 5
           +cert-item(item)
   .content__body__block
     .h3 Лицензии
-    .certs__list.card__list.cells
+    .certs__list.cards__list.cells
       each item, index in crts
         if index > 4
           +cert-item(item)

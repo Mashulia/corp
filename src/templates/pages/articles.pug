@@ -1,0 +1,63 @@
+extends ../layout
+
+block prepend head
+  - pageName = "Статьи"
+block title
+  - var crumbs = [];
+  +page-header(pageName, crumbs)
+block contentBody
+  -
+    var arts = [
+      {
+        name: "Лучший материал для строительства",
+        descr: "Немаловажной задачей при строительстве является выбор стройматериалов.",
+        pic: require("/src/images/content-images/arts-1.jpg")
+      },
+      {
+        name: "Без забора просторно — с забором уютно!",
+        descr: "Забор - это межевая ограда, конструкция, которая возводится на границе земельных участков, имеющих общую точку соприкосновения.",
+        pic: require("/src/images/content-images/arts-2.jpg")
+      },
+      {
+        name: "Что такое монолит?",
+        descr: 'Прежде чем разбираться в тонкостях материала, нужно понять, что такое монолит и его значение. Монолит - от слова “моно” - один, т.е отлитый за один цикл',
+        pic: require("/src/images/content-images/arts-3.jpg")
+      },
+      {
+        name: "Как понять, какой фасад дома Вам нужен?!",
+        descr: "Фасад вашего дома - это не только красивая картинка снаружи, но и внутреннее состояние, удобство и качество вашей жизни.",
+        pic: require("/src/images/content-images/arts-4.jpg")
+      },
+      {
+        name: "Как выбрать участок для своего будущего дома?",
+        descr: "Прежде чем обратиться в строительную компанию, многие самостоятельно выбирают место для строительства их будущего дома. ",
+        pic: require("/src/images/content-images/arts-5.jpg")
+      },
+      {
+        name: "Один или два этажа в частном доме?",
+        descr: "Какой первый вопрос возникает у вас в голове,  когда вы только задумались построить свой дом?",
+        pic: require("/src/images/content-images/arts-6.jpg")
+      },
+      {
+        name: "Просто статья без картинки",
+        descr: "Акции и новости также оформлены внутри, как и детальная статьи"
+      },
+      {
+        name: "Прежде чем обратиться в строительную компанию, многие самостоятельно выбирают место для строительства их будущего дома."
+      }
+    ];
+  .cells.articles__list.cards__list.cards__list--accented1
+    each item in arts
+      .cell.cell-sm-6.cell-md-4.cell-xl-3.cards__item.articles__item
+        .icard
+          a.icard__image(class= item.pic ? "" : "no-image", href="article-item.html")
+            // размер картинки 696x380
+            if item.pic
+              img(src= item.pic)
+          .icard__body
+            if item.name
+              a.card__name(href="article-item-2.html")= item.name
+            if item.descr
+              .card__text= item.descr
+  //- +pagination(1)
+  +seo

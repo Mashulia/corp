@@ -1,4 +1,5 @@
 @import "./general/vars.scss";
+@import "./general/placeholders.scss";
 @import "./general/general.scss";
 @import "./general/grid.scss";
 @import "./general/page-basics.scss";
@@ -37,5 +38,6 @@
 @import "./components/about.scss";
 @import "./components/staff.scss";
 @import "./components/certs.scss";
+@import "./components/articles.scss";
 
 @import "./components/footer.scss";

@@ -105,6 +105,9 @@
   display: none;
   margin-top: 1.875rem;
 }
+.prologue {
+  margin-bottom: 1.5rem;
+}
 .epilogue {
   margin-top: 1.25rem;
 }
@@ -125,14 +128,6 @@
 }
 .article__button {
   margin-top: 1.875rem;
-}
-%absolute-img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 100%;
-  width: 100%;
 }
 @media (min-width: $break-md) {
   .section__link__title {
@@ -198,6 +193,9 @@
   }
   .content__body__block {
     margin-bottom: 1rem;
+  }
+  .prologue {
+    margin-bottom: 1.875rem;
   }
   .epilogue {
     margin-top: 1.875rem;

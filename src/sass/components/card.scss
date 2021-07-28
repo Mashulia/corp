@@ -1,20 +1,22 @@
-.card__list {
+.cards__list {
   align-items: stretch;
 }
-.card {
-  font-size: 0.875rem;
+.cards__item {
   margin-bottom: 1.125rem;
 }
 .icard,
-.card__outline {
-  border: 1px solid $color-sep;
-  border-radius: $brad-3;
-  display: block;
+.card {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   line-height: 1.45;
-  overflow: hidden;
+  line-height: 1.4; // video
+  position: relative;
 }
-.card__outline {
+.card {
+  border: 1px solid $color-sep;
+  border-radius: $brad-3;
+  font-size: 0.875rem;
   padding: 1.25rem;
 }
 .card__image,
@@ -32,21 +34,14 @@
 }
 .card__image,
 .icard__image {
-  display: block;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
+  @extend .constrained-image;
 }
 .card__image {
   border-radius: $brad-1;
-
-  img {
-    max-height: 100%;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+}
+.card__body,
+.icard__body {
+  flex: 1 0 auto;
 }
 .card__name,
 .card__connect {
@@ -79,18 +74,21 @@
   font-size: 0.75rem;
 }
 .icard__body {
+  border: 1px solid $color-sep;
+  border-top-width: 0;
+  border-radius: 0 0 $brad-3 $brad-3;
   padding: 1.25rem;
   position: relative;
 }
 .icard__image {
+  border-radius: $brad-3 $brad-3 0 0;
   padding-bottom: 54.6%;
 
   img {
-    @extend %absolute-img;
     object-fit: cover;
   }
 }
-.icard__date {
+.card__date {
   background: $color-text2;
   border-radius: 2px;
   color: #fff;
@@ -103,11 +101,20 @@
   left: 1.25rem;
   transform: translate(0, -50%);
 }
-@media (min-width: $break-sm) {
-  .card__outline {
-    display: flex;
-    flex-direction: column;
+.cards__list--accented1 .cards__item:first-child {
+  .icard {
+    font-size: 0.875rem;
   }
+  .icard__body {
+    background-color: $color-text1;
+    color: #fff;
+  }
+  .card__name {
+    color: inherit;
+    font-size: 0.9375rem;
+  }
+}
+@media (min-width: $break-sm) {
   .card__connects {
     margin-top: auto;
   }
@@ -127,7 +134,7 @@
   }
 }
 @media (min-width: $break-lg) {
-  .card {
+  .cards__item {
     margin-bottom: 1.5rem;
   }
   .card__image {
@@ -143,20 +150,25 @@
   .card__text {
     margin-bottom: 1.5rem;
   }
-  .icard__date {
+  .card__date {
     padding: 0.25rem 0.5rem;
     left: 1.5rem;
     transform: translate(0, -50%);
   }
   .icard__body {
-    padding: 1.5rem;
+    padding: 1rem 1.5rem 1.5rem;
   }
-  .icard__descr {
+  .icard .card__text {
     font-size: 0.875rem;
+  }
+  .cards__list--accented1 .cards__item:first-child {
+    .card__name {
+      font-size: 1.125rem;
+    }
   }
 }
 @media (min-width: $break-xl) {
-  .card__outline {
+  .card {
     padding: 1.875rem 1.875rem 2rem;
   }
   .card__image {
@@ -175,9 +187,45 @@
     margin-right: 0.625rem;
   }
   .icard__body {
-    padding: 1.5rem 2.5rem 2.5rem;
+    padding: 1.125rem 1.875rem 1.875rem;
   }
-  .icard__date {
+  .card__date {
     left: 2.5rem;
+  }
+  .cards__list--accented1 .cards__item:first-child {
+    flex-basis: 50%;
+    max-width: 50%;
+
+    .videos__cover,
+    .icard__image {
+      border-radius: $brad-3;
+      height: 100%;
+    }
+    .videos__link::after {
+      background-size: 19px 20px;
+      height: 4.875rem;
+      width: 4.875rem;
+      outline-offset: 1rem;
+    }
+    .videos__link::before {
+      height: 7rem;
+      width: 7rem;
+    }
+    .icard .icard__body {
+      background-color: transparent;
+      border-color: transparent;
+      padding: 2.5rem;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    .card__name {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .card__text {
+      font-size: 0.8125rem;
+    }
   }
 }

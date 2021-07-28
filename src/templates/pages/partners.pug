@@ -11,18 +11,18 @@ block title
     ];
   +page-header(pageTitle, crumbs)
 block contentBody
-  .partners__list.card__list.cells
+  .partners__list.cards__list.cells
     each item in partnrs
-      .partners__item.card.cell.cell-sm-6.cell-md-4
-        .partners__bg.card__outline
-          .partners__image.card__image(class={"no-image": !item.pic})
+      .partners__item.cards__item.cell.cell-sm-6.cell-md-4
+        .card
+          .card__image.partners__image(class={"no-image": !item.pic})
             // картинка размером 208х94
             if item.pic
               img(src= item.pic, loading="lazy")
           if item.name
-            .partners__name.card__name= item.name
+            .card__name= item.name
           if item.text
-            .partners__text.card__text= item.text
+            .card__text= item.text
           if item.link || item.phone || item.email
             .card__connects
               if item.link

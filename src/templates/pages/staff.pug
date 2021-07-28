@@ -70,17 +70,17 @@ block contentBody
       }
     ];
   mixin staff-item(item)
-    .staff__item.card.cell.cell-sm-6.cell-md-4
-      .staff__bg.card__outline
+    .staff__item.cards__item.cell.cell-sm-6.cell-md-4
+      .card
         .staff__image.card__image(class={"staff__image--empty": !item.pic})
           // картинка размером 276x265
           if item.pic
             img(src= item.pic, loading="lazy")
         if item.name
-          .staff__name.card__name= item.name
+          .card__name= item.name
         if item.position
-          .card__subtitle.staff__position= item.position
-        .staff__connects.card__connects
+          .card__subtitle= item.position
+        .card__connects
           if item.phone
             .card__connect.card__phone
               .card__connect__icon
@@ -93,13 +93,13 @@ block contentBody
               a.card__connect__value(href="mailto:" + item.email)= item.email
   .content__body__block
     .h3 Руководство
-    .staff__list.card__list.cells
+    .staff__list.cards__list.cells
       each item, index in stf
         if index < 3
           +staff-item(item)
   .content__body__block
     .h3 Команда опытных специалистов
-    .staff__list.card__list.cells
+    .staff__list.cards__list.cells
       each item, index in stf
         if index > 2
           +staff-item(item)

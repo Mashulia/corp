@@ -1,3 +1,4 @@
+- var pageName = "Front"
 doctype html
 html(lang="ru")
   block head
@@ -8,7 +9,7 @@ html(lang="ru")
       link(rel="preconnect", href="https://fonts.gstatic.com")
       link(href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&display=swap",rel="stylesheet")
       link(rel="stylesheet", href="assets/css/vendor/jquery.fancybox.css")
-      title Tian Corp Front
+      title= "Tian Corp " + pageName
   body
     block essentials
       include components/vars.pug
