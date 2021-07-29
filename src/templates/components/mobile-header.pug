@@ -39,9 +39,9 @@ mixin mobile-header
             label.form__field
               input.form__input(type="text", name="", placeholder="Введите запрос")
             button.button-submit.button(type="submit")
-              .button__icon
+              span.button__icon
                 include ../../images/inline-svgs/search.svg
-              .button__body Найти
+              span.button__body Найти
         .connect.phones
           +connectList("phones")
         .header__messengers

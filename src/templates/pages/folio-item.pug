@@ -1,0 +1,131 @@
+extends article-item
+
+block append head
+  - pageName = "Шикарный дом в г. Сочи"
+block title
+  +page-header(pageName, [{value: "Проекты", link: "folio.html"},{value: "Дома из бревна", link: "folio-2.html"}])
+block contentBody
+  -
+    var prjpics = [
+      {
+        title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic magnam reiciendis quia accusantium blanditiis alias voluptate facilis eos numquam cum, pariatur suscipit inventore, repellat placeat, mollitia laborum! Minus, tenetur quidem.",
+        picS: require("/src/images/content-images/project-2.jpg"),
+        picB: require("/src/images/content-images/folio-1.jpg")
+      },
+      {
+        title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. ",
+        picS: require("/src/images/content-images/project-3.jpg"),
+        picB: require("/src/images/content-images/folio-2.jpg")
+      },
+      {
+        title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic magnam reiciendis quia accusantium blanditiis alias voluptate facilis eos numquam cum, pariatur suscipit inventore, repellat placeat, mollitia laborum! Minus, tenetur quidem.",
+        picS: require("/src/images/content-images/project-4.jpg"),
+        picB: require("/src/images/content-images/folio-3.jpg")
+      },
+      {
+        title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit.",
+        picS: require("/src/images/content-images/project-5.jpg"),
+        picB: require("/src/images/content-images/folio-4.jpg")
+      },
+      {
+        picS: require("/src/images/content-images/project-6.jpg"),
+        picB: require("/src/images/content-images/folio-3.jpg")
+      },
+      {
+        picS: require("/src/images/content-images/project-7.jpg"),
+        picB: require("/src/images/content-images/folio-4.jpg")
+      },
+      //- {
+      //-   picS: require("/src/images/content-images/cats-2.png"),
+      //-   picB: require("/src/images/content-images/folio-3.jpg")
+      //- },
+      //- {
+      //-   picS: require("/src/images/content-images/project-1.jpg"),
+      //-   picB: require("/src/images/content-images/folio-4.jpg")
+      //- }
+    ];
+  .article__image
+    img(src=require("/src/images/content-images/project-1.jpg"))
+  .article__body
+    .h6 Характеристики:
+    ul
+      li Год: 2021
+      li Дом из оцилиндрованного бревна диамотром 21 см
+      li Индивидуальный проект
+      li Площадь: 864 м²
+      li Размер: 24x18 м
+      li Количество этажей: 3
+      li Количество комнат: 14
+    .h6 Описание:
+    p
+      a(href="") Дом из оцилиндрованного бревна
+      |
+      | отлично подходит для большой семьи.
+      |
+      | На первом этаже расположены прихожая, кухня, спальня, санузел и небольшая кладовка.
+    p.
+      Второй этаж занимает большой просторная гостиная и комната отдыха, которую можно переоборудовать под спальню или рабочий кабинет.
+    p.
+      Дом стоит на свайном фундаменте, который приподнят над землей не полтора метра.
+      На первом этаже расположена крытая терраса, на втором — открытый балкон под крышей.
+      Оба этих пространства находятся на одной линии, что создает единый архитектурный ансамбль.
+      Ограждения на террасе и балконе оформлены фигурными вырезами из бруса.
+    p.
+      Высота потолков на обоих этажах — 2,6 метра. На втором уровне покатая крыша формирует скошенные потолки во внутренних помещениях.
+    p.
+      Скатная крыша покрыта листовым фигурным железом, оборудована водостоками.
+    p.
+      Дом возведен из оцилиндрованного бревна, которое пропитано специальными составами от грибка и плесени,
+      а также противопожарными препаратами. Фасад окрашен под цвет дерева темно-желтой краской,
+      срубы — насыщенно коричневого оттенка.
+    p Проект выполнен в стиле рубленый усадебный дом.
+  .article__gallery.agallery.cells
+    each item in prjpics
+      .agallery__image.cell.cell-6.cell-md-4
+        a.agallery__link(href=item.picB, data-fancybox="project", data-caption= item.title)
+          // Размеры картинки 336х235
+          img(src= item.picS, loading="lazy")
+  .article__action.display-lg-none
+    .project__action
+      .project__action__title Хотите такой же проект?
+        .project__action__title__icon
+          include ../../images/inline-svgs/icon-project.svg
+      .project__action__text Оформите заявку на проект, наши специалисты с радостью ответят на ваши вопросы, произведём расчет стоимости услуг и подготовим коммерческое предложение.
+      .project__action__button
+        button.button.button-primary(data-fancybox, data-type="inline", data-src="#project-form", data-touch="false") Оформить заявку
+  +back-button("Назад к списку", "folio-2.html")
+  .fancy-form.display-none#project-form
+    form(action="").custom-form.collapsing-form
+      .form__header
+        .form__title Заказать подобный проект
+        .form__description Заполните форму, и наш менеджер свяжется с Вами в ближайшее время
+        .form__message
+          .form__success
+            .form__message__text Ваша заявка успешно отправлена!
+      .form__bg
+        .form__body
+          label.form__field
+            span.form__label Имя
+            input.form__input(type="text")
+          label.form__field.form__field--required
+            span.form__label Телефон
+            input.form__input(type="tel", required)
+          label.form__field.form__field--required
+            span.form__label Email
+            input.form__input(type="email")
+          label.form__field.form__field--required
+            span.form__label Текст сообщения
+            textarea.form__input(required)
+          .form__submit
+            button.button.button-submit(type="submit") Отправить
+          .form__note Нажимая на кнопку «Отправить», подтверждаю свое согласие с&nbsp;
+            a(href="policy.html") условиями обработки персональных данных
+block contentAside
+  .content__aside
+    .project__action
+      .project__action__title Хотите такой же проект?
+        .project__action__title__icon
+          include ../../images/inline-svgs/icon-project.svg
+      .project__action__text Оформите заявку на проект, наши специалисты с радостью ответят на ваши вопросы, произведём расчет стоимости услуг и подготовим коммерческое предложение.
+      .project__action__button
+        button.button.button-primary(data-fancybox, data-type="inline", data-src="#project-form", data-touch="false") Оформить заявку

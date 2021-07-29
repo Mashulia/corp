@@ -1,0 +1,59 @@
+extends ../layout
+
+block prepend head
+  - pageName = "Дома из клееного бруса"
+block title
+  +page-header(pageName, [{value: "Проекты", link: "folio.html"}])
+block contentBody
+  -
+    var prjs = [
+      {
+        name: "Шикарный дом в г. Сочи",
+        category: "Дома из клееного бруса",
+        pic: require("/src/images/content-images/folio-3.jpg")
+      },
+      {
+        name: "Дом из клееного бруса в п. Славино",
+        category: "Дома из клееного бруса",
+        pic: require("/src/images/content-images/folio-4.jpg")
+      }
+    ];
+  .cells.projects__list.cards__list
+    each item in prjs
+      .cards__item.projects__item.cell.cell-sm-6
+        .icard
+          a.icard__image.projects__image(href="folio-item.html", class= item.pic ? "" : "no-image")
+            if item.pic
+              img(src= item.pic)
+          if item.category
+            .projects__category= item.category
+          .icard__body
+            a.card__name(href="folio-item.html")= item.name
+  //- +pagination(1)
+  //- +seo
+block contentNav
+  -
+    var items = [
+      {
+        value: "Дома из бревна",
+        link: "folio-2.html"
+      },
+      {
+        value: "Дома из клееного бруса",
+        link: "folio-2.html"
+      },
+      {
+        value: "Дома из кирпича ",
+        link: "folio-2.html"
+      },
+      {
+        value: "Каркасные дома",
+        link: "folio-2.html"
+      },
+      {
+        value: "Бани и беседки",
+        link: "folio-2.html"
+      }
+    ];
+  .content__nav
+    +section-navi(pageName, items, 1)

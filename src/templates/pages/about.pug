@@ -1,9 +1,9 @@
 extends ../layout
 
+block prepend head
+  - pageName = "Компания «Ze Строй»"
 block title
-  - var pageTitle = 'Компания «Ze Строй»';
-  - var crumbs = [];
-  +page-header(pageTitle, crumbs)
+  +page-header(pageName)
 block contentBody
   p
     img(src=require("/src/images/content-images/about-1.jpg"), style="margin-bottom:36px;")
@@ -128,4 +128,4 @@ block contentNav
     ];
   - var currentIndex = 0;
   .content__nav
-    +section-navi(pageTitle, items, currentIndex)
+    +section-navi(pageName, items, currentIndex)

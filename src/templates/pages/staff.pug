@@ -1,15 +1,9 @@
 extends ../layout
 
+block prepend head
+  - pageName = "Сотрудники"
 block title
-  - var pageTitle = 'Сотрудники';
-  -
-    var crumbs = [
-      {
-        value: 'Компания «Ze Строй»',
-        link: "about.html"
-      }
-    ];
-  +page-header(pageTitle, crumbs)
+  +page-header(pageName, [{value: 'Компания «Ze Строй»',link: "about.html"}])
 block contentBody
   -
     var stf = [

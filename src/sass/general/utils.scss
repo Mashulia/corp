@@ -24,6 +24,11 @@
 .overflow-hidden {
   overflow: hidden;
 }
+@media (min-width: $break-lg) {
+  .display-lg-none {
+    display: none;
+  }
+}
 
 // position utils
 .position-relative {

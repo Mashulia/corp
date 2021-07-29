@@ -93,3 +93,8 @@
     bottom: 1.25rem;
   }
 }
+@media (min-width: $break-desk) {
+  .snavigation {
+    margin-right: 2.75rem;
+  }
+}

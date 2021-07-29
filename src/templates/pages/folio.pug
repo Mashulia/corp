@@ -1,0 +1,92 @@
+extends ../layout
+
+block prepend head
+  - pageName = "Проекты"
+block title
+  +page-header(pageName)
+block contentBody
+  -
+    var prjs = [
+      {
+        name: "Шикарный дом в г. Сочи",
+        category: "Дома из бревна",
+        pic: require("/src/images/content-images/folio-1.jpg")
+      },
+      {
+        name: "Дом из клееного бруса в п. Славино",
+        category: "Дома из клееного бруса",
+        pic: require("/src/images/content-images/folio-2.jpg")
+      },
+      {
+        name: "Дом из клееного бруса с зимним садом",
+        category: "Дома из клееного бруса",
+        pic: require("/src/images/content-images/folio-3.jpg")
+      },
+      {
+        name: "Кирпичный дом с балконом и гаражом",
+        category: "Кирпичные дома",
+        pic: require("/src/images/content-images/folio-4.jpg")
+      },
+      {
+        name: "Каркасный дом для большой семьи",
+        category: "Каркасные дома",
+        pic: require("/src/images/content-images/news-1.jpg")
+      },
+      {
+        name: "Райский уголок в Саратове",
+        category: "Каркасные дома",
+        pic: require("/src/images/content-images/partners-1.png")
+      },
+      {
+        name: "Баня из клееного бруса 160х185",
+        category: "Бани и беседки",
+        pic: require("/src/images/content-images/cats-2.png")
+      },
+      {
+        name: "Какой-то проект, расположенный в России у черта на куличках. Типа Мухосранского дома.",
+        category: "Суровая реальность жизни: категория с длинным названием"
+      },
+      {
+        name: "Баня из клееного бруса 160х185",
+        pic: require("/src/images/content-images/cats-2.png")
+      }
+    ];
+  .cells.projects__list.cards__list
+    each item in prjs
+      .cards__item.projects__item.cell.cell-sm-6
+        .icard
+          a.icard__image.projects__image(href="folio-item.html", class= item.pic ? "" : "no-image")
+            if item.pic
+              img(src= item.pic)
+          if item.category
+            .projects__category= item.category
+          .icard__body
+            a.card__name(href="folio-item.html")= item.name
+  +pagination(1)
+  //- +seo
+block contentNav
+  -
+    var items = [
+      {
+        value: "Дома из бревна",
+        link: "folio-2.html"
+      },
+      {
+        value: "Дома из клееного бруса",
+        link: "folio-2.html"
+      },
+      {
+        value: "Дома из кирпича ",
+        link: "folio-2.html"
+      },
+      {
+        value: "Каркасные дома",
+        link: "folio-2.html"
+      },
+      {
+        value: "Бани и беседки",
+        link: "folio-2.html"
+      }
+    ];
+  .content__nav
+    +section-navi(pageName, items, 100)

@@ -79,7 +79,7 @@ mixin connectsDropdown(type)
                 include ../../images/inline-svgs/dropdown.svg
           when "addresses"
             button.dropdown__toggle= cnncts[type][0].value
-              .dropdown__icon
+              span.dropdown__icon
                 include ../../images/inline-svgs/dropdown.svg
         .dropdown__body
           case type
@@ -93,14 +93,14 @@ mixin connectsDropdown(type)
 mixin section-navi(title, items, currentIndex)
   .snavigation
     button.snavigation__toggle= title
-      .snavigation__icon
+      span.snavigation__icon
         include ../../images/inline-svgs/dropdown.svg
     .snavigation__body
       ul.snavigation__list
         each item, index in items
           li.snavigation__item
             a.snavigation__link(href=item.link, class={"snavigation__link--current": index == currentIndex})= item.value
-mixin page-header(title, crumbs, variant="page-header--v1")
+mixin page-header(title, crumbs=[], variant="page-header--v1")
   .page-header(class= variant)
     .page-header__bg
       .wrap
@@ -178,17 +178,18 @@ mixin seo
       Magnam saepe beatae quis doloribus officiis earum possimus voluptas voluptatem labore quae,
       minus modi facilis at deserunt placeat ullam tenetur animi repellat alias.
       Voluptates corrupti minus tenetur? Accusantium, cupiditate neque?
-mixin news-item(item)
-  .cards__item(class!=attributes.class)
+mixin news-item(item, link="news-item.html")
+  .cards__item(class!= attributes.class, class= item.date ? "cards__item--dated" : "")
     .icard
-      a.icard__image(href="news-item.html", class={"no-image": !item.pic})
+      a.icard__image(href= link, class={"no-image": !item.pic})
+        // Размер картинки 456х250
         if item.pic
           img(src=item.pic, loading="lazy")
       .icard__body
         if item.date
           .card__date= item.date
-        a.card__name(href="news-item.html")= item.title
-        .card__descr= item.text
+        a.card__name(href= link)= item.name
+        .card__text= item.text
 mixin back-button(title, link="")
   .article__button
     a.button.button-secondary(href= link)
@@ -198,22 +199,47 @@ mixin back-button(title, link="")
 mixin empty
   //- doesn't add anything but makes vars from vars.pug accessible to components that don't need any mixins.
   //- otherways, for some reason, component doesn/t have access to those vars
-mixin custom-card
-  .cards__list
-    .cards__item
-      .card
-        .card__image
-          img(src="")
-        .card__body
-          .card__date
-          .card__name
-          .card__text
-mixin custom-card--big-pic
-  .cards__list
-    .cards__item
-      .icard
-        .icard__image
-          img(src="")
-        .icard__body
-          .card__name
-          .card__text
+mixin custom-card(item)
+  //- .cards__list
+  //-   each item in items
+  .cards__item(class!=attributes.class)
+    .card
+      .card__image
+        img(src= item.pic)
+      .card__body
+        .card__date= item.date
+        .card__name= item.name
+        .card__text= item.text
+mixin custom-cards--big-pic(item)
+  //- .cards__list(class!=attributes.class)
+  //-   each item in items
+  .cards__item(class!=attributes.class)
+    .icard
+      .icard__image
+        img(src= item.pic)
+      .icard__body
+        .card__name= item.name
+        .card__text= item.text
+mixin video-item(item)
+  .cards__item.videos__item(class!=attributes.class)
+    .icard
+      a.videos__link(href="https://www.youtube.com/watch?v=" + item.link)
+        .videos__cover(style= item.cover ? "background-image: url('https://img.youtube.com/vi/" + item.link + "/maxresdefault.jpg')" : "", loading="lazy")
+      .icard__body
+        .card__name= item.title
+        .card__text= item.descr
+      .videos__content
+        iframe(width="560", height="315", src= "https://www.youtube.com/embed/" + item.link, title="YouTube video player", frameborder="0", allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
+mixin articles-nav(items)
+  .articles-nav
+    .articles-nav__list
+      each item, index in items
+        if index < 2
+          .articles-nav__item
+            .articles-nav__cover
+              a.articles-nav__image(href="", class= item.pic ? "" : "no-image")
+                // Размер картинки 290х159
+                if item.pic
+                  img(src= item.pic)
+              .articles-nav__date= item.date || "10.10.2021"
+            a.articles-nav__name(href="")= item.name

@@ -1,8 +1,11 @@
 extends ../layout
 
+block prepend head
+  - pageName = "Список сверстанных страниц"
+block title
+  +page-header(pageName)
 block contentBody
-    h1 Список сверстанных страницы
-    ul
+    ol
       li
         a(href="index.html") Главная
       li
@@ -18,16 +21,31 @@ block contentBody
       li
         a(href="certs.html") Сертификаты и лицензии
       li
-        a(href="")
-      li
         a(href="news.html") Новости
         ul
           li
             a(href="news-item.html") Одна новость
       li
-        a(href="")
+        a(href="articles.html") Статьи
+        ul
+          li
+            a(href="article-item.html") Одна статья
+          li
+            a(href="article-item-2.html") Одна статья без картинки
       li
-        a(href="")
+        a(href="video.html") Видео
+      li
+        a(href="sales.html") Акции
+        ul
+          li
+            a(href="sales-item.html") Одна акция
+      li
+        a(href="folio.html") Проекты
+        ul
+          li
+            a(href="folio-2.html") Проекты подкатегория
+          li
+            a(href="folio-item.html") Один проект
       li
         a(href="")
       li

@@ -1,9 +1,9 @@
 extends ../layout
 
+block prepend head
+  - pageName = "Сертификаты и лицензии"
 block title
-  - var pageTitle = 'Отзывы';
-  - var crumbs = [];
-  +page-header(pageTitle, crumbs)
+  +page-header(pageName)
 block contentBody
   .reviews__intro
     .cells.fx-align-center

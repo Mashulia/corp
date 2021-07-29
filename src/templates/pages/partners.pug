@@ -1,15 +1,9 @@
 extends ../layout
 
+block prepend head
+  - pageName = "Партнеры"
 block title
-  - var pageTitle = 'Партнеры';
-  -
-    var crumbs = [
-      {
-        value: 'Компания «Ze Строй»',
-        link: "about.html"
-      }
-    ];
-  +page-header(pageTitle, crumbs)
+  +page-header(pageName, [{value: 'Компания «Ze Строй»',link: "about.html"}])
 block contentBody
   .partners__list.cards__list.cells
     each item in partnrs

@@ -1,0 +1,128 @@
+.projects__category {
+  @extend .label;
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  max-width: calc(100% - 2.5rem);
+}
+.project__action {
+  background: $color-bg;
+  border-radius: $brad-3;
+  padding: 1.25rem;
+}
+.project__action__title {
+  @extend %fx-centered-y;
+  justify-content: space-between;
+  color: $color-textHeader;
+  font-weight: 800;
+  line-height: 1.35;
+  margin-bottom: 0.5rem;
+
+  &__icon {
+    @extend %fx-centered;
+    flex-shrink: 0;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    height: 1.875rem;
+    width: 1.875rem;
+    margin-left: 0.5rem;
+
+    svg {
+      height: 0.9375rem;
+      width: 0.9375rem;
+    }
+  }
+}
+.project__action__text {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.125rem;
+}
+@media (min-width: $break-lg) {
+  .project__action {
+    padding: 1.5rem;
+  }
+  .project__action__title {
+    font-size: 1.125rem;
+    line-height: 1.3;
+    margin-bottom: 0.875rem;
+
+    &__icon {
+      height: 2.25rem;
+      width: 2.25rem;
+
+      svg {
+        height: 1.125rem;
+        width: 1.125rem;
+      }
+    }
+  }
+  .project__action__button button {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    width: 100%;
+  }
+}
+@media (min-width: $break-xl) {
+  .projects__item {
+    .icard__image::after {
+      content: "";
+      background: linear-gradient(
+        360deg,
+        #3c3c3c 0%,
+        rgba(65, 65, 65, 0) 71.29%
+      );
+      border-radius: $brad-3;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    .icard__body {
+      background-color: transparent;
+      border-color: transparent;
+      color: #fff;
+      padding: 2.5rem;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    .card__name {
+      color: inherit;
+      font-size: 1.25rem;
+    }
+  }
+  .projects__category {
+    top: 2.5rem;
+    left: 2.5rem;
+    max-width: calc(100% - 5rem);
+  }
+  .project__action {
+    padding: 2.5rem;
+  }
+  .project__action__title {
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+
+    &__icon {
+      height: 3rem;
+      width: 3rem;
+
+      svg {
+        height: 1.5rem;
+        width: 1.5rem;
+      }
+    }
+  }
+  .project__action__text {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  .project__action__button button {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    width: auto;
+  }
+}

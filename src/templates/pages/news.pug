@@ -1,10 +1,9 @@
 extends ../layout
 
+block prepend head
+  - pageName = "Новости"
 block title
-  - var pageTitle = 'Новости';
-  -
-    var crumbs = [];
-  +page-header(pageTitle, crumbs)
+  +page-header(pageName)
 block contentBody
   .cells.news__list.cards__list
     each item in nws

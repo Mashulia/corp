@@ -106,16 +106,14 @@
   position: absolute;
   top: 1.25rem;
   left: 1.25rem;
+  right: 1.25rem;
   z-index: 10;
 }
 .products__label {
-  background: $color-text1;
-  border-radius: 2px;
-  color: #fff;
+  @extend .label;
   font-weight: 600;
   font-size: 0.6875rem;
   margin-right: 0.25rem;
-  padding: 0.25rem 0.5rem;
 }
 @media (min-width: $break-md) {
   .products__images__list {
@@ -149,6 +147,7 @@
   .products__labels {
     top: 1.5rem;
     left: 1.5rem;
+    right: 1.5rem;
   }
   .products__images .slick-dots {
     bottom: 0.4375rem;

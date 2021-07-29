@@ -118,7 +118,7 @@ h5,
 .h5,
 h6,
 .h6 {
-  margin-top: 1.125rem;
+  margin-top: 1.25rem;
   margin-bottom: 1rem;
 }
 h5,
@@ -207,6 +207,7 @@ ul {
   padding: 0;
   ol,
   ul {
+    margin-top: 0.5rem;
     padding-left: 1rem;
   }
 }
@@ -214,6 +215,7 @@ ol {
   counter-reset: customOl;
 }
 li {
+  min-height: 1em; // custom markers are absolutely positioned thus no li content makes everything collapse
   margin-bottom: 0.5rem;
   padding-left: 1.625rem;
   position: relative;
@@ -233,7 +235,7 @@ ul li::before {
   height: 2px;
   width: 0.875rem;
   position: absolute;
-  top: 0.7em;
+  top: 0.875em;
   left: 0;
 }
 table {

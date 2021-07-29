@@ -1,9 +1,9 @@
-extends ../layout
+extends article-item
 
+block append head
+  - pageName = "Стильный каркасный дом по проекту от клиента"
 block title
-  - var pageTitle = 'Стильный каркасный дом по проекту от клиента';
-  - var crumbs = [{value: "Новости", link: "news.html"}];
-  +page-header(pageTitle, crumbs)
+  +page-header(pageName, [{value: "Новости", link: "news.html"}])
 block contentBody
   .article__image
     img(src=require("/src/images/content-images/news-6.jpg"))
@@ -43,17 +43,7 @@ block contentBody
       |
       |
       a(href="") посмотреть здесь.
-  +back-button("Назад к списку")
+  +back-button("Назад к списку", "news.html")
 block contentAside
   .content__aside
-    .news-nav
-      .news-nav__list
-        each item, index in nws
-          if index < 2
-            .news-nav__item
-              .news-nav__cover
-                a.news-nav__image(href="", class= item.pic ? "" : "no-image")
-                  if item.pic
-                    img(src= item.pic)
-                .news-nav__date= item.date
-              a.news-nav__name(href="")= item.title
+    +articles-nav(nws)

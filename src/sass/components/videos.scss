@@ -100,11 +100,11 @@
   }
 }
 @media (min-width: $break-lg) {
+  .svideos .videos__item:first-child {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
   .videos__link::after {
-    // background-size: 13px 13px;
-    // height: 3.125rem;
-    // width: 3.125rem;
-
     .svideos & {
       background-size: 19px 20px;
       height: 4.875rem;
@@ -113,9 +113,6 @@
     }
   }
   .videos__link::before {
-    // height: 4.5rem;
-    // width: 4.5rem;
-
     .svideos & {
       height: 7rem;
       width: 7rem;

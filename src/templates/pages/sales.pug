@@ -1,0 +1,12 @@
+extends ../layout
+
+block prepend head
+  - pageName = "Акции"
+block title
+  +page-header(pageName)
+block contentBody
+  .cells.sales__list.cards__list
+    each item in sls
+      +news-item(item, "sale-item.html")(class="cell cell-sm-6 cell-md-4")
+  +pagination(1)
+  //- +seo

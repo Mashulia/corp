@@ -1,5 +1,7 @@
 extends ../layout
 
+block prepend head
+  - pageName = 'Компания «Ze Строй»'
 block header
   .wrap
     p
@@ -22,7 +24,6 @@ block header
   +header-var("header--v3")
   hr.divider
 block title
-  - var pageTitle = 'Компания «Ze Строй»';
   -
     var crumbs = [
       {

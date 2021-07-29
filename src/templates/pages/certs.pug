@@ -1,15 +1,9 @@
 extends ../layout
 
+block prepend head
+  - pageName = 'Сертификаты и лицензии'
 block title
-  - var pageTitle = 'Сертификаты и лицензии';
-  -
-    var crumbs = [
-      {
-        value: 'Компания «Ze Строй»',
-        link: "about.html"
-      }
-    ];
-  +page-header(pageTitle, crumbs)
+  +page-header(pageName, [{value: 'Компания «Ze Строй»',link: "about.html"}])
 block contentBody
   -
     var crts = [
