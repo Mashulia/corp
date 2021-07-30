@@ -1,0 +1,22 @@
+extends ../layout
+
+block prepend head
+  - pageName = "Ошибка 404"
+block content
+  .error__page
+    .wrap
+      .content
+        .content__body
+          .cells.fx-align-center
+            .cell.cell-md-6.cell-lg-6.cell-xl-7.error__image.offset-xl-1
+              img(src= require("/src/images/theme-images/404.jpg"))
+            .cell.cell-md-5.cell-lg-6.cell-xl-4.error__body
+              h1 Ошибка 404
+              .error__message
+                | К сожалению, такой страницы не существует.
+                | Возможно вы неправильно набрали адрес или данная страница унесена орлом
+              .error__button
+                a.button.button-primary(href="index.html")
+                  .button__body Перейти на главную
+                  .button__icon
+                    include ../../images/inline-svgs/section-header-link.svg

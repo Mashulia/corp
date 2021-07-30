@@ -1,4 +1,4 @@
-extends article-item
+extends ../layout
 
 block append head
   - pageName = "Контакты"
@@ -49,31 +49,36 @@ block contentBody
             .contacts__contacts.cells
               .cell.contacts__contact
                 if item.address
-                  .connect.addresses
-                    .connect__list
-                      .connect__item
-                        .connect__text= item.address
-                  a.contacts__mlink(href="") Смотреть на карте
-                    .contacts__mlink__icon
-                      include ../../images/inline-svgs/icon-contacts.svg
+                  .contact
+                    .contact__icon
+                      include ../../images/inline-svgs/contact-address.svg
+                    .contact__list
+                      .contact__item= item.address
+                      .contact__item
+                        a.contact__link.js-map-link(href="") Смотреть на карте
+                          .contact__icon
+                            include ../../images/inline-svgs/contacts.svg
               .cell.contacts__contact
                 if item.time
-                  .connect.times
-                    .connect__list
-                      .connect__item
-                        .connect__text= item.time
+                  .contact
+                    .contact__icon
+                      include ../../images/inline-svgs/contact-time.svg
+                    .contact__list
+                      .contact__item= item.time
                 if item.email
-                  .connect.emails
-                    .connect__list
-                      .connect__item
-                        .connect__text= item.email
+                  .contact
+                    .contact__icon
+                      include ../../images/inline-svgs/contact-email.svg
+                    .contact__list
+                      a.contact__item(href="mailto:" + item.email)= item.email
               .cell.contacts__contact
                 if item.phones
-                  .connect.phones
-                    .connect__list
+                  .contact
+                    .contact__icon
+                      include ../../images/inline-svgs/contact-phone.svg
+                    .contact__list
                       each itm in item.phones
-                        .connect__item
-                          .connect__text= itm
+                        a.contact__item(href="tel:" + itm)= itm
       .map
     .cell.cell-xl-3.offset-xl-1
       form(action="").custom-form.collapsing-form

@@ -89,6 +89,17 @@
 }
 .button__icon + .button__body {
   margin-left: 0.5rem;
+
+  // @media (min-width: $break-lg) {
+  //   margin-left: 0.75rem;
+  // }
+}
+.button__body + .button__icon {
+  margin-left: 0.5rem;
+
+  @media (min-width: $break-lg) {
+    margin-left: 0.75rem;
+  }
 }
 button.button:disabled,
 .button.button--loading {

@@ -1,0 +1,8 @@
+extends catalog
+
+block prepend head
+  - pageName = "Каталог вариант 1"
+block elementsList
+  .categories__list.cells.categories__list--v1
+    each elm in cats
+      +category-item-1(elm)(class="cell cell-lg-6")

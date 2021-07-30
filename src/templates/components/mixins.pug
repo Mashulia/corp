@@ -194,7 +194,7 @@ mixin back-button(title, link="")
   .article__button
     a.button.button-secondary(href= link)
       .button__icon
-        include ./../../images/inline-svgs/icon-arrow-back.svg
+        include ./../../images/inline-svgs/arrow-back.svg
       .button__body= title
 mixin empty
   //- doesn't add anything but makes vars from vars.pug accessible to components that don't need any mixins.
@@ -243,3 +243,27 @@ mixin articles-nav(items)
                   img(src= item.pic)
               .articles-nav__date= item.date || "10.10.2021"
             a.articles-nav__name(href="")= item.name
+mixin category-item-2(elm)
+  .categories__item(class!=attributes.class)
+    .categories__bg
+      .cells
+        .cell.cell-sm-4
+          a.categories__image(href="category.html")
+            img(src=elm.pic, loading="lazy")
+        .cell.cell-sm-8
+          .categories__body
+            a.categories__link(href="category.html")
+              .categories__title= elm.title
+            if elm.subcats
+              ul.categories__subcats.subcats__list
+                each itm in elm.subcats
+                  li.subcats__item
+                    a.subcats__link(href="subcategory.html")= itm
+mixin category-item-1(elm)
+  .categories__item(class!=attributes.class)
+    .categories__bg
+      a.categories__link(href="category.html")
+        .categories__image
+          img(src=elm.pic, loading="lazy")
+        .categories__body
+          .categories__title= elm.title

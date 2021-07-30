@@ -134,3 +134,8 @@
 .fx-wrap {
   flex-wrap: wrap;
 }
+@media (min-width: $break-xl) {
+  .offset-xl-1 {
+    margin-left: 8.333%;
+  }
+}

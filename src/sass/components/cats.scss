@@ -10,10 +10,15 @@
 }
 .categories__bg {
   background: #fff;
+  border: 1px solid $color-sep;
   border-radius: $brad-3;
   color: $color-textHeader;
   height: 100%;
   overflow: hidden;
+
+  .scategories & {
+    border-width: 0;
+  }
 }
 .categories__image {
   display: block;
@@ -46,10 +51,9 @@
     outline-offset: -0.5rem;
   }
 }
-.scategories--v1 {
-  .categories__list {
-    justify-content: center;
-  }
+.categories__list--v1 {
+  justify-content: center;
+
   .categories__link {
     text-align: center;
   }
@@ -60,7 +64,7 @@
     padding: 1.25rem;
   }
 }
-.scategories--v2 {
+.categories__list--v2 {
   .section__title {
     text-align: left;
   }
@@ -69,7 +73,7 @@
   }
   .categories__image {
     border-radius: $brad-1;
-    margin-bottom: 1.125rem;
+    margin-bottom: 1.25rem;
   }
   .categories__title {
     font-weight: bold;
@@ -110,19 +114,19 @@
   content: none;
 }
 @media (min-width: $break-sm) {
-  .scategories--v2 {
+  .categories__list--v2 {
     .categories__image {
       margin-bottom: 0;
     }
   }
 }
 @media (min-width: $break-md) {
-  .scategories--v2 {
+  .categories__list--v2 {
     .categories__body {
       margin-top: 0.25rem;
     }
   }
-  .scategories--v1 .categories__body {
+  .categories__list--v1 .categories__body {
     padding-bottom: 1.4375rem;
   }
 }
@@ -133,7 +137,7 @@
   .categories__title {
     font-size: 1.125rem;
   }
-  .scategories--v1 {
+  .categories__list--v1 {
     .categories__body {
       padding: 1.875rem 1.5rem;
     }
@@ -141,7 +145,7 @@
       line-height: 1.3;
     }
   }
-  .scategories--v2 {
+  .categories__list--v2 {
     .categories__bg {
       padding: 1.875rem 1.875rem 1.5rem;
     }
@@ -154,9 +158,9 @@
   }
 }
 @media (min-width: $break-xl) {
-  .scategories--v2 {
+  .categories__list--v2 {
     .categories__bg {
-      padding: 2.5rem;
+      padding: 2.5rem 2.5rem 2.3125rem;
 
       .cell-sm-4 {
         flex-basis: 37%;

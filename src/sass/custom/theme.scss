@@ -65,7 +65,10 @@ a,
 .fancy-close,
 .fancy-arrow,
 .pagination__link--active,
-.cert__bg:hover {
+.cert__bg:hover,
+.contact__link .contact__icon,
+.search__result b,
+.search__result span {
   color: $custom-color-1;
 }
 .connect:not(.connect--labeled)::before,
@@ -101,7 +104,8 @@ thead tr:last-child::after,
 ol li::before,
 ul li::before,
 .reviews__intro__icon,
-.project__action__title__icon {
+.project__action__title__icon,
+.contact__icon {
   color: $custom-color-2;
 }
 .button-primary:hover,
