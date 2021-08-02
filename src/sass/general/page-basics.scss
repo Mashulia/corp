@@ -203,7 +203,10 @@
   }
   .content__body {
     flex: 1 0 75%;
-    max-width: 100%;
+    max-width: 75%;
+    &:first-child:last-child {
+      max-width: 100%;
+    }
   }
   .content__body__block {
     margin-bottom: 1rem;

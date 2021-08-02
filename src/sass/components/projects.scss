@@ -41,6 +41,8 @@
 @media (min-width: $break-lg) {
   .project__action {
     padding: 1.5rem;
+    position: sticky;
+    top: 1.5rem;
   }
   .project__action__title {
     font-size: 1.125rem;

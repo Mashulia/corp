@@ -1,0 +1,50 @@
+extends ../layout
+
+block prepend head
+  - pageName = "Изоляционные материалы"
+block title
+  +page-header(pageName, [{value: "Каталог", link: "catalog.html"}])
+block contentBody
+  form.cat-sort
+    label.form__field
+      span.form__label Сортировать по:
+      select(name="").form__input
+        option(value="") Цене (Сначала дешевле)
+        option(value="") Цене (Сначала дороже)
+        option(value="") Названию (по алфавиту)
+        option(value="") Названию (в обратном алфавитном порядке)
+  .products__list.cells
+    each item in prds
+      +product-item(item)(class="cell cell-sm-6 cell-md-4")
+  +pagination
+  +seo
+block contentNav
+  -
+    var items = [
+      {
+        value: "Кровельные материалы",
+        link: "category.html"
+      },
+      {
+        value: "Металлопрокат",
+        link: "category.html"
+      },
+      {
+        value: "Изоляционные материалы",
+        link: "category.html",
+        subcats: [
+          "Пенопласт, пенополистирол",
+          "Поролон",
+          "Теплоизоляция",
+          "Отражающие материалы",
+          "Пароизоляция",
+          "Гидроизоляция"
+        ]
+      },
+      {
+        value: "Строительные плиты",
+        link: "category.html"
+      }
+    ];
+  .content__nav
+    +section-navi("Каталог", items, 2)(class="snavigation--catalog")

@@ -1,16 +1,20 @@
 .slider {
   overflow: hidden;
   position: relative;
+  width: 100%;
 }
 .slick-slider.slick-initialized {
   height: auto;
+}
+.slick-list {
+  width: 100%;
 }
 .slick-track {
   display: flex;
   align-items: stretch;
 }
 .slick-slide {
-  flex: 0 0 auto;
+  flex: 1 0 0%;
   max-width: 100vw;
   opacity: 0.6;
   position: relative;

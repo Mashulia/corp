@@ -91,7 +91,7 @@ mixin connectsDropdown(type)
     else
       +connectList(type)
 mixin section-navi(title, items, currentIndex)
-  .snavigation
+  .snavigation(class!=attributes.class)
     button.snavigation__toggle= title
       span.snavigation__icon
         include ../../images/inline-svgs/dropdown.svg
@@ -99,7 +99,17 @@ mixin section-navi(title, items, currentIndex)
       ul.snavigation__list
         each item, index in items
           li.snavigation__item
-            a.snavigation__link(href=item.link, class={"snavigation__link--current": index == currentIndex})= item.value
+            if !item.subcats
+              a.snavigation__link(href=item.link, class={"snavigation__link--current": index == currentIndex})= item.value
+            else
+              .snavigation__split
+                a.snavigation__split__link(href= item.link) = item.value
+                button.snavigation__split__button
+                .snavigation__split__body
+                  ul.snavigation__subcats
+                    each elm in item.subcats
+                      li.snavigation__subcat
+                        a.snavigation__sublink(href="", class={"snavigation__link--current": index == 1})= elm
 mixin page-header(title, crumbs=[], variant="page-header--v1")
   .page-header(class= variant)
     .page-header__bg
@@ -141,7 +151,7 @@ mixin reviewsList(limit, printPics=true)
                       a.reviews__image(href=item.lg, data-fancybox="review-" + index)
                         img(src= item.xs)
                         .reviews__image__overflow
-mixin pagination(current)
+mixin pagination(current=0)
   .pagination
     ol.pagination__list
       li.pagination__item
@@ -158,26 +168,18 @@ mixin pagination(current)
           include ./../../images/inline-svgs/pagination-right.svg
 mixin seo
   .epilogue
-    h1 Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    h1 Современная технология для Вашего дома!
     p.
-      Illum nihil nemo ab, aliquam in alias aut architecto repellat debitis, quia deleniti ipsum ratione.
-      Quae optio, reiciendis impedit molestias temporibus modi!
+      Изоляционные материалы защищают строительные сооружения от негативных воздействий среды:
+      воды, повышенной влажности, низкой или высокой температуры, ветра.
+      Их использование продлевает срок эксплуатации сооружений и поддерживает в них комфортные условия.
+    h2 Почему мы?
     p.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Porro labore asperiores laudantium aperiam dicta quis eum, ea sed obcaecati quaerat quisquam aliquam molestias natus voluptatum repudiandae in?
-      Reprehenderit, accusamus? Debitis.Ea assumenda dolorem asperiores?
-      Hic eaque distinctio doloremque sint sapiente quibusdam in adipisci provident
-      fugiat eveniet asperiores molestiae dignissimos atque sit tenetur,
-      beatae ipsam, totam voluptatem.
-      Suscipit natus delectus atque?Unde, quidem maiores dolorem nemo ex ullam culpa alias quo quibusdam exercitationem.
-      Explicabo eligendi vitae magnam, esse atque, quisquam distinctio asperiores dolorum, adipisci
-      nam quos possimus quis aut nobis hic.Itaque aspernatur et placeat alias aut exercitationem deleniti autem unde soluta quod,
-      adipisci animi nam quisquam maiores voluptas numquam dolor mollitia, eum, libero officiis voluptatibus ducimus aliquid expedita enim.
-    h2 Quasi! Magnam saepe beatae quis doloribus officiis earum possimus voluptas voluptatem labore quae
-    p.
-      Magnam saepe beatae quis doloribus officiis earum possimus voluptas voluptatem labore quae,
-      minus modi facilis at deserunt placeat ullam tenetur animi repellat alias.
-      Voluptates corrupti minus tenetur? Accusantium, cupiditate neque?
+      Мы производим стройматериалы в Челябинске и осуществляем их доставку по городу и области. Почему стоит выбрать имеено нас?:
+    ul
+      li Наша репутация говорит за нас. Мы завоевали уважение и доверие сотен клиентов на Челябинском рынке;
+      li Мы всегда идём на встречу заказчику, делая ему самые выгодные и интересные предложения по сотрудничеству;
+      li Мы – профессионалы своего дела. Более чем за 7 лет мы полностью изучили рынок стройматериалов в Челябинске и области, а потому знаем, что Вам предложить;
 mixin news-item(item, link="news-item.html")
   .cards__item(class!= attributes.class, class= item.date ? "cards__item--dated" : "")
     .icard
@@ -258,7 +260,7 @@ mixin category-item-2(elm)
               ul.categories__subcats.subcats__list
                 each itm in elm.subcats
                   li.subcats__item
-                    a.subcats__link(href="subcategory.html")= itm
+                    a.subcats__link(href="category.html")= itm
 mixin category-item-1(elm)
   .categories__item(class!=attributes.class)
     .categories__bg
@@ -267,3 +269,31 @@ mixin category-item-1(elm)
           img(src=elm.pic, loading="lazy")
         .categories__body
           .categories__title= elm.title
+mixin product-item(itm)
+  .products__item(class!=attributes.class)
+    .products__bg
+      .products__labels
+        if itm.sale
+          .products__label.products__label--sale Акция
+      .products__images
+        .products__images__list.slider
+          if itm.pic
+            each pic in itm.pic
+              .products__images__item
+                a.products__images__link(href="product.html")
+                  // Размер картинки 518х385
+                  img(src= pic, loading="lazy")
+          else
+            .products__images__item
+                a.products__images__link.no-image(href="product.html")
+      .products__body
+        .products__cat= itm.cat
+        a.products__title(href="product.html")= itm.title
+        .products__action.cells
+          .products__prices.cell.cell-auto
+              .products__prices__old= itm.oprice
+              .products__prices__new= itm.price || "По запросу"
+          .products__button.cell.cell-auto
+            button.button.button-primary
+              span.button__body Заказать
+              span.button__loader
