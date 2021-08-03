@@ -95,6 +95,13 @@
     display: block;
   }
 }
+select.form__input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='7' viewBox='0 0 10 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23636565' stroke-width='2'/%3E%3C/svg%3E%0A");
+  background-repeat: no-repeat;
+  background-position: right 16px top 50%;
+  color: $color-text1;
+}
 @media (min-width: $break-lg) {
   .form__input {
     padding-top: 0.625rem;

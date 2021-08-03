@@ -102,14 +102,28 @@ mixin section-navi(title, items, currentIndex)
             if !item.subcats
               a.snavigation__link(href=item.link, class={"snavigation__link--current": index == currentIndex})= item.value
             else
-              .snavigation__split
-                a.snavigation__split__link(href= item.link) = item.value
-                button.snavigation__split__button
-                .snavigation__split__body
-                  ul.snavigation__subcats
-                    each elm in item.subcats
-                      li.snavigation__subcat
-                        a.snavigation__sublink(href="", class={"snavigation__link--current": index == 1})= elm
+              .snavigation__item.split
+                .snavigation__link
+                  a.snavigation__text(href= item.link)= item.value
+                  button.split__toggle
+                    include ../../images/inline-svgs/dropdown.svg
+                .split__body
+                  ul.snavigation__list
+                    each elm, index in item.subcats
+                      if index == 2
+                        li.split.snavigation__item
+                          .snavigation__link
+                            a.snavigation__text(href= item.link)= item.value
+                            button.split__toggle
+                              include ../../images/inline-svgs/dropdown.svg
+                          .split__body
+                            ul.snavigation__list
+                              each elm, index in item.subcats
+                                li.snavigation__item
+                                  a.snavigation__link(href="", class={"snavigation__link--current": index == 3})= elm
+                      else
+                        li.snavigation__item
+                          a.snavigation__link(href="", class={"snavigation__link--current": index == 1})= elm
 mixin page-header(title, crumbs=[], variant="page-header--v1")
   .page-header(class= variant)
     .page-header__bg

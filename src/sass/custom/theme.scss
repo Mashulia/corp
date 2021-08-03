@@ -68,7 +68,10 @@ a,
 .cert__bg:hover,
 .contact__link .contact__icon,
 .search__result b,
-.search__result span {
+.search__result span,
+.split__toggle,
+.snavigation__sublink--current,
+.split--opened > .snavigation__link {
   color: $custom-color-1;
 }
 .connect:not(.connect--labeled)::before,
@@ -88,7 +91,8 @@ a,
 thead tr:last-child::after,
 .form__header,
 .footer--v2 .footer__phones .connect__button::before,
-.cards__list--accented1 .cards__item:first-child .icard__body {
+.cards__list--accented1 .cards__item:first-child .icard__body,
+.split--opened > .snavigation__link::before {
   background-color: $custom-color-2;
 }
 .hero__slider .slick-dots button,
