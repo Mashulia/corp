@@ -213,6 +213,7 @@
     .snavigation__toggle {
       display: flex;
       font-size: 1.125rem;
+      pointer-events: none;
 
       &::after {
         content: "";

@@ -54,25 +54,18 @@ block contentBody
         type: "pdf"
       }
     ];
-  mixin cert-item(item)
-    .cert__item.cards__item.cell.cell-sm-6.cell-xl-4
-      a.card.cert__bg(href= item.pic, target= item.type=="jpg" ? "_self" : "_blank", data-fancybox=item.fncbx || false)
-        .cert__body.fdown(class= "fdown--" + item.type)
-          .cert__name.fdown__name= item.name
-        .cert__enlarge
-          include ./../../images/inline-svgs/enlarge-cert.svg
   .content__body__block
     .h3 Сертификаты
     .certs__list.cards__list.cells
       each item, index in crts
         if index < 5
-          +cert-item(item)
+          +cert-item(item)(class="cell cell-sm-6 cell-xl-4")
   .content__body__block
     .h3 Лицензии
     .certs__list.cards__list.cells
       each item, index in crts
         if index > 4
-          +cert-item(item)
+          +cert-item(item)(class="cell cell-sm-6 cell-xl-4")
   +pagination(1)
   //- +seo
 block contentNav

@@ -1,40 +1,6 @@
--
-  var bens = [
-    {
-      pic: require("/src/images/content-images/bens-1.png"),
-      title: "Соблюдение сроков строительства"
-    },
-    {
-      pic: require("/src/images/content-images/bens-2.png"),
-      title: "Квалифицированные строители"
-    },
-    {
-      pic: require("/src/images/content-images/bens-3.png"),
-      title: "Персональные скидки клиентам"
-    },
-    {
-      pic: require("/src/images/content-images/bens-4.png"),
-      title: "Цены на материалы от производителя"
-    },
-    {
-      pic: require("/src/images/content-images/bens-5.png"),
-      title: "Гарантия 10 лет на строительные работы"
-    },
-    //- {
-    //-   pic: require("/src/images/content-images/prods-1.jpg"),
-    //-   title: "Персональные скидки клиентам и еще что-то очень длинное, потому что нужно проверить, как чего выглядит"
-    //- },
-    //- {
-    //-   pic: require("/src/images/content-images/cats-2.png"),
-    //-   title: "Гарантия"
-    //- }
-  ];
 .section.benefits
   .wrap
     .benefits__list.cells
       each itm in bens
         .cell.cell-sm-6.cell-md-4.cell-lg-4.benefits__cell
-          .benefits__item
-            .benefits__img
-              img(src=itm.pic, loading="lazy")
-            .benefits__title= itm.title
+          +benefit-item(itm)

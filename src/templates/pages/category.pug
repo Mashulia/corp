@@ -13,9 +13,10 @@ block contentBody
         option(value="") Цене (Сначала дороже)
         option(value="") Названию (по алфавиту)
         option(value="") Названию (в обратном алфавитном порядке)
-  .products__list.cells
-    each item in prds
-      +product-item(item)(class="cell cell-sm-6 cell-md-4")
+  block elementsList
+    .products__list.cells
+      each item in prds
+        +product-item(item)(class="cell cell-sm-6 cell-md-4")
   +pagination
   +seo
 block contentNav
@@ -47,4 +48,4 @@ block contentNav
       }
     ];
   .content__nav
-    +section-navi("Каталог", items, 2)(class="snavigation--catalog")
+    +section-navi("Каталог", items, 10)(class="snavigation--catalog")

@@ -1,0 +1,39 @@
+extends ../category.pug
+
+block prepend head
+  - pageName = "Теплоизоляция"
+block elementsList
+  .products__list.cells
+    each item in prds
+      if item.cat == pageName
+      +product-item(item)(class="cell cell-sm-6 cell-md-4")
+block contentNav
+  -
+    var items = [
+      {
+        value: "Кровельные материалы",
+        link: "category.html"
+      },
+      {
+        value: "Металлопрокат",
+        link: "category-2.html"
+      },
+      {
+        value: "Изоляционные материалы",
+        link: "category.html",
+        subcats: [
+          "Пенопласт, пенополистирол",
+          "Поролон",
+          "Теплоизоляция",
+          "Отражающие материалы",
+          "Пароизоляция",
+          "Гидроизоляция"
+        ]
+      },
+      {
+        value: "Строительные плиты",
+        link: "category.html"
+      }
+    ];
+  .content__nav
+    +section-navi("Каталог", items, 2)(class="snavigation--catalog")

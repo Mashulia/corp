@@ -1,26 +1,3 @@
--
-  var sbens = [
-    {
-      pic: require("/src/images/content-images/sabout-bens-1.png"),
-      title: "Лет работы в строительстве"
-    },
-    {
-      pic: require("/src/images/content-images/bens-1.png"),
-      title: "Соблюдение сроков"
-    },
-    {
-      pic: require("/src/images/content-images/bens-2.png"),
-      title: "Опытные строители"
-    },
-    {
-      pic: require("/src/images/content-images/bens-3.png"),
-      title: "Персональные скидки клиентам"
-    },
-    {
-      pic: require("/src/images/content-images/bens-5.png"),
-      title: "Гарантия 10 лет на наши работы"
-    }
-  ];
 .section.sabout
   .wrap
     .cells
@@ -45,8 +22,5 @@
       .cell.cell-xl-2
         .sabout__bens
           .benefits__list.cells
-            each item in sbens
-              .benefits__item.cell.cell-sm-6.cell-md-4.cell-lg-3.cell-xl-12
-                .benefits__img
-                  img(src=item.pic, loading="lazy")
-                .benefits__title= item.title
+            each item in bens
+              +benefit-item(item)(class="cell cell-sm-6 cell-md-4 cell-lg-3 cell-xl-12")

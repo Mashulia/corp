@@ -120,7 +120,7 @@ mixin section-navi(title, items, currentIndex)
                             ul.snavigation__list
                               each elm, index in item.subcats
                                 li.snavigation__item
-                                  a.snavigation__link(href="", class={"snavigation__link--current": index == 3})= elm
+                                  a.snavigation__link(href="category-2.html", class={"snavigation__link--current": index == 3})= elm
                       else
                         li.snavigation__item
                           a.snavigation__link(href="", class={"snavigation__link--current": index == 1})= elm
@@ -311,3 +311,15 @@ mixin product-item(itm)
             button.button.button-primary
               span.button__body Заказать
               span.button__loader
+mixin benefit-item(item)
+  .benefits__item(class!=attributes.class)
+    .benefits__img
+      img(src=item.pic, loading="lazy")
+    .benefits__title= item.title
+mixin cert-item(item)
+  .cert__item.cards__item
+    a.card.cert__bg(href= item.pic, target= item.type=="jpg" ? "_self" : "_blank", data-fancybox=item.fncbx || false)
+      .cert__body.fdown(class= "fdown--" + item.type)
+        .cert__name.fdown__name= item.name
+      .cert__enlarge
+        include ./../../images/inline-svgs/enlarge-cert.svg
