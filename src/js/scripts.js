@@ -554,6 +554,62 @@ window.addEventListener("load", function () {
         ]
       }
     });
+    $(".illustrations__pic__slider").slick({
+      ...slickSettings,
+      ...{
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        adaptiveHeight: true,
+        arrows: true,
+        dots: false,
+        asNavFor: ".illustrations__nav__slider",
+        responsive: [
+          {
+            breakpoint: 1200,
+            settings: {
+              arrows: false
+            }
+          },
+          {
+            breakpoint: 768,
+            settings: {
+              arrows: false,
+              dots: true
+            }
+          }
+        ]
+      }
+    });
+    $(".illustrations__nav__slider").slick({
+      slidesToShow: 6,
+      slidesToScroll: 1,
+      asNavFor: ".illustrations__pic__slider",
+      arrows: false,
+      dots: false,
+      centerMode: true,
+      // centerPadding: "70px",
+      focusOnSelect: true,
+      responsive: [
+        {
+          breakpoint: 1200,
+          settings: {
+            // centerPadding: "64px",
+            slidesToShow: 5
+          }
+        },
+        {
+          breakpoint: 1024,
+          settings: {
+            // centerPadding: "64px",
+            slidesToShow: 4
+          }
+        },
+        {
+          breakpoint: 768,
+          settings: "unslick"
+        }
+      ]
+    });
   } else {
     console.log("no slick or not loaded");
   }

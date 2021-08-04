@@ -92,7 +92,8 @@ thead tr:last-child::after,
 .form__header,
 .footer--v2 .footer__phones .connect__button::before,
 .cards__list--accented1 .cards__item:first-child .icard__body,
-.split--opened > .snavigation__link::before {
+.split--opened > .snavigation__link::before,
+.presentation__label {
   background-color: $custom-color-2;
 }
 .hero__slider .slick-dots button,

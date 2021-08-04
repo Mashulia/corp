@@ -5,54 +5,88 @@ block prepend head
 block title
   +page-header(pageName, [{value: "Каталог", link: "catalog.html"}, {value: "Изоляционные материалы", link: "category.html"}, {value: "Поролон", link: "category-2.html"}])
 block contentBody
+  -
+    var imNav = [
+      require("/src/images/content-images/product-img-nav-1.jpg"),
+      require("/src/images/content-images/product-img-nav-2.jpg"),
+      require("/src/images/content-images/product-img-nav-3.jpg"),
+      require("/src/images/content-images/cats-2.png"),
+      require("/src/images/content-images/cats-1.jpg"),
+      require("/src/images/content-images/bens-3.png")
+    ];
+  -
+    var imImgs = [
+      {
+        picM: require("/src/images/content-images/product-1.jpg"),
+        picB: require("/src/images/content-images/product-1.jpg")
+      },
+      {
+        picM: require("/src/images/content-images/product-2.jpg"),
+        picB: require("/src/images/content-images/product-2.jpg")
+      },
+      {
+        picM: require("/src/images/content-images/product-3.jpg"),
+        picB: require("/src/images/content-images/product-3.jpg")
+      },
+      {
+        picM: require("/src/images/content-images/cats-2.png"),
+        picB: require("/src/images/content-images/about-1.jpg")
+      },
+      {
+        picM: require("/src/images/content-images/news-1.jpg"),
+        picB: require("/src/images/content-images/folio-3.jpg")
+      }
+    ];
   .product__presentation
     .presentation__illustrations
       .illustrations__nav
-        .illustrations__nav__slider
-          .illustrations__nav__item
-            .illustrations__nav__image
-              img(src="")
+        .illustrations__nav__slider.slider
+          each item in imNav
+            .illustrations__nav__item
+              .illustrations__nav__image
+                img(src= item)
       .illustrations__pic
-        .illustrations__pic__slider
-          .illustrations__pic__item
-            .illustrations__pic__image
-              img(src="")
+        .illustrations__pic__slider.slider
+          each item in imImgs
+            .illustrations__pic__item
+              a.illustrations__pic__image(href= item.picB, data-fancybox="product")
+                img(src= item.picM)
     .presentation__body
-      .cells
-        .cell.presentation__prices
+      .cells.presentation__pricing
+        .cell.cell-auto.presentation__prices
           .presentation__prices__list
-            .presentation__price.presentation__price--current
-            .presentation__price.presentation__price--old
-        .cell.presentation__labels
+            .presentation__price.presentation__price--current 440 руб
+            .presentation__price.presentation__price--old 470 руб
+        .cell.cell-auto.presentation__labels
           .presentation__labels__list
-            .presentation__label
-            .presentation__label
+            .presentation__label Акция
+            .presentation__label Длинный лейбл олала
       .presentation__actions
-        .presentation__qty
+        .presentation__action.presentation__qty
           button.qty__change.qty__change--minus -
-          input.qty__input(type="number", value="1")
+          input.qty__input(type="text", value="1")
           button.qty__change.qty__change--plus +
-        .presentation__add
+        .presentation__action.presentation__add
           button.button.button-primary В корзину
-        .presentation__order
+        .presentation__action.presentation__order
           button.button.button-secondary Быстрый заказ
       .divider
       .presentation__info
+        .presentation__info__brand
+          .brand__image
+            img(src=require("/src/images/content-images/partners-2.png"))
         .presentation__info__title Краткое описание:
         .presentation__info__text
           p Листы размером: 2000 × 1000 × 40 мм
           p Материал: Пенополиуретан
           p Толщина: 10мм
-        .presentation__info__brand
-          .brand__image
-            img(src="")
       .presentation__link
         a(href="#product__description") Полное описание
           span.presentation__link__icon
             include ../../images/inline-svgs/down-arrow.svg
   .product__benefits
     .benefits__list.cells
-      each itm in bens
+      each item in bens
         .cell.benefits__cell
           +benefit-item(item)
   .cells
