@@ -330,11 +330,9 @@ nav,
 .snavigation__list,
 .breadcrumbs {
   margin: 0;
+  padding: 0;
 
   li {
-    margin-bottom: 0;
-    padding-left: 0;
-
     &::before {
       content: none;
     }

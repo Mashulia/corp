@@ -102,6 +102,25 @@ select.form__input {
   background-position: right 16px top 50%;
   color: $color-text1;
 }
+.qty {
+  @extend %fx-centered-y;
+  align-items: stretch;
+  background: $color-bg;
+  border-radius: $brad-1;
+}
+.qty__change {
+  flex-shrink: 0;
+  background: transparent;
+  border: 0;
+  display: block;
+  width: 2.5rem;
+}
+.qty__input {
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  text-align: center;
+}
 @media (min-width: $break-lg) {
   .form__input {
     padding-top: 0.625rem;

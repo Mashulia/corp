@@ -195,6 +195,65 @@
 .presentation__label {
   @extend .products__label;
 }
+.presentation__actions {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0.875rem;
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+}
+.presentation__action {
+  flex: 1 0 33.333%;
+  margin-bottom: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
+  .button {
+    white-space: nowrap;
+    width: 100%;
+  }
+}
+.divider {
+  border-top: 1px solid $color-sep;
+  margin-bottom: 2rem;
+  margin-left: -1.25rem;
+  margin-right: -1.25rem;
+}
+.presentation__info__brand {
+  margin-bottom: 1rem;
+}
+.brand__image {
+  max-height: 100px;
+  max-width: 200px;
+  overflow: hidden;
+
+  img {
+    max-height: 100%;
+  }
+}
+.presentation__info__title {
+  color: $color-textHeader;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+.presentation__info__text {
+  margin-bottom: 1rem;
+}
+.presentation__more {
+  margin-bottom: 1.875rem;
+}
+.presentation__link {
+  @extend %fx-centered-y;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+.presentation__link__icon {
+  margin-left: 0.5rem;
+}
 @media (min-width: $break-md) {
   .products__images__list {
     height: 165px;

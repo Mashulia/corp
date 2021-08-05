@@ -63,9 +63,10 @@ block contentBody
             .presentation__label Длинный лейбл олала
       .presentation__actions
         .presentation__action.presentation__qty
-          button.qty__change.qty__change--minus -
-          input.qty__input(type="text", value="1")
-          button.qty__change.qty__change--plus +
+          .qty
+            button.qty__change.qty__change--minus(disabled) -
+            input.qty__input.form__input(type="text", value="1", data-min="1", data-max="99")
+            button.qty__change.qty__change--plus +
         .presentation__action.presentation__add
           button.button.button-primary В корзину
         .presentation__action.presentation__order
@@ -80,10 +81,11 @@ block contentBody
           p Листы размером: 2000 × 1000 × 40 мм
           p Материал: Пенополиуретан
           p Толщина: 10мм
-      .presentation__link
-        a(href="#product__description") Полное описание
+      .presentation__more
+        a.presentation__link(href="#product__description") Полное описание
           span.presentation__link__icon
             include ../../images/inline-svgs/down-arrow.svg
+      .divider
   .product__benefits
     .benefits__list.cells
       each item in bens
@@ -101,11 +103,11 @@ block contentBody
             {name: "Таб с длинным названием, которое все сломает", link: "#product__whatever"}
           ];
         ul.nav.tab__nav
-          each item in tabNav
+          each item, index in tabNav
             li.tab__nav__item
-              a.tab__nav__link(href= item.link)= item.name
+              a.tab__nav__link(href= item.link, class= index == 0 ? "tab__nav__link--current" : "")= item.name
         .tab__panels
-          .tab__panel#product__description
+          .tab__panel.tab__panel--opened#product__description
             p.
               Поролон благодаря своей ячеистой структуре обеспечивает теплоизоляцию.
               Эластичный листовой материал применяется при установке оконных блоков и других внутренних конструкций.
@@ -125,12 +127,13 @@ block contentBody
             .product__video__list.cells
               each item, index in vds
                 if index < 2
-                  .product__video__item.cell
+                  .videos__item.product__video__item.cell
                     a.videos__link(href="https://www.youtube.com/watch?v=" + item.link)
                       .videos__cover(style= item.cover ? "background-image: url('https://img.youtube.com/vi/" + item.link + "/maxresdefault.jpg')" : "", loading="lazy")
                     .videos__content
                       iframe(width="560", height="315", src= "https://www.youtube.com/embed/" + item.link, title="YouTube video player", frameborder="0", allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
           .tab__panel#product__reviews
+            +reviewsList(4, false)
           .tab__panel#product__additional
             .h4 Дополнительно
             .nb

@@ -610,6 +610,13 @@ window.addEventListener("load", function () {
         }
       ]
     });
+    $(".tab__nav").slick({
+      arrows: false,
+      dots: false,
+      infinite: false,
+      slidesToShow: 1,
+      variableWidth: true
+    });
   } else {
     console.log("no slick or not loaded");
   }
@@ -843,7 +850,6 @@ window.addEventListener("load", function () {
     }
 
     toggle() {
-      console.log("click");
       this.$wrapper.classList.toggle(`split--opened`);
     }
   }
@@ -851,6 +857,99 @@ window.addEventListener("load", function () {
   document.querySelectorAll(".split").forEach((el) => {
     new splitter(el);
   });
+
+  class qtyChanger {
+    constructor(el) {
+      Object.assign(this, {
+        $wrapper: el
+      });
+      this.$input = this.$wrapper.querySelector(".qty__input");
+      this.min = this.$input.dataset.min || 1;
+      this.max = this.$input.dataset.max || 99;
+      this.$up = this.$wrapper.querySelector(".qty__change--plus");
+      this.$down = this.$wrapper.querySelector(".qty__change--minus");
+      this.$up.onclick = () => this.changeUp();
+      this.$down.onclick = () => this.changeDown();
+      this.$input.onchange = () => this.checkRange();
+    }
+    changeUp() {
+      this.enableButton(this.$down);
+      let currentValue = parseInt(this.$input.value);
+      if (currentValue < this.max) {
+        this.$input.value = currentValue + 1;
+      }
+      if (currentValue < this.max - 1) {
+        this.enableButton(this.$up);
+      } else {
+        this.disableButton(this.$up);
+      }
+    }
+    changeDown() {
+      this.enableButton(this.$up);
+      let currentValue = parseInt(this.$input.value);
+      if (currentValue > this.min) {
+        this.$input.value = currentValue - 1;
+      }
+      if (currentValue > this.min + 1) {
+        this.enableButton(this.$down);
+      } else {
+        this.disableButton(this.$down);
+      }
+    }
+    disableButton(el) {
+      el.setAttribute("disabled", "disabled");
+    }
+    enableButton(el) {
+      el.removeAttribute("disabled");
+    }
+    checkRange() {
+      let currentValue = parseInt(this.$input.value);
+      this.$input.value = currentValue;
+      if (currentValue < this.min) {
+        this.$input.value = this.min;
+      } else if (currentValue > this.min) {
+        this.enableButton(this.$down);
+      } else {
+        this.disableButton(this.$down);
+      }
+      if (currentValue > this.max) {
+        this.$input.value = this.max;
+      } else if (currentValue < this.max) {
+        this.enableButton(this.$up);
+      } else {
+        this.disableButton(this.$up);
+      }
+    }
+  }
+
+  document.querySelectorAll(".qty").forEach((el) => {
+    new qtyChanger(el);
+  });
+
+  // tabs
+  const tabTriggers = document.querySelectorAll(".tab__nav__link");
+  if (tabTriggers.length) {
+    tabTriggers.forEach((item) => {
+      item.addEventListener("click", handleTabClick);
+    });
+  }
+  function handleTabClick(e) {
+    e.preventDefault();
+    const tabsEl = e.target.closest(".tabs");
+    const tabNavs = tabsEl.querySelectorAll(".tab__nav__link");
+    const tabPanels = tabsEl.querySelectorAll(".tab__panel");
+    let currentPanel = document.getElementById(
+      e.target.getAttribute("href").replace("#", "")
+    );
+    tabNavs.forEach((item) => {
+      item.classList.remove("tab__nav__link--current");
+    });
+    e.target.classList.add("tab__nav__link--current");
+    tabPanels.forEach((item) => {
+      item.classList.remove("tab__panel--opened");
+    });
+    currentPanel.classList.add("tab__panel--opened");
+  }
 
   // functions on resize
   window.onresize = function (event) {
