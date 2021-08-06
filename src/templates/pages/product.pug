@@ -38,62 +38,64 @@ block contentBody
       }
     ];
   .product__presentation
-    .presentation__illustrations
-      .illustrations__nav
-        .illustrations__nav__slider.slider
-          each item in imNav
-            .illustrations__nav__item
-              .illustrations__nav__image
-                img(src= item)
-      .illustrations__pic
-        .illustrations__pic__slider.slider
-          each item in imImgs
-            .illustrations__pic__item
-              a.illustrations__pic__image(href= item.picB, data-fancybox="product")
-                img(src= item.picM)
-    .presentation__body
-      .cells.presentation__pricing
-        .cell.cell-auto.presentation__prices
-          .presentation__prices__list
-            .presentation__price.presentation__price--current 440 руб
-            .presentation__price.presentation__price--old 470 руб
-        .cell.cell-auto.presentation__labels
-          .presentation__labels__list
-            .presentation__label Акция
-            .presentation__label Длинный лейбл олала
-      .presentation__actions
-        .presentation__action.presentation__qty
-          .qty
-            button.qty__change.qty__change--minus(disabled) -
-            input.qty__input.form__input(type="text", value="1", data-min="1", data-max="99")
-            button.qty__change.qty__change--plus +
-        .presentation__action.presentation__add
-          button.button.button-primary В корзину
-        .presentation__action.presentation__order
-          button.button.button-secondary Быстрый заказ
-      .divider
-      .presentation__info
-        .presentation__info__brand
-          .brand__image
-            img(src=require("/src/images/content-images/partners-2.png"))
-        .presentation__info__title Краткое описание:
-        .presentation__info__text
-          p Листы размером: 2000 × 1000 × 40 мм
-          p Материал: Пенополиуретан
-          p Толщина: 10мм
-      .presentation__more
-        a.presentation__link(href="#product__description") Полное описание
-          span.presentation__link__icon
-            include ../../images/inline-svgs/down-arrow.svg
-      .divider
+    .cells
+      .presentation__illustrations.cell.cell-md-6
+        .illustrations__pic
+          .illustrations__pic__slider.slider
+            each item in imImgs
+              .illustrations__pic__item
+                a.illustrations__pic__image(href= item.picB, data-fancybox="product")
+                  img(src= item.picM)
+        .illustrations__nav
+          .illustrations__nav__slider.slider
+            each item in imNav
+              .illustrations__nav__item
+                .illustrations__nav__image
+                  img(src= item)
+      .presentation__body.cell.cell-md-6
+        .cells.presentation__pricing
+          .cell.cell-auto.presentation__prices
+            .presentation__prices__list
+              .presentation__price.presentation__price--current 440 руб
+              .presentation__price.presentation__price--old 470 руб
+          .cell.cell-auto.presentation__labels
+            .presentation__labels__list
+              .presentation__label Акция
+              .presentation__label Длинный лейбл олала
+        .presentation__actions
+          .presentation__action.presentation__qty
+            .qty
+              button.qty__change.qty__change--minus(disabled) -
+              input.qty__input.form__input(type="text", value="1", data-min="1", data-max="99")
+              button.qty__change.qty__change--plus +
+          .presentation__action.presentation__add
+            button.button.button-primary.button-add2cart В корзину
+          .presentation__action.presentation__order
+            button.button.button-secondary Быстрый заказ
+        .divider
+        .presentation__info
+          .presentation__info__brand
+            .brand__image
+              img(src=require("/src/images/content-images/partners-2.png"))
+          .presentation__info__body
+            .presentation__info__title Краткое описание:
+            .presentation__info__text
+              p Листы размером: 2000 × 1000 × 40 мм
+              p Материал: Пенополиуретан
+              p Толщина: 10мм
+        .presentation__more
+          a.presentation__link(href="#product__full") Полное описание
+            span.presentation__link__icon
+              include ../../images/inline-svgs/down-arrow.svg
+        .divider.display-md-none
   .product__benefits
     .benefits__list.cells
       each item in bens
-        .cell.benefits__cell
+        .cell.benefits__cell.cell-md-4
           +benefit-item(item)
   .cells
-    .cell
-      .tabs.product__tabs
+    .cell.cell-lg-9
+      .tabs.product__tabs#product__full
         -
           var tabNav = [
             {name: "Описание", link: "#product__description"},
@@ -127,11 +129,12 @@ block contentBody
             .product__video__list.cells
               each item, index in vds
                 if index < 2
-                  .videos__item.product__video__item.cell
-                    a.videos__link(href="https://www.youtube.com/watch?v=" + item.link)
-                      .videos__cover(style= item.cover ? "background-image: url('https://img.youtube.com/vi/" + item.link + "/maxresdefault.jpg')" : "", loading="lazy")
-                    .videos__content
-                      iframe(width="560", height="315", src= "https://www.youtube.com/embed/" + item.link, title="YouTube video player", frameborder="0", allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
+                  .product__video__item.cell.cell-md-6
+                    .videos__item
+                      a.videos__link(href="https://www.youtube.com/watch?v=" + item.link)
+                        .videos__cover(style= item.cover ? "background-image: url('https://img.youtube.com/vi/" + item.link + "/maxresdefault.jpg')" : "", loading="lazy")
+                      .videos__content
+                        iframe(width="560", height="315", src= "https://www.youtube.com/embed/" + item.link, title="YouTube video player", frameborder="0", allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
           .tab__panel#product__reviews
             +reviewsList(4, false)
           .tab__panel#product__additional
@@ -193,41 +196,39 @@ block contentBody
           each item in techs
             li.tech__item
               span.tech__label= item.label
-              span.tech__spacing
               span.tech__value= item.value
       .product__docs
         -
           var prdocs = [
             {
-              name: "Сертификат соответствия",
-              pic: "assets/content-images/constitution.pdf",
-              type: "pdf"
+              name: "Сертификат соответствия"
             },
             {
-              name: 'Каталог «Изоляционные материалы»',
-              pic: "assets/content-images/constitution.pdf",
-              type: "pdf"
+              name: 'Каталог «Изоляционные материалы»'
             }
           ];
         .h4 Документы
-        .certs__list.cards__list.cells
+        .downloads__list.cells
           each item in prdocs
-            +cert-item(item)
+            .downloads__item.cell.cell-auto
+              a.fdown.fdown--pdf(href="assets/content-images/constitution.pdf", target="__blank")
+                .fdown__name= item.name
+                  .fdown__size 128 кб
       .product__related
         .h4 Похожие товары
         .products__list.cells
           each item, index in prds
             if index < 3
               +product-item(item)(class="cell cell-sm-6 cell-md-4")
-      +back-button("Назад к списку", "category.html")
-    .cell
-      .product__action
-      .product__action__title Есть вопросы по данному товару?
-        .product__action__title__icon
-          include ../../images/inline-svgs/product-question.svg
-      .product__action__text Задайте все интересующие Вас вопросы по товару, и наши специалисты с радостью ответим на них.
-      .product__action__button
-        button.button.button-primary(data-fancybox, data-type="inline", data-src="#product-question-form", data-touch="false") Задать вопрос
+    .cell.cell-lg-3
+      .article__action
+        .article__action__title Есть вопросы по данному товару?
+          .article__action__title__icon.question
+            include ../../images/inline-svgs/product-question.svg
+        .article__action__text Задайте все интересующие Вас вопросы по товару, и наши специалисты с радостью ответим на них.
+        .article__action__button
+          button.button.button-primary(data-fancybox, data-type="inline", data-src="#product-question-form", data-touch="false") Задать вопрос
+  +back-button("Назад к списку", "category.html")
   .fancy-form.display-none#product-question-form
     form(action="").custom-form.collapsing-form
       .form__header

@@ -24,6 +24,11 @@
 .overflow-hidden {
   overflow: hidden;
 }
+@media (min-width: $break-md) {
+  .display-md-none {
+    display: none;
+  }
+}
 @media (min-width: $break-lg) {
   .display-lg-none {
     display: none;

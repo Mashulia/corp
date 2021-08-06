@@ -41,7 +41,8 @@ $custom-color-21: hsl(
 .to-top__link,
 .header--v3 .search__toggle,
 .fancy-arrow:hover,
-.projects__category {
+.projects__category,
+.tab__nav__link--current {
   background-color: $custom-color-1;
 }
 .button-primary,
@@ -50,7 +51,8 @@ $custom-color-21: hsl(
 .slider-nav .slick-current .slider-nav__image,
 .form__input:hover,
 .fancy-arrow:hover,
-.pagination__link--active {
+.pagination__link--active,
+.slick-current .illustrations__nav__image {
   border-color: $custom-color-1;
 }
 a,
@@ -109,7 +111,7 @@ thead tr:last-child::after,
 ol li::before,
 ul li::before,
 .reviews__intro__icon,
-.project__action__title__icon,
+.article__action__title__icon,
 .contact__icon {
   color: $custom-color-2;
 }
@@ -127,7 +129,8 @@ ul li::before,
 .messengers__link:hover,
 .header--v3 .search__toggle:hover,
 .fancy-close:hover,
-.pagination__link:hover {
+.pagination__link:hover,
+.tab__nav__link:hover {
   background-color: $custom-color-hover;
 }
 .button-primary:hover,
@@ -163,7 +166,8 @@ a:hover,
 .messengers__link:active,
 .header--v3 .search__toggle:active,
 .fancy-arrow:active,
-.pagination__link:active {
+.pagination__link:active,
+.tab__nav__link:active {
   background-color: $custom-color-active;
 }
 .button-primary:active,

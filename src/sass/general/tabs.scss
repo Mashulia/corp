@@ -2,26 +2,42 @@
   background: $color-bg;
   margin-left: -1.25rem;
   margin-right: -1.25rem;
-  padding: 1.25rem;
+  padding: 1.25rem 1.25rem 1.5rem;
+
+  .h4 {
+    margin-bottom: 1.25rem;
+  }
 }
 .tab__nav {
   margin-bottom: 1.5rem;
+  overflow: hidden;
+  padding-right: 3rem;
 }
 .tab__nav__item {
+  margin-bottom: 0;
+  opacity: 1;
   padding-left: 0.375rem;
   padding-right: 0.375rem;
 }
 .tab__nav__link {
-  background: $color-text1;
+  background: rgba(224, 224, 224, 0.93);
   border-radius: $brad-1;
-  color: #fff;
+  color: $color-text2;
   display: block;
   font-weight: 800;
   line-height: 1.4;
   padding: 0.625rem 0.875rem;
   white-space: nowrap;
 
-  &--current {
+  &:hover,
+  &:active {
+    color: #fff;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+  &.tab__nav__link--current {
+    color: #fff;
     pointer-events: none;
   }
 }
@@ -30,5 +46,30 @@
 
   &--opened {
     display: block;
+  }
+}
+@media (min-width: $break-md) {
+  .tabs {
+    background-color: rgba(224, 224, 224, 0.5);
+    border-radius: $brad-3;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+  }
+  .tab__nav {
+    background: rgba(224, 224, 224, 0.6);
+    border-radius: $brad-3 $brad-3 0 0;
+    margin-bottom: 0;
+  }
+  .tab__nav__item {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .tab__nav__link {
+    background-color: transparent;
+    color: $color-text1;
+  }
+  .tab__panels {
+    padding: 1.875rem 2.5rem 2.5rem;
   }
 }

@@ -571,7 +571,7 @@ window.addEventListener("load", function () {
             }
           },
           {
-            breakpoint: 768,
+            breakpoint: 576,
             settings: {
               arrows: false,
               dots: true
@@ -581,14 +581,16 @@ window.addEventListener("load", function () {
       }
     });
     $(".illustrations__nav__slider").slick({
+      infinite: true,
       slidesToShow: 6,
       slidesToScroll: 1,
       asNavFor: ".illustrations__pic__slider",
       arrows: false,
       dots: false,
-      centerMode: true,
-      // centerPadding: "70px",
+      centerMode: false,
+      // centerPadding: "0",
       focusOnSelect: true,
+      // variableWidth: true,
       responsive: [
         {
           breakpoint: 1200,
@@ -601,11 +603,11 @@ window.addEventListener("load", function () {
           breakpoint: 1024,
           settings: {
             // centerPadding: "64px",
-            slidesToShow: 4
+            slidesToShow: 5
           }
         },
         {
-          breakpoint: 768,
+          breakpoint: 576,
           settings: "unslick"
         }
       ]
@@ -615,7 +617,8 @@ window.addEventListener("load", function () {
       dots: false,
       infinite: false,
       slidesToShow: 1,
-      variableWidth: true
+      variableWidth: true,
+      swipe: false
     });
   } else {
     console.log("no slick or not loaded");
@@ -878,7 +881,7 @@ window.addEventListener("load", function () {
       if (currentValue < this.max) {
         this.$input.value = currentValue + 1;
       }
-      if (currentValue < this.max - 1) {
+      if (this.$input.value < this.max - 1) {
         this.enableButton(this.$up);
       } else {
         this.disableButton(this.$up);
@@ -890,7 +893,7 @@ window.addEventListener("load", function () {
       if (currentValue > this.min) {
         this.$input.value = currentValue - 1;
       }
-      if (currentValue > this.min + 1) {
+      if (this.$input.value > this.min + 1) {
         this.enableButton(this.$down);
       } else {
         this.disableButton(this.$down);
@@ -935,6 +938,7 @@ window.addEventListener("load", function () {
   }
   function handleTabClick(e) {
     e.preventDefault();
+    repositionSlick(e.target);
     const tabsEl = e.target.closest(".tabs");
     const tabNavs = tabsEl.querySelectorAll(".tab__nav__link");
     const tabPanels = tabsEl.querySelectorAll(".tab__panel");
@@ -948,7 +952,26 @@ window.addEventListener("load", function () {
     tabPanels.forEach((item) => {
       item.classList.remove("tab__panel--opened");
     });
-    currentPanel.classList.add("tab__panel--opened");
+    if (currentPanel) {
+      currentPanel.classList.add("tab__panel--opened");
+    }
+  }
+  function repositionSlick(childEl) {
+    const slickEl = childEl.closest(".slick-slider");
+    const $slickSlider = $(slickEl).slick("getSlick");
+    const clickedSlide = childEl.closest(".slick-slide");
+    const slides = slickEl.querySelectorAll(".slick-slide:not(.slick-cloned)");
+    for (let i = 0; i < slides.length; i++) {
+      if (slides[i] == clickedSlide) {
+        if (i != 0) {
+          slickEl.style.paddingLeft = "3rem";
+        } else {
+          slickEl.style.paddingLeft = "0";
+        }
+        $slickSlider.slickGoTo(i);
+        break;
+      }
+    }
   }
 
   // functions on resize
