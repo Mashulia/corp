@@ -8,11 +8,13 @@ block contentBody
   -
     var imNav = [
       require("/src/images/content-images/product-img-nav-1.jpg"),
-      require("/src/images/content-images/product-img-nav-2.jpg"),
-      require("/src/images/content-images/product-img-nav-3.jpg"),
-      require("/src/images/content-images/cats-2.png"),
-      require("/src/images/content-images/cats-1.jpg"),
-      require("/src/images/content-images/bens-3.png")
+      //- require("/src/images/content-images/product-img-nav-2.jpg"),
+      //- require("/src/images/content-images/product-img-nav-3.jpg"),
+      //- require("/src/images/content-images/cats-2.png"),
+      //- require("/src/images/content-images/cats-1.jpg"),
+      //- require("/src/images/content-images/bens-3.png"),
+      //- require("/src/images/content-images/product-img-nav-2.jpg"),
+      //- require("/src/images/content-images/product-img-nav-3.jpg")
     ];
   -
     var imImgs = [
@@ -20,39 +22,60 @@ block contentBody
         picM: require("/src/images/content-images/product-1.jpg"),
         picB: require("/src/images/content-images/product-1.jpg")
       },
-      {
-        picM: require("/src/images/content-images/product-2.jpg"),
-        picB: require("/src/images/content-images/product-2.jpg")
-      },
-      {
-        picM: require("/src/images/content-images/product-3.jpg"),
-        picB: require("/src/images/content-images/product-3.jpg")
-      },
-      {
-        picM: require("/src/images/content-images/cats-2.png"),
-        picB: require("/src/images/content-images/about-1.jpg")
-      },
-      {
-        picM: require("/src/images/content-images/news-1.jpg"),
-        picB: require("/src/images/content-images/folio-3.jpg")
-      }
+      //- {
+      //-   picM: require("/src/images/content-images/product-2.jpg"),
+      //-   picB: require("/src/images/content-images/product-2.jpg")
+      //- },
+      //- {
+      //-   picM: require("/src/images/content-images/product-3.jpg"),
+      //-   picB: require("/src/images/content-images/product-3.jpg")
+      //- },
+      //- {
+      //-   picM: require("/src/images/content-images/cats-2.png"),
+      //-   picB: require("/src/images/content-images/about-1.jpg")
+      //- },
+      //- {
+      //-   picM: require("/src/images/content-images/news-1.jpg"),
+      //-   picB: require("/src/images/content-images/folio-3.jpg")
+      //- },
+      //- {
+      //-   picM: require("/src/images/content-images/product-3.jpg"),
+      //-   picB: require("/src/images/content-images/product-3.jpg")
+      //- },
+      //- {
+      //-   picM: require("/src/images/content-images/cats-2.png"),
+      //-   picB: require("/src/images/content-images/about-1.jpg")
+      //- },
+      //- {
+      //-   picM: require("/src/images/content-images/news-1.jpg"),
+      //-   picB: require("/src/images/content-images/folio-3.jpg")
+      //- }
     ];
   .product__presentation
     .cells
-      .presentation__illustrations.cell.cell-md-6
-        .illustrations__pic
-          .illustrations__pic__slider.slider
-            each item in imImgs
-              .illustrations__pic__item
-                a.illustrations__pic__image(href= item.picB, data-fancybox="product")
-                  img(src= item.picM)
-        .illustrations__nav
-          .illustrations__nav__slider.slider
-            each item in imNav
-              .illustrations__nav__item
-                .illustrations__nav__image
-                  img(src= item)
-      .presentation__body.cell.cell-md-6
+      .presentation__illustrations.cell.cell-sm-6.cell-xl-7
+        .presentation__illustrations__row
+          .illustrations__pic
+            .illustrations__pic__slider.slider.slider--hidden-arrows
+              each item in imImgs
+                .illustrations__pic__item
+                  a.illustrations__pic__image(href= item.picB, data-fancybox="product")
+                    // Размер картинки 607х436
+                    img(src= item.picM)
+              if !imImgs.length
+                .illustrations__pic__item
+                  .illustrations__pic__image.no-image
+          .illustrations__nav
+            .illustrations__nav__slider.slider.slider--hidden-arrows.nav-slider
+              each item in imNav
+                .illustrations__nav__item
+                  .illustrations__nav__image
+                    // Размер картинки 60х60
+                    img(src= item)
+              if !imNav.length
+                .illustrations__nav__item
+                  .illustrations__nav__image.no-image
+      .presentation__body.cell.cell-sm-6.cell-xl-5
         .cells.presentation__pricing
           .cell.cell-auto.presentation__prices
             .presentation__prices__list
@@ -61,7 +84,7 @@ block contentBody
           .cell.cell-auto.presentation__labels
             .presentation__labels__list
               .presentation__label Акция
-              .presentation__label Длинный лейбл олала
+              //- .presentation__label Длинный лейбл олала
         .presentation__actions
           .presentation__action.presentation__qty
             .qty
@@ -72,7 +95,7 @@ block contentBody
             button.button.button-primary.button-add2cart В корзину
           .presentation__action.presentation__order
             button.button.button-secondary Быстрый заказ
-        .divider
+        hr.divider
         .presentation__info
           .presentation__info__brand
             .brand__image
@@ -87,11 +110,11 @@ block contentBody
           a.presentation__link(href="#product__full") Полное описание
             span.presentation__link__icon
               include ../../images/inline-svgs/down-arrow.svg
-        .divider.display-md-none
+        hr.divider.display-md-none
   .product__benefits
     .benefits__list.cells
       each item in bens
-        .cell.benefits__cell.cell-md-4
+        .cell.cell-md-4
           +benefit-item(item)
   .cells
     .cell.cell-lg-9

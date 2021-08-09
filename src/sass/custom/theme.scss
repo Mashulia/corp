@@ -42,7 +42,8 @@ $custom-color-21: hsl(
 .header--v3 .search__toggle,
 .fancy-arrow:hover,
 .projects__category,
-.tab__nav__link--current {
+.tab__nav__link--current,
+.nav-slider .slick-arrow {
   background-color: $custom-color-1;
 }
 .button-primary,
@@ -52,7 +53,8 @@ $custom-color-21: hsl(
 .form__input:hover,
 .fancy-arrow:hover,
 .pagination__link--active,
-.slick-current .illustrations__nav__image {
+.slick-current .illustrations__nav__image,
+.illustrations__nav__item:not(.slick-slide) .illustrations__nav__image {
   border-color: $custom-color-1;
 }
 a,

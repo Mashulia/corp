@@ -1,3 +1,9 @@
+import { toggleDropdown, fixDropdown, closeWhatever } from "./dropdowns";
+import { createPageOverlay, removePageOverlay } from "./pageOverlay";
+import { handleNavOverflow, resetNavOverflow } from "./navOverflow";
+import { splitter } from "./split-dropdown";
+import { handleTabClick } from "./tabs";
+import { qtyChanger } from "./quantity-changer";
 // contents:
 // array.remove
 // delay function
@@ -197,23 +203,6 @@ window.addEventListener("load", function () {
     removePageOverlay(pageOverlay);
     this.closest(".mheader").classList.remove("mheader--opened");
   }
-  function createPageOverlay() {
-    let pageOverlay = document.createElement("div");
-    pageOverlay.classList.add("page-overlay");
-    document.getElementsByClassName("corp")[0].appendChild(pageOverlay);
-    setTimeout(function () {
-      document.getElementsByTagName("body")[0].classList.add("overlayed");
-    }, 100);
-    return pageOverlay;
-  }
-  function removePageOverlay(pageOverlay) {
-    document.getElementsByTagName("body")[0].classList.remove("overlayed");
-    setTimeout(function () {
-      if (pageOverlay) {
-        pageOverlay.remove();
-      }
-    }, 300);
-  }
 
   // search toggle
   var searchToggles = document.getElementsByClassName("search__toggle");
@@ -256,74 +245,7 @@ window.addEventListener("load", function () {
   let primaryNavs = document.querySelectorAll(".dheader .primary-nav");
   let globalNavs = this.document.querySelectorAll(".dheader .site-nav");
 
-  function handleNavOverflow(navigation, spacing) {
-    let navList = navigation.querySelector("ul");
-    let maxNavWidth = navigation ? navigation.offsetWidth : 600;
-    // console.log("max width " + maxNavWidth);
-    let navItems = navList ? navList.children : [];
-    let factNavWidth = 0;
-    var extraNav = navigation.querySelector(".nav--extra");
-    var extraNavUl = extraNav ? extraNav.getElementsByTagName("ul")[0] : [];
-    for (let i = 0; i < navItems.length; i++) {
-      let el = navItems[i];
-      factNavWidth += el.offsetWidth;
-      // console.log("current width " + factNavWidth + " (" + (i + 1) + " elements)");
-      // console.log("child " + i + " " + el.offsetWidth);
-      if (
-        extraNavUl &&
-        (factNavWidth > maxNavWidth ||
-          (el.nextElementSibling && factNavWidth > maxNavWidth - spacing))
-      ) {
-        extraNavUl.appendChild(el.cloneNode(true));
-        el.style.display = "none";
-      }
-    }
-    if (extraNavUl && extraNavUl.children.length) {
-      navigation.classList.add("nav--overflown");
-    }
-    navigation.classList.add("nav--handled");
-  }
-  function resetNavOverflow(navigation) {
-    let navList = navigation.querySelector("ul");
-    let navItems = navList ? navList.children : [];
-    var extraNav = navigation.querySelector(".nav--extra");
-    var extraNavUl = extraNav ? extraNav.getElementsByTagName("ul")[0] : [];
-    if (extraNavUl) {
-      navigation.classList.remove("nav--overflown");
-      extraNavUl.innerHTML = null;
-    }
-    navigation.classList.remove("nav--handled");
-    for (let i = 0; i < navItems.length; i++) {
-      let el = navItems[i];
-      el.style.display = "";
-    }
-  }
-
   // dropdowns
-  function toggleDropdown(e) {
-    e.preventDefault();
-    var dropdownRoot = e.target.closest(".dropdown");
-    dropdownRoot.classList.toggle("dropdown--opened");
-    if (
-      window.innerWidth > 767 &&
-      dropdownRoot.classList.contains("dropdown--opened")
-    ) {
-      fixDropdown(dropdownRoot.querySelector(".dropdown__body"));
-      closeWhatever(dropdownRoot, "dropdown--opened");
-    }
-  }
-  function closeWhatever(elem, className) {
-    var closeExpanded = (event) => {
-      if (!elem.contains(event.target)) {
-        elem.classList.remove(className);
-        removeClickListener();
-      }
-    };
-    var removeClickListener = () => {
-      document.removeEventListener("click", closeExpanded);
-    };
-    document.addEventListener("click", closeExpanded);
-  }
   var dropdownToggles = document.getElementsByClassName("dropdown__toggle");
   for (var i = 0; i < dropdownToggles.length; i++) {
     dropdownToggles[i].addEventListener("click", toggleDropdown);
@@ -357,15 +279,6 @@ window.addEventListener("load", function () {
     var expandedMenus = document.getElementsByClassName("expand");
     for (var i = 0; i < expandedMenus.length; i++) {
       expandedMenus[i].classList.remove("expand--opened");
-    }
-  }
-  function fixDropdown(elem) {
-    var bounding = elem.getBoundingClientRect();
-    if (
-      bounding.right >
-      (window.innerWidth || document.documentElement.clientWidth)
-    ) {
-      elem.classList.add("dropdown__body--right");
     }
   }
 
@@ -554,63 +467,81 @@ window.addEventListener("load", function () {
         ]
       }
     });
-    $(".illustrations__pic__slider").slick({
-      ...slickSettings,
-      ...{
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        adaptiveHeight: true,
-        arrows: true,
-        dots: false,
-        asNavFor: ".illustrations__nav__slider",
-        responsive: [
-          {
-            breakpoint: 1200,
-            settings: {
-              arrows: false
-            }
-          },
-          {
-            breakpoint: 576,
-            settings: {
-              arrows: false,
-              dots: true
-            }
+    $(".illustrations__pic__slider").each(function () {
+      let $currentSlider = $(this);
+      if ($currentSlider.children().length > 1) {
+        $currentSlider.slick({
+          ...slickSettings,
+          ...{
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            adaptiveHeight: true,
+            arrows: true,
+            dots: false,
+            asNavFor: ".illustrations__nav__slider",
+            responsive: [
+              {
+                breakpoint: 1200,
+                settings: {
+                  arrows: false
+                }
+              },
+              {
+                breakpoint: 576,
+                settings: {
+                  arrows: false,
+                  dots: true
+                }
+              }
+            ]
           }
-        ]
+        });
+      } else {
+        this.style.height = "auto";
       }
     });
-    $(".illustrations__nav__slider").slick({
-      infinite: true,
-      slidesToShow: 6,
-      slidesToScroll: 1,
-      asNavFor: ".illustrations__pic__slider",
-      arrows: false,
-      dots: false,
-      centerMode: false,
-      // centerPadding: "0",
-      focusOnSelect: true,
-      // variableWidth: true,
-      responsive: [
-        {
-          breakpoint: 1200,
-          settings: {
-            // centerPadding: "64px",
-            slidesToShow: 5
-          }
-        },
-        {
-          breakpoint: 1024,
-          settings: {
-            // centerPadding: "64px",
-            slidesToShow: 5
-          }
-        },
-        {
-          breakpoint: 576,
-          settings: "unslick"
-        }
-      ]
+    $(".illustrations__nav__slider").each(function () {
+      let $currentSlider = $(this);
+      if ($currentSlider.children().length > 1) {
+        $currentSlider.slick({
+          infinite: true,
+          slidesToShow: 6,
+          slidesToScroll: 1,
+          asNavFor: ".illustrations__pic__slider",
+          arrows: true,
+          dots: false,
+          centerMode: true,
+          centerPadding: "0",
+          focusOnSelect: true,
+          vertical: true,
+          responsive: [
+            {
+              breakpoint: 1200,
+              settings: {
+                slidesToShow: 5,
+                vertical: false,
+                centerMode: false,
+                arrows: false
+              }
+            },
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 5,
+                vertical: false,
+                centerMode: false,
+                arrows: false
+              }
+            },
+            {
+              breakpoint: 576,
+              settings: "unslick"
+            }
+          ]
+        });
+      } else {
+        this.style.height = "auto";
+      }
     });
     $(".tab__nav").slick({
       arrows: false,
@@ -843,87 +774,9 @@ window.addEventListener("load", function () {
   //   e.preventDefault();
   // });
 
-  class splitter {
-    constructor(el) {
-      Object.assign(this, {
-        $wrapper: el
-      });
-      this.$trigger = this.$wrapper.children[0].querySelector(".split__toggle");
-      this.$trigger.onclick = () => this.toggle();
-    }
-
-    toggle() {
-      this.$wrapper.classList.toggle(`split--opened`);
-    }
-  }
-
   document.querySelectorAll(".split").forEach((el) => {
     new splitter(el);
   });
-
-  class qtyChanger {
-    constructor(el) {
-      Object.assign(this, {
-        $wrapper: el
-      });
-      this.$input = this.$wrapper.querySelector(".qty__input");
-      this.min = this.$input.dataset.min || 1;
-      this.max = this.$input.dataset.max || 99;
-      this.$up = this.$wrapper.querySelector(".qty__change--plus");
-      this.$down = this.$wrapper.querySelector(".qty__change--minus");
-      this.$up.onclick = () => this.changeUp();
-      this.$down.onclick = () => this.changeDown();
-      this.$input.onchange = () => this.checkRange();
-    }
-    changeUp() {
-      this.enableButton(this.$down);
-      let currentValue = parseInt(this.$input.value);
-      if (currentValue < this.max) {
-        this.$input.value = currentValue + 1;
-      }
-      if (this.$input.value < this.max - 1) {
-        this.enableButton(this.$up);
-      } else {
-        this.disableButton(this.$up);
-      }
-    }
-    changeDown() {
-      this.enableButton(this.$up);
-      let currentValue = parseInt(this.$input.value);
-      if (currentValue > this.min) {
-        this.$input.value = currentValue - 1;
-      }
-      if (this.$input.value > this.min + 1) {
-        this.enableButton(this.$down);
-      } else {
-        this.disableButton(this.$down);
-      }
-    }
-    disableButton(el) {
-      el.setAttribute("disabled", "disabled");
-    }
-    enableButton(el) {
-      el.removeAttribute("disabled");
-    }
-    checkRange() {
-      let currentValue = parseInt(this.$input.value);
-      this.$input.value = currentValue;
-      if (currentValue < this.min) {
-        this.$input.value = this.min;
-      } else if (currentValue > this.min) {
-        this.enableButton(this.$down);
-      } else {
-        this.disableButton(this.$down);
-      }
-      if (currentValue > this.max) {
-        this.$input.value = this.max;
-      } else if (currentValue < this.max) {
-        this.enableButton(this.$up);
-      } else {
-        this.disableButton(this.$up);
-      }
-    }
-  }
 
   document.querySelectorAll(".qty").forEach((el) => {
     new qtyChanger(el);
@@ -935,43 +788,6 @@ window.addEventListener("load", function () {
     tabTriggers.forEach((item) => {
       item.addEventListener("click", handleTabClick);
     });
-  }
-  function handleTabClick(e) {
-    e.preventDefault();
-    repositionSlick(e.target);
-    const tabsEl = e.target.closest(".tabs");
-    const tabNavs = tabsEl.querySelectorAll(".tab__nav__link");
-    const tabPanels = tabsEl.querySelectorAll(".tab__panel");
-    let currentPanel = document.getElementById(
-      e.target.getAttribute("href").replace("#", "")
-    );
-    tabNavs.forEach((item) => {
-      item.classList.remove("tab__nav__link--current");
-    });
-    e.target.classList.add("tab__nav__link--current");
-    tabPanels.forEach((item) => {
-      item.classList.remove("tab__panel--opened");
-    });
-    if (currentPanel) {
-      currentPanel.classList.add("tab__panel--opened");
-    }
-  }
-  function repositionSlick(childEl) {
-    const slickEl = childEl.closest(".slick-slider");
-    const $slickSlider = $(slickEl).slick("getSlick");
-    const clickedSlide = childEl.closest(".slick-slide");
-    const slides = slickEl.querySelectorAll(".slick-slide:not(.slick-cloned)");
-    for (let i = 0; i < slides.length; i++) {
-      if (slides[i] == clickedSlide) {
-        if (i != 0) {
-          slickEl.style.paddingLeft = "3rem";
-        } else {
-          slickEl.style.paddingLeft = "0";
-        }
-        $slickSlider.slickGoTo(i);
-        break;
-      }
-    }
   }
 
   // functions on resize

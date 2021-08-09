@@ -107,11 +107,13 @@ select.form__input {
   align-items: stretch;
   background: $color-bg;
   border-radius: $brad-1;
+  min-width: 8.25rem;
 }
 .qty__change {
   flex-shrink: 0;
   background: transparent;
   border: 0;
+  cursor: pointer;
   display: block;
   width: 2.5rem;
 }
@@ -124,7 +126,6 @@ select.form__input {
 }
 @media (min-width: $break-lg) {
   .form__input {
-    padding-top: 0.625rem;
-    padding-bottom: 0.625rem;
+    padding: 0.625rem 0.5rem;
   }
 }
