@@ -114,7 +114,8 @@ ol li::before,
 ul li::before,
 .reviews__intro__icon,
 .article__action__title__icon,
-.contact__icon {
+.contact__icon,
+.nb__icon {
   color: $custom-color-2;
 }
 .button-primary:hover,
@@ -214,6 +215,12 @@ a:active,
     hsla($custom-color-1-h, $custom-color-1-s, $custom-color-1-l, 0.3) 0%,
     rgba(0, 0, 0, 0) 100%
   );
+}
+.notification {
+  background-color: $custom-color-21;
+}
+.notification__icon {
+  color: $custom-color-21;
 }
 @media (max-width: 575px) {
   .hero__item {

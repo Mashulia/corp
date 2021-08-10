@@ -8,13 +8,13 @@ block contentBody
   -
     var imNav = [
       require("/src/images/content-images/product-img-nav-1.jpg"),
-      //- require("/src/images/content-images/product-img-nav-2.jpg"),
-      //- require("/src/images/content-images/product-img-nav-3.jpg"),
-      //- require("/src/images/content-images/cats-2.png"),
-      //- require("/src/images/content-images/cats-1.jpg"),
-      //- require("/src/images/content-images/bens-3.png"),
-      //- require("/src/images/content-images/product-img-nav-2.jpg"),
-      //- require("/src/images/content-images/product-img-nav-3.jpg")
+      require("/src/images/content-images/product-img-nav-2.jpg"),
+      require("/src/images/content-images/product-img-nav-3.jpg"),
+      require("/src/images/content-images/cats-2.png"),
+      require("/src/images/content-images/cats-1.jpg"),
+      require("/src/images/content-images/bens-3.png"),
+      require("/src/images/content-images/product-img-nav-2.jpg"),
+      require("/src/images/content-images/product-img-nav-3.jpg")
     ];
   -
     var imImgs = [
@@ -22,34 +22,34 @@ block contentBody
         picM: require("/src/images/content-images/product-1.jpg"),
         picB: require("/src/images/content-images/product-1.jpg")
       },
-      //- {
-      //-   picM: require("/src/images/content-images/product-2.jpg"),
-      //-   picB: require("/src/images/content-images/product-2.jpg")
-      //- },
-      //- {
-      //-   picM: require("/src/images/content-images/product-3.jpg"),
-      //-   picB: require("/src/images/content-images/product-3.jpg")
-      //- },
-      //- {
-      //-   picM: require("/src/images/content-images/cats-2.png"),
-      //-   picB: require("/src/images/content-images/about-1.jpg")
-      //- },
-      //- {
-      //-   picM: require("/src/images/content-images/news-1.jpg"),
-      //-   picB: require("/src/images/content-images/folio-3.jpg")
-      //- },
-      //- {
-      //-   picM: require("/src/images/content-images/product-3.jpg"),
-      //-   picB: require("/src/images/content-images/product-3.jpg")
-      //- },
-      //- {
-      //-   picM: require("/src/images/content-images/cats-2.png"),
-      //-   picB: require("/src/images/content-images/about-1.jpg")
-      //- },
-      //- {
-      //-   picM: require("/src/images/content-images/news-1.jpg"),
-      //-   picB: require("/src/images/content-images/folio-3.jpg")
-      //- }
+      {
+        picM: require("/src/images/content-images/product-2.jpg"),
+        picB: require("/src/images/content-images/product-2.jpg")
+      },
+      {
+        picM: require("/src/images/content-images/product-3.jpg"),
+        picB: require("/src/images/content-images/product-3.jpg")
+      },
+      {
+        picM: require("/src/images/content-images/cats-2.png"),
+        picB: require("/src/images/content-images/about-1.jpg")
+      },
+      {
+        picM: require("/src/images/content-images/news-1.jpg"),
+        picB: require("/src/images/content-images/folio-3.jpg")
+      },
+      {
+        picM: require("/src/images/content-images/product-3.jpg"),
+        picB: require("/src/images/content-images/product-3.jpg")
+      },
+      {
+        picM: require("/src/images/content-images/cats-2.png"),
+        picB: require("/src/images/content-images/about-1.jpg")
+      },
+      {
+        picM: require("/src/images/content-images/news-1.jpg"),
+        picB: require("/src/images/content-images/folio-3.jpg")
+      }
     ];
   .product__presentation
     .cells
@@ -79,8 +79,8 @@ block contentBody
         .cells.presentation__pricing
           .cell.cell-auto.presentation__prices
             .presentation__prices__list
-              .presentation__price.presentation__price--current 440 руб
-              .presentation__price.presentation__price--old 470 руб
+              .presentation__price.presentation__price--current 14 500
+              .presentation__price.presentation__price--old 53 000 руб
           .cell.cell-auto.presentation__labels
             .presentation__labels__list
               .presentation__label Акция
@@ -94,11 +94,12 @@ block contentBody
           .presentation__action.presentation__add
             button.button.button-primary.button-add2cart В корзину
           .presentation__action.presentation__order
-            button.button.button-secondary Быстрый заказ
+            button.button.button-secondary(data-fancybox, data-type="inline", data-src="#product-quick-form", data-touch="false") Быстрый заказ
         hr.divider
         .presentation__info
           .presentation__info__brand
             .brand__image
+              // Максимальный размер 200х120
               img(src=require("/src/images/content-images/partners-2.png"))
           .presentation__info__body
             .presentation__info__title Краткое описание:
@@ -118,131 +119,135 @@ block contentBody
           +benefit-item(item)
   .cells
     .cell.cell-lg-9
-      .tabs.product__tabs#product__full
-        -
-          var tabNav = [
-            {name: "Описание", link: "#product__description"},
-            {name: "Видео", link: "#product__video"},
-            {name: "Отзывы", link: "#product__reviews"},
-            {name: "Дополнительно", link: "#product__additional"},
-            {name: "Таб с длинным названием, которое все сломает", link: "#product__whatever"}
-          ];
-        .nav.tab__nav
-          each item, index in tabNav
-            .tab__nav__item
-              a.tab__nav__link(href= item.link, class= index == 0 ? "tab__nav__link--current" : "")= item.name
-        .tab__panels
-          .tab__panel.tab__panel--opened#product__description
-            p.
-              Поролон благодаря своей ячеистой структуре обеспечивает теплоизоляцию.
-              Эластичный листовой материал применяется при установке оконных блоков и других внутренних конструкций.
-              Подходит для производства мебели, используется в качестве набивочного материала в подушках, чехлах и мягких игрушках.
-            .h6 Особенности
-            ul
-              li Листы размером 2000 × 1000 × 40 мм поставляются свернутыми в рулон.
-              li Общая площадь покрытия одного рулона составляет 2 м².
-              li Материал абсолютно безопасен для человека, не выделяет в процессе эксплуатации вредных веществ.
-              li Устойчив к воздействию микроорганизмов и влаги.
-              li Эластичность поролона позволяет использовать его для производства изделий любых форм.
-              li Класс горючести материала — Г4 (сильногорючие материалы).
-              li Марка данного поролона - ST2236К.
-              li Страна производства — Россия.
-          .tab__panel#product__video
-            .h4 Видео
-            .product__video__list.cells
-              each item, index in vds
-                if index < 2
-                  .product__video__item.cell.cell-md-6
-                    .videos__item
-                      a.videos__link(href="https://www.youtube.com/watch?v=" + item.link)
-                        .videos__cover(style= item.cover ? "background-image: url('https://img.youtube.com/vi/" + item.link + "/maxresdefault.jpg')" : "", loading="lazy")
-                      .videos__content
-                        iframe(width="560", height="315", src= "https://www.youtube.com/embed/" + item.link, title="YouTube video player", frameborder="0", allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
-          .tab__panel#product__reviews
-            +reviewsList(4, false)
-          .tab__panel#product__additional
-            .h4 Дополнительно
-            .nb
-              | Внимание! Реальный тон ткани может отличаться от представленной на сайте фотографии.
-              | Это связано с настройками вашего монитора, а также особенностями производства.
-              | Отклонения окраски по тону от партии к партии браком не считаются, возврату не подлежат!
-      .product__techs
-        .h4 Характеристики
-        -
-          var techs = [
-            {
-              label: "Вес, кг",
-              value: "1.776"
-            },
-            {
-              label: "Гарантия производителя (лет)",
-              value: "2"
-            },
-            {
-              label: "Страна производства",
-              value: "Россия"
-            },
-            {
-              label: "Площадь покрытия продуктом (м²)",
-              value: "2.0"
-            },
-            {
-              label: "Место использования",
-              value: "Внутренний"
-            },
-            {
-              label: "Назначение",
-              value: "Окно"
-            },
-            {
-              label: "Влагостойкость",
-              value: "Нет"
-            },
-            {
-              label: "Группа горючести",
-              value: "Г4"
-            },
-            {
-              label: "Формат",
-              value: "Рулон"
-            },
-            {
-              label: "Размер (Д х Ш х В) (мм)",
-              value: "2000х1000х40"
-            },
-            {
-              label: "Техническая характеристика с длинным названием",
-              value: "Длинное значение из нескольких строк, возможно. А может быть и нет. Никто не знает наверняка."
-            }
-          ];
-        ul.tech__list
-          each item in techs
-            li.tech__item
-              span.tech__label= item.label
-              span.tech__value= item.value
-      .product__docs
-        -
-          var prdocs = [
-            {
-              name: "Сертификат соответствия"
-            },
-            {
-              name: 'Каталог «Изоляционные материалы»'
-            }
-          ];
-        .h4 Документы
-        .downloads__list.cells
-          each item in prdocs
-            .downloads__item.cell.cell-auto
-              a.fdown.fdown--pdf(href="assets/content-images/constitution.pdf", target="__blank")
-                .fdown__name= item.name
-                  .fdown__size 128 кб
-      .product__related
-        .h4 Похожие товары
-        .products__list.cells
-          each item, index in prds
-            if index < 3
-              +product-item(item)(class="cell cell-sm-6 cell-md-4")
+      block productBody
+        .tabs.product__tabs#product__full
+          -
+            var tabNav = [
+              {name: "Описание", link: "#product__description"},
+              {name: "Видео", link: "#product__video"},
+              {name: "Отзывы", link: "#product__reviews"},
+              {name: "Дополнительно", link: "#product__additional"},
+              //- {name: "Таб с длинным названием, которое все сломает", link: "#product__whatever"}
+            ];
+          .nav.tab__nav
+            each item, index in tabNav
+              .tab__nav__item
+                a.tab__nav__link(href= item.link, class= index == 0 ? "tab__nav__link--current" : "")= item.name
+          .tab__panels
+            .tab__panel.tab__panel--opened#product__description
+              p.
+                Поролон благодаря своей ячеистой структуре обеспечивает теплоизоляцию.
+                Эластичный листовой материал применяется при установке оконных блоков и других внутренних конструкций.
+                Подходит для производства мебели, используется в качестве набивочного материала в подушках, чехлах и мягких игрушках.
+              .h6 Особенности
+              ul
+                li Листы размером 2000 × 1000 × 40 мм поставляются свернутыми в рулон.
+                li Общая площадь покрытия одного рулона составляет 2 м².
+                li Материал абсолютно безопасен для человека, не выделяет в процессе эксплуатации вредных веществ.
+                li Устойчив к воздействию микроорганизмов и влаги.
+                li Эластичность поролона позволяет использовать его для производства изделий любых форм.
+                li Класс горючести материала — Г4 (сильногорючие материалы).
+                li Марка данного поролона - ST2236К.
+                li Страна производства — Россия.
+            .tab__panel#product__video
+              .h4 Видео
+              .product__video__list.cells
+                each item, index in vds
+                  if index < 2
+                    .product__video__item.cell.cell-md-6
+                      .videos__item
+                        a.videos__link(href="https://www.youtube.com/watch?v=" + item.link)
+                          .videos__cover(style= item.cover ? "background-image: url('https://img.youtube.com/vi/" + item.link + "/maxresdefault.jpg')" : "", loading="lazy")
+                        .videos__content
+                          iframe(width="560", height="315", src= "https://www.youtube.com/embed/" + item.link, title="YouTube video player", frameborder="0", allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
+            .tab__panel#product__reviews
+              +reviewsList(4, false)
+            .tab__panel#product__additional
+              .h4 Дополнительно
+              .nb
+                .nb__body
+                  | Внимание! Реальный тон ткани может отличаться от представленной на сайте фотографии.
+                  | Это связано с настройками вашего монитора, а также особенностями производства.
+                  | Отклонения окраски по тону от партии к партии браком не считаются, возврату не подлежат!
+                .nb__icon
+                  include ../../images/inline-svgs/nb-exclam.svg
+        .product__techs
+          .h4 Характеристики
+          -
+            var techs = [
+              {
+                label: "Вес, кг",
+                value: "1.776"
+              },
+              {
+                label: "Гарантия производителя (лет)",
+                value: "2"
+              },
+              {
+                label: "Страна производства",
+                value: "Россия"
+              },
+              {
+                label: "Площадь покрытия продуктом (м²)",
+                value: "2.0"
+              },
+              {
+                label: "Место использования",
+                value: "Внутренний"
+              },
+              {
+                label: "Назначение",
+                value: "Окно"
+              },
+              {
+                label: "Влагостойкость",
+                value: "Нет"
+              },
+              {
+                label: "Группа горючести",
+                value: "Г4"
+              },
+              {
+                label: "Формат",
+                value: "Рулон"
+              },
+              {
+                label: "Размер (Д х Ш х В) (мм)",
+                value: "2000х1000х40"
+              },
+              {
+                label: "Техническая характеристика с длинным названием",
+                value: "Длинное значение из нескольких строк, возможно. А может быть и нет. Никто не знает наверняка."
+              }
+            ];
+          ul.tech__list
+            each item in techs
+              li.tech__item
+                span.tech__label= item.label
+                span.tech__value= item.value
+        .product__docs
+          -
+            var prdocs = [
+              {
+                name: "Сертификат соответствия"
+              },
+              {
+                name: 'Каталог «Изоляционные материалы»'
+              }
+            ];
+          .h4 Документы
+          .downloads__list.cells
+            each item in prdocs
+              .downloads__item.cell.cell-auto
+                a.fdown.fdown--pdf(href="assets/content-images/constitution.pdf", target="__blank")
+                  .fdown__name= item.name
+                    .fdown__size 128 кб
+        .product__related
+          .h4 Похожие товары
+          .products__list.cells
+            each item, index in prds
+              if index < 3
+                +product-item(item)(class="cell cell-sm-6 cell-md-4")
     .cell.cell-lg-3
       .article__action
         .article__action__title Есть вопросы по данному товару?
@@ -271,6 +276,32 @@ block contentBody
           label.form__field.form__field--required
             span.form__label Текст сообщения
             textarea.form__input(required)
+          .form__submit
+            button.button.button-submit(type="submit") Отправить
+          .form__note Нажимая на кнопку «Отправить», подтверждаю свое согласие с&nbsp;
+            a(href="policy.html") условиями обработки персональных данных
+  .fancy-form.display-none#product-quick-form
+    form(action="").custom-form.collapsing-form
+      .form__header
+        .form__title Быстрый заказ
+        .form__description Заполните форму, и наш менеджер свяжется с Вами в ближайшее время
+        .form__message
+          .form__success
+            .form__message__text Ваша заявка успешно отправлена!
+      .form__bg
+        .form__body
+          label.form__field
+            span.form__label Заказ
+            input.form__input(type="text", value= pageName, disabled)
+          label.form__field.form__field--required
+            span.form__label Телефон
+            input.form__input(type="tel", required)
+          label.form__field.form__field--required
+            span.form__label Email
+            input.form__input(type="email", required)
+          label.form__field
+            span.form__label Текст сообщения
+            textarea.form__input
           .form__submit
             button.button.button-submit(type="submit") Отправить
           .form__note Нажимая на кнопку «Отправить», подтверждаю свое согласие с&nbsp;

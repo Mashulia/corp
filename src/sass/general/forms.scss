@@ -26,6 +26,11 @@
   &::placeholder {
     color: $color-text2;
   }
+  &:disabled,
+  &:disabled:hover {
+    background-color: $color-bg;
+    border-color: $color-bg;
+  }
 }
 .form__submit {
   margin-top: 1.25rem;

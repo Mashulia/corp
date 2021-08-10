@@ -534,7 +534,16 @@ window.addEventListener("load", function () {
               }
             },
             {
-              breakpoint: 576,
+              breakpoint: 767,
+              settings: {
+                slidesToShow: 4,
+                vertical: false,
+                centerMode: false,
+                arrows: false
+              }
+            },
+            {
+              breakpoint: 575,
               settings: "unslick"
             }
           ]
@@ -543,16 +552,38 @@ window.addEventListener("load", function () {
         this.style.height = "auto";
       }
     });
-    $(".tab__nav").slick({
-      arrows: false,
-      dots: false,
-      infinite: false,
-      slidesToShow: 1,
-      variableWidth: true,
-      swipe: false
+    $(".tab__nav").each(function () {
+      addTabNavSlider(this);
     });
   } else {
     console.log("no slick or not loaded");
+  }
+  function addTabNavSlider(elem) {
+    const tabNavWidth = $(elem).width();
+    let factWidth = 0;
+    for (let i = 0; i < elem.children.length; i++) {
+      factWidth += $(elem.children[i]).width();
+      // console.log(i + " child");
+      // console.log(factWidth);
+    }
+    // console.log(tabNavWidth + " max");
+    if (factWidth > tabNavWidth) {
+      $(elem).slick({
+        arrows: false,
+        dots: false,
+        infinite: false,
+        slidesToShow: 1,
+        variableWidth: true,
+        swipe: false
+      });
+      return true;
+    } else {
+      if (elem.classList.contains("slick-slider")) {
+        $(elem).slick("unslick");
+        elem.style.paddingLeft = "";
+      }
+      return false;
+    }
   }
   // fancybox
   $.fancybox.defaults.autoFocus = false;
@@ -801,6 +832,9 @@ window.addEventListener("load", function () {
     windowWidth = window.innerWidth;
     documentHeight = rootElem.clientHeight;
     removeExpands(expandToggles);
+    $(".tab__nav").each(function () {
+      addTabNavSlider(this);
+    });
 
     if (reviewPictures.length) {
       resetReviewPictures();
@@ -868,52 +902,3 @@ window.addEventListener("load", function () {
     }
   };
 });
-
-// tabs
-const tabsSwitches = document.getElementsByClassName("js-tab");
-if (tabsSwitches.length) {
-  for (let n = 0; n < tabsSwitches.length; n++) {
-    const tabSwitch = tabsSwitches[n];
-    tabSwitch.addEventListener("click", function (e) {
-      e.preventDefault();
-      const tabsRoot = this.closest(".tabs");
-      const tabsSwitches = tabsRoot.querySelectorAll(".tabs__switch");
-      for (let i = 0; i < tabsSwitches.length; i++) {
-        tabsSwitches[i].classList.remove("tabs__switch--active");
-      }
-      this.classList.add("tabs__switch--active");
-
-      const tabsPanels = tabsRoot.querySelectorAll(".tabs__panel");
-      const activePanel = document.getElementById(this.href.split("#")[1]);
-      if (activePanel) {
-        for (let i = 0; i < tabsPanels.length; i++) {
-          tabsPanels[i].classList.remove("tabs__panel--active");
-        }
-        activePanel.classList.add("tabs__panel--active");
-
-        // if slick inside tab panels, reset slick
-        const tabSlider = activePanel.querySelector(".slider");
-        if (tabSlider) {
-          $(tabSlider).get(0).slick.setPosition();
-        }
-      }
-    });
-  }
-}
-
-// trimming text by number of lines
-const reviewTexts = document.querySelectorAll(".b-reviews .b-reviews__text");
-for (var i = 0; i < reviewTexts.length; i++) {
-  const reviewText = reviewTexts[i];
-  var numLines = 6;
-  if (reviewText.classList.contains("b-reviews__text--solo")) {
-    numLines = 10;
-  }
-  $clamp(reviewText, { clamp: numLines });
-}
-
-const productTitles = document.querySelectorAll(".b-products__title");
-for (var i = 0; i < productTitles.length; i++) {
-  const productTitle = productTitles[i];
-  $clamp(productTitle, { clamp: 2 });
-}

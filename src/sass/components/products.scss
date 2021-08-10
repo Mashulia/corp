@@ -273,9 +273,7 @@
 .presentation__link__icon {
   margin-left: 0.5rem;
 }
-.product__techs,
-.product__docs,
-.product__related {
+.product__section {
   margin-top: 1.875rem;
   margin-bottom: 1.5rem;
 
@@ -326,7 +324,24 @@
     border-radius: 6px;
   }
 }
+.nb {
+  background: $color-bg;
+  border-radius: $brad-3;
+  padding: 1.25rem;
+  position: relative;
+}
+.nb__icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
 @media (min-width: $break-sm) {
+  .product__presentation {
+    .divider {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
   .presentation__illustrations {
     margin-bottom: 0;
   }
@@ -335,7 +350,7 @@
   }
   .illustrations__nav {
     display: block;
-    width: 19.375rem;
+    width: 15.375rem;
 
     &.slick-slider {
       margin-left: -0.3125rem;
@@ -366,9 +381,10 @@
 
     .divider {
       margin-bottom: 0.875rem;
-      margin-left: 0;
-      margin-right: 0;
     }
+  }
+  .illustrations__nav {
+    width: 19.375rem;
   }
   .illustrations__pic__image {
     border: 0;
@@ -547,6 +563,12 @@
       }
     }
   }
+  .product__section .h4 {
+    margin-bottom: 1.5rem;
+  }
+  .nb {
+    padding: 1.875rem;
+  }
 }
 @media (min-width: $break-xl) {
   .products__cat {
@@ -617,9 +639,7 @@
   .product__benefits {
     margin-bottom: 1.5rem;
   }
-  .product__techs,
-  .product__docs,
-  .product__related {
+  .product__section {
     margin-top: 2.5rem;
     margin-bottom: 2rem;
   }

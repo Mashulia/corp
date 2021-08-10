@@ -23,18 +23,20 @@ function changeActiveSlide(clickedLink) {
 }
 function repositionSlick(childEl) {
   const slickEl = childEl.closest(".slick-slider");
-  const $slickSlider = $(slickEl).slick("getSlick");
-  const clickedSlide = childEl.closest(".slick-slide");
-  const slides = slickEl.querySelectorAll(".slick-slide:not(.slick-cloned)");
-  for (let i = 0; i < slides.length; i++) {
-    if (slides[i] == clickedSlide) {
-      if (i != 0) {
-        slickEl.style.paddingLeft = "3rem";
-      } else {
-        slickEl.style.paddingLeft = "0";
+  if (slickEl) {
+    const $slickSlider = $(slickEl).slick("getSlick");
+    const clickedSlide = childEl.closest(".slick-slide");
+    const slides = slickEl.querySelectorAll(".slick-slide:not(.slick-cloned)");
+    for (let i = 0; i < slides.length; i++) {
+      if (slides[i] == clickedSlide) {
+        if (i != 0) {
+          slickEl.style.paddingLeft = "3rem";
+        } else {
+          slickEl.style.paddingLeft = "0";
+        }
+        $slickSlider.slickGoTo(i);
+        break;
       }
-      $slickSlider.slickGoTo(i);
-      break;
     }
   }
 }

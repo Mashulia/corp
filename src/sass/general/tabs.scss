@@ -9,6 +9,7 @@
   }
 }
 .tab__nav {
+  @extend %fx-centered-y;
   margin-bottom: 1.5rem;
   overflow: hidden;
   padding-right: 3rem;

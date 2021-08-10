@@ -1,17 +1,119 @@
 extends product.pug
 
-block prepend head
-  - pageName = "Поролон мебельный ST 2236 (1,6х2м) толщина 10мм"
-block contentBody
-  .prpresentation
-    .prpresentation__illustrations
-      .illustrations__nav
-        .illustrations__nav__slider
-          .illustrations__nav__item
-            .illustrations__nav__image
-              img(src="")
-      .illustrations__pic
-        .illustrations__pic__slider
-          .illustrations__pic__item
-            .illustrations__pic__image
-              img(src="")
+block productBody
+  .product__section#product__description
+    .h4 Описание
+    p.
+      Поролон благодаря своей ячеистой структуре обеспечивает теплоизоляцию.
+      Эластичный листовой материал применяется при установке оконных блоков и других внутренних конструкций.
+      Подходит для производства мебели, используется в качестве набивочного материала в подушках, чехлах и мягких игрушках.
+    .h6 Особенности
+    ul
+      li Листы размером 2000 × 1000 × 40 мм поставляются свернутыми в рулон.
+      li Общая площадь покрытия одного рулона составляет 2 м².
+      li Материал абсолютно безопасен для человека, не выделяет в процессе эксплуатации вредных веществ.
+      li Устойчив к воздействию микроорганизмов и влаги.
+      li Эластичность поролона позволяет использовать его для производства изделий любых форм.
+      li Класс горючести материала — Г4 (сильногорючие материалы).
+      li Марка данного поролона - ST2236К.
+      li Страна производства — Россия.
+  .product__section.product__techs
+    .h4 Характеристики
+    -
+      var techs = [
+        {
+          label: "Вес, кг",
+          value: "1.776"
+        },
+        {
+          label: "Гарантия производителя (лет)",
+          value: "2"
+        },
+        {
+          label: "Страна производства",
+          value: "Россия"
+        },
+        {
+          label: "Площадь покрытия продуктом (м²)",
+          value: "2.0"
+        },
+        {
+          label: "Место использования",
+          value: "Внутренний"
+        },
+        {
+          label: "Назначение",
+          value: "Окно"
+        },
+        {
+          label: "Влагостойкость",
+          value: "Нет"
+        },
+        {
+          label: "Группа горючести",
+          value: "Г4"
+        },
+        {
+          label: "Формат",
+          value: "Рулон"
+        },
+        {
+          label: "Размер (Д х Ш х В) (мм)",
+          value: "2000х1000х40"
+        },
+        {
+          label: "Техническая характеристика с длинным названием",
+          value: "Длинное значение из нескольких строк, возможно. А может быть и нет. Никто не знает наверняка."
+        }
+      ];
+    ul.tech__list
+      each item in techs
+        li.tech__item
+          span.tech__label= item.label
+          span.tech__value= item.value
+  #product__video.product__section
+    .h4 Видео
+    .product__video__list.cells
+      each item, index in vds
+        if index < 2
+          .product__video__item.cell.cell-md-6
+            .videos__item
+              a.videos__link(href="https://www.youtube.com/watch?v=" + item.link)
+                .videos__cover(style= item.cover ? "background-image: url('https://img.youtube.com/vi/" + item.link + "/maxresdefault.jpg')" : "", loading="lazy")
+              .videos__content
+                iframe(width="560", height="315", src= "https://www.youtube.com/embed/" + item.link, title="YouTube video player", frameborder="0", allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
+  .product__section#product__reviews
+    .h4 Отзывы
+    +reviewsList(4, false)
+  .product__section#product__additional
+    .h4 Дополнительно
+    .nb
+      .nb__body
+        | Внимание! Реальный тон ткани может отличаться от представленной на сайте фотографии.
+        | Это связано с настройками вашего монитора, а также особенностями производства.
+        | Отклонения окраски по тону от партии к партии браком не считаются, возврату не подлежат!
+      .nb__icon
+        include ../../images/inline-svgs/nb-exclam.svg
+  .product__docs.product__section
+    -
+      var prdocs = [
+        {
+          name: "Сертификат соответствия"
+        },
+        {
+          name: 'Каталог «Изоляционные материалы»'
+        }
+      ];
+    .h4 Документы
+    .downloads__list.cells
+      each item in prdocs
+        .downloads__item.cell.cell-auto
+          a.fdown.fdown--pdf(href="assets/content-images/constitution.pdf", target="__blank")
+            .fdown__name= item.name
+              .fdown__size 128 кб
+  .product__related.product__section
+    .h4 Похожие товары
+    .products__list.cells
+      each item, index in prds
+        if index < 3
+          +product-item(item)(class="cell cell-sm-6 cell-md-4")

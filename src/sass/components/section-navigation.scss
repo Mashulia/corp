@@ -41,6 +41,8 @@
 }
 .snavigation__item {
   border-bottom: 1px solid $color-sep;
+  margin: 0;
+  padding: 0;
 
   &:last-child {
     border-bottom-width: 0;
