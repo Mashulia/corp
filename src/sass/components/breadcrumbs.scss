@@ -15,7 +15,8 @@
 .breadcrumbs__item {
   display: flex;
   align-items: center;
-  margin-right: 0.5rem;
+  margin: 0 0.5rem 0 0;
+  padding: 0;
 
   &::after {
     content: "-";

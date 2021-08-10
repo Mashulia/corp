@@ -68,9 +68,10 @@
   .tab__nav__link {
     background-color: transparent;
     color: $color-text1;
+    padding: 0.875rem 1.625rem;
   }
   .tab__panels {
-    padding: 1.875rem 2.5rem 2.5rem;
+    padding: 1.875rem 2.5rem 1.75rem;
   }
 }
 @media (min-width: $break-lg) {
@@ -80,9 +81,9 @@
 }
 @media (min-width: $break-xl) {
   .tab__nav__link {
-    padding: 1.375rem 2.5rem;
+    padding: 1.375rem 2.5rem 1.5rem;
   }
   .tab__panels {
-    padding: 2.5rem 3.75rem;
+    padding: 2.5rem 3.75rem 2.25rem;
   }
 }

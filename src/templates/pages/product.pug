@@ -127,9 +127,9 @@ block contentBody
             {name: "Дополнительно", link: "#product__additional"},
             {name: "Таб с длинным названием, которое все сломает", link: "#product__whatever"}
           ];
-        ul.nav.tab__nav
+        .nav.tab__nav
           each item, index in tabNav
-            li.tab__nav__item
+            .tab__nav__item
               a.tab__nav__link(href= item.link, class= index == 0 ? "tab__nav__link--current" : "")= item.name
         .tab__panels
           .tab__panel.tab__panel--opened#product__description
