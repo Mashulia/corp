@@ -6,6 +6,7 @@
 // border utils
 // img utils
 // a11y utils
+// spacing utils
 
 // text-related utils
 .text-center {
@@ -34,12 +35,10 @@
     display: none;
   }
 }
-
 // position utils
 .position-relative {
   position: relative;
 }
-
 // size-related utils
 .h-100 {
   height: 100%;
@@ -47,7 +46,6 @@
 .w-100 {
   width: 100%;
 }
-
 // img utils
 .constrained-image {
   display: block;
@@ -65,7 +63,6 @@
     transform: translate(-50%, -50%);
   }
 }
-
 // a11y utils
 .sr-only {
   position: absolute;
@@ -77,4 +74,9 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+// spacing utils
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
 }

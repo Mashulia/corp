@@ -10,13 +10,30 @@ block contentBody
       {
         name: "Поролон мебельный ST 2236 (1,6х2м) толщина 10мм",
         price: 440,
-        pic: require("/src/images/content-images/product-img-nav-1.jpg"),
+        pic: require("/src/images/content-images/cart-1.jpg"),
         qty: 2
       },
       {
         name: "Утеплитель ZE Строй «Коттедж +», упаковка  ",
         price: 840,
-        pic: require("/src/images/content-images/product-img-nav-2.jpg"),
+        pic: require("/src/images/content-images/cart-2.jpg"),
+        qty: 1
+      },
+      {
+        name: "Короткое название",
+        price: 110000,
+        qty: 2
+      },
+      {
+        name: "Какой-то товар с очень длинным названием, например... ну просто с очень-очень-очень длинным названием",
+        price: 0,
+        pic: require("/src/images/content-images/cats-2.png"),
+        qty: 1
+      },
+      {
+        name: "Какой-то бренд Какой-то товар с длинным названием",
+        price: 1500450,
+        pic: require("/src/images/content-images/about-1.png"),
         qty: 1
       }
     ];
@@ -33,22 +50,26 @@ block contentBody
           each item in cprds
             .cart-contents__item
               .cart-contents__row
-                .cart-contents__image
-                  img(src= item.pic)
-                .cart-contents__name Поролон мебельный ST 2236 (1,6х2м) толщина 10мм
-                .cart-contents__price
-                  .cart-contents__price__value= item.price + " руб."
-                  .cart-contents__price__label Цена, за 1 ед.
-                .cart-contents__qty
-                  .qty
-                    button.qty__change.qty__change--minus(disabled) -
-                    input.qty__input.form__input(type="text", value= item.qty, data-min="1", data-max="99")
-                    button.qty__change.qty__change--plus +
-                .cart-contents__price
-                  .cart-contents__price__value= (item.price * item.qty) + " руб."
-                  .cart-contents__price__label= "x " + item.qty + "ед."
+                .cart-contents__image(class= item.pic ? "" : "no-image")
+                  // Размер картинок 124х93
+                  if item.pic
+                    img(src= item.pic)
+                .cart-contents__info
+                  .cart-contents__name Поролон мебельный ST 2236 (1,6х2м) толщина 10мм
+                  .cart-contents__price
+                    .cart-contents__price__value= item.price ? item.price + " руб." : "по запросу"
+                    .cart-contents__price__label Цена, за 1 ед.
+                .cart-contents__pricing
+                  .cart-contents__qty
+                    .qty
+                      button.qty__change.qty__change--minus(disabled) -
+                      input.qty__input.form__input(type="text", value= item.qty, data-min="1", data-max="99")
+                      button.qty__change.qty__change--plus +
+                  .cart-contents__price
+                    .cart-contents__price__value= item.price ? (item.price * item.qty) + " руб." : "по запросу"
+                    .cart-contents__price__label= "x " + item.qty + " ед."
                 .cart-contents__remove
-                  button.button-remove(title="Удалить товар из корзины")
+                  button.button-remove.button.button-icon(title="Удалить товар из корзины")
                     include ../../images/inline-svgs/remove-from-cart.svg
         .cart-contents__footer
           .cells.fx-justify-between
@@ -57,7 +78,7 @@ block contentBody
             .cell.cell-auto
               .cart-contents__footer__value 2 600 руб
     .cell
-      form(action="").custom-form.collapsing-form.shadow-form
+      form(action="").custom-form.collapsing-form.mx-auto
         .form__header
           .form__title Оформить заказ
           .form__description Заполните форму, и наш менеджер свяжется с Вами в ближайшее время

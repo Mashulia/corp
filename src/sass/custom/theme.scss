@@ -75,7 +75,8 @@ a,
 .search__result span,
 .split__toggle,
 .snavigation__sublink--current,
-.split--opened > .snavigation__link {
+.split--opened > .snavigation__link,
+.cart-contents__header__erase {
   color: $custom-color-1;
 }
 .connect:not(.connect--labeled)::before,
@@ -152,7 +153,8 @@ ul li::before,
 a:hover,
 .hoverable .expand:hover > .expand__toggle,
 .search__toggle:hover,
-.footer__emails .connect__text:hover {
+.footer__emails .connect__text:hover,
+.button-remove:hover {
   color: $custom-color-hover;
 }
 .button-primary:active,
@@ -188,7 +190,8 @@ a:hover,
 a:active,
 .hoverable .expand__toggle:active,
 .search__toggle:active,
-.footer__emails .connect__text:active {
+.footer__emails .connect__text:active,
+.button-remove:active {
   color: $custom-color-active;
 }
 .footer__bg--v1 {
