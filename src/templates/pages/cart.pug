@@ -38,7 +38,7 @@ block contentBody
       }
     ];
   .cells
-    .cell
+    .cell.cell-xl-8
       .cart-contents
         .cart-contents__header
           .cells.fx-justify-between
@@ -50,12 +50,12 @@ block contentBody
           each item in cprds
             .cart-contents__item
               .cart-contents__row
-                .cart-contents__image(class= item.pic ? "" : "no-image")
+                a.cart-contents__image(class= item.pic ? "" : "no-image", href="product-item.html")
                   // Размер картинок 124х93
                   if item.pic
                     img(src= item.pic)
                 .cart-contents__info
-                  .cart-contents__name Поролон мебельный ST 2236 (1,6х2м) толщина 10мм
+                  a.cart-contents__name(href="product-item-2.html")  Поролон мебельный ST 2236 (1,6х2м) толщина 10мм
                   .cart-contents__price
                     .cart-contents__price__value= item.price ? item.price + " руб." : "по запросу"
                     .cart-contents__price__label Цена, за 1 ед.
@@ -77,11 +77,14 @@ block contentBody
               .cart-contents__footer__title Итого:
             .cell.cell-auto
               .cart-contents__footer__value 2 600 руб
-    .cell
-      form(action="").custom-form.collapsing-form.mx-auto
+    .cell.cell-md-8.cell-lg-6.mx-auto.cart__form.cell-xl-4
+      form(action="").custom-form.collapsing-form
         .form__header
           .form__title Оформить заказ
-          .form__description Заполните форму, и наш менеджер свяжется с Вами в ближайшее время
+          .form__description
+            | Заполните форму, и наш менеджер
+            br
+            | свяжется с Вами в ближайшее время
           .form__message
             .form__success
               .form__message__text Ваша заявка успешно отправлена!
@@ -95,7 +98,7 @@ block contentBody
               input.form__input(type="email", required)
             label.form__field
               span.form__label Текст сообщения
-              textarea.form__input
+              textarea.form__input(rows="3")
             .form__submit
               button.button.button-submit(type="submit") Отправить
             .form__note Нажимая на кнопку «Отправить», подтверждаю свое согласие с&nbsp;

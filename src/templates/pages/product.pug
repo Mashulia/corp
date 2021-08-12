@@ -171,7 +171,7 @@ block contentBody
                   | Отклонения окраски по тону от партии к партии браком не считаются, возврату не подлежат!
                 .nb__icon
                   include ../../images/inline-svgs/nb-exclam.svg
-        .product__techs
+        .product__techs.product__section
           .h4 Характеристики
           -
             var techs = [
@@ -225,7 +225,7 @@ block contentBody
               li.tech__item
                 span.tech__label= item.label
                 span.tech__value= item.value
-        .product__docs
+        .product__docs.product__section
           -
             var prdocs = [
               {
@@ -242,7 +242,7 @@ block contentBody
                 a.fdown.fdown--pdf(href="assets/content-images/constitution.pdf", target="__blank")
                   .fdown__name= item.name
                     .fdown__size 128 кб
-        .product__related
+        .product__related.product__section
           .h4 Похожие товары
           .products__list.cells
             each item, index in prds
@@ -275,7 +275,7 @@ block contentBody
             input.form__input(type="email")
           label.form__field.form__field--required
             span.form__label Текст сообщения
-            textarea.form__input(required)
+            textarea.form__input(required, rows="3")
           .form__submit
             button.button.button-submit(type="submit") Отправить
           .form__note Нажимая на кнопку «Отправить», подтверждаю свое согласие с&nbsp;
@@ -301,7 +301,7 @@ block contentBody
             input.form__input(type="email", required)
           label.form__field
             span.form__label Текст сообщения
-            textarea.form__input
+            textarea.form__input(rows="3")
           .form__submit
             button.button.button-submit(type="submit") Отправить
           .form__note Нажимая на кнопку «Отправить», подтверждаю свое согласие с&nbsp;

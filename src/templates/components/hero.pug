@@ -46,12 +46,14 @@
     each elm in listhero
       .slider__item
         .hero__item
+          // Если нет никакого текста на слайде, то к элементу .hero__bg добавляем класс .hero__bg--solo
           .hero__bg(class={"hero__bg--solo": !elm.descr && !elm.title && !elm.btn})
             if elm.picD || elm.img
               picture
+                // Размеры картинок: 768х310; 1920х520
                 if elm.picM
-                  source(media="(max-width: 767px)" srcset=elm.picM)
-                source(media="(min-width: 768px)" srcset=elm.picD)
+                  source(media="(max-width: 768px)" srcset=elm.picM)
+                source(media="(min-width: 769px)" srcset=elm.picD)
                 img(src=elm.picD, loading="lazy")
           if elm.descr || elm.title || elm.btn
             .wrap.hero__wrap
@@ -61,7 +63,8 @@
                 .hero__title= elm.title
                 if elm.btn
                   .hero__cta
-                    a.button.button-primary.hero__button(href="")= elm.btn
+                    a.button.button-primary.hero__button(href="")
+                      span.button__body= elm.btn
                       span.button__icon
                         include ../../images/inline-svgs/right.svg
 

@@ -44,11 +44,13 @@
 }
 .form__note {
   font-size: 0.75rem;
+  line-height: 1.5;
   text-align: center;
 }
 .custom-form {
   border-radius: $brad-3;
   box-shadow: 0px 7px 13px rgba(103, 108, 111, 0.24);
+  line-height: 1.4;
   max-width: 22rem;
 }
 .form__header,
@@ -113,7 +115,7 @@ select.form__input {
   align-items: stretch;
   background: $color-bg;
   border-radius: $brad-1;
-  min-width: 8.25rem;
+  width: 8.25rem;
 }
 .qty__change {
   flex-shrink: 0;
@@ -133,5 +135,28 @@ select.form__input {
 @media (min-width: $break-lg) {
   .form__input {
     padding: 0.625rem 0.5rem;
+  }
+  .form__header,
+  .form__bg {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+  .form__header {
+    padding-top: 2.5rem;
+    padding-bottom: 1.5rem;
+  }
+  .form__bg {
+    padding-top: 1.5rem;
+    padding-bottom: 2.5rem;
+  }
+  .form__title {
+    font-size: 1.5rem;
+  }
+  .form__description,
+  .form__label {
+    font-size: 0.875rem;
+  }
+  .form__label {
+    margin-bottom: 0.6875rem;
   }
 }

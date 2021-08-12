@@ -39,10 +39,6 @@
     position: relative;
   }
 }
-.partners__list .no-image,
-.spartners__list .no-image {
-  background-size: 49px 41px;
-}
 @media (min-width: $break-md) {
   .spartners__image {
     height: 120px;
@@ -69,9 +65,5 @@
 @media (min-width: $break-xl) {
   .partners__image {
     height: 130px;
-  }
-  .partners__list .no-image,
-  .spartners__list .no-image {
-    background-size: 78px 64px;
   }
 }

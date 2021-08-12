@@ -43,7 +43,8 @@ $custom-color-21: hsl(
 .fancy-arrow:hover,
 .projects__category,
 .tab__nav__link--current,
-.nav-slider .slick-arrow {
+.nav-slider .slick-arrow,
+.sprojects__category {
   background-color: $custom-color-1;
 }
 .button-primary,
@@ -116,7 +117,8 @@ ul li::before,
 .reviews__intro__icon,
 .article__action__title__icon,
 .contact__icon,
-.nb__icon {
+.nb__icon,
+.page-message__icon {
   color: $custom-color-2;
 }
 .button-primary:hover,

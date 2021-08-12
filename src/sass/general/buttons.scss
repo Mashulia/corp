@@ -1,6 +1,6 @@
 .button {
   background-repeat: no-repeat;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-radius: $brad-1;
   background-color: transparent;
   color: inherit;
@@ -10,8 +10,14 @@
   justify-content: center;
   font-weight: 700;
   margin: 0;
-  padding: 0;
+  min-height: 2.375rem;
+  padding: 0.25rem 1rem;
   position: relative;
+
+  @media (min-width: $break-lg) {
+    min-height: 2.75rem;
+    padding: 0.375rem 1.5rem;
+  }
 
   &__body {
     display: flex;
@@ -39,28 +45,19 @@
 
   &-primary,
   &-secondary {
-    min-height: 2.375rem;
-    padding: 0.25rem 1rem;
-
     &:hover,
     &:active {
       color: #fff;
     }
-
-    @media (min-width: $break-lg) {
-      min-height: 2.75rem;
-      padding: 0.375rem 1.5rem;
-    }
   }
-
   &-primary {
     color: #fff;
   }
-
   &-icon {
     border-radius: 50%;
     height: 3rem;
     width: 3rem;
+    padding: 0;
 
     &::before {
       content: "";
@@ -72,7 +69,6 @@
       transform: translate(-50%, -50%);
     }
   }
-
   &:hover {
     text-decoration: none;
   }

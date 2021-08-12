@@ -140,8 +140,6 @@ if (!Array.prototype.includes) {
 
 window.addEventListener("load", function () {
   var windowWidth = window.innerWidth;
-  var rootElem = document.querySelector(".corp");
-  var documentHeight = rootElem.clientHeight;
 
   // touch device detection
   var touchDevice = false;
@@ -830,7 +828,6 @@ window.addEventListener("load", function () {
 
   var delayedFunctions = function () {
     windowWidth = window.innerWidth;
-    documentHeight = rootElem.clientHeight;
     removeExpands(expandToggles);
     $(".tab__nav").each(function () {
       addTabNavSlider(this);

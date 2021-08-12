@@ -21,13 +21,13 @@
   &__icon {
     @extend %fx-centered;
     flex-shrink: 0;
-    border: 2px solid currentColor;
+    border: 1px solid currentColor;
     border-radius: 50%;
     height: 1.875rem;
     width: 1.875rem;
-    margin-left: 0.5rem;
+    margin-left: 0.25rem;
 
-    &.doc svg {
+    svg {
       height: 0.9375rem;
       width: 0.9375rem;
     }

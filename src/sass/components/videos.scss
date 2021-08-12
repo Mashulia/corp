@@ -1,4 +1,5 @@
 .videos__item {
+  margin-bottom: 1.125rem;
   position: relative;
 }
 .videos__link {
@@ -100,6 +101,9 @@
   }
 }
 @media (min-width: $break-lg) {
+  .videos__item {
+    margin-bottom: 1.5rem;
+  }
   .svideos .videos__item:first-child {
     flex-basis: 100%;
     max-width: 100%;

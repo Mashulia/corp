@@ -120,9 +120,6 @@
   overflow: hidden;
   position: relative;
 
-  &.no-image {
-    background-size: 30% auto;
-  }
   img {
     @extend %absolute-img;
     object-fit: cover;
@@ -176,11 +173,19 @@
 .service__presentation {
   border: 1px solid $color-sep;
   border-radius: $brad-3;
+  margin-bottom: 1.875rem;
 }
 .spresentation__image {
-  border-radius: $brad-3 $brad-3;
+  background: $color-bg;
+  border-radius: $brad-3 $brad-3 0 0;
   overflow: hidden;
   padding-bottom: 44.6%;
+  position: relative;
+
+  img {
+    @extend %absolute-img;
+    object-fit: cover;
+  }
 }
 .spresentation__action {
   padding: 1rem 1.25rem 1.25rem;
@@ -203,6 +208,7 @@
   }
 }
 .spresentation__action__price {
+  color: $color-textHeader;
   font-weight: bold;
   font-size: 1rem;
   line-height: 1.3;
@@ -212,10 +218,147 @@
   font-size: 0.875rem;
   margin-bottom: 1rem;
 }
+.service__section {
+  margin: 1.875rem 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+.sprojects__image {
+  padding-bottom: 67.9%;
+}
+.sprojects__category {
+  @extend .label;
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  max-width: calc(100% - 2.5rem);
+}
+.service__action__pricing {
+  margin-bottom: -1.125rem;
+}
+.service__action__price,
+.service__action .article__action__button {
+  margin-bottom: 1.125rem;
+}
+.service__action__price__label {
+  font-weight: 600;
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+.service__action__price__value {
+  color: $color-textHeader;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+.spresentation__action__button {
+  padding-right: 3rem;
+}
+.service__cta {
+  align-self: flex-start;
+  position: sticky;
+  top: 1.5rem;
+  margin-bottom: 1.875rem;
+  order: -1;
+}
+.serv-cta__image {
+  border-radius: $brad-3 $brad-3 0 0;
+  width: 100%;
+  padding-bottom: 70%;
+  overflow: hidden;
+  position: relative;
+
+  img {
+    @extend %absolute-img;
+    object-fit: cover;
+  }
+}
+.serv-cta__body {
+  background: $color-bg;
+  border-radius: 0 0 $brad-3 $brad-3;
+  padding: 1rem 1.25rem 1.25rem;
+}
+.serv-cta__price {
+  color: $color-textHeader;
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+.serv-cta__actions {
+  margin: 0 -0.5rem -0.625rem;
+}
+.serv-cta__action {
+  margin-bottom: 0.625rem;
+  max-width: 14em;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
+  button {
+    width: 100%;
+  }
+}
+@media (min-width: $break-sm) and (max-width: $break-lg - 1) {
+  .serv-cta__bg {
+    background: $color-bg;
+    display: flex;
+    padding: 1.5rem;
+  }
+  .serv-cta__image {
+    border-radius: $brad-3;
+    flex: 0 0 12.5rem;
+    height: 8.8125rem;
+    width: 12.5rem;
+    margin-right: 1.875rem;
+    padding-bottom: 0;
+  }
+  .serv-cta__body {
+    border-radius: 0;
+    padding: 0;
+  }
+}
 @media (min-width: $break-md) {
   .sservices--v2 .services__item {
     flex-basis: $col-width * 4;
     max-width: $col-width * 4;
+  }
+  .service__presentation {
+    display: flex;
+    align-items: center;
+    border: 0;
+    min-height: 17.4375rem;
+    padding: 1.875rem;
+    position: relative;
+  }
+  .spresentation__image {
+    border-radius: $brad-3;
+    padding-bottom: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  .spresentation__action {
+    background: #fff;
+    border-radius: $brad-3;
+    padding-top: 1.25rem;
+    width: 43%;
+    position: relative;
+    z-index: 1;
+  }
+  .service__action__pricing {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .service__action .article__action__text {
+    margin-bottom: 0.75rem;
   }
 }
 @media (min-width: $break-lg) {
@@ -239,6 +382,71 @@
   }
   .subservices__item {
     margin-bottom: 1.5rem;
+  }
+  .spresentation__action {
+    width: 52%;
+  }
+  .spresentation__action__price {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .spresentation__action__text {
+    font-size: 1rem;
+  }
+  .spresentation__action::after {
+    background-size: 1.5rem 1.5rem;
+    border-width: 2px;
+    height: 3rem;
+    width: 3rem;
+    bottom: 2.5rem;
+    right: 2.5rem;
+  }
+  .service__action {
+    .article__action {
+      padding: 1.875rem;
+    }
+    .article__action__text {
+      font-size: 1rem;
+      margin-bottom: 1.125rem;
+    }
+    .article__action__title__icon {
+      border-width: 2px;
+      height: 3rem;
+      width: 3rem;
+
+      svg {
+        height: 1.5rem;
+        width: 1.5rem;
+      }
+    }
+    .article__action__button button {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  .service__action__price__label {
+    font-size: 0.875rem;
+  }
+  .service__action__price__value {
+    font-size: 1.125rem;
+  }
+  .service__presentation {
+    min-height: 22.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .spresentation__action {
+    padding: 2.5rem;
+  }
+  .service__cta {
+    order: unset;
+
+    .serv-cta__title {
+      font-size: 1rem;
+    }
+    button {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
   }
 }
 @media (min-width: $break-xl) {
@@ -300,5 +508,41 @@
   .subservices__decor {
     bottom: 1.875rem;
     right: 1.875rem;
+  }
+  .service__presentation {
+    min-height: 25.9375rem;
+    margin-bottom: 3.125rem;
+    padding: 3.75rem;
+  }
+  .service__benefits {
+    margin-bottom: 1rem;
+  }
+  .spresentation__action {
+    width: 35%;
+  }
+  .service__action {
+    .article__action {
+      display: flex;
+      align-items: center;
+      padding: 3.125rem 2.5rem;
+    }
+    .article__action__button {
+      margin-left: 2.5rem;
+    }
+    .article__action__text {
+      margin-bottom: 0;
+    }
+  }
+  .service__action .article__action__title__icon {
+    order: -1;
+    margin-left: 0;
+    margin-right: 1.5rem;
+  }
+  .service__action__pricing {
+    flex: 0 0 50%;
+    justify-content: flex-end;
+  }
+  .service__action__price {
+    text-align: right;
   }
 }

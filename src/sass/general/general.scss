@@ -236,7 +236,7 @@ ul li::before {
   height: 2px;
   width: 0.875rem;
   position: absolute;
-  top: 0.875em;
+  top: 0.75em;
   left: 0;
 }
 table {
@@ -288,6 +288,9 @@ td {
   border: 1px solid $color-sep;
   border-width: 0 1px 1px 0;
 
+  &[colspan] {
+    text-align: center;
+  }
   &:last-child {
     border-right-width: 0;
   }

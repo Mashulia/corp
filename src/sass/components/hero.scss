@@ -69,10 +69,6 @@
 }
 .hero__button {
   padding: 0.4375rem 1rem;
-
-  & .button__icon {
-    margin-left: 0.3125rem;
-  }
 }
 @media (max-width: $break-sm - 1) {
   .hero__text {
@@ -135,9 +131,6 @@
   .hero__button {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-  }
-  .hero__button .button__icon {
-    margin-left: 0.625rem;
   }
 }
 @media (min-width: $break-xl) {

@@ -1,0 +1,24 @@
+extends service-item.pug
+block servicePresentation
+block serviceBenefits
+  .service__benefits.service__benefits--colored
+    .benefits__list.cells
+      each item in bens
+        .cell.cell-md-4
+          +benefit-item(item)
+block serviceAction
+  .cell.cell-lg-3.service__cta
+    .serv-cta__bg
+      .serv-cta__image
+        img(src= require("/src/images/content-images/service-2.jpg"))
+      .serv-cta__body
+        .article__action__title.serv-cta__title Хотите заказать данную услугу?
+          .article__action__title__icon
+              include ../../images/inline-svgs/project.svg
+        .article__action__text Оформите заявку на сайте, наш менеджер свяжется с Вами и проконсультирует более подробно.
+        .serv-cta__price от 20 000 руб/кв.м
+        .serv-cta__actions.cells
+          .serv-cta__action.cell.cell-sm-auto
+            button.button.button-primary(data-fancybox, data-type="inline", data-src="#service-order-form", data-touch="false") Оформить заявку
+          .serv-cta__action.cell.cell-sm-auto
+            button.button.button-secondary(data-fancybox, data-type="inline", data-src="#service-question-form", data-touch="false") Задать вопрос

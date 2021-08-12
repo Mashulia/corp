@@ -1,0 +1,18 @@
+extends ../layout
+
+block prepend head
+  - pageName = "Корзина"
+block title
+  +page-header(pageName)
+block contentBody
+  .page-message
+    .page-message__icon
+      include ../../images/inline-svgs/cart-icon.svg
+    .page-message__title Ваша корзина пуста
+    .page-message__text
+      | Выберите в каталоге интересующий товар и добавьте в корзину
+    .page-message__action
+      a.button.button-secondary(href="catalog.html")
+        .button__body Перейти в каталог
+        .button__icon
+          include ../../images/inline-svgs/go-forward.svg

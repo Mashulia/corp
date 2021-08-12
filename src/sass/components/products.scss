@@ -316,9 +316,8 @@
 .product__related .products__list {
   justify-content: flex-start;
 }
-.product__video__item {
-  margin-bottom: 1.125rem;
-
+.product__video__item,
+.service__video__item {
   .videos__cover,
   .videos__content {
     border-radius: 6px;
@@ -395,7 +394,8 @@
   .presentation__actions {
     max-width: 95%;
   }
-  .product__benefits {
+  .product__benefits,
+  .service__benefits {
     .benefits__item {
       margin-bottom: 1.625rem;
     }
@@ -551,7 +551,8 @@
   .presentation__link {
     font-weight: bold;
   }
-  .product__benefits {
+  .product__benefits,
+  .service__benefits {
     .benefits__img {
       flex-basis: 3rem;
       max-width: 3rem;
@@ -626,7 +627,8 @@
     height: 3.75rem;
     width: 3.75rem;
   }
-  .product__benefits {
+  .product__benefits,
+  .service__benefits {
     .cell {
       flex-basis: 18rem;
       max-width: 18rem;

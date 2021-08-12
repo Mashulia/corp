@@ -6,128 +6,128 @@ block title
   +page-header(pageName, [{value: "Услуги", link: "services.html"}])
 block contentBody
   block servicePresentation
-    .service__presentation 
-      .spresentation__image 
+    .service__presentation
+      .spresentation__image
         img(src= require("/src/images/content-images/service-1.jpg"))
-      .spresentation__action 
+      .spresentation__action
         .spresentation__action__price от 20 000 руб/кв.м
-        .spresentation__action__text 
-          | Чтобы заказать услугу, оформите заявку на сайте, 
+        .spresentation__action__text
+          | Чтобы заказать услугу, оформите заявку на сайте,
           | наш менеджер свяжется с Вами и проконсультирует более подробно.
-        .spresentation__action__button 
+        .spresentation__action__button
           button.button.button-primary(data-fancybox, data-type="inline", data-src="#service-order-form", data-touch="false") Оформить заявку
-  .service__benefits
-    .benefits__list.cells
-      each item in bens
-        .cell.cell-md-4
-          +benefit-item(item)
+    .service__benefits
+      .benefits__list.cells
+        each item in bens
+          .cell.cell-md-4
+            +benefit-item(item)
   .cells
     .cell.cell-lg-9
-      .service__body 
+      .service__section
         p.
-          Строительство каркасных домов в наше время является альтернативой 
-          кирпичным и блочным строениям. Такую популярность они получили 
-          потому что цена на строительство каркасных домов значительно 
+          Строительство каркасных домов в наше время является альтернативой
+          кирпичным и блочным строениям. Такую популярность они получили
+          потому что цена на строительство каркасных домов значительно
           меньше аналогов из кирпича и бетона.
         .h6 Преимущества каркасных домов
-        ul 
-          li 
-            b Стоимость. 
+        ul
+          li
+            b Стоимость.
             |
-            | Пожалуй это самое главное достоинство таких домов. 
-            | Ввиду стоимости, сравнимой с обычной квартирой, 
+            | Пожалуй это самое главное достоинство таких домов.
+            | Ввиду стоимости, сравнимой с обычной квартирой,
             | строительство такого дома может позволить любой.
-          li 
-            b Быстровозводимость. 
-            | 
-            | Домокомлект собирается как конструктор, 
-            | поэтому на возведение дома понадобится минимум времени. 
+          li
+            b Быстровозводимость.
+            |
+            | Домокомлект собирается как конструктор,
+            | поэтому на возведение дома понадобится минимум времени.
             | В целом дом на 150 м2 можно собрать за месяц при надлежащем финансировании.
-          li 
-            b Возможность строительства в зимний период. 
-            | 
-            | В отличии от каменных домов, строительство каркасных домов 
+          li
+            b Возможность строительства в зимний период.
+            |
+            | В отличии от каменных домов, строительство каркасных домов
             | возможно и в холодное время года.
           li
-            b Отсутствие усадки. 
-            | Дома построенные по данной технологии не дают усадку. 
+            b Отсутствие усадки.
+            | Дома построенные по данной технологии не дают усадку.
             | Так что заселяться можно сразу по окончанию строительства.
-          li 
-            b Легкость конструкции. 
+          li
+            b Легкость конструкции.
             | Дома построенные по этой технологии не требуют массивного фундамента.
         .h6 Стоимость каркасных домов
         p.
-          Стоимость строительства каркасного дома в Челябинске, 
-          как и из других материалов, рассчитывается всегда 
-          индивидуально для каждого проекта. 
-          Цена в разных случаях будет отличаться. 
+          Стоимость строительства каркасного дома в Челябинске,
+          как и из других материалов, рассчитывается всегда
+          индивидуально для каждого проекта.
+          Цена в разных случаях будет отличаться.
           Для наших клиентов мы предлагаем вести предварительный расчет согласно следующей таблице.
-        table 
-          thead 
-            tr 
+        table
+          thead
+            tr
               th Наименование
               th Эконом
               th Стандарт
               th Комфорт
-          tbody 
-            tr 
-              th Винтовые сваи  
+          tbody
+            tr
+              th Винтовые сваи
               td(colspan=3) Отдельно
-            tr 
+            tr
               th Двери входные
               td Деревянные
               td(colspan=2) Металлические
-            tr 
-              th Двери комнатные 
+            tr
+              th Двери комнатные
               td Каркасные утепленные
-              td Деревянная фабричная	
+              td Деревянная фабричная
               td Царговые межкомнатные
-            tr 
-              th Утепление	  
-              td 100 мм	
-              td(colspan=2) 100-150 мм	
-            tr 
-              th Крыша 
-              td Профнастил	
+            tr
+              th Утепление
+              td 100 мм
+              td(colspan=2) 100-150 мм
+            tr
+              th Крыша
+              td Профнастил
               td Профнастил цветной
               td Металлочерепица
-            tr 
-              th Обшивка стен (улица)	  
-              td Фальшбрус "С"	
+            tr
+              th Обшивка стен (улица)
+              td Фальшбрус "С"
               td Фальшбрус,Сайдинг
               td Блокхаус
-            tr 
-              th Покраска стен 
-              td -	
-              td(colspan=2) Цвет на выбор	
-            tr 
+            tr
+              th Покраска стен
+              td -
+              td(colspan=2) Цвет на выбор
+            tr
               th Стоимость
-              td 
+              td
                 b от 20 000 р/м2 «Под ключ»
-              td 
+              td
                 b от 24 000 р/м2 «Под ключ»
-              td 
+              td
                 b от 28 000 р/м2 «Под ключ»
         p.
-          Для более точного расчета цены строительства 
-          Вашего дома предлагаем Вам связаться с нашим менеджером. 
-          Специалисты окажут Вам разностороннюю информационную помощь 
-          и проконсультируют по любым вопросам. 
-          Узнайте стоимость и варианты строительства Вашего дома, 
-          обратившись к нашим менеджерам. 
+          Для более точного расчета цены строительства
+          Вашего дома предлагаем Вам связаться с нашим менеджером.
+          Специалисты окажут Вам разностороннюю информационную помощь
+          и проконсультируют по любым вопросам.
+          Узнайте стоимость и варианты строительства Вашего дома,
+          обратившись к нашим менеджерам.
           Звоните по телефону +7 (351) 223-28-23.
-      .service__video
-        .h3 Видео
-        .service__video__list.cells
+      block serviceBenefits
+      .service__video.service__section
+        .h4 Видео
+        .video__list.service__video__list.cells
           each item, index in vds
             if index < 2
-              .service__video__item.cell.cell-md-6
-                .videos__item
-                  a.videos__link(href="https://www.youtube.com/watch?v=" + item.link)
-                    .videos__cover(style= item.cover ? "background-image: url('https://img.youtube.com/vi/" + item.link + "/maxresdefault.jpg')" : "", loading="lazy")
-                  .videos__content
-                    iframe(width="560", height="315", src= "https://www.youtube.com/embed/" + item.link, title="YouTube video player", frameborder="0", allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
-      .service__gallery 
+              .service__video__item.cell.cell-md-6.videos__item
+                a.videos__link(href="https://www.youtube.com/watch?v=" + item.link)
+                  .videos__cover(style= item.cover ? "background-image: url('https://img.youtube.com/vi/" + item.link + "/maxresdefault.jpg')" : "", loading="lazy")
+                .videos__content
+                  iframe(width="560", height="315", src= "https://www.youtube.com/embed/" + item.link, title="YouTube video player", frameborder="0", allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture", allowfullscreen)
+      .service__gallery.service__section
         -
           var prjpics = [
             {
@@ -167,53 +167,57 @@ block contentBody
             //-   picB: require("/src/images/content-images/folio-4.jpg")
             //- }
           ];
-        .h3 Фотогалерея
+        .h4 Фотогалерея
         .article__gallery.agallery.cells
           each item in prjpics
-            .agallery__image.cell
+            .agallery__image.cell.cell-6.cell-md-4
               a.agallery__link(href=item.picB, data-fancybox="project", data-caption= item.title)
                 // Размеры картинки 336х235
                 img(src= item.picS, loading="lazy")
-        .service__projects 
-          -
-            var sprjs = [
-              {
-                pic: require("/src/images/content-images/project-1.jpg"),
-                title: "Каркасный дом для большой семьи",
-                cat: "Каркасные дома"
-              },
-              {
-                pic: require("/src/images/content-images/project-2.jpg"),
-                title: "Райский уголок в Саратове",
-                cat: "Каркасные дома"
-              },
-              {
-                pic: require("/src/images/content-images/cats-2.png"),
-                title: "Строительство каркасных домов в наше время является альтернативой кирпичным и блочным строениям",
-                cat: "Категория с неимоверно длинным названием, просто таки длиннющим"
-              },
-              {
-                pic: require("/src/images/content-images/about-1.png"),
-                title: "Название проекта без категории"
-              },
-              {
-                title: "Проект без картинки"
-              }
-            ];
-          .h3 Выполненные проекты
-          .sprojects__list.cells
-            each item in sprjs
-              .sprojects__item.cell.cell-sm-6
-                .sprojects__image 
-                  img(src= item.pic)
+      .service__projects.service__section
+        -
+          var sprjs = [
+            {
+              pic: require("/src/images/content-images/project-1.jpg"),
+              title: "Каркасный дом для большой семьи",
+              cat: "Каркасные дома"
+            },
+            {
+              pic: require("/src/images/content-images/project-2.jpg"),
+              title: "Райский уголок в Саратове",
+              cat: "Каркасные дома"
+            },
+            {
+              pic: require("/src/images/content-images/cats-2.png"),
+              title: "Строительство каркасных домов в наше время является альтернативой кирпичным и блочным строениям",
+              cat: "Категория с неимоверно длинным названием, просто таки длиннющим"
+            },
+            {
+              pic: require("/src/images/content-images/about-1.png"),
+              title: "Название проекта без категории"
+            },
+            {
+              title: "Проект без картинки"
+            }
+          ];
+        .h4 Выполненные проекты
+        .sprojects__list.cells.cards__list
+          each item in sprjs
+            .sprojects__item.cell.cell-sm-6.cards__item
+              .icard
+                a.sprojects__image.icard__image(href="folio-item.html", class= item.pic ? "" : "no-image")
+                  // Размер картинки 560х380
+                  if item.pic
+                    img(src= item.pic)
                 if item.cat
                   .sprojects__category= item.cat
-                if item.title
-                  .sprojects__title= item.title
-        .service__reviews 
-          .h3 Отзывы клиентов
-          +reviewsList(4, false)
-        .service__docs
+                .icard__body
+                  if item.title
+                    a.sprojects__title.card__name(href="folio-item.html")= item.title
+      .service__reviews.service__section
+        .h4 Отзывы клиентов
+        +reviewsList(4, true)
+      .service__docs.service__section
           -
             var sdocs = [
               {
@@ -230,25 +234,29 @@ block contentBody
                 a.fdown.fdown--pdf(href="assets/content-images/constitution.pdf", target="__blank")
                   .fdown__name= item.name
                     .fdown__size 128 кб
-      .service__action 
-        .service__action__decor 
-          include ../../images/inline-svgs/project.svg
-        .service__action__text Оформите заявку на сайте, наш менеджер свяжется с Вами и проконсультирует более подробно.
-        .service__action__price 
-          .service__action__price__label Стоимость услуги
-          .service__action__price__value от 20 000 руб/кв.м
-        .service__action__button 
-          button.button.button-primary(data-fancybox, data-type="inline", data-src="#service-order-form", data-touch="false") Оформить заявку
-    .cell.cell-lg-3
-      .article__action
-        .article__action__title Есть вопросы по данной услуге?
-          .article__action__title__icon.question
-            include ../../images/inline-svgs/product-question.svg
-        .article__action__text 
-          | Задайте все интересующие Вас вопросы по услуге, 
-          | и наши специалисты с радостью ответим на них.
-        .article__action__button
-          button.button.button-primary(data-fancybox, data-type="inline", data-src="#service-question-form", data-touch="false") Задать вопрос
+      .service__action.service__section
+        .article__action
+          .display-flex.fx-justify-between
+            .article__action__text Оформите заявку на сайте, наш менеджер свяжется с Вами и проконсультирует более подробно.
+            .article__action__title__icon
+              include ../../images/inline-svgs/project.svg
+          .service__action__pricing
+            .service__action__price
+              .service__action__price__label Стоимость услуги
+              .service__action__price__value от 20 000 руб/кв.м
+            .article__action__button
+              button.button.button-primary(data-fancybox, data-type="inline", data-src="#service-order-form", data-touch="false") Оформить заявку
+    block serviceAction
+      .cell.cell-lg-3.display-none.display-lg-block
+        .article__action
+          .article__action__title Есть вопросы по данной услуге?
+            .article__action__title__icon.question
+              include ../../images/inline-svgs/product-question.svg
+          .article__action__text
+            | Задайте все интересующие Вас вопросы по услуге,
+            | и наши специалисты с радостью ответим на них.
+          .article__action__button
+            button.button.button-primary(data-fancybox, data-type="inline", data-src="#service-question-form", data-touch="false") Задать вопрос
   +back-button("Назад к списку", "services-subcat.html")
   .fancy-form.display-none#service-question-form
     form(action="").custom-form.collapsing-form
@@ -268,7 +276,7 @@ block contentBody
             input.form__input(type="email")
           label.form__field.form__field--required
             span.form__label Текст сообщения
-            textarea.form__input(required)
+            textarea.form__input(required, rows="3")
           .form__submit
             button.button.button-submit(type="submit") Отправить
           .form__note Нажимая на кнопку «Отправить», подтверждаю свое согласие с&nbsp;
@@ -294,7 +302,7 @@ block contentBody
             input.form__input(type="email", required)
           label.form__field
             span.form__label Текст сообщения
-            textarea.form__input
+            textarea.form__input(rows="3")
           .form__submit
             button.button.button-submit(type="submit") Отправить
           .form__note Нажимая на кнопку «Отправить», подтверждаю свое согласие с&nbsp;
