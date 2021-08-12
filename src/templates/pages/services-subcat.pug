@@ -1,0 +1,54 @@
+extends ../layout
+
+block prepend head
+  - pageName = "Бани и беседки"
+block title
+  +page-header(pageName, [{value:"Услуги", link: "services.html"}])
+block contentBody
+  -
+    var subsrvcs = [
+      {
+        pic: require("/src/images/content-images/services-1.jpg"),
+        title: "Бани",
+        descr: "Бани под ключ — это отличное сочетание цены и качества! При строительстве наших бань мы используем исключительно качественные материалы, что способствуют более длительному использованию бани. ",
+        price: "от 20 000  ₽/м2"
+      },
+      {
+        pic: require("/src/images/content-images/services-2.jpg"),
+        title: "Беседки",
+        descr: "Беседка – обязательный элемент и настоящее украшение дизайна любого сада или дворовой территории. Не найти лучшего места для отдыха всей семьи на свежем воздухе, чем уютная беседка.",
+        price: "по запросу"
+      },
+      {
+        pic: require("/src/images/content-images/about-1.jpg"),
+        title: "Услуга с весьма длинным названием, которое призвано чего-нито сломать. У этой услуги нет описания",
+        price: "450 руб"
+      },
+      {
+        pic: require("/src/images/content-images/cats-2.png"),
+        title: "Услуга без описания",
+        //- descr: "Строительство каркасных домов в наше время является альтернативой кирпичным и блочным строениям. Такую популярность они получили потому что цена на строительство каркасных домов значительно меньше аналогов из кирпича и бетона.",
+        price: "от 250 000 руб/кв.м"
+      },
+      {
+        title: "Услуга без картинки и без цены",
+        descr: "Строительство каркасных домов в наше время является альтернативой кирпичным и блочным строениям",
+      }
+    ];
+  .subservices__list.cells
+    each item, index in subsrvcs
+      .subservices__item.cell.cell-sm-6.cell-lg-4.cell-xl-6
+        .subservices__bg
+          a.subservices__image(class= item.pic ? "" : "no-image", href="service-item.html")
+            if item.pic
+              img(src= item.pic)
+          .subservices__body 
+            a.subservices__title(href="service-item-2.html")= item.title 
+            if item.descr
+              .subservices__descr= item.descr 
+            if item.price
+              .subservices__price= item.price
+          a.subservices__decor(href="service-item.html") 
+            include ../../images/inline-svgs/services-arrow.svg
+  +pagination(0)
+  +seo
