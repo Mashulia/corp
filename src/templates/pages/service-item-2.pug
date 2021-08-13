@@ -6,6 +6,19 @@ block serviceBenefits
       each item in bens
         .cell.cell-md-4
           +benefit-item(item)
+block serviceBodyAction
+  .service__action.service__section.display-lg-none
+    .article__action
+      .display-flex.fx-justify-between
+        .article__action__text Оформите заявку на сайте, наш менеджер свяжется с Вами и проконсультирует более подробно.
+        .article__action__title__icon
+          include ../../images/inline-svgs/project.svg
+      .service__action__pricing
+        .service__action__price
+          .service__action__price__label Стоимость услуги
+          .service__action__price__value от 20 000 руб/кв.м
+        .article__action__button
+          button.button.button-primary(data-fancybox, data-type="inline", data-src="#service-order-form", data-touch="false") Оформить заявку
 block serviceAction
   .cell.cell-lg-3.service__cta
     .serv-cta__bg

@@ -240,7 +240,7 @@ mixin video-item(item)
   .cards__item.videos__item(class!=attributes.class)
     .icard
       a.videos__link(href="https://www.youtube.com/watch?v=" + item.link)
-        .videos__cover(style= item.cover ? "background-image: url('https://img.youtube.com/vi/" + item.link + "/maxresdefault.jpg')" : "", loading="lazy")
+        .videos__cover(style= item.cover ? "background-image: url('https://img.youtube.com/vi/" + item.link + "/0.jpg')" : "", loading="lazy")
       .icard__body
         .card__name= item.title
         .card__text= item.descr

@@ -105,6 +105,8 @@
     left: 2.5rem;
     max-width: calc(100% - 5rem);
   }
+}
+@media (min-width: $break-desk) {
   .article__action {
     padding: 2.5rem;
   }

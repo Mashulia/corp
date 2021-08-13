@@ -65,6 +65,9 @@
       max-width: ($col-width * $i);
     }
   }
+  .cell-md-auto {
+    flex-basis: auto;
+  }
 }
 @media (min-width: $break-lg) {
   .wrap {

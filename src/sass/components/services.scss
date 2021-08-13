@@ -260,9 +260,6 @@
   padding-right: 3rem;
 }
 .service__cta {
-  align-self: flex-start;
-  position: sticky;
-  top: 1.5rem;
   margin-bottom: 1.875rem;
   order: -1;
 }
@@ -438,6 +435,9 @@
     padding: 2.5rem;
   }
   .service__cta {
+    align-self: flex-start;
+    position: sticky;
+    top: 1.5rem;
     order: unset;
 
     .serv-cta__title {

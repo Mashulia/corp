@@ -9,6 +9,7 @@ block contentBody
     var cnts = [
       {
         title: "Центральный офис в г. Челябинск",
+        coords: "55.192626, 61.420502",
         address: "ул. Артиллерийская, д. 1, офис 45",
         email: "info@zestroy.com",
         phones: ["+7 (351) 778-88-00", "+7 (351) 778-88-01"],
@@ -16,27 +17,32 @@ block contentBody
       },
       {
         title: "Офис в г. Екатеринбург",
+        coords: "56.833486, 60.592839",
         address: "г. Екатеринбург, ул. Малышева, д. 23, офис 145",
         email: "ekb_info@zestroy.com",
         phones: ["+7 (351) 778-88-00 "]
       },
       {
         title: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        coords: "55.145247, 61.451322",
         address: "Sit ipsam nam autem molestias suscipit numquam perspiciatis, incidunt perferendis eius exercitationem eveniet iusto nesciunt consequatur",
         email: "cupiditate@email.com",
         time: "пн-пт: 9:00 - 21:00, сб-вс: 10:00 - 18:00"
       },
       {
         title: "Sit ipsam nam autem molestias suscipit numquam perspiciatis, incidunt perferendis eius exercitationem eveniet iusto nesciunt consequatur",
-        phones: ["+7 (351) 778-88-00", "+7 (351) 778-88-01"],
+        coords: "55.163980, 61.431441",
+        phones: ["+7 (351) 778-88-00 доб. 100", "+7 (351) 778-88-01"],
         time: "с 10:00 до 17:00"
       },
       {
         title: "Sit ipsam nam autem molestias suscipit numquam perspiciatis, incidunt perferendis eius exercitationem eveniet iusto nesciunt consequatur",
+        coords: "55.168664, 61.429066",
         phones: ["+7 (351) 778-88-00", "+7 (351) 778-88-01"]
       },
       {
         title: "Sit ipsam nam autem molestias suscipit numquam perspiciatis",
+        coords: "55.160224, 61.294987",
         time: "с 10:00 до 17:00"
       }
     ];
@@ -46,57 +52,71 @@ block contentBody
         each item in cnts
           .contacts__item
             .contacts__name= item.title
+            .contacts__coords= item.coords
             .contacts__contacts.cells
-              .cell.contacts__contact
-                if item.address
+              if item.address
+                .cell.contacts__contact.cell-md-4
                   .contact
                     .contact__icon
                       include ../../images/inline-svgs/contact-address.svg
                     .contact__list
                       .contact__item= item.address
                       .contact__item
-                        a.contact__link.js-map-link(href="") Смотреть на карте
+                        a.contact__link.js-map-link(href="#map", data-coords= item.coords) Смотреть на карте
                           .contact__icon
                             include ../../images/inline-svgs/contacts.svg
-              .cell.contacts__contact
-                if item.time
-                  .contact
-                    .contact__icon
-                      include ../../images/inline-svgs/contact-time.svg
-                    .contact__list
-                      .contact__item= item.time
-                if item.email
-                  .contact
-                    .contact__icon
-                      include ../../images/inline-svgs/contact-email.svg
-                    .contact__list
-                      a.contact__item(href="mailto:" + item.email)= item.email
-              .cell.contacts__contact
-                if item.phones
+              if item.time || item.email
+                .cell.contacts__contact.cell-md-auto
+                  if item.time
+                    .contact
+                      .contact__icon
+                        include ../../images/inline-svgs/contact-time.svg
+                      .contact__list
+                        .contact__item= item.time
+                  if item.email
+                    .contact
+                      .contact__icon
+                        include ../../images/inline-svgs/contact-email.svg
+                      .contact__list
+                        a.contact__item(href="mailto:" + item.email)= item.email
+              if item.phones
+                .cell.contacts__contact.cell-md-auto
                   .contact
                     .contact__icon
                       include ../../images/inline-svgs/contact-phone.svg
                     .contact__list
                       each itm in item.phones
                         a.contact__item(href="tel:" + itm)= itm
-      .map
-    .cell.cell-xl-3.offset-xl-1
-      form(action="").custom-form.collapsing-form
-        .form__header
-          .form__title Заказать подобный проект
-          .form__description Заполните форму, и наш менеджер свяжется с Вами в ближайшее время
-          .form__message
-            .form__success
-              .form__message__text Ваша заявка успешно отправлена!
-        .form__bg
-          .form__body
-            label.form__field.form__field--required
-              span.form__label Email
-              input.form__input(type="email")
-            label.form__field.form__field--required
-              span.form__label Текст сообщения
-              textarea.form__input(required, rows="3")
-            .form__submit
-              button.button.button-submit(type="submit") Отправить
-            .form__note Нажимая на кнопку «Отправить», подтверждаю свое согласие с&nbsp;
-              a(href="policy.html") условиями обработки персональных данных
+      .map#map
+      script(src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=")
+      script
+        include ../../js/map-data.js
+      script
+        include ../../js/map.js
+      .contacts__socials
+        .contacts__socials__title Пишите нам:
+        .contacts__socials__row
+          +socials
+        .contacts__socials__row
+          +messengers
+    .cell
+      .contacts__form
+        form(action="").custom-form.collapsing-form
+          .form__header
+            .form__title Обратная связь
+            .form__description Заполните форму, и наш менеджер свяжется с Вами в ближайшее время
+            .form__message
+              .form__success
+                .form__message__text Ваша заявка успешно отправлена!
+          .form__bg
+            .form__body
+              label.form__field.form__field--required
+                span.form__label Email
+                input.form__input(type="email")
+              label.form__field.form__field--required
+                span.form__label Текст сообщения
+                textarea.form__input(required, rows="3")
+              .form__submit
+                button.button.button-submit(type="submit") Отправить
+              .form__note Нажимая на кнопку «Отправить», подтверждаю свое согласие с&nbsp;
+                a(href="policy.html") условиями обработки персональных данных

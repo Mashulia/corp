@@ -221,7 +221,7 @@ li {
   padding-left: 1.625rem;
   position: relative;
 }
-ol li::before {
+ol > li::before {
   counter-increment: customOl;
   content: counter(customOl) ".";
   font-weight: bold;

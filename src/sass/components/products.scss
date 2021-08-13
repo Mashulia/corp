@@ -326,8 +326,13 @@
 .nb {
   background: $color-bg;
   border-radius: $brad-3;
-  padding: 1.25rem;
+  padding: 1.25rem 3.5rem 1.25rem 1.25rem;
   position: relative;
+
+  .tabs & {
+    background: transparent;
+    padding: 0 3.5rem 0 0;
+  }
 }
 .nb__icon {
   position: absolute;
