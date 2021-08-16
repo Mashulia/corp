@@ -101,8 +101,11 @@
   .header__callback {
     display: none;
   }
+  .header__contacts,
   .header__connects {
     margin-bottom: -0.5rem;
+  }
+  .header__connects {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
   }

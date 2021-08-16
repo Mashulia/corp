@@ -63,7 +63,7 @@
   color: #fff;
   text-align: center;
 
-  .custom-form--handled {
+  .collapsing-form--handled & {
     border-radius: $brad-3;
   }
 }
@@ -85,21 +85,21 @@
   display: block;
   padding-top: 1.25rem;
 
-  .custom-form--handled & {
+  .collapsing-form--handled & {
     display: none;
   }
 }
 .form__description {
   display: block;
 
-  .custom-form--handled & {
+  .collapsing-form--handled & {
     display: none;
   }
 }
 .form__message {
   display: none;
 
-  .custom-form--handled & {
+  .collapsing-form--handled & {
     display: block;
   }
 }

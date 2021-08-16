@@ -87,36 +87,41 @@ block contentBody
                     .contact__list
                       each itm in item.phones
                         a.contact__item(href="tel:" + itm)= itm
-      .map#map
+      .map__container
+        .map#map
       script(src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=")
       script
         include ../../js/map-data.js
       script
         include ../../js/map.js
-      .contacts__socials
-        .contacts__socials__title Пишите нам:
-        .contacts__socials__row
-          +socials
-        .contacts__socials__row
-          +messengers
-    .cell
-      .contacts__form
-        form(action="").custom-form.collapsing-form
-          .form__header
-            .form__title Обратная связь
-            .form__description Заполните форму, и наш менеджер свяжется с Вами в ближайшее время
-            .form__message
-              .form__success
-                .form__message__text Ваша заявка успешно отправлена!
-          .form__bg
-            .form__body
-              label.form__field.form__field--required
-                span.form__label Email
-                input.form__input(type="email")
-              label.form__field.form__field--required
-                span.form__label Текст сообщения
-                textarea.form__input(required, rows="3")
-              .form__submit
-                button.button.button-submit(type="submit") Отправить
-              .form__note Нажимая на кнопку «Отправить», подтверждаю свое согласие с&nbsp;
-                a(href="policy.html") условиями обработки персональных данных
+    .cell.cell-md-8.cell-lg-6.cell-xl-3.mx-md-auto.offset-xl-1
+      .contacts__actions
+        .contacts__socials
+          .contacts__socials__title Пишите нам:
+          .contacts__socials__row
+            +socials
+          .contacts__socials__row
+            +messengers
+        .contacts__form
+          form(action="").custom-form.collapsing-form
+            .form__header
+              .form__title Обратная связь
+              .form__description Заполните форму, и наш менеджер свяжется с Вами в ближайшее время
+              .form__message
+                .form__success
+                  .form__message__text
+                    | Ваша заявка успешно отправлена!
+                    br
+                    | В течение 5 минут мы Вам перезвоним
+            .form__bg
+              .form__body
+                label.form__field.form__field--required
+                  span.form__label Email
+                  input.form__input(type="email")
+                label.form__field.form__field--required
+                  span.form__label Текст сообщения
+                  textarea.form__input(required, rows="4")
+                .form__submit
+                  button.button.button-submit(type="submit") Отправить
+                .form__note Нажимая на кнопку «Отправить», подтверждаю свое согласие с&nbsp;
+                  a(href="policy.html") условиями обработки персональных данных

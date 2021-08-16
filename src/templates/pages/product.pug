@@ -92,7 +92,9 @@ block contentBody
               input.qty__input.form__input(type="text", value="1", data-min="1", data-max="99")
               button.qty__change.qty__change--plus +
           .presentation__action.presentation__add
-            button.button.button-primary.button-add2cart В корзину
+            // Когда товар добавлен, нужно показать сообщение об успешной добавке. Сообщение в div#product-added.
+            // Есть функция handleAdd2Cart(), которая показывает сообщение и скрывает его через 4 сек по setTimeout
+            button.button.button-primary.button-add2cart.js-add2cart В корзину
           .presentation__action.presentation__order
             button.button.button-secondary(data-fancybox, data-type="inline", data-src="#product-quick-form", data-touch="false") Быстрый заказ
         hr.divider

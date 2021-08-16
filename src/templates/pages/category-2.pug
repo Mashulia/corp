@@ -36,4 +36,36 @@ block contentNav
       }
     ];
   .content__nav
-    +section-navi("Каталог", items, 2)(class="snavigation--catalog")
+    .snavigation.snavigation--catalog
+      button.snavigation__toggle= "Каталог"
+        span.snavigation__icon
+          include ../../images/inline-svgs/dropdown.svg
+      .snavigation__body
+        ul.snavigation__list
+          each item, index in items
+            li.snavigation__item
+              if !item.subcats
+                a.snavigation__link(href= item.link)= item.value
+              else
+                .snavigation__item.split.split--opened
+                  .snavigation__link
+                    a.snavigation__text(href= item.link)= item.value
+                    button.split__toggle
+                      include ../../images/inline-svgs/dropdown.svg
+                  .split__body
+                    ul.snavigation__list
+                      each elm, index in item.subcats
+                        if index == 2
+                          li.split.snavigation__item.split--opened
+                            .snavigation__link
+                              a.snavigation__text(href= item.link)= item.value
+                              button.split__toggle
+                                include ../../images/inline-svgs/dropdown.svg
+                            .split__body
+                              ul.snavigation__list
+                                each elm, index in item.subcats
+                                  li.snavigation__item
+                                    a.snavigation__link(href="category-2.html", class={"snavigation__link--current": index == 3})= elm
+                        else
+                          li.snavigation__item
+                            a.snavigation__link(href="")= elm

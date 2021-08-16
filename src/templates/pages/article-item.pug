@@ -1,13 +1,16 @@
 extends ../layout
 
 block prepend head
-  - pageName = "Лучший материал для строительстваа"
+  - pageName = "Лучший материал для строительства"
 block title
   +page-header(pageName, [{value: "Статьи", link: "articles.html"}])
 block contentBody
   block articleImage
     .article__image
+      // Размер картинки 1056х450
       img(src=require("/src/images/content-images/arts-7.jpg"))
+      //- img(src=require("/src/images/content-images/cats-2.png"))
+      //- img(src=require("/src/images/content-images/staff-1.jpg"))
   .article__date 29.07.2021
   .article__body
     block articleBody

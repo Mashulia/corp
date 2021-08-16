@@ -144,6 +144,10 @@
 .messengers__item {
   margin-bottom: 0.625rem;
   margin-right: 0.875rem;
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 .messengers__link {
   @extend %fx-centered;
@@ -213,8 +217,7 @@
     margin-right: 0.5rem;
   }
   .socials__link,
-  .messengers__link,
-  .messengers__link::before {
+  .messengers__link {
     height: 2rem;
     width: 2rem;
   }

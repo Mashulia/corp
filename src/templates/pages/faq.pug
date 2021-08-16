@@ -1,0 +1,78 @@
+extends ../layout
+
+block prepend head
+  - pageName = "Вопросы и ответы"
+block title
+  +page-header(pageName)
+block contentBody
+  h2 Содержание
+  ul
+    li
+      a(href="#faq-forms") Формы
+    li
+      a(href="#faq-add2cart") Сообщение о добавлении товара в корзину
+  .article__section
+    h2#faq-forms Формы
+    .cells
+      .cell.cell-md-6
+        h3 Типичная форма
+        form(action="").custom-form.collapsing-form
+          .form__header
+            .form__title Быстрый заказ
+            .form__description Заполните форму, и наш менеджер свяжется с Вами в ближайшее время
+            .form__message
+              .form__message__text Ваша заявка успешно отправлена!
+          .form__bg
+            .form__body
+              label.form__field.form__field--required
+                span.form__label Телефон
+                input.form__input(type="tel", required)
+              label.form__field.form__field--required
+                span.form__label Email
+                input.form__input(type="email", required)
+              label.form__field
+                span.form__label Текст сообщения
+                textarea.form__input(rows="3")
+              .form__submit
+                button.button.button-submit(type="submit") Отправить
+              .form__note Нажимая на кнопку «Отправить», подтверждаю свое согласие с&nbsp;
+                a(href="policy.html") условиями обработки персональных данных
+      .cell.cell-md-6
+        h3 Отправленная форма
+        p.
+          Форма уже содержит место для сообщения об отправке - .form__message__text.
+          После того, как форма обработана, заполняем это сообщение (успешно / нет)
+          и добавляем элементу .collapsing-form класс .collapsing-form--handled
+        form(action="").custom-form.collapsing-form.collapsing-form--handled
+          .form__header
+            .form__title Быстрый заказ
+            .form__description Заполните форму, и наш менеджер свяжется с Вами в ближайшее время
+            .form__message
+              .form__message__text Ваша заявка успешно отправлена!
+          .form__bg
+            .form__body
+              label.form__field
+                span.form__label Заказ
+                input.form__input(type="text", value= pageName, disabled)
+              label.form__field.form__field--required
+                span.form__label Телефон
+                input.form__input(type="tel", required)
+              label.form__field.form__field--required
+                span.form__label Email
+                input.form__input(type="email", required)
+              label.form__field
+                span.form__label Текст сообщения
+                textarea.form__input(rows="3")
+              .form__submit
+                button.button.button-submit(type="submit") Отправить
+              .form__note Нажимая на кнопку «Отправить», подтверждаю свое согласие с&nbsp;
+                a(href="policy.html") условиями обработки персональных данных
+  .article__section
+    h2#faq-add2cart Сообщение о добавлении товара в корзину
+    p.
+      После того, как товар добавлен в корзину, нужно показать сообщение #product-added.
+      В js включена функция handleAdd2Cart(),
+      которая показывает это сообщение и скрывает его через 4 сек по setTimeout
+
+  //- +pagination(1)
+  //- +seo

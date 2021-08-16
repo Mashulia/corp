@@ -4,6 +4,7 @@ import { handleNavOverflow, resetNavOverflow } from "./navOverflow";
 import { splitter } from "./split-dropdown";
 import { handleTabClick } from "./tabs";
 import { qtyChanger } from "./quantity-changer";
+import { handleAdd2Cart } from "./add2cart";
 // contents:
 // array.remove
 // delay function
@@ -793,15 +794,22 @@ window.addEventListener("load", function () {
     attachReviewsImagesMore();
   }
 
-  // $("form").submit(function (e) {
-  //   $(this)
-  //     .slideUp(function () {
-  //       $(this).addClass("custom-form--handled");
-  //     })
-  //     .slideDown();
+  $("form").submit(function (e) {
+    $(this)
+      .slideUp(function () {
+        $(this).addClass("collapsing-form--handled");
+      })
+      .slideDown();
 
-  //   e.preventDefault();
-  // });
+    e.preventDefault();
+  });
+
+  // const add2carts = document.querySelectorAll(".js-add2cart");
+  // if (add2carts.length) {
+  //   add2carts.forEach((item) => {
+  //     item.addEventListener("click", handleAdd2Cart);
+  //   });
+  // }
 
   document.querySelectorAll(".split").forEach((el) => {
     new splitter(el);
