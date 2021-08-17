@@ -551,7 +551,7 @@ window.addEventListener("load", function () {
         this.style.height = "auto";
       }
     });
-    $(".tab__nav").each(function () {
+    $(".tabs__switches").each(function () {
       addTabNavSlider(this);
     });
   } else {
@@ -794,15 +794,15 @@ window.addEventListener("load", function () {
     attachReviewsImagesMore();
   }
 
-  $("form").submit(function (e) {
-    $(this)
-      .slideUp(function () {
-        $(this).addClass("collapsing-form--handled");
-      })
-      .slideDown();
+  // $("form").submit(function (e) {
+  //   $(this)
+  //     .slideUp(function () {
+  //       $(this).addClass("collapsing-form--handled");
+  //     })
+  //     .slideDown();
 
-    e.preventDefault();
-  });
+  //   e.preventDefault();
+  // });
 
   // const add2carts = document.querySelectorAll(".js-add2cart");
   // if (add2carts.length) {
@@ -820,7 +820,7 @@ window.addEventListener("load", function () {
   });
 
   // tabs
-  const tabTriggers = document.querySelectorAll(".tab__nav__link");
+  const tabTriggers = document.querySelectorAll(".tabs__switch");
   if (tabTriggers.length) {
     tabTriggers.forEach((item) => {
       item.addEventListener("click", handleTabClick);
@@ -837,7 +837,7 @@ window.addEventListener("load", function () {
   var delayedFunctions = function () {
     windowWidth = window.innerWidth;
     removeExpands(expandToggles);
-    $(".tab__nav").each(function () {
+    $(".tabs__switches").each(function () {
       addTabNavSlider(this);
     });
 

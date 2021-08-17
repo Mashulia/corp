@@ -9,6 +9,7 @@
   }
 }
 .site-nav__list {
+  @extend %unlist;
   @extend %fx-centered-y;
   flex: 1 0 auto;
   flex-wrap: wrap;

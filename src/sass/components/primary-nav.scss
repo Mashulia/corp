@@ -6,7 +6,7 @@
   padding: 1.0625rem 0;
 }
 .primary-nav__list {
-  margin: 0;
+  @extend %unlist;
 }
 .primary-nav__item {
   padding: 0;

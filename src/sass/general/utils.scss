@@ -42,6 +42,14 @@
 .position-relative {
   position: relative;
 }
+.float-left {
+  float: left;
+  margin-right: 1rem;
+}
+.float-right {
+  float: right;
+  margin-left: 1rem;
+}
 // size-related utils
 .h-100 {
   height: 100%;

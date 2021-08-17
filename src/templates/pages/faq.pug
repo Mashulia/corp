@@ -11,6 +11,8 @@ block contentBody
       a(href="#faq-forms") Формы
     li
       a(href="#faq-add2cart") Сообщение о добавлении товара в корзину
+    li
+      a(href="#faq-fancy") Всплывашки
   .article__section
     h2#faq-forms Формы
     .cells
@@ -37,11 +39,12 @@ block contentBody
                 button.button.button-submit(type="submit") Отправить
               .form__note Нажимая на кнопку «Отправить», подтверждаю свое согласие с&nbsp;
                 a(href="policy.html") условиями обработки персональных данных
+        p &nbsp;
       .cell.cell-md-6
         h3 Отправленная форма
         p.
           Форма уже содержит место для сообщения об отправке - .form__message__text.
-          После того, как форма обработана, заполняем это сообщение (успешно / нет)
+          После того, как форма обработана, заполняем это сообщение (успешно)
           и добавляем элементу .collapsing-form класс .collapsing-form--handled
         form(action="").custom-form.collapsing-form.collapsing-form--handled
           .form__header
@@ -67,12 +70,68 @@ block contentBody
                 button.button.button-submit(type="submit") Отправить
               .form__note Нажимая на кнопку «Отправить», подтверждаю свое согласие с&nbsp;
                 a(href="policy.html") условиями обработки персональных данных
+        h3 Неотправленная форма
+        p.
+          Форма уже содержит место для сообщения об отправке - .form__message__text.
+          После того, как форма обработана, заполняем это сообщение (не успешно)
+          и добавляем элементу .collapsing-form классы .collapsing-form--handled.failed
+        form(action="").custom-form.collapsing-form.collapsing-form--handled.failed
+          .form__header
+            .form__title Быстрый заказ
+            .form__description Заполните форму, и наш менеджер свяжется с Вами в ближайшее время
+            .form__message
+              .form__message__text
+                | Произошла какая-то ошибка, форма не была отправлена.
+                br
+                | Свяжитесь с нами по телефону +7 111 222-33-44
+          .form__bg
+            .form__body
+              label.form__field
+                span.form__label Заказ
+                input.form__input(type="text", value= pageName, disabled)
+              label.form__field.form__field--required
+                span.form__label Телефон
+                input.form__input(type="tel", required)
+              label.form__field.form__field--required
+                span.form__label Email
+                input.form__input(type="email", required)
+              label.form__field
+                span.form__label Текст сообщения
+                textarea.form__input(rows="3")
+              .form__submit
+                button.button.button-submit(type="submit") Отправить
+              .form__note Нажимая на кнопку «Отправить», подтверждаю свое согласие с&nbsp;
+                a(href="policy.html") условиями обработки персональных данных
   .article__section
     h2#faq-add2cart Сообщение о добавлении товара в корзину
     p.
-      После того, как товар добавлен в корзину, нужно показать сообщение #product-added.
+      После того, как товар добавлен в корзину, нужно показать сообщение #product-added (код блока включен на всех страницах после футера), предварительно задав название товара в .notification__text
       В js включена функция handleAdd2Cart(),
       которая показывает это сообщение и скрывает его через 4 сек по setTimeout
+  .article__section
+    h2#faq-fancy Всплывашки
+    p.
+      Всплывашки - fancyBox v3.5.7. Версия 3 больше не поддерживаеца, поэтому ссылки с доками такие:
+    ul
+      li
+        a(href="https://web.archive.org/web/20210325170940/https://fancyapps.com/fancybox/3/docs/") Webarchive Fancybox 3
+      li
+        a(href="https://github.com/fancyapps/fancybox") Github Fancybox 3
+    p Программный вызов fancy:
+    code
+      | $('selector').fancybox();
+    p А можно сразу сообщение fancy передать вот так:
+    code
+      | $.fancybox.open('
+      = '<div class="popup"><div class="popup__message"><h2>Hello!</h2><p>You are awesome!</p></div></div>'
+      | ');
+    p
+      button.button.button-primary(data-fancybox, data-type="inline", data-src="#some-popup") Показать всплывашку с сообщением
+    .display-none#some-popup
+      .popup
+        .popup__message
+          h2 Hello!
+          p You are awesome!
 
   //- +pagination(1)
   //- +seo

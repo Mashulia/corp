@@ -42,9 +42,11 @@ $custom-color-21: hsl(
 .header--v3 .search__toggle,
 .fancy-arrow:hover,
 .projects__category,
-.tab__nav__link--current,
+.product__tabs .tabs__switch--current,
 .nav-slider .slick-arrow,
-.sprojects__category {
+.sprojects__category,
+.settings__label__link--current,
+.sps__toggle__input:checked ~ .sps__toggle__value::after {
   background-color: $custom-color-1;
 }
 .button-primary,
@@ -77,7 +79,8 @@ a,
 .split__toggle,
 .snavigation__sublink--current,
 .split--opened > .snavigation__link,
-.cart-contents__header__erase {
+.cart-contents__header__erase,
+.illustrations__pic__image__decor {
   color: $custom-color-1;
 }
 .connect:not(.connect--labeled)::before,
@@ -99,7 +102,9 @@ thead tr:last-child::after,
 .footer--v2 .footer__phones .connect__button::before,
 .cards__list--accented1 .cards__item:first-child .icard__body,
 .split--opened > .snavigation__link::before,
-.presentation__label {
+.presentation__label,
+.settings__header,
+.sps__container--active::before {
   background-color: $custom-color-2;
 }
 .hero__slider .slick-dots button,
@@ -136,7 +141,8 @@ ul li::before,
 .header--v3 .search__toggle:hover,
 .fancy-close:hover,
 .pagination__link:hover,
-.tab__nav__link:hover {
+.product__tabs .tabs__switch:hover,
+.settings__label__link:hover {
   background-color: $custom-color-hover;
 }
 .button-primary:hover,
@@ -174,7 +180,8 @@ a:hover,
 .header--v3 .search__toggle:active,
 .fancy-arrow:active,
 .pagination__link:active,
-.tab__nav__link:active {
+.product__tabs .tabs__switch:active,
+.settings__label__link:active {
   background-color: $custom-color-active;
 }
 .button-primary:active,
@@ -214,7 +221,8 @@ a:active,
     0.5
   );
 }
-.snavigation__toggle {
+.snavigation__toggle,
+.settings__header {
   background-image: radial-gradient(
     12% 85% at 100% 7%,
     hsla($custom-color-1-h, $custom-color-1-s, $custom-color-1-l, 0.3) 0%,
@@ -226,6 +234,12 @@ a:active,
 }
 .notification__icon {
   color: $custom-color-21;
+}
+.button-settings {
+  border-top-color: $custom-color-1;
+  border-right-color: $custom-color-1;
+  border-bottom-color: $custom-color-2;
+  border-left-color: $custom-color-2;
 }
 @media (max-width: 575px) {
   .hero__item {

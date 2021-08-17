@@ -3,6 +3,7 @@
 @import "./general/general.scss";
 @import "./general/grid.scss";
 @import "./general/page-basics.scss";
+@import "./general/utils.scss";
 @import "./general/buttons.scss";
 @import "./general/forms.scss";
 @import "./general/slider.scss";
@@ -11,7 +12,6 @@
 @import "./general/tabs.scss";
 @import "./components/connects.scss";
 @import "./components/search.scss";
-@import "./general/utils.scss";
 
 @import "./components/site-nav.scss";
 @import "./components/primary-nav.scss";
@@ -46,3 +46,5 @@
 @import "./components/contacts.scss";
 
 @import "./components/footer.scss";
+
+@import "./components/settings.scss";

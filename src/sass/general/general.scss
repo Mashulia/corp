@@ -21,6 +21,8 @@ body {
   line-height: 1.4;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 h1,
 .h1,
@@ -202,109 +204,118 @@ ul,
 ol {
   margin: 0.875rem 0;
 }
-ol,
-ul {
-  list-style: none;
-  padding: 0;
+table {
+  margin: 0.875rem 0 1rem;
+}
+.content__body,
+.sabout__intro {
   ol,
   ul {
-    margin-top: 0.5rem;
-    padding-left: 1rem;
+    list-style: none;
+    padding: 0;
+    ol,
+    ul {
+      margin-top: 0.5rem;
+      padding-left: 1rem;
+    }
   }
-}
-ol {
-  counter-reset: customOl;
-}
-li {
-  min-height: 1em; // custom markers are absolutely positioned thus no li content makes everything collapse
-  margin-bottom: 0.5rem;
-  padding-left: 1.625rem;
-  position: relative;
-}
-ol > li::before {
-  counter-increment: customOl;
-  content: counter(customOl) ".";
-  font-weight: bold;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-ul li::before {
-  content: "";
-  background: currentColor;
-  border-radius: $brad-1;
-  height: 2px;
-  width: 0.875rem;
-  position: absolute;
-  top: 0.75em;
-  left: 0;
-}
-table {
-  border-spacing: 0;
-  display: block;
-  line-height: 1.4;
-  margin: 0 0 1rem 0;
-  overflow: auto;
-  width: 100%;
-}
-td,
-th {
-  padding: 0.75rem 1.25rem;
-
-  tr:first-child & {
-    border-top-width: 1px;
+  ol {
+    counter-reset: customOl;
   }
-}
-th {
-  border: 1px solid $color-sep;
-  border-width: 0 1px 1px 0;
-  font-weight: bold;
-  text-align: left;
-
-  &:last-child {
-    border-right-width: 0;
+  ol:not([class]),
+  ul:not([class]) {
+    li {
+      min-height: 1em; // custom markers are absolutely positioned thus no li content makes everything collapse
+      margin-bottom: 0.5rem;
+      padding-left: 1.625rem;
+      position: relative;
+    }
   }
-  thead & {
-    background: #f9f9f9;
-    color: $color-textHeader;
+  ol:not([class]) > li::before {
+    counter-increment: customOl;
+    content: counter(customOl) ".";
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  ul:not([class]) li::before {
+    content: "";
+    background: currentColor;
+    border-radius: $brad-1;
+    height: 2px;
+    width: 0.875rem;
+    position: absolute;
+    top: 0.75em;
+    left: 0;
+  }
+  table {
+    border-spacing: 0;
+    display: block;
+    line-height: 1.4;
+    margin: 0 0 1rem 0;
+    overflow: auto;
+    width: 100%;
+  }
+  td,
+  th {
+    padding: 0.75rem 1.25rem;
 
+    tr:first-child & {
+      border-top-width: 1px;
+    }
+  }
+  th {
+    border: 1px solid $color-sep;
+    border-width: 0 1px 1px 0;
+    font-weight: bold;
+    text-align: left;
+
+    &:last-child {
+      border-right-width: 0;
+    }
+    thead & {
+      background: #f9f9f9;
+      color: $color-textHeader;
+
+      &:first-child {
+        border-left-width: 1px;
+      }
+      &:last-child {
+        border-right-width: 1px;
+      }
+    }
+  }
+  thead tr:first-child th {
     &:first-child {
-      border-left-width: 1px;
+      border-radius: 6px 0px 0px 0px;
     }
     &:last-child {
-      border-right-width: 1px;
+      border-radius: 0px 6px 0px 0px;
     }
   }
-}
-thead tr:first-child th {
-  &:first-child {
-    border-radius: 6px 0px 0px 0px;
-  }
-  &:last-child {
-    border-radius: 0px 6px 0px 0px;
-  }
-}
-td {
-  border: 1px solid $color-sep;
-  border-width: 0 1px 1px 0;
+  td {
+    border: 1px solid $color-sep;
+    border-width: 0 1px 1px 0;
 
-  &[colspan] {
-    text-align: center;
+    &[colspan] {
+      text-align: center;
+    }
+    &:last-child {
+      border-right-width: 0;
+    }
   }
-  &:last-child {
-    border-right-width: 0;
+  thead {
+    position: relative;
   }
-}
-thead {
-  position: relative;
-}
-thead tr:last-child::after {
-  content: "";
-  height: 2px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  thead tr:last-child::after {
+    content: "";
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
 }
 [hidden] {
   display: none;
@@ -329,21 +340,19 @@ thead tr:last-child::after {
   font-size: 0.875rem;
   font-weight: 400;
 }
-nav,
-.nav,
-.snavigation__list,
-.breadcrumbs {
-  margin: 0;
-  padding: 0;
+.corp {
+  .snavigation__list,
+  .breadcrumbs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 
-  li {
-    &::before {
-      content: none;
+    li {
+      &::before {
+        content: none;
+      }
     }
   }
-}
-.mb-space1 {
-  margin-bottom: 1.5rem;
 }
 @media (min-width: $break-md) {
   h5,
@@ -352,16 +361,11 @@ nav,
   .h6 {
     margin-top: 1.25rem;
   }
-  table {
-    display: table;
-  }
-  .float-left {
-    float: left;
-    margin-right: 1rem;
-  }
-  .float-right {
-    float: right;
-    margin-left: 1rem;
+  .content__body,
+  .sabout__intro {
+    table {
+      display: table;
+    }
   }
 }
 @media (min-width: $break-lg) {
@@ -453,12 +457,12 @@ nav,
     margin-bottom: 1.5rem;
     margin-bottom: 1.25rem;
   }
-  td,
-  th {
-    padding: 0.9375rem 1.5rem 1rem;
-  }
-  .mb-space1 {
-    margin-bottom: 2.5rem;
+  .content__body,
+  .sabout__intro {
+    td,
+    th {
+      padding: 0.9375rem 1.5rem 1rem;
+    }
   }
 }
 @media (min-width: $break-xl) {

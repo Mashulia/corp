@@ -5,20 +5,20 @@ function handleTabClick(e) {
 }
 function changeActiveSlide(clickedLink) {
   const tabsEl = clickedLink.closest(".tabs");
-  const tabNavs = tabsEl.querySelectorAll(".tab__nav__link");
-  const tabPanels = tabsEl.querySelectorAll(".tab__panel");
+  const tabNavs = tabsEl.querySelectorAll(".tabs__switch");
+  const tabPanels = tabsEl.querySelectorAll(".tabs__panel");
   let currentPanel = document.getElementById(
     clickedLink.getAttribute("href").replace("#", "")
   );
   tabNavs.forEach((item) => {
-    item.classList.remove("tab__nav__link--current");
+    item.classList.remove("tabs__switch--current");
   });
-  clickedLink.classList.add("tab__nav__link--current");
+  clickedLink.classList.add("tabs__switch--current");
   tabPanels.forEach((item) => {
-    item.classList.remove("tab__panel--opened");
+    item.classList.remove("tabs__panel--current");
   });
   if (currentPanel) {
-    currentPanel.classList.add("tab__panel--opened");
+    currentPanel.classList.add("tabs__panel--current");
   }
 }
 function repositionSlick(childEl) {

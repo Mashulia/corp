@@ -220,6 +220,11 @@
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
+.popup {
+  @extend .custom-form;
+  background: #fff;
+  padding: 1.5rem 4rem 1.5rem 1.5rem;
+}
 @media (min-width: $break-md) {
   .section__link__title {
     display: block;
@@ -323,6 +328,9 @@
   .article__section {
     margin-top: 2.5rem;
     margin-bottom: 2.5rem;
+  }
+  .popup {
+    padding: 2.5rem 3.5rem 2.5rem 2.5rem;
   }
 }
 @media (min-width: $break-xl) {

@@ -65,6 +65,7 @@
 
   .collapsing-form--handled & {
     border-radius: $brad-3;
+    padding-bottom: 2rem;
   }
 }
 .form__title {
@@ -131,6 +132,11 @@ select.form__input {
   cursor: pointer;
   font-weight: 800;
   text-align: center;
+}
+.collapsing-form--handled.failed {
+  .form__header {
+    background-color: #eb5757;
+  }
 }
 @media (min-width: $break-lg) {
   .form__input {

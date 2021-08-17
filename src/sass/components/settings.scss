@@ -1,0 +1,302 @@
+.settings {
+  line-height: 1.4;
+}
+.settings__toggle {
+  position: fixed;
+  top: 7.5rem;
+  left: 0.5rem;
+  z-index: 3;
+}
+.settings__body {
+  background: #fff;
+  overflow: auto;
+  max-width: 44.25rem;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+}
+.settings__header {
+  background: $color-textHeader;
+  color: #fff;
+  padding: 0.9375rem 0.625rem 0.9375rem 1.25rem;
+}
+.settings__header__row {
+  align-items: center;
+  justify-content: space-between;
+}
+.settings__header__title__icon {
+  display: none;
+}
+.settings__header__title__text {
+  color: rgba(255, 255, 255, 0.62);
+  font-weight: bold;
+  font-size: 0.875rem;
+  line-height: 1.11;
+}
+.settings__close svg {
+  color: #fff;
+  height: 1rem;
+  width: 1rem;
+}
+.button-sreset {
+  font-weight: 800;
+  font-size: 0.875rem;
+}
+.settings__labels {
+  padding: 1.25rem 1.25rem 0.25rem 1.25rem;
+}
+.settings__labels__list {
+  display: flex;
+  margin-left: -0.375rem;
+  margin-right: -0.375rem;
+  overflow: auto;
+}
+.settings__label {
+  padding-left: 0.375rem;
+  padding-right: 0.375rem;
+}
+.settings__label__link {
+  background: rgba(224, 224, 224, 0.6);
+  border-radius: $brad-1;
+  color: $color-text2;
+  display: block;
+  font-weight: 800;
+  padding: 0.625rem 0.875rem;
+
+  &:hover {
+    text-decoration: none;
+  }
+  &--current,
+  &:active,
+  &:hover {
+    color: #fff;
+  }
+  &--current {
+    pointer-events: none;
+  }
+}
+.settings__panel {
+  padding: 1.25rem;
+}
+.settings__panel__title {
+  color: $color-textHeader;
+  font-weight: 800;
+  line-height: 1.35;
+  margin-bottom: 1.25rem;
+}
+.settings__panel__section {
+  margin-bottom: 1.875rem;
+}
+.sps__container {
+  border: 1px solid $color-sep;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 1.25rem;
+  position: relative;
+
+  &--active::before {
+    content: "";
+    background: $color-sep;
+    border-radius: 0px 3px 3px 0px;
+    height: 21px;
+    width: 4px;
+    position: absolute;
+    top: 1.25rem;
+    left: 0;
+  }
+}
+.sps__title {
+  color: $color-textHeader;
+  font-weight: bold;
+  font-size: 0.875rem;
+  line-height: 1.35;
+  margin-bottom: 1rem;
+}
+.colors__list {
+  @extend %unlist;
+}
+.colors__item {
+  margin-bottom: 1rem;
+}
+.colors__color {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+.colors__input {
+  height: 1em;
+  min-height: 0;
+  width: 1em;
+  position: absolute;
+  opacity: 0;
+}
+.colors__value,
+.colors__label {
+  margin-bottom: 0.375rem;
+}
+.colors__value {
+  border: 9px solid $color-sep;
+  border-radius: 50%;
+  height: 2.5rem;
+  width: 2.5rem;
+  margin-right: 0.75rem;
+  position: relative;
+
+  &::after {
+    content: "";
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.3784 2.84921C2.01898 2.42988 1.38768 2.38132 0.968349 2.74074C0.549023 3.10017 0.500462 3.73147 0.859884 4.15079L2.3784 2.84921ZM4.61914 7L3.85988 7.65079C4.06521 7.89034 4.37155 8.01894 4.68634 7.99774C5.00113 7.97654 5.28745 7.80802 5.45881 7.5431L4.61914 7ZM9.33967 1.5431C9.63961 1.07937 9.50684 0.460283 9.0431 0.160335C8.57937 -0.139614 7.96028 -0.00683832 7.66033 0.456896L9.33967 1.5431ZM0.859884 4.15079L3.85988 7.65079L5.3784 6.34921L2.3784 2.84921L0.859884 4.15079ZM5.45881 7.5431L9.33967 1.5431L7.66033 0.456896L3.77948 6.4569L5.45881 7.5431Z' fill='%23fff'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 0.5rem auto;
+    border-radius: 50%;
+    display: block;
+    height: 1.125rem;
+    width: 1.125rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .colors__input:checked ~ &::after {
+    background-color: $color-sep;
+  }
+}
+.colors__color--1 {
+  .colors__value {
+    border-top-color: #e8903f;
+    border-right-color: #e8903f;
+    border-bottom-color: #44745c;
+    border-left-color: #44745c;
+  }
+  .colors__input:checked ~ .colors__value::after {
+    background-color: #e8903f;
+  }
+  .colors__input:checked ~ .colors__label {
+    color: #e8903f;
+  }
+}
+.colors__color--2 {
+  .colors__value {
+    border-top-color: #80ad20;
+    border-right-color: #80ad20;
+    border-bottom-color: #28346d;
+    border-left-color: #28346d;
+  }
+  .colors__input:checked ~ .colors__value::after {
+    background-color: #80ad20;
+  }
+  .colors__input:checked ~ .colors__label {
+    color: #80ad20;
+  }
+}
+.colors__color--5 {
+  .colors__value {
+    border-top-color: #ed1c24;
+    border-right-color: #ed1c24;
+    border-bottom-color: #27252f;
+    border-left-color: #27252f;
+  }
+  .colors__input:checked ~ .colors__value::after {
+    background-color: #ed1c24;
+  }
+  .colors__input:checked ~ .colors__label {
+    color: #ed1c24;
+  }
+}
+.colors__color--3 {
+  .colors__value {
+    border-top-color: #00b4bf;
+    border-right-color: #00b4bf;
+    border-bottom-color: #00639b;
+    border-left-color: #00639b;
+  }
+  .colors__input:checked ~ .colors__value::after {
+    background-color: #00b4bf;
+  }
+  .colors__input:checked ~ .colors__label {
+    color: #00b4bf;
+  }
+}
+.colors__color--4 {
+  .colors__value {
+    border-top-color: #e48a42;
+    border-right-color: #e48a42;
+    border-bottom-color: #a11d2d;
+    border-left-color: #a11d2d;
+  }
+  .colors__input:checked ~ .colors__value::after {
+    background-color: #e48a42;
+  }
+  .colors__input:checked ~ .colors__label {
+    color: #e48a42;
+  }
+}
+.colors__color--6 {
+  .colors__value {
+    border-top-color: #16bcd0;
+    border-right-color: #16bcd0;
+    border-bottom-color: #a74892;
+    border-left-color: #a74892;
+  }
+  .colors__input:checked ~ .colors__value::after {
+    background-color: #16bcd0;
+  }
+  .colors__input:checked ~ .colors__label {
+    color: #16bcd0;
+  }
+}
+.colors__label {
+  font-weight: 600;
+  font-size: 0.8125rem;
+}
+.reveal__contents {
+  display: none;
+
+  .reveal--opened & {
+    display: block;
+  }
+}
+.sps__toggle {
+  @extend %fx-centered-y;
+  cursor: pointer;
+  position: relative;
+}
+.sps__toggle__input {
+  position: absolute;
+  height: 1rem;
+  width: 1rem;
+  opacity: 0;
+}
+.sps__toggle__value {
+  background: $color-bg;
+  border: 1px solid $color-sep;
+  border-radius: 2.625rem;
+  height: 2.25rem;
+  width: 4.5rem;
+  margin-right: 0.875rem;
+
+  &::after {
+    content: "";
+    background: $color-text2;
+    box-shadow: inset 3px 4px 4px rgba(255, 255, 255, 0.38);
+    border-radius: 2.625rem;
+    height: 1.625rem;
+    width: 1.625rem;
+    position: absolute;
+    top: 0.3125rem;
+    left: 0.3125rem;
+    transition: left 0.4s;
+  }
+}
+.sps__toggle__input:checked ~ .sps__toggle__value {
+  background-color: #fff;
+  &::after {
+    box-shadow: inset 3px 4px 4px rgba(255, 255, 255, 0.38);
+    left: 2.5625rem;
+  }
+}

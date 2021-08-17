@@ -49,6 +49,7 @@
   }
 }
 .fnav__list {
+  @extend %unlist;
   columns: 2 auto;
   margin: -0.4375rem 0 0; // compensate for __item.pt
 }
