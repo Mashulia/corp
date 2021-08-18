@@ -1,33 +1,40 @@
-function toggleDropdown(e) {
-  e.preventDefault();
-  var dropdownRoot = e.target.closest(".dropdown");
-  dropdownRoot.classList.toggle("dropdown--opened");
-  if (
-    window.innerWidth > 767 &&
-    dropdownRoot.classList.contains("dropdown--opened")
-  ) {
-    fixDropdown(dropdownRoot.querySelector(".dropdown__body"));
-    closeWhatever(dropdownRoot, "dropdown--opened");
+import { revealer } from "./reveal";
+class dropdown extends revealer {
+  constructor(triggerEl, rootClass, winWidth) {
+    super(triggerEl, rootClass);
+    this.winWidth = winWidth;
   }
-}
-function fixDropdown(elem) {
-  var bounding = elem.getBoundingClientRect();
-  if (
-    bounding.right > (window.innerWidth || document.documentElement.clientWidth)
-  ) {
-    elem.classList.add("dropdown__body--right");
-  }
-}
-function closeWhatever(elem, className) {
-  var closeExpanded = (event) => {
-    if (!elem.contains(event.target)) {
-      elem.classList.remove(className);
-      removeClickListener();
+  toggle(e) {
+    super.toggle(e);
+    if (
+      window.innerWidth > this.winWidth &&
+      this.wrapper.classList.contains("opened")
+    ) {
+      this.fixDropdown();
+      this.closeWhatever();
     }
-  };
-  var removeClickListener = () => {
-    document.removeEventListener("click", closeExpanded);
-  };
-  document.addEventListener("click", closeExpanded);
+  }
+  fixDropdown() {
+    let bounding = this.wrapper.getBoundingClientRect();
+    if (
+      bounding.right >
+      (window.innerWidth || document.documentElement.clientWidth)
+    ) {
+      this.wrapper.classList.add("right");
+    }
+  }
+  closeWhatever() {
+    const closeExpanded = (event) => {
+      if (!this.wrapper.contains(event.target)) {
+        this.wrapper.classList.remove("opened");
+        removeClickListener();
+      }
+    };
+    const removeClickListener = () => {
+      document.removeEventListener("click", closeExpanded);
+    };
+    document.addEventListener("click", closeExpanded);
+  }
 }
-export { toggleDropdown, fixDropdown, closeWhatever };
+class expand extends dropdown {}
+export { dropdown, expand };

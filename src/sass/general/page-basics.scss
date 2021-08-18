@@ -225,6 +225,13 @@
   background: #fff;
   padding: 1.5rem 4rem 1.5rem 1.5rem;
 }
+.reveal__contents {
+  display: none;
+
+  .opened > & {
+    display: block;
+  }
+}
 @media (min-width: $break-md) {
   .section__link__title {
     display: block;

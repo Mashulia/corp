@@ -56,7 +56,7 @@
     transition: background-color 0.4s;
   }
 }
-.expand--opened > .expand__toggle {
+.opened > .expand__toggle {
   &::before {
     background-color: $color-bg;
   }
@@ -73,11 +73,12 @@
   font-weight: 600;
   font-size: 0.875rem;
 
-  .expand--opened > & {
+  .opened > & {
     display: block;
   }
 }
 .nav--extra {
+  align-self: stretch;
   display: none;
   align-items: center;
 
@@ -176,7 +177,7 @@
       width: 0.5rem;
     }
 
-    .expand--opened > .expand__toggle &,
+    .opened > .expand__toggle &,
     .hoverable .expand:hover > .expand__toggle & {
       transform: translateY(0.25em) rotate(-180deg);
     }
@@ -185,12 +186,12 @@
       margin-left: 0;
     }
     .expand__body &,
-    .expand__body .expand--opened &,
+    .expand__body .opened &,
     .hoverable .expand__body .expand:hover & {
       transform: translate(0, 0.25em) rotate(-90deg);
     }
     .dropdown__body &,
-    .dropdown__body .expand--opened &,
+    .dropdown__body .opened &,
     .hoverable .dropdown__body .expand:hover & {
       transform: translate(0, 0.25em) rotate(90deg);
     }

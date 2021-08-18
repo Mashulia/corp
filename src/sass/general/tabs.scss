@@ -1,7 +1,10 @@
 .tabs__switches {
-  @extend %fx-centered-y;
   overflow: hidden;
   padding-right: 3rem;
+
+  &:not(.slick-slider) {
+    @extend %fx-centered-y;
+  }
 }
 .tabs__switches__item {
   margin-bottom: 0;
@@ -11,7 +14,7 @@
 }
 .tabs__switch {
   cursor: pointer;
-  display: block;
+  display: inline-block;
   white-space: nowrap;
 
   &:hover {
@@ -70,6 +73,10 @@
       border-radius: $brad-3 $brad-3 0 0;
       margin-bottom: 0;
     }
+    .tabs__switches__item {
+      padding-left: 0;
+      padding-right: 0;
+    }
     .tabs__switch {
       background-color: transparent;
       color: $color-text1;
@@ -78,10 +85,6 @@
     .tabs__panels {
       padding: 1.875rem 2.5rem 1.75rem;
     }
-  }
-  .tabs__switches__item {
-    padding-left: 0;
-    padding-right: 0;
   }
 }
 @media (min-width: $break-lg) {

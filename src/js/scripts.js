@@ -1,7 +1,7 @@
-import { toggleDropdown, fixDropdown, closeWhatever } from "./dropdowns";
+import { revealer } from "./reveal";
+import { dropdown, expand } from "./dropdowns";
 import { createPageOverlay, removePageOverlay } from "./pageOverlay";
 import { handleNavOverflow, resetNavOverflow } from "./navOverflow";
-import { splitter } from "./split-dropdown";
 import { handleTabClick } from "./tabs";
 import { qtyChanger } from "./quantity-changer";
 import { handleAdd2Cart } from "./add2cart";
@@ -245,60 +245,22 @@ window.addEventListener("load", function () {
   let globalNavs = this.document.querySelectorAll(".dheader .site-nav");
 
   // dropdowns
-  var dropdownToggles = document.getElementsByClassName("dropdown__toggle");
-  for (var i = 0; i < dropdownToggles.length; i++) {
-    dropdownToggles[i].addEventListener("click", toggleDropdown);
-  }
+  document.querySelectorAll(".dropdown__toggle").forEach((el) => {
+    new dropdown(el, ".dropdown", 767);
+  });
 
   // header menu dropdowns
-  var expandToggles = document.getElementsByClassName("expand__toggle");
+  let expandToggles = document.querySelectorAll(".expand__toggle");
+
   function attachExpands(elems) {
-    for (var i = 0; i < elems.length; i++) {
-      elems[i].addEventListener("click", toggleExpand);
-    }
-  }
-  function removeExpands(elems) {
-    for (var i = 0; i < elems.length; i++) {
-      elems[i].removeEventListener("click", toggleExpand);
-    }
-  }
-  function toggleExpand(e) {
-    e.preventDefault();
-    var expandRoot = e.target.closest(".expand");
-    expandRoot.classList.toggle("expand--opened");
-    if (
-      window.innerWidth > 1023 &&
-      expandRoot.classList.contains("expand--opened")
-    ) {
-      fixDropdown(expandRoot.querySelector(".expand__body"));
-      closeWhatever(expandRoot, "expand--opened");
-    }
+    elems.forEach((item) => {
+      new expand(item, ".expand", 1023);
+    });
   }
   function closeMenuExpands() {
     var expandedMenus = document.getElementsByClassName("expand");
     for (var i = 0; i < expandedMenus.length; i++) {
       expandedMenus[i].classList.remove("expand--opened");
-    }
-  }
-
-  // page-nav dropdowns on mobile
-  var pageNavToggles = document.getElementsByClassName("page-nav__toggle");
-
-  function togglePageNav(e) {
-    e.target.closest(".page-nav").classList.toggle("page-nav--opened");
-  }
-  function clearPageNavToggle() {
-    var pageNavs = document.getElementsByClassName("page-nav");
-    for (var i = 0; i < pageNavs.length; i++) {
-      pageNavs[i].classList.remove("page-nav--opened");
-    }
-    for (var i = 0; i < pageNavToggles.length; i++) {
-      pageNavToggles[i].removeEventListener("click", togglePageNav);
-    }
-  }
-  function attachPageNavToggle() {
-    for (var i = 0; i < pageNavToggles.length; i++) {
-      pageNavToggles[i].addEventListener("click", togglePageNav);
     }
   }
 
@@ -671,9 +633,6 @@ window.addEventListener("load", function () {
       }
     );
   }
-  if (windowWidth < 1024) {
-    attachPageNavToggle();
-  }
 
   var telSelector = document.querySelectorAll("input[type='tel']");
   Inputmask({
@@ -726,19 +685,6 @@ window.addEventListener("load", function () {
       toTopElem.classList.remove("to-top--visible");
       toTopElem.classList.remove("to-top--footed");
     }
-  }
-
-  // aside navigation toggling on mobile
-  let asideNavToggles = document.querySelectorAll(".snavigation__toggle");
-  if (asideNavToggles && windowWidth < 1024) {
-    for (let i = 0; i < asideNavToggles.length; i++) {
-      let el = asideNavToggles[i];
-      el.addEventListener("click", toggleAsideNav);
-    }
-  }
-  function toggleAsideNav(e) {
-    e.preventDefault();
-    e.target.closest(".snavigation").classList.toggle("snavigation--opened");
   }
 
   // reviews pictures number overflow
@@ -811,12 +757,12 @@ window.addEventListener("load", function () {
   //   });
   // }
 
-  document.querySelectorAll(".split").forEach((el) => {
-    new splitter(el);
-  });
-
   document.querySelectorAll(".qty").forEach((el) => {
     new qtyChanger(el);
+  });
+
+  document.querySelectorAll(".js-revealer").forEach((el) => {
+    new revealer(el, ".reveal");
   });
 
   // tabs
@@ -836,10 +782,13 @@ window.addEventListener("load", function () {
 
   var delayedFunctions = function () {
     windowWidth = window.innerWidth;
-    removeExpands(expandToggles);
-    $(".tabs__switches").each(function () {
-      addTabNavSlider(this);
-    });
+
+    let tabsSwitches = document.querySelectorAll(".tabs__switches");
+    if (tabsSwitches) {
+      for (let m = 0; m < tabsSwitches.length; m++) {
+        addTabNavSlider(tabsSwitches[i]);
+      }
+    }
 
     if (reviewPictures.length) {
       resetReviewPictures();
@@ -865,11 +814,6 @@ window.addEventListener("load", function () {
         let el = globalNavs[i];
         resetNavOverflow(el);
       }
-
-      for (let i = 0; i < asideNavToggles.length; i++) {
-        let el = asideNavToggles[i];
-        el.addEventListener("click", toggleAsideNav);
-      }
     } else {
       detachMobileHeader();
       for (let i = 0; i < searchToggles.length; i++) {
@@ -889,21 +833,11 @@ window.addEventListener("load", function () {
         resetNavOverflow(el);
         handleNavOverflow(el, 32);
       }
-
-      for (let i = 0; i < asideNavToggles.length; i++) {
-        let el = asideNavToggles[i];
-        el.removeEventListener("click", toggleAsideNav);
-      }
     }
 
     if (touchDevice || windowWidth < 1024) {
       attachExpands(expandToggles);
       closeMenuExpands();
-    }
-
-    clearPageNavToggle();
-    if (windowWidth < 1024) {
-      attachPageNavToggle();
     }
   };
 });

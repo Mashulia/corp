@@ -15,12 +15,12 @@
   left: 0;
   z-index: 20;
 
-  &.dropdown__body--right {
+  .right > & {
     left: auto;
     right: 0;
   }
 
-  .dropdown--opened & {
+  .opened > & {
     display: block;
   }
 }
@@ -47,8 +47,6 @@
   position: relative;
   transition: transform 0.4s;
 }
-.dropdown--opened {
-  .dropdown__icon {
-    transform: rotate(-180deg);
-  }
+.opened > .dropdown__toggle .dropdown__icon {
+  transform: rotate(-180deg);
 }

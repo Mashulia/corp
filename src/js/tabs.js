@@ -1,15 +1,20 @@
 function handleTabClick(e) {
   e.preventDefault();
-  repositionSlick(e.target);
-  changeActiveSlide(e.target);
+  let clickedTabLink = e.target.classList.contains("tabs__switch")
+    ? e.target
+    : e.target.closest(".tabs__switch");
+  repositionSlick(clickedTabLink);
+  changeActiveSlide(clickedTabLink);
 }
 function changeActiveSlide(clickedLink) {
   const tabsEl = clickedLink.closest(".tabs");
   const tabNavs = tabsEl.querySelectorAll(".tabs__switch");
   const tabPanels = tabsEl.querySelectorAll(".tabs__panel");
-  let currentPanel = document.getElementById(
-    clickedLink.getAttribute("href").replace("#", "")
-  );
+  const linkHash = clickedLink.getAttribute("href");
+  let currentPanel = tabPanels[0];
+  if (linkHash) {
+    currentPanel = document.getElementById(linkHash.replace("#", ""));
+  }
   tabNavs.forEach((item) => {
     item.classList.remove("tabs__switch--current");
   });

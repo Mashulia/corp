@@ -91,32 +91,32 @@ mixin connectsDropdown(type)
     else
       +connectList(type)
 mixin section-navi(title, items, currentIndex)
-  .snavigation(class!=attributes.class)
-    button.snavigation__toggle= title
+  .snavigation(class!=attributes.class).reveal
+    button.snavigation__toggle.js-revealer= title
       span.snavigation__icon
         include ../../images/inline-svgs/dropdown.svg
-    .snavigation__body
+    .snavigation__body.reveal__contents
       ul.snavigation__list
         each item, index in items
           li.snavigation__item
             if !item.subcats
               a.snavigation__link(href=item.link, class={"snavigation__link--current": index == currentIndex})= item.value
             else
-              .snavigation__item.split
+              .snavigation__item.reveal
                 .snavigation__link
                   a.snavigation__text(href= item.link)= item.value
-                  button.split__toggle
+                  button.snavigation__link__button.js-revealer
                     include ../../images/inline-svgs/dropdown.svg
-                .split__body
+                .reveal__contents
                   ul.snavigation__list
                     each elm, index in item.subcats
                       if index == 2
-                        li.split.snavigation__item
+                        li.reveal.snavigation__item
                           .snavigation__link
                             a.snavigation__text(href= item.link)= item.value
-                            button.split__toggle
+                            button.snavigation__link__button.js-revealer
                               include ../../images/inline-svgs/dropdown.svg
-                          .split__body
+                          .reveal__contents
                             ul.snavigation__list
                               each elm, index in item.subcats
                                 li.snavigation__item

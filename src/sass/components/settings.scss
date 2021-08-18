@@ -5,7 +5,7 @@
   position: fixed;
   top: 7.5rem;
   left: 0.5rem;
-  z-index: 3;
+  z-index: 11;
 }
 .settings__body {
   background: #fff;
@@ -16,7 +16,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 4;
+  z-index: 12;
 }
 .settings__header {
   background: $color-textHeader;
@@ -123,7 +123,7 @@
 }
 .colors__color {
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   flex-wrap: wrap;
   position: relative;
@@ -254,16 +254,10 @@
   font-weight: 600;
   font-size: 0.8125rem;
 }
-.reveal__contents {
-  display: none;
-
-  .reveal--opened & {
-    display: block;
-  }
-}
 .sps__toggle {
   @extend %fx-centered-y;
   cursor: pointer;
+  margin-bottom: 1.25rem;
   position: relative;
 }
 .sps__toggle__input {

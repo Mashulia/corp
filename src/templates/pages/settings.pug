@@ -79,31 +79,33 @@ block settingsPanel
                           span.colors__label Мятное мороженое
               .settings__panel__section
                 .reveal
-                  label.sps__toggle.js-revealer
-                    input.sps__toggle__input(type="radio", name="site-theme")
+                  label.sps__toggle
+                    input.sps__toggle__input.js-revealer(type="radio", name="site-theme", value="0")
                     span.sps__toggle__value
                     span.sps__toggle__label Настроить цвет
                   .reveal__contents
                     .sps__container
                       .sps__title Индивидуальные настройки
                       .sps__body
-                        .sps__tabs.tabs
-                          .colors__list.cells.tabs__switches
-                            .colors__item.cell.cell-md-6.tabs__switch.tabs__switch--current
-                              label.colors__color
-                                input.colors__input(type="text", name="theme-color-1", value="")
-                                span.colors__value
-                                span.colors__label Основной цвет
-                            .colors__item.cell.cell-md-6.tabs__switch
-                              label.colors__color
-                                input.colors__input(type="text", name="theme-color-2", value="")
-                                span.colors__value
-                                span.colors__label Интерактивный цвет
+                        .tabs.sps__tabs
+                          .colors__list.sps-tabs__switches.cells
+                            .colors__item.cell.cell-6
+                              a.tabs__switch.tabs__switch--current(href="#choose-color-1")
+                                label.colors__color
+                                  input.colors__input(type="text", name="theme-color-1", value="", tabindex="-1")
+                                  span.colors__value
+                                  span.colors__label Основной цвет
+                            .colors__item.cell.cell-6
+                              a.tabs__switch(href="#choose-color-2")
+                                label.colors__color
+                                  input.colors__input(type="text", name="theme-color-2", value="", tabindex="-1")
+                                  span.colors__value
+                                  span.colors__label Интерактивный цвет
                           .tabs__panels
-                            .tabs__panel.tabs__panel--current
-                              .theme-color-1
-                            .tabs__panel
-                              .theme-color-2
+                            #choose-color-1.tabs__panel.tabs__panel--current
+                              .theme-color-1 Выбрать цвет 1
+                            #choose-color-2.tabs__panel
+                              .theme-color-2 Выбрать цвет 2
 
 
 
