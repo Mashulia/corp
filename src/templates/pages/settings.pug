@@ -32,12 +32,12 @@ block settingsPanel
               a.settings__label__link.settings__label__link--current(href="#settings-color") Цвет
             .settings__label
               a.settings__label__link(href="#settings-header") Шапка
-            .settings__label
-              a.settings__label__link(href="#settings-footer") Футер
-            .settings__label
-              a.settings__label__link(href="#settings-index") Главная
-            .settings__label
-              a.settings__label__link(href="#settings-sections") Разделы
+            //- .settings__label
+            //-   a.settings__label__link(href="#settings-footer") Футер
+            //- .settings__label
+            //-   a.settings__label__link(href="#settings-index") Главная
+            //- .settings__label
+            //-   a.settings__label__link(href="#settings-sections") Разделы
         .settings__panels
           .settings__panel.settings__panel--current#settings-color
             form(action="")
@@ -80,32 +80,30 @@ block settingsPanel
               .settings__panel__section
                 .reveal
                   label.sps__toggle
-                    input.sps__toggle__input.js-revealer(type="radio", name="site-theme", value="0")
+                    input.sps__toggle__input(type="radio", name="site-theme", value="0")
                     span.sps__toggle__value
                     span.sps__toggle__label Настроить цвет
                   .reveal__contents
                     .sps__container
                       .sps__title Индивидуальные настройки
                       .sps__body
-                        .tabs.sps__tabs
-                          .colors__list.sps-tabs__switches.cells
-                            .colors__item.cell.cell-6
-                              a.tabs__switch.tabs__switch--current(href="#choose-color-1")
-                                label.colors__color
-                                  input.colors__input(type="text", name="theme-color-1", value="", tabindex="-1")
-                                  span.colors__value
-                                  span.colors__label Основной цвет
-                            .colors__item.cell.cell-6
-                              a.tabs__switch(href="#choose-color-2")
-                                label.colors__color
-                                  input.colors__input(type="text", name="theme-color-2", value="", tabindex="-1")
-                                  span.colors__value
-                                  span.colors__label Интерактивный цвет
+                        .tabs
+                          ul.colors__list.sps-tabs__switches.cells
+                            li.colors__item.cell.cell-6
+                              a.colors__color.colors__color--7.tabs__switch.tabs__switch--current(data-name="theme-color-1", href="#color-picker-1")
+                                span.colors__value
+                                span.colors__label Основной цвет
+                            li.colors__item.cell.cell-6
+                              a.colors__color.colors__color--8.tabs__switch(data-name="theme-color-2", href="#color-picker-2")
+                                span.colors__value
+                                span.colors__label Интерактивный цвет
                           .tabs__panels
-                            #choose-color-1.tabs__panel.tabs__panel--current
-                              .theme-color-1 Выбрать цвет 1
-                            #choose-color-2.tabs__panel
-                              .theme-color-2 Выбрать цвет 2
+                            .tabs__panel.tabs__panel--current#color-picker-1
+                              input.spectrum-picker(value="#44745c", name="theme-color-1", type="text")
+                            .tabs__panel#color-picker-2
+                              input.spectrum-picker(value="#e8903f", name="theme-color-2", type="text")
+          .settings__panel#settings-header
+            h1 yay
 
 
 

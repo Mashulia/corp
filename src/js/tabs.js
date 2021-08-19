@@ -4,9 +4,9 @@ function handleTabClick(e) {
     ? e.target
     : e.target.closest(".tabs__switch");
   repositionSlick(clickedTabLink);
-  changeActiveSlide(clickedTabLink);
+  changeActivePanel(clickedTabLink);
 }
-function changeActiveSlide(clickedLink) {
+function changeActivePanel(clickedLink) {
   const tabsEl = clickedLink.closest(".tabs");
   const tabNavs = tabsEl.querySelectorAll(".tabs__switch");
   const tabPanels = tabsEl.querySelectorAll(".tabs__panel");
@@ -22,9 +22,10 @@ function changeActiveSlide(clickedLink) {
   tabPanels.forEach((item) => {
     item.classList.remove("tabs__panel--current");
   });
-  if (currentPanel) {
-    currentPanel.classList.add("tabs__panel--current");
-  }
+  currentPanel.classList.add("tabs__panel--current");
+  currentPanel
+    .querySelectorAll(".spectrum-picker")
+    .forEach((item) => $(item).spectrum("reflow"));
 }
 function repositionSlick(childEl) {
   const slickEl = childEl.closest(".slick-slider");

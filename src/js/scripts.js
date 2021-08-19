@@ -1,10 +1,11 @@
-import { revealer } from "./reveal";
+import { revealer, inputRevealer } from "./reveal";
 import { dropdown, expand } from "./dropdowns";
 import { createPageOverlay, removePageOverlay } from "./pageOverlay";
 import { handleNavOverflow, resetNavOverflow } from "./navOverflow";
 import { handleTabClick } from "./tabs";
 import { qtyChanger } from "./quantity-changer";
 import { handleAdd2Cart } from "./add2cart";
+import { TabGroup } from "./settings";
 // contents:
 // array.remove
 // delay function
@@ -586,6 +587,8 @@ window.addEventListener("load", function () {
   });
 
   // functions on load
+  TabGroup.init(".settings__tabs");
+
   function initTouchEvents() {
     attachExpands(expandToggles);
   }
@@ -773,6 +776,57 @@ window.addEventListener("load", function () {
     });
   }
 
+  // settings__panel__section toggle
+  document.querySelectorAll(".sps__toggle__input").forEach((el) => {
+    new inputRevealer(el, ".reveal");
+  });
+
+  // spectrum color picker
+  // const colorChoosers = document
+  //   .querySelectorAll(".color-picker")
+  //   .forEach((item) => {
+  //     const startingColor = item.dataset.color;
+  //     const correspondingInput = document.querySelector(
+  //       "[name='" + item.dataset.name + "']"
+  //     );
+  //   });
+  $(".spectrum-picker").each(function () {
+    const correspondingEl = document.querySelector(
+      "[data-name='" + this.getAttribute("name") + "']"
+    );
+    $(this).spectrum({
+      type: "flat",
+      showPalette: false,
+      showInput: true,
+      showAlpha: false,
+      allowEmpty: false,
+      clickoutFiresChange: true,
+      // appendTo: parentEl,
+      containerClassName: "colors__picker",
+      change: function (color) {
+        correspondingEl.style.color = color.toHexString();
+        this.setAttribute("value", color.toHslString());
+      },
+      dragstart: function (color) {
+        correspondingEl.style.color = color.toHexString();
+      },
+      move: function (color) {
+        correspondingEl.style.color = color.toHexString();
+      }
+    });
+  });
+  const spectrumCancels = document.getElementsByClassName("sp-cancel");
+  for (let i = 0; i < spectrumCancels.length; i++) {
+    spectrumCancels[i].addEventListener("click", resetSpectrumColor);
+  }
+  function resetSpectrumColor(e) {
+    e.target
+      .closest(".sp-container")
+      .previousSibling.dispatchEvent(new Event("change"));
+  }
+  document.querySelectorAll(".js-init-spectrum").forEach((item) => {
+    item.addEventListener("click", initSpectrum);
+  });
   // functions on resize
   window.onresize = function (event) {
     delay(function () {
