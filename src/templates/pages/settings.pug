@@ -6,7 +6,7 @@ block settingsPanel
       button.button.button-settings.js-settings
         include ../../images/inline-svgs/settings-tweak.svg
         span.sr-only Показать панель настроек сайта
-    .settings__body
+    .settings__contents
       .settings__header
         .cells.settings__header__row
           .cell.cell-auto
@@ -25,86 +25,237 @@ block settingsPanel
               button.button.button-icon.button-close.js-settings-close
                 include ../../images/inline-svgs/settings-close.svg
                 span.sr-only Закрыть панель настроек
-      .settings__tabs
-        .settings__labels
-          .settings__labels__list
-            .settings__label
-              a.settings__label__link.settings__label__link--current(href="#settings-color") Цвет
-            .settings__label
-              a.settings__label__link(href="#settings-header") Шапка
-            //- .settings__label
-            //-   a.settings__label__link(href="#settings-footer") Футер
-            //- .settings__label
-            //-   a.settings__label__link(href="#settings-index") Главная
-            //- .settings__label
-            //-   a.settings__label__link(href="#settings-sections") Разделы
-        .settings__panels
-          .settings__panel.settings__panel--current#settings-color
-            form(action="")
-              .settings__panel__title Цвет решения
-              .settings__panel__section
-                .sps__container.sps__container--active
-                  .sps__title Готовые комбинации
-                  .sps__body
-                    ul.colors__list.cells
-                      li.colors__item.cell.cell-6
-                        label.colors__color.colors__color--1
-                          input.colors__input(type="radio", name="site-theme", value="1", checked)
-                          span.colors__value
-                          span.colors__label Мандариновый сад
-                      li.colors__item.cell.cell-6
-                        label.colors__color.colors__color--2
-                          input.colors__input(type="radio", name="site-theme", value="2")
-                          span.colors__value
-                          span.colors__label Лесная черника
-                      li.colors__item.cell.cell-6
-                        label.colors__color.colors__color--3
-                          input.colors__input(type="radio", name="site-theme", value="3")
-                          span.colors__value
-                          span.colors__label Океанский бриз
-                      li.colors__item.cell.cell-6
-                        label.colors__color.colors__color--4
-                          input.colors__input(type="radio", name="site-theme", value="4")
-                          span.colors__value
-                          span.colors__label Осенний листопад
-                      li.colors__item.cell.cell-6
-                        label.colors__color.colors__color--5
-                          input.colors__input(type="radio", name="site-theme", value="5")
-                          span.colors__value
-                          span.colors__label Угольная буря
-                      li.colors__item.cell.cell-6
-                        label.colors__color.colors__color--6
-                          input.colors__input(type="radio", name="site-theme", value="6")
-                          span.colors__value
-                          span.colors__label Мятное мороженое
-              .settings__panel__section
-                .reveal
-                  label.sps__toggle
-                    input.sps__toggle__input(type="radio", name="site-theme", value="0")
-                    span.sps__toggle__value
-                    span.sps__toggle__label Настроить цвет
-                  .reveal__contents
-                    .sps__container
-                      .sps__title Индивидуальные настройки
-                      .sps__body
-                        .tabs
-                          ul.colors__list.sps-tabs__switches.cells
-                            li.colors__item.cell.cell-6
-                              a.colors__color.colors__color--7.tabs__switch.tabs__switch--current(data-name="theme-color-1", href="#color-picker-1")
-                                span.colors__value
-                                span.colors__label Основной цвет
-                            li.colors__item.cell.cell-6
-                              a.colors__color.colors__color--8.tabs__switch(data-name="theme-color-2", href="#color-picker-2")
-                                span.colors__value
-                                span.colors__label Интерактивный цвет
-                          .tabs__panels
-                            .tabs__panel.tabs__panel--current#color-picker-1
-                              input.spectrum-picker(value="#44745c", name="theme-color-1", type="text")
-                            .tabs__panel#color-picker-2
-                              input.spectrum-picker(value="#e8903f", name="theme-color-2", type="text")
-          .settings__panel#settings-header
-            h1 yay
-
+      .settings__body
+        .settings__tabs.tabs
+          .settings__labels.tabs__switches
+            .settings__label.tabs__switches__item
+              a.settings__label__link.tabs__switch.current(href="#settings-color") Цвет
+            .settings__label.tabs__switches__item
+              a.settings__label__link.tabs__switch(href="#settings-header") Шапка
+            .settings__label.tabs__switches__item
+              a.settings__label__link.tabs__switch(href="#settings-footer") Футер
+            .settings__label.tabs__switches__item
+              a.settings__label__link.tabs__switch(href="#settings-index") Главная
+            .settings__label.tabs__switches__item
+              a.settings__label__link.tabs__switch(href="#settings-sections") Разделы
+          .settings__panels.tabs__panels
+            .settings__panel.tabs__panel.current#settings-color
+              form(action="")
+                .settings__panel__title Цвет решения
+                .settings__panel__section.active
+                  .sps__container
+                    .sps__title Готовые комбинации
+                    .sps__body
+                      ul.colors__list.cells
+                        li.colors__item.cell.cell-6
+                          label.colors__color.colors__color--1
+                            input.colors__input(type="radio", name="site-theme", value="1", checked)
+                            span.colors__value
+                            span.colors__label Мандариновый сад
+                        li.colors__item.cell.cell-6
+                          label.colors__color.colors__color--2
+                            input.colors__input(type="radio", name="site-theme", value="2")
+                            span.colors__value
+                            span.colors__label Лесная черника
+                        li.colors__item.cell.cell-6
+                          label.colors__color.colors__color--3
+                            input.colors__input(type="radio", name="site-theme", value="3")
+                            span.colors__value
+                            span.colors__label Океанский бриз
+                        li.colors__item.cell.cell-6
+                          label.colors__color.colors__color--4
+                            input.colors__input(type="radio", name="site-theme", value="4")
+                            span.colors__value
+                            span.colors__label Осенний листопад
+                        li.colors__item.cell.cell-6
+                          label.colors__color.colors__color--5
+                            input.colors__input(type="radio", name="site-theme", value="5")
+                            span.colors__value
+                            span.colors__label Угольная буря
+                        li.colors__item.cell.cell-6
+                          label.colors__color.colors__color--6
+                            input.colors__input(type="radio", name="site-theme", value="6")
+                            span.colors__value
+                            span.colors__label Мятное мороженое
+                .settings__panel__section
+                  .reveal
+                    label.sps__toggle
+                      input.sps__toggle__input(type="radio", name="site-theme", value="0")
+                      span.sps__toggle__value
+                      span.sps__toggle__label Настроить цвет
+                    .reveal__contents
+                      .sps__container
+                        .sps__title Индивидуальные настройки
+                        .sps__body
+                          .tabs
+                            ul.colors__list.tabs__switches.cells
+                              li.colors__item.cell.cell-6
+                                a.tabs__switch.current(href="#color-picker-1")
+                                  .colors__color.colors__color--7(data-name="theme-color-1")
+                                    span.colors__value
+                                    span.colors__label Основной цвет
+                              li.colors__item.cell.cell-6
+                                a.tabs__switch(href="#color-picker-2")
+                                  .colors__color.colors__color--8(data-name="theme-color-2")
+                                    span.colors__value
+                                    span.colors__label Интерактивный цвет
+                            .tabs__panels
+                              .tabs__panel.current#color-picker-1
+                                input.spectrum-picker(value="#44745c", name="theme-color-1", type="text")
+                              .tabs__panel#color-picker-2
+                                input.spectrum-picker(value="#e8903f", name="theme-color-2", type="text")
+            .settings__panel.tabs__panel#settings-header
+              form(action="")
+                .settings__panel__title Выбор шапки
+                -
+                  var setsHdr = [
+                    {
+                      title: "Светлая шапка, телефон и адрес",
+                      pic: require("/src/images/theme-images/set-header-1.jpg")
+                    },
+                    {
+                      title: "Цветная шапка, телефон и адрес",
+                      pic: require("/src/images/theme-images/set-header-2.jpg")
+                    },
+                    {
+                      title: "Светлая шапка, телефон и адрес, соц. сети",
+                      pic: require("/src/images/theme-images/set-header-3.jpg")
+                    }
+                  ];
+                .settings__options
+                  each item, index in setsHdr
+                    .settings__panel__section(class= index === 0 ? "active" : "")
+                      label.settings__option
+                        input.set-option__input(type="radio", name="header-var", value= index, checked= index===0 )
+                        span.sps__container
+                          span.set-option__title= item.title
+                          span.set-option__image
+                            img(src= item.pic)
+            .settings__panel.tabs__panel#settings-footer
+              form(action="")
+                .settings__panel__title Выбор футера
+                -
+                  var setsFtr = [
+                    {
+                      title: "Темный подробный футер",
+                      pic: require("/src/images/theme-images/set-footer-1.jpg")
+                    },
+                    {
+                      title: "Светлый подробный футер",
+                      pic: require("/src/images/theme-images/set-footer-2.jpg")
+                    },
+                    {
+                      title: "Небольшой тёмный футер",
+                      pic: require("/src/images/theme-images/set-footer-3.jpg")
+                    },
+                    {
+                      title: "Небольшой светлый футер",
+                      pic: require("/src/images/theme-images/set-footer-4.jpg")
+                    }
+                  ];
+                .settings__options
+                  each item, index in setsFtr
+                    .settings__panel__section(class= index === 0 ? "active" : "")
+                      label.settings__option
+                        input.set-option__input(type="radio", name="footer-var", value= index, checked= index===0 )
+                        span.sps__container
+                          span.set-option__title= item.title
+                          span.set-option__image
+                            img(src= item.pic)
+            .settings__panel.tabs__panel#settings-index
+              -
+                var blockSts = [
+                  {
+                    blockName: "Промо",
+                    options: [
+                      {
+                        title: "Тёмный фон",
+                        pic: require("/src/images/theme-images/set-promo-1.jpg")
+                      },
+                      {
+                        title: "Светлый фон",
+                        pic: require("/src/images/theme-images/set-promo-2.jpg")
+                      }
+                    ]
+                  },
+                  {
+                    blockName: "Тизеры"
+                  },
+                  {
+                    blockName: "Услуги",
+                    options: [
+                      {
+                        title: "С большими картинками",
+                        pic: require("/src/images/theme-images/set-services-1.jpg")
+                      },
+                      {
+                        title: "С маленькими картинками",
+                        pic: require("/src/images/theme-images/set-services-2.jpg")
+                      }
+                    ]
+                  },
+                  {
+                    blockName: "Блок с видео"
+                  },
+                  {
+                    blockName: "Партнеры"
+                  },
+                  {
+                    blockName: "Каталог",
+                    options: [
+                      {
+                        title: "С большими картинками",
+                        pic: require("/src/images/theme-images/set-catalog-1.jpg")
+                      },
+                      {
+                        title: "С маленькими картинками",
+                        pic: require("/src/images/theme-images/set-catalog-2.jpg")
+                      }
+                    ]
+                  },
+                  {
+                    blockName: "Блок с товарами"
+                  },
+                  {
+                    blockName: "Новости"
+                  },
+                  {
+                    blockName: "Галерея"
+                  },
+                  {
+                    blockName: "Отзывы"
+                  },
+                  {
+                    blockName: "О компании"
+                  }
+                ];
+              form(action="")
+                .settings__panel__title Настройки главной страницы
+                .settings__accordeons
+                  each item, index in blockSts
+                    .settings__accordeon(class= item.options ? "reveal" : "")
+                      .set-accordeon__header
+                        .set-accordeon__title= item.blockName
+                        .set-accordeon__actions
+                          if item.options
+                            .set-accordeon__action
+                              button.button.button-icon.button-tweak.js-revealer
+                                include ../../images/inline-svgs/settings-block-settings.svg
+                          label.set-accordeon__action
+                            input.settings__block-toggle(type="checkbox", name="", checked= index != 2)
+                            span.button.button-icon.button-on
+                              include ../../images/inline-svgs/settings-on.svg
+                      if item.options
+                        .reveal__contents.set-accordeon__contents
+                          .settings__options.cells
+                            each elem, ind in item.options
+                              .cell.cell-sm-6.settings__panel__section(class= ind == 0 ? "active" : "")
+                                label.settings__option
+                                  input.set-option__input(type="radio", name= "block" + index, value= ind, checked= ind==0 )
+                                  span.sps__container
+                                    span.set-option__image
+                                      img(src= elem.pic)
+                                  span.set-option__text= elem.title
 
 
 

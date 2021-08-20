@@ -1,4 +1,59 @@
-function handleTabClick(e) {
+class TabGroup {
+  constructor(element) {
+    this.tabs = this.createTabs(element);
+  }
+  createTabs(list) {
+    const tabElements = [...list.children[0].querySelectorAll(".tabs__switch")];
+
+    return tabElements.map(
+      (el) =>
+        new Tab(el, {
+          beforeActivate: this.deactivateAll.bind(this)
+        })
+    );
+  }
+  deactivateAll() {
+    this.tabs.forEach((tab) => tab.deactivate());
+  }
+
+  static init(selector) {
+    document.querySelectorAll(selector).forEach((el) => new TabGroup(el));
+  }
+}
+class Tab {
+  constructor(element, { beforeActivate }) {
+    this.link = element;
+    this.panel =
+      document.querySelector(element.getAttribute("href")) ||
+      this.link.closest(".tabs").children[1].children[0];
+    this.beforeActivate = beforeActivate;
+    this.handleClick();
+  }
+  handleClick() {
+    this.link.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (!this.isActive()) {
+        this.activate();
+      }
+    });
+  }
+  isActive() {
+    return this.link.classList.contains("current");
+  }
+  activate() {
+    if (typeof this.beforeActivate === "function") {
+      this.beforeActivate();
+    }
+    this.link.classList.add("current");
+    this.panel.classList.add("current");
+  }
+  deactivate() {
+    this.link.classList.remove("current");
+    this.panel.classList.remove("current");
+  }
+}
+
+function handleSlidingTabClick(e) {
   e.preventDefault();
   let clickedTabLink = e.target.classList.contains("tabs__switch")
     ? e.target
@@ -16,13 +71,13 @@ function changeActivePanel(clickedLink) {
     currentPanel = document.getElementById(linkHash.replace("#", ""));
   }
   tabNavs.forEach((item) => {
-    item.classList.remove("tabs__switch--current");
+    item.classList.remove("current");
   });
-  clickedLink.classList.add("tabs__switch--current");
+  clickedLink.classList.add("current");
   tabPanels.forEach((item) => {
-    item.classList.remove("tabs__panel--current");
+    item.classList.remove("current");
   });
-  currentPanel.classList.add("tabs__panel--current");
+  currentPanel.classList.add("current");
   currentPanel
     .querySelectorAll(".spectrum-picker")
     .forEach((item) => $(item).spectrum("reflow"));
@@ -46,4 +101,4 @@ function repositionSlick(childEl) {
     }
   }
 }
-export { handleTabClick };
+export { handleSlidingTabClick, TabGroup };

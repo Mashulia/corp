@@ -2,10 +2,10 @@ import { revealer, inputRevealer } from "./reveal";
 import { dropdown, expand } from "./dropdowns";
 import { createPageOverlay, removePageOverlay } from "./pageOverlay";
 import { handleNavOverflow, resetNavOverflow } from "./navOverflow";
-import { handleTabClick } from "./tabs";
+import { handleSlidingTabClick, TabGroup } from "./tabs";
 import { qtyChanger } from "./quantity-changer";
 import { handleAdd2Cart } from "./add2cart";
-import { TabGroup } from "./settings";
+import { SettingsGroup } from "./settings";
 // contents:
 // array.remove
 // delay function
@@ -514,7 +514,7 @@ window.addEventListener("load", function () {
         this.style.height = "auto";
       }
     });
-    $(".tabs__switches").each(function () {
+    $(".sliding-tabs .tabs__switches").each(function () {
       addTabNavSlider(this);
     });
   } else {
@@ -587,8 +587,6 @@ window.addEventListener("load", function () {
   });
 
   // functions on load
-  TabGroup.init(".settings__tabs");
-
   function initTouchEvents() {
     attachExpands(expandToggles);
   }
@@ -769,27 +767,21 @@ window.addEventListener("load", function () {
   });
 
   // tabs
-  const tabTriggers = document.querySelectorAll(".tabs__switch");
+  const tabTriggers = document.querySelectorAll(".sliding-tabs .tabs__switch");
   if (tabTriggers.length) {
     tabTriggers.forEach((item) => {
-      item.addEventListener("click", handleTabClick);
+      item.addEventListener("click", handleSlidingTabClick);
     });
   }
+  TabGroup.init(".tabs:not(.sliding-tabs)");
 
   // settings__panel__section toggle
   document.querySelectorAll(".sps__toggle__input").forEach((el) => {
     new inputRevealer(el, ".reveal");
   });
+  SettingsGroup.init(".settings__panel");
 
   // spectrum color picker
-  // const colorChoosers = document
-  //   .querySelectorAll(".color-picker")
-  //   .forEach((item) => {
-  //     const startingColor = item.dataset.color;
-  //     const correspondingInput = document.querySelector(
-  //       "[name='" + item.dataset.name + "']"
-  //     );
-  //   });
   $(".spectrum-picker").each(function () {
     const correspondingEl = document.querySelector(
       "[data-name='" + this.getAttribute("name") + "']"
@@ -827,6 +819,7 @@ window.addEventListener("load", function () {
   document.querySelectorAll(".js-init-spectrum").forEach((item) => {
     item.addEventListener("click", initSpectrum);
   });
+
   // functions on resize
   window.onresize = function (event) {
     delay(function () {
@@ -837,10 +830,12 @@ window.addEventListener("load", function () {
   var delayedFunctions = function () {
     windowWidth = window.innerWidth;
 
-    let tabsSwitches = document.querySelectorAll(".tabs__switches");
+    let tabsSwitches = document.querySelectorAll(
+      ".sliding-tabs .tabs__switches"
+    );
     if (tabsSwitches) {
       for (let m = 0; m < tabsSwitches.length; m++) {
-        addTabNavSlider(tabsSwitches[i]);
+        addTabNavSlider(tabsSwitches[m]);
       }
     }
 

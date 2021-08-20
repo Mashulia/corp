@@ -124,7 +124,7 @@ block contentBody
   .cells
     .cell.cell-lg-9
       block productBody
-        .tabs.product__tabs#product__full
+        .tabs.product__tabs.sliding-tabs#product__full
           -
             var tabNav = [
               {name: "Описание", link: "#product__description"},
@@ -136,9 +136,9 @@ block contentBody
           .tabs__switches
             each item, index in tabNav
               .tabs__switches__item
-                a.tabs__switch(href= item.link, class= index == 0 ? "tabs__switch--current" : "")= item.name
+                a.tabs__switch(href= item.link, class= index == 0 ? "current" : "")= item.name
           .tabs__panels
-            .tabs__panel.tabs__panel--current#product__description
+            .tabs__panel.current#product__description
               p.
                 Поролон благодаря своей ячеистой структуре обеспечивает теплоизоляцию.
                 Эластичный листовой материал применяется при установке оконных блоков и других внутренних конструкций.

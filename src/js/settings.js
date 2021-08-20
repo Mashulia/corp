@@ -1,59 +1,51 @@
-// settings tabs
-class TabGroup {
+class SettingsGroup {
   constructor(element) {
-    this.tabs = this.createTabs(element);
+    this.settings = this.createSetSections(element);
   }
-  createTabs(list) {
-    const tabElements = [...list.querySelectorAll(".settings__label__link")];
+  createSetSections(list) {
+    const settingsPanelSections = [
+      ...list.querySelectorAll(".settings__panel__section")
+    ];
 
-    return tabElements.map(
+    return settingsPanelSections.map(
       (el) =>
-        new Tab(el, {
+        new SettingsSection(el, {
           beforeActivate: this.deactivateAll.bind(this)
         })
     );
   }
   deactivateAll() {
-    this.tabs.forEach((tab) => tab.deactivate());
+    this.settings.forEach((setSection) => setSection.deactivate());
   }
 
   static init(selector) {
-    document.querySelectorAll(selector).forEach((el) => new TabGroup(el));
+    document.querySelectorAll(selector).forEach((el) => new SettingsGroup(el));
   }
 }
-
-class Tab {
+class SettingsSection {
   constructor(element, { beforeActivate }) {
-    this.link = element;
-    this.panel = document.querySelector(element.getAttribute("href"));
+    this.setSection = element;
     this.beforeActivate = beforeActivate;
     this.handleClick();
   }
   handleClick() {
-    this.link.addEventListener("click", (e) => {
-      e.preventDefault();
-
-      if (this.isActive()) {
-        this.deactivate();
-      } else {
+    this.setSection.addEventListener("click", () => {
+      if (!this.isActive()) {
         this.activate();
       }
     });
   }
   isActive() {
-    return this.link.classList.contains("current");
+    return this.setSection.classList.contains("active");
   }
   activate() {
     if (typeof this.beforeActivate === "function") {
       this.beforeActivate();
     }
-    this.link.classList.add("current");
-    this.panel.classList.add("current");
+    this.setSection.classList.add("active");
   }
   deactivate() {
-    this.link.classList.remove("current");
-    this.panel.classList.remove("current");
+    this.setSection.classList.remove("active");
   }
 }
-
-export { TabGroup };
+export { SettingsGroup };
