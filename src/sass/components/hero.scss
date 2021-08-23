@@ -174,3 +174,9 @@
     bottom: 2rem;
   }
 }
+.dark {
+  .hero__descr {
+    background: rgba(42, 43, 43, 0.4);
+    color: rgba(255, 255, 255, 0.7);
+  }
+}

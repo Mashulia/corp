@@ -20,11 +20,10 @@ block settingsPanel
                 span.button__body Сбросить
                 span.button__icon
                   include ../../images/inline-svgs/settings-reset.svg
-          .cell.cell-auto
-            .settings__close
-              button.button.button-icon.button-close.js-settings-close
-                include ../../images/inline-svgs/settings-close.svg
-                span.sr-only Закрыть панель настроек
+          .cell.cell-auto.settings__close
+            button.button.button-icon.button-close.js-settings-close
+              include ../../images/inline-svgs/settings-close.svg
+              span.sr-only Закрыть панель настроек
       .settings__body
         .settings__tabs.tabs
           .settings__labels.tabs__switches
@@ -49,38 +48,38 @@ block settingsPanel
                       ul.colors__list.cells
                         li.colors__item.cell.cell-6
                           label.colors__color.colors__color--1
-                            input.colors__input(type="radio", name="site-theme", value="1", checked)
+                            input.colors__input(type="radio", name="site-theme", value="set1", checked)
                             span.colors__value
                             span.colors__label Мандариновый сад
                         li.colors__item.cell.cell-6
                           label.colors__color.colors__color--2
-                            input.colors__input(type="radio", name="site-theme", value="2")
+                            input.colors__input(type="radio", name="site-theme", value="set2")
                             span.colors__value
                             span.colors__label Лесная черника
                         li.colors__item.cell.cell-6
                           label.colors__color.colors__color--3
-                            input.colors__input(type="radio", name="site-theme", value="3")
+                            input.colors__input(type="radio", name="site-theme", value="set3")
                             span.colors__value
                             span.colors__label Океанский бриз
                         li.colors__item.cell.cell-6
                           label.colors__color.colors__color--4
-                            input.colors__input(type="radio", name="site-theme", value="4")
+                            input.colors__input(type="radio", name="site-theme", value="set4")
                             span.colors__value
                             span.colors__label Осенний листопад
                         li.colors__item.cell.cell-6
                           label.colors__color.colors__color--5
-                            input.colors__input(type="radio", name="site-theme", value="5")
+                            input.colors__input(type="radio", name="site-theme", value="set5")
                             span.colors__value
                             span.colors__label Угольная буря
                         li.colors__item.cell.cell-6
                           label.colors__color.colors__color--6
-                            input.colors__input(type="radio", name="site-theme", value="6")
+                            input.colors__input(type="radio", name="site-theme", value="set6")
                             span.colors__value
                             span.colors__label Мятное мороженое
                 .settings__panel__section
                   .reveal
                     label.sps__toggle
-                      input.sps__toggle__input(type="radio", name="site-theme", value="0")
+                      input.sps__toggle__input(type="radio", name="site-theme", value="custom")
                       span.sps__toggle__value
                       span.sps__toggle__label Настроить цвет
                     .reveal__contents
@@ -120,7 +119,15 @@ block settingsPanel
                     {
                       title: "Светлая шапка, телефон и адрес, соц. сети",
                       pic: require("/src/images/theme-images/set-header-3.jpg")
-                    }
+                    },
+                    //- {
+                    //-   title: "Длинное-предлинное название какой-то опции. Лалалалала лалалал лалалаа",
+                    //-   pic: require("/src/images/content-images/cats-2.png")
+                    //- },
+                    //- {
+                    //-   title: "Опция",
+                    //-   pic: require("/src/images/theme-images/404.jpg")
+                    //- }
                   ];
                 .settings__options
                   each item, index in setsHdr
@@ -247,15 +254,69 @@ block settingsPanel
                               include ../../images/inline-svgs/settings-on.svg
                       if item.options
                         .reveal__contents.set-accordeon__contents
-                          .settings__options.cells
+                          .settings__options.settings__options--centered.cells
                             each elem, ind in item.options
-                              .cell.cell-sm-6.settings__panel__section(class= ind == 0 ? "active" : "")
+                              .cell.cell-sm-6
                                 label.settings__option
                                   input.set-option__input(type="radio", name= "block" + index, value= ind, checked= ind==0 )
                                   span.sps__container
                                     span.set-option__image
                                       img(src= elem.pic)
                                   span.set-option__text= elem.title
-
-
+            .settings__panel.tabs__panel#settings-sections
+              form(action="")
+                .settings__panel__block
+                  .settings__panel__title Настройки каталога
+                  .settings__panel__block__item
+                    .sps__container
+                      .sps__title Шаблон каталога
+                      .settings__options.settings__options--centered.cells
+                        .cell.cell-sm-6
+                          label.settings__option
+                            input.set-option__input(type="radio", name= "catSets", value= "v1", checked)
+                            span.sps__container
+                              span.set-option__image
+                                img(src= require("/src/images/theme-images/set-catalog-1.jpg"))
+                            span.set-option__text С большими картинками
+                        .cell.cell-sm-6
+                          label.settings__option
+                            input.set-option__input(type="radio", name= "catSets", value= "v2")
+                            span.sps__container
+                              span.set-option__image
+                                img(src= require("/src/images/theme-images/set-catalog-2.jpg"))
+                            span.set-option__text С подкатегориями
+                  .settings__panel__block__item
+                    .sps__container
+                      .sps__title Карточка товара
+                      .settings__options.settings__options--centered.cells
+                        .cell.cell-sm-6
+                          label.settings__option
+                            input.set-option__input(type="radio", name= "productSets", value= "v1", checked)
+                            span.sps__container
+                              span.set-option__text С табами
+                        .cell.cell-sm-6
+                          label.settings__option
+                            input.set-option__input(type="radio", name= "productSets", value= "v2")
+                            span.sps__container
+                              span.set-option__text Без табов
+                .settings__panel__block
+                  .settings__panel__title Настройки услуг
+                  .settings__panel__block__item
+                    .sps__container
+                      .sps__title Детальная услуги
+                      .settings__options.settings__options--centered.cells
+                        .cell.cell-sm-6
+                          label.settings__option
+                            input.set-option__input(type="radio", name= "serviceSets", value= "v1", checked)
+                            span.sps__container
+                              span.set-option__image
+                                img(src= require("/src/images/theme-images/set-service-1.jpg"))
+                            span.set-option__text С большой картинкой
+                        .cell.cell-sm-6
+                          label.settings__option
+                            input.set-option__input(type="radio", name= "serviceSets", value= "v2")
+                            span.sps__container
+                              span.set-option__image
+                                img(src= require("/src/images/theme-images/set-service-2.jpg"))
+                            span.set-option__text С маленькой картинкой
 

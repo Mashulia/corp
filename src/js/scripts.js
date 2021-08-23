@@ -1,4 +1,4 @@
-import { revealer, inputRevealer } from "./reveal";
+import { revealer, inputRevealer, overlayedRevealer } from "./reveal";
 import { dropdown, expand } from "./dropdowns";
 import { createPageOverlay, removePageOverlay } from "./pageOverlay";
 import { handleNavOverflow, resetNavOverflow } from "./navOverflow";
@@ -775,17 +775,23 @@ window.addEventListener("load", function () {
   }
   TabGroup.init(".tabs:not(.sliding-tabs)");
 
+  // settings panel toggle
+  document
+    .querySelectorAll(".js-settings, .js-settings-close")
+    .forEach((el) => {
+      new overlayedRevealer(el, ".settings");
+    });
   // settings__panel__section toggle
   document.querySelectorAll(".sps__toggle__input").forEach((el) => {
     new inputRevealer(el, ".reveal");
   });
   SettingsGroup.init(".settings__panel");
-
   // spectrum color picker
   $(".spectrum-picker").each(function () {
     const correspondingEl = document.querySelector(
       "[data-name='" + this.getAttribute("name") + "']"
     );
+    const siteRoot = document.querySelector(".corp");
     $(this).spectrum({
       type: "flat",
       showPalette: false,
@@ -797,7 +803,18 @@ window.addEventListener("load", function () {
       containerClassName: "colors__picker",
       change: function (color) {
         correspondingEl.style.color = color.toHexString();
+        let currentHsl = color.toHsl();
         this.setAttribute("value", color.toHslString());
+        console.log(currentHsl.h);
+        if (this.getAttribute("name") == "theme-color-1") {
+          siteRoot.style.setProperty("--custom-color-1h", currentHsl.h);
+          siteRoot.style.setProperty("--custom-color-1s", currentHsl.s);
+          siteRoot.style.setProperty("--custom-color-1l", currentHsl.l);
+        } else {
+          siteRoot.style.setProperty("--custom-color-2h", currentHsl.h);
+          siteRoot.style.setProperty("--custom-color-2s", currentHsl.s);
+          siteRoot.style.setProperty("--custom-color-2l", currentHsl.l);
+        }
       },
       dragstart: function (color) {
         correspondingEl.style.color = color.toHexString();
@@ -818,6 +835,71 @@ window.addEventListener("load", function () {
   }
   document.querySelectorAll(".js-init-spectrum").forEach((item) => {
     item.addEventListener("click", initSpectrum);
+  });
+  document.querySelectorAll("[name='site-theme']").forEach((item) => {
+    item.addEventListener("change", (e) => {
+      const siteThemeSet = e.target.getAttribute("value");
+      const siteRoot = document.querySelector(".corp");
+      switch (siteThemeSet) {
+        case "set1":
+          siteRoot.style.setProperty("--custom-color-1h", 29);
+          siteRoot.style.setProperty("--custom-color-1s", "78%");
+          siteRoot.style.setProperty("--custom-color-1l", "58%");
+          siteRoot.style.setProperty("--custom-color-2h", 150);
+          siteRoot.style.setProperty("--custom-color-2s", "26%");
+          siteRoot.style.setProperty("--custom-color-2l", "36%");
+          break;
+        case "set2":
+          siteRoot.style.setProperty("--custom-color-1h", 79);
+          siteRoot.style.setProperty("--custom-color-1s", "69%");
+          siteRoot.style.setProperty("--custom-color-1l", "40%");
+          siteRoot.style.setProperty("--custom-color-2h", 230);
+          siteRoot.style.setProperty("--custom-color-2s", "46%");
+          siteRoot.style.setProperty("--custom-color-2l", "29%");
+          break;
+        case "set3":
+          siteRoot.style.setProperty("--custom-color-1h", 183);
+          siteRoot.style.setProperty("--custom-color-1s", "100%");
+          siteRoot.style.setProperty("--custom-color-1l", "37%");
+          siteRoot.style.setProperty("--custom-color-2h", 202);
+          siteRoot.style.setProperty("--custom-color-2s", "100%");
+          siteRoot.style.setProperty("--custom-color-2l", "30%");
+          break;
+        case "set4":
+          siteRoot.style.setProperty("--custom-color-1h", 27);
+          siteRoot.style.setProperty("--custom-color-1s", "75%");
+          siteRoot.style.setProperty("--custom-color-1l", "58%");
+          siteRoot.style.setProperty("--custom-color-2h", 353);
+          siteRoot.style.setProperty("--custom-color-2s", "69%");
+          siteRoot.style.setProperty("--custom-color-2l", "37%");
+          break;
+        case "set5":
+          siteRoot.style.setProperty("--custom-color-1h", 358);
+          siteRoot.style.setProperty("--custom-color-1s", "85%");
+          siteRoot.style.setProperty("--custom-color-1l", "52%");
+          siteRoot.style.setProperty("--custom-color-2h", 252);
+          siteRoot.style.setProperty("--custom-color-2s", "12%");
+          siteRoot.style.setProperty("--custom-color-2l", "16%");
+          break;
+        case "set6":
+          siteRoot.style.setProperty("--custom-color-1h", 186);
+          siteRoot.style.setProperty("--custom-color-1s", "81%");
+          siteRoot.style.setProperty("--custom-color-1l", "45%");
+          siteRoot.style.setProperty("--custom-color-2h", 313);
+          siteRoot.style.setProperty("--custom-color-2s", "40%");
+          siteRoot.style.setProperty("--custom-color-2l", "47%");
+          break;
+        // default:
+        //   const themeColor1 = document
+        //     .querySelector('[name="theme-color-1"]')
+        //     .getAttribute("value");
+        //   const themeColor2 = document
+        //     .querySelector('[name="theme-color-2"]')
+        //     .getAttribute("value");
+        //   console.log(themeColor1);
+        //   console.log(themeColor2);
+      }
+    });
   });
 
   // functions on resize

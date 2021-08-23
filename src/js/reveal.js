@@ -1,3 +1,4 @@
+import { createPageOverlay, removePageOverlay } from "./pageOverlay";
 class revealer {
   constructor(triggerEl, rootClass) {
     Object.assign(this, {
@@ -49,4 +50,22 @@ class inputRevealer extends revealer {
     }
   }
 }
-export { revealer, inputRevealer };
+class overlayedRevealer extends revealer {
+  toggle(e) {
+    super.toggle(e);
+    let self = this;
+    if (this.wrapper.classList.contains(`opened`)) {
+      let pageOverlay = createPageOverlay();
+      pageOverlay.addEventListener("click", closeWhatsOpened);
+    } else {
+      let pageOverlay = document.getElementsByClassName("page-overlay")[0];
+      removePageOverlay(pageOverlay);
+    }
+    function closeWhatsOpened(e) {
+      e.target.removeEventListener("click", closeWhatsOpened);
+      removePageOverlay(e.target);
+      self.wrapper.classList.remove(`opened`);
+    }
+  }
+}
+export { revealer, inputRevealer, overlayedRevealer };

@@ -21,12 +21,14 @@
     },
     {
       title: "Laborum maxime maiores doloribus",
-      picD: require("/src/images/content-images/promo-desk-2.jpg")
+      picD: require("/src/images/content-images/promo-desk-3.jpg"),
+      dark: true
     },
     {
       title: "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
       descr: "Aut impedit cumque doloremque molestias aperiam quod quaerat excepturi! Ullam molestias ducimus vero nostrum?",
-      picD: require("/src/images/content-images/promo-desk.jpg")
+      picD: require("/src/images/content-images/promo-desk.jpg"),
+      dark: true
     },
     {
       title: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum maxime maiores doloribus asperiores hic totam facere",
@@ -45,7 +47,7 @@
   .slider.hero__slider
     each elm in listhero
       .slider__item
-        .hero__item
+        .hero__item(class= elm.dark ? "dark" : "")
           // Если нет никакого текста на слайде, то к элементу .hero__bg добавляем класс .hero__bg--solo
           .hero__bg(class={"hero__bg--solo": !elm.descr && !elm.title && !elm.btn})
             if elm.picD || elm.img

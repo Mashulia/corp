@@ -46,6 +46,9 @@ class Tab {
     }
     this.link.classList.add("current");
     this.panel.classList.add("current");
+    this.panel
+      .querySelectorAll(".spectrum-picker")
+      .forEach((item) => $(item).spectrum("reflow"));
   }
   deactivate() {
     this.link.classList.remove("current");
