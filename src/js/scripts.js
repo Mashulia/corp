@@ -759,9 +759,9 @@ window.addEventListener("load", function () {
   //   });
   // }
 
-  document.querySelectorAll(".qty").forEach((el) => {
-    new qtyChanger(el);
-  });
+  // document.querySelectorAll(".qty").forEach((el) => {
+  //   new qtyChanger(el).checkRange();
+  // });
 
   document.querySelectorAll(".js-revealer").forEach((el) => {
     new revealer(el, ".reveal");

@@ -51,7 +51,7 @@
   display: none;
 }
 .fancy-close {
-  .fancy-form & {
+  .fancybox-slide--html & {
     @media (min-width: $break-lg) {
       height: 2.5rem;
       width: 2.5rem;

@@ -34,6 +34,10 @@
   &:active,
   &.current {
     color: #fff;
+
+    .product__tabs & {
+      color: #fff;
+    }
   }
 }
 .tabs__panel {
@@ -64,6 +68,8 @@
     .tabs__switches {
       background: rgba(224, 224, 224, 0.6);
       border-radius: $brad-3 $brad-3 0 0;
+      margin-left: 0;
+      margin-right: 0;
       margin-bottom: 0;
     }
     .tabs__switches__item {
