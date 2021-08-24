@@ -1,4 +1,4 @@
-.corp {
+body {
   --color-header: #262828;
   --custom-color-1h: 29;
   --custom-color-1s: 78%;
@@ -32,7 +32,39 @@
     calc(var(--custom-color-2l) - 15%)
   );
 }
-
+.corp {
+  --custom-color-1h: 29;
+  --custom-color-1s: 78%;
+  --custom-color-1l: 58%;
+  --custom-color-2h: 150;
+  --custom-color-2s: 26%;
+  --custom-color-2l: 36%;
+  --custom-color-1: hsl(
+    var(--custom-color-1h),
+    var(--custom-color-1s),
+    var(--custom-color-1l)
+  );
+  --custom-color-hover: hsl(
+    var(--custom-color-1h),
+    calc(var(--custom-color-1s) + 10%),
+    calc(var(--custom-color-1l) - 15%)
+  );
+  --custom-color-active: hsl(
+    var(--custom-color-1h),
+    var(--custom-color-1s),
+    calc(var(--custom-color-1l) - 20%)
+  );
+  --custom-color-2: hsl(
+    var(--custom-color-2h),
+    var(--custom-color-2s),
+    var(--custom-color-2l)
+  );
+  --custom-color-21: hsl(
+    var(--custom-color-2h),
+    var(--custom-color-2s),
+    calc(var(--custom-color-2l) - 15%)
+  );
+}
 .button-primary,
 .bcart__button--active::after,
 .button-submit,
@@ -62,10 +94,12 @@
 .pagination__link--active,
 .slick-current .illustrations__nav__image,
 .illustrations__nav__item:not(.slick-slide) .illustrations__nav__image,
-.set-option__input:checked ~ .sps__container {
+.set-option__input:checked ~ .sps__container,
+.active .sps__container {
   border-color: var(--custom-color-1);
 }
-.set-option__input:checked ~ .sps__container {
+.set-option__input:checked ~ .sps__container,
+.active .sps__container {
   box-shadow: 0 0 0 1px var(--custom-color-1);
 }
 a,
@@ -322,6 +356,54 @@ a:active,
       rgba(0, 0, 0, 0) 100%
     );
   }
+}
+.site-theme-1 {
+  --custom-color-1h: 29;
+  --custom-color-1s: 78%;
+  --custom-color-1l: 58%;
+  --custom-color-2h: 150;
+  --custom-color-2s: 26%;
+  --custom-color-2l: 36%;
+}
+.site-theme-2 {
+  --custom-color-1h: 79;
+  --custom-color-1s: 69%;
+  --custom-color-1l: 40%;
+  --custom-color-2h: 230;
+  --custom-color-2s: 46%;
+  --custom-color-2l: 29%;
+}
+.site-theme-3 {
+  --custom-color-1h: 183;
+  --custom-color-1s: 100%;
+  --custom-color-1l: 37%;
+  --custom-color-2h: 202;
+  --custom-color-2s: 100%;
+  --custom-color-2l: 30%;
+}
+.site-theme-4 {
+  --custom-color-1h: 27;
+  --custom-color-1s: 75%;
+  --custom-color-1l: 58%;
+  --custom-color-2h: 353;
+  --custom-color-2s: 69%;
+  --custom-color-2l: 37%;
+}
+.site-theme-5 {
+  --custom-color-1h: 358;
+  --custom-color-1s: 85%;
+  --custom-color-1l: 52%;
+  --custom-color-2h: 252;
+  --custom-color-2s: 12%;
+  --custom-color-2l: 16%;
+}
+.site-theme-6 {
+  --custom-color-1h: 186;
+  --custom-color-1s: 81%;
+  --custom-color-1l: 45%;
+  --custom-color-2h: 313;
+  --custom-color-2s: 40%;
+  --custom-color-2l: 47%;
 }
 .dark {
   color: #fff;

@@ -1,7 +1,8 @@
 .section.sabout
   .wrap
     .cells
-      .cell.cell-md-6.cell-xl-4
+      // if about.text
+      .cell.cell-md-6.sabout__text
         .section__title О компании
         .sabout__intro
           | Иметь собственный частный дом и обустроить в нем все согласно своим вкусовым пристрастиям,
@@ -14,13 +15,14 @@
           a.goto__link(href="") Узнать больше
             .goto__icon
               include ../../images/inline-svgs/section-header-link.svg
-      .cell.cell-md-6
+      // if about.image
+      .cell.cell-md-6.sabout__illustration
         .sabout__image
           img(src=require("/src/images/content-images/about-1.png"), loading="lazy")
           //- img(src=require("/src/images/content-images/cats-2.png"))
           //- img(src=require("/src/images/content-images/promo-desk.jpg"))
-      .cell.cell-xl-2
-        .sabout__bens
-          .benefits__list.cells
-            each item in bens
-              +benefit-item(item)(class="cell cell-sm-6 cell-md-4 cell-lg-3 cell-xl-12")
+      // if about.benefits
+      .cell.sabout__bens
+        .benefits__list.cells
+          each item in bens
+            +benefit-item(item)(class="cell cell-sm-6 cell-md-4 cell-lg-3")

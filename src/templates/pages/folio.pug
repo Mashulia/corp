@@ -56,6 +56,7 @@ block contentBody
       .cards__item.projects__item.cell.cell-sm-6
         .icard
           a.icard__image.projects__image(href="folio-item.html", class= item.pic ? "" : "no-image")
+            // Размер картинки 336x235
             if item.pic
               img(src= item.pic)
           if item.category

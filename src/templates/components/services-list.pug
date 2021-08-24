@@ -32,6 +32,9 @@
       title: "Бани и беседки",
       pic: require("/src/images/content-images/services-8.jpg")
     },
+    {
+      title: "Категория с длинным-предлинным названием"
+    },
     //- {
     //-   title: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic magnam reiciendis quia accusantium blanditiis alias voluptate facilis eos numquam cum, pariatur suscipit inventore, repellat placeat, mollitia laborum! Minus, tenetur quidem.",
     //-   pic: require("/src/images/content-images/cats-2.png")
@@ -45,6 +48,8 @@
   each elm, index in cts
     .services__item.cell.cell-sm-6
       a.services__link(href="services-subcat.html")
-        .services__image
-          img(src= elm.pic, loading="lazy")
+        .services__image(class= {"no-image": !elm.pic})
+          // Размер картинки 684x480
+          if elm.pic
+            img(src= elm.pic, loading="lazy")
         .services__title= elm.title

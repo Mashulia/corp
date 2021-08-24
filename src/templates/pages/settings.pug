@@ -90,19 +90,19 @@ block settingsPanel
                             ul.colors__list.tabs__switches.cells
                               li.colors__item.cell.cell-6
                                 a.tabs__switch.current(href="#color-picker-1")
-                                  .colors__color.colors__color--7(data-name="theme-color-1")
+                                  .colors__color.colors__color--7(data-name="theme-color-2")
                                     span.colors__value
                                     span.colors__label Основной цвет
                               li.colors__item.cell.cell-6
                                 a.tabs__switch(href="#color-picker-2")
-                                  .colors__color.colors__color--8(data-name="theme-color-2")
+                                  .colors__color.colors__color--8(data-name="theme-color-1")
                                     span.colors__value
                                     span.colors__label Интерактивный цвет
                             .tabs__panels
                               .tabs__panel.current#color-picker-1
-                                input.spectrum-picker(value="#44745c", name="theme-color-1", type="text")
+                                input.spectrum-picker(value="hsl(150, 26%, 36%)", name="theme-color-2", type="text")
                               .tabs__panel#color-picker-2
-                                input.spectrum-picker(value="#e8903f", name="theme-color-2", type="text")
+                                input.spectrum-picker(value="hsl(29, 78%, 58%)", name="theme-color-1", type="text")
             .settings__panel.tabs__panel#settings-header
               form(action="")
                 .settings__panel__title Выбор шапки

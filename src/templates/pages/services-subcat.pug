@@ -40,15 +40,16 @@ block contentBody
       .subservices__item.cell.cell-sm-6.cell-lg-4.cell-xl-6
         .subservices__bg
           a.subservices__image(class= item.pic ? "" : "no-image", href="service-item.html")
+            // Размер картинки 535x380
             if item.pic
               img(src= item.pic)
-          .subservices__body 
-            a.subservices__title(href="service-item-2.html")= item.title 
+          .subservices__body
+            a.subservices__title(href="service-item-2.html")= item.title
             if item.descr
-              .subservices__descr= item.descr 
+              .subservices__descr= item.descr
             if item.price
               .subservices__price= item.price
-          a.subservices__decor(href="service-item.html") 
+          a.subservices__decor(href="service-item.html")
             include ../../images/inline-svgs/services-arrow.svg
   +pagination(0)
   +seo

@@ -86,11 +86,13 @@
       each item in photoes
         .slider-nav__item
           .slider-nav__image
+            // Размер картинки 96x96
             img(src= item.picS)
     .folio__images.slider
       each elm in photoes
         .folio__images__item
           a.folio__images__image(href=elm.picB, data-fancybox="folio", data-caption= elm.title)
+            // Размер картинки 936x560
             img(src=elm.picM, loading="lazy")
           .folio__images__title= elm.title
     .section__button

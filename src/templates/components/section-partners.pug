@@ -4,7 +4,8 @@
     .spartners__list.cells
       each elm in partnrs
         .spartners__item.cell.cell-6.cell-md-4.cell-lg-3.cell-xl-2
-          a.spartners__image(class={"no-image": !elm.pic}, href= elm.link)
+          a.spartners__image(class={"no-image": !elm.pic}, href= elm.link, target="_blank")
+            // Размер картинки 208x52
             img(src= elm.pic, loading="lazy")
           a.spartners__link(href= elm.link, target="_blank")
             .spartners__title= elm.name

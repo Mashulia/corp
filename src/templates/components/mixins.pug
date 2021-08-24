@@ -149,6 +149,7 @@ mixin reviewsList(limit, printPics=true)
                 .reviews__cat
                   .reviews__cat__text= elm.cat
               .reviews__pic(class={"reviews__pic--empty": !elm.ava})
+                // Размер картинки 86х86
                 if elm.ava
                   img(src= elm.ava)
                 .reviews__pic__decor
@@ -163,6 +164,7 @@ mixin reviewsList(limit, printPics=true)
                   each item in elm.pics
                     .reviews__images__item
                       a.reviews__image(href=item.lg, data-fancybox="review-" + index)
+                        // Размер картинки-миниатюры 84х84
                         img(src= item.xs)
                         .reviews__image__overflow
 mixin pagination(current=0)
@@ -259,12 +261,17 @@ mixin articles-nav(items)
                   img(src= item.pic)
               .articles-nav__date= item.date || "10.10.2021"
             a.articles-nav__name(href="")= item.name
+      // .articles-nav__item
+      //   .articles-nav__cover
+      //     a.articles-nav__image(href="", class="no-image")
+      //   a.articles-nav__name(href="") Прежде чем обратиться в строительную компанию
 mixin category-item-2(elm)
   .categories__item(class!=attributes.class)
     .categories__bg
       .cells
         .cell.cell-sm-4
           a.categories__image(href="category.html")
+            // Размер картинки 504x311
             img(src=elm.pic, loading="lazy")
         .cell.cell-sm-8
           .categories__body
@@ -280,6 +287,7 @@ mixin category-item-1(elm)
     .categories__bg
       a.categories__link(href="category.html")
         .categories__image
+          // Размер картинки 504x311
           img(src=elm.pic, loading="lazy")
         .categories__body
           .categories__title= elm.title
@@ -314,6 +322,7 @@ mixin product-item(itm)
 mixin benefit-item(item)
   .benefits__item(class!=attributes.class)
     .benefits__img
+      // Размер картинки 34x34
       img(src=item.pic, loading="lazy")
     .benefits__title= item.title
 mixin cert-item(item)

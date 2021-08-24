@@ -380,7 +380,7 @@
 .set-option__image {
   @extend %fx-centered;
   img {
-    max-height: 150px;
+    max-height: 200px;
   }
 }
 .set-option__text {
@@ -511,6 +511,8 @@
   }
   .colors__label {
     flex-basis: auto;
+    max-width: 70%;
+    max-width: calc(100% - 3.75rem);
   }
   .set-accordeon__header {
     padding-top: 1.125rem;

@@ -582,6 +582,7 @@ window.addEventListener("load", function () {
       "</svg>" +
       "</button>"
   };
+  $.fancybox.defaults.parentEl = ".corp";
   $(function () {
     $(".fancy-image").fancybox();
   });
@@ -805,15 +806,26 @@ window.addEventListener("load", function () {
         correspondingEl.style.color = color.toHexString();
         let currentHsl = color.toHsl();
         this.setAttribute("value", color.toHslString());
-        console.log(currentHsl.h);
         if (this.getAttribute("name") == "theme-color-1") {
           siteRoot.style.setProperty("--custom-color-1h", currentHsl.h);
-          siteRoot.style.setProperty("--custom-color-1s", currentHsl.s);
-          siteRoot.style.setProperty("--custom-color-1l", currentHsl.l);
+          siteRoot.style.setProperty(
+            "--custom-color-1s",
+            currentHsl.s * 100 + "%"
+          );
+          siteRoot.style.setProperty(
+            "--custom-color-1l",
+            currentHsl.l * 100 + "%"
+          );
         } else {
           siteRoot.style.setProperty("--custom-color-2h", currentHsl.h);
-          siteRoot.style.setProperty("--custom-color-2s", currentHsl.s);
-          siteRoot.style.setProperty("--custom-color-2l", currentHsl.l);
+          siteRoot.style.setProperty(
+            "--custom-color-2s",
+            currentHsl.s * 100 + "%"
+          );
+          siteRoot.style.setProperty(
+            "--custom-color-2l",
+            currentHsl.l * 100 + "%"
+          );
         }
       },
       dragstart: function (color) {
@@ -842,65 +854,48 @@ window.addEventListener("load", function () {
       const siteRoot = document.querySelector(".corp");
       switch (siteThemeSet) {
         case "set1":
-          siteRoot.style.setProperty("--custom-color-1h", 29);
-          siteRoot.style.setProperty("--custom-color-1s", "78%");
-          siteRoot.style.setProperty("--custom-color-1l", "58%");
-          siteRoot.style.setProperty("--custom-color-2h", 150);
-          siteRoot.style.setProperty("--custom-color-2s", "26%");
-          siteRoot.style.setProperty("--custom-color-2l", "36%");
+          siteRoot.className = "corp site-theme-1";
           break;
         case "set2":
-          siteRoot.style.setProperty("--custom-color-1h", 79);
-          siteRoot.style.setProperty("--custom-color-1s", "69%");
-          siteRoot.style.setProperty("--custom-color-1l", "40%");
-          siteRoot.style.setProperty("--custom-color-2h", 230);
-          siteRoot.style.setProperty("--custom-color-2s", "46%");
-          siteRoot.style.setProperty("--custom-color-2l", "29%");
+          siteRoot.className = "corp site-theme-2";
           break;
         case "set3":
-          siteRoot.style.setProperty("--custom-color-1h", 183);
-          siteRoot.style.setProperty("--custom-color-1s", "100%");
-          siteRoot.style.setProperty("--custom-color-1l", "37%");
-          siteRoot.style.setProperty("--custom-color-2h", 202);
-          siteRoot.style.setProperty("--custom-color-2s", "100%");
-          siteRoot.style.setProperty("--custom-color-2l", "30%");
+          siteRoot.className = "corp site-theme-3";
           break;
         case "set4":
-          siteRoot.style.setProperty("--custom-color-1h", 27);
-          siteRoot.style.setProperty("--custom-color-1s", "75%");
-          siteRoot.style.setProperty("--custom-color-1l", "58%");
-          siteRoot.style.setProperty("--custom-color-2h", 353);
-          siteRoot.style.setProperty("--custom-color-2s", "69%");
-          siteRoot.style.setProperty("--custom-color-2l", "37%");
+          siteRoot.className = "corp site-theme-4";
           break;
         case "set5":
-          siteRoot.style.setProperty("--custom-color-1h", 358);
-          siteRoot.style.setProperty("--custom-color-1s", "85%");
-          siteRoot.style.setProperty("--custom-color-1l", "52%");
-          siteRoot.style.setProperty("--custom-color-2h", 252);
-          siteRoot.style.setProperty("--custom-color-2s", "12%");
-          siteRoot.style.setProperty("--custom-color-2l", "16%");
+          siteRoot.className = "corp site-theme-5";
           break;
         case "set6":
-          siteRoot.style.setProperty("--custom-color-1h", 186);
-          siteRoot.style.setProperty("--custom-color-1s", "81%");
-          siteRoot.style.setProperty("--custom-color-1l", "45%");
-          siteRoot.style.setProperty("--custom-color-2h", 313);
-          siteRoot.style.setProperty("--custom-color-2s", "40%");
-          siteRoot.style.setProperty("--custom-color-2l", "47%");
+          siteRoot.className = "corp site-theme-6";
           break;
-        // default:
-        //   const themeColor1 = document
-        //     .querySelector('[name="theme-color-1"]')
-        //     .getAttribute("value");
-        //   const themeColor2 = document
-        //     .querySelector('[name="theme-color-2"]')
-        //     .getAttribute("value");
-        //   console.log(themeColor1);
-        //   console.log(themeColor2);
+        default:
+          siteRoot.className = "corp";
       }
+      siteRoot.style = "";
     });
   });
+  const settingsReset = document.querySelector(".js-settings-reset");
+  if (settingsReset) {
+    settingsReset.addEventListener("click", () => {
+      const settingsForms = document
+        .querySelectorAll(".settings form")
+        .forEach((item) => {
+          item.reset();
+        });
+      const siteRoot = document.querySelector(".corp");
+      siteRoot.className = "corp";
+      siteRoot.style = "";
+      $("[name='theme-color-1']").spectrum("set", "hsl(29, 78%, 58%)");
+      $("[name='theme-color-2']").spectrum("set", "hsl(150, 26%, 36%)");
+      $(".spectrum-picker").trigger("change");
+      document.querySelectorAll(".settings .opened").forEach((item) => {
+        item.classList.remove("opened");
+      });
+    });
+  }
 
   // functions on resize
   window.onresize = function (event) {
