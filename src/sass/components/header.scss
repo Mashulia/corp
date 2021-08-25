@@ -123,11 +123,13 @@
   .header__top {
     align-items: center;
     min-height: 3rem;
+    height: 3rem;
   }
   .header__body {
     align-items: center;
     justify-content: space-between;
     min-height: 5.4375rem;
+    height: 5.4375rem;
     padding: 0;
   }
   .header__search {
@@ -185,6 +187,7 @@
   .header--v2 {
     .header__body {
       min-height: 4.75rem;
+      height: 4.75rem;
     }
     .header__addresses .dropdown__toggle,
     .header__phones .dropdown__toggle {
@@ -201,6 +204,7 @@
       align-items: center;
       justify-content: space-between;
       min-height: 3.6875rem;
+      height: 3.6875rem;
     }
     .header__primary-nav {
       flex-basis: 81%;
@@ -272,6 +276,7 @@
     .header__top {
       justify-content: space-between;
       min-height: 3.0625rem;
+      height: 3.0625rem;
     }
     .header__connects {
       flex: 1 1 50%;

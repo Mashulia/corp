@@ -12,6 +12,8 @@ import { SettingsGroup } from "./settings";
 // touch device detection
 // ie11 polyfill .closest()
 // ie11 polyfill .forEach()
+// ie11 polyfill includes()
+// ie11 polyfill Object.assign
 
 // mobile header toggle
 // search toggle
@@ -137,6 +139,37 @@ if (!Array.prototype.includes) {
       // 8. Return false
       return false;
     }
+  });
+}
+// ie11 polyfill Object.assign
+if (typeof Object.assign !== "function") {
+  // Must be writable: true, enumerable: false, configurable: true
+  Object.defineProperty(Object, "assign", {
+    value: function assign(target, varArgs) {
+      // .length of function is 2
+      "use strict";
+      if (target === null || target === undefined) {
+        throw new TypeError("Cannot convert undefined or null to object");
+      }
+
+      var to = Object(target);
+
+      for (var index = 1; index < arguments.length; index++) {
+        var nextSource = arguments[index];
+
+        if (nextSource !== null && nextSource !== undefined) {
+          for (var nextKey in nextSource) {
+            // Avoid bugs when hasOwnProperty is shadowed
+            if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+              to[nextKey] = nextSource[nextKey];
+            }
+          }
+        }
+      }
+      return to;
+    },
+    writable: true,
+    configurable: true
   });
 }
 
@@ -612,28 +645,40 @@ window.addEventListener("load", function () {
   }
   if (windowWidth > 1023) {
     // fonts influence elements' sizes, so wait till font has loaded and then fix the menu overflow
-    document.fonts.load('1rem "Manrope"').then(
-      () => {
-        for (let i = 0; i < primaryNavs.length; i++) {
-          let el = primaryNavs[i];
-          handleNavOverflow(el, 48);
+    // document.fonts doesn't work in ie11
+    if (document.fonts) {
+      document.fonts.load('1rem "Manrope"').then(
+        () => {
+          for (let i = 0; i < primaryNavs.length; i++) {
+            let el = primaryNavs[i];
+            handleNavOverflow(el, 48);
+          }
+          for (let i = 0; i < globalNavs.length; i++) {
+            let el = globalNavs[i];
+            handleNavOverflow(el, 32);
+          }
+        },
+        () => {
+          for (let i = 0; i < primaryNavs.length; i++) {
+            let el = primaryNavs[i];
+            handleNavOverflow(el, 40);
+          }
+          for (let i = 0; i < globalNavs.length; i++) {
+            let el = globalNavs[i];
+            handleNavOverflow(globalNavs[i], 24);
+          }
         }
-        for (let i = 0; i < globalNavs.length; i++) {
-          let el = globalNavs[i];
-          handleNavOverflow(el, 32);
-        }
-      },
-      () => {
-        for (let i = 0; i < primaryNavs.length; i++) {
-          let el = primaryNavs[i];
-          handleNavOverflow(el, 40);
-        }
-        for (let i = 0; i < globalNavs.length; i++) {
-          let el = globalNavs[i];
-          handleNavOverflow(globalNavs[i], 24);
-        }
+      );
+    } else {
+      for (let i = 0; i < primaryNavs.length; i++) {
+        let el = primaryNavs[i];
+        handleNavOverflow(el, 48);
       }
-    );
+      for (let i = 0; i < globalNavs.length; i++) {
+        let el = globalNavs[i];
+        handleNavOverflow(el, 32);
+      }
+    }
   }
 
   var telSelector = document.querySelectorAll("input[type='tel']");

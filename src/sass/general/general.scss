@@ -225,6 +225,7 @@ table {
   ol:not([class]),
   ul:not([class]) {
     li {
+      height: 1em;
       min-height: 1em; // custom markers are absolutely positioned thus no li content makes everything collapse
       margin-bottom: 0.5rem;
       padding-left: 1.625rem;
@@ -328,13 +329,13 @@ table {
   outline-offset: 0.125rem;
 }
 // classes
-.corp {
-  // color: $color-text1;
-  // height: 100vh;
-  // width: 100%;
-  // overflow-x: hidden;
-  // overflow-y: auto;
-}
+// .corp {
+//   // color: $color-text1;
+//   // height: 100vh;
+//   // width: 100%;
+//   // overflow-x: hidden;
+//   // overflow-y: auto;
+// }
 .text-aux {
   color: $color-text2;
   font-size: 0.875rem;
