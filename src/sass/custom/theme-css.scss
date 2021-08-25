@@ -381,6 +381,30 @@ a:active,
     );
   }
 }
+@media (min-width: 1200px) {
+  .sps__toggle__value:hover {
+    border-color: #cf6a0c;
+    border-color: var(--custom-color-hover);
+  }
+  .sps__toggle__value:hover {
+    box-shadow: 0 0 0 1px #cf6a0c;
+    box-shadow: 0 0 0 1px var(--custom-color-hover);
+  }
+  .colors__color:hover .colors__value {
+    box-shadow: 0 0 0 2px #cf6a0c;
+    box-shadow: 0 0 0 2px var(--custom-color-hover);
+  }
+  .settings__option:hover {
+    border-color: #cf6a0c;
+    border-color: var(--custom-color-hover);
+    box-shadow: 0 0 0 1px #cf6a0c;
+    box-shadow: 0 0 0 1px var(--custom-color-hover);
+    .set-option__title {
+      color: #cf6a0c;
+      color: var(--custom-color-hover);
+    }
+  }
+}
 .site-theme-1 {
   --custom-color-1h: 29;
   --custom-color-1s: 78%;

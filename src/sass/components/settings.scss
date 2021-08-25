@@ -564,3 +564,8 @@
     }
   }
 }
+@media (min-width: $break-xl) {
+  .sps__toggle__value:hover {
+    background-color: transparent;
+  }
+}
