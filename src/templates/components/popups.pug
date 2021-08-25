@@ -2,9 +2,9 @@
 .popup-search#popup-search
   .wrap
     .cells.popup-search__row
-      .cell.cell-auto
+      .cell.cell-auto.cell-xl-1
         .popup-search__label Поиск
-      .cell.cell-auto.popup-search__body
+      .cell.cell-auto.cell-xl-10.popup-search__body
         form#form_id.search__form.form(action="")
           label.form__field
             input.form__input(type="text", name="", placeholder="Введите запрос", tabindex="-1")
@@ -12,7 +12,7 @@
             span.button__icon
               include ../../images/inline-svgs/search.svg
             span.button__body Найти
-      .cell.cell-auto
+      .cell.cell-auto.cell-xl-1
         button.button.button-icon.search__close(title="Закрыть форму поиска", tabindex="-1", form="form_id")
 // Обратный звонок
 .fancy-form.display-none#callback-form

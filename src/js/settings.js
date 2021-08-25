@@ -3,9 +3,9 @@ class SettingsGroup {
     this.settings = this.createSetSections(element);
   }
   createSetSections(list) {
-    const settingsPanelSections = [
-      ...list.querySelectorAll(".settings__panel__section")
-    ];
+    const settingsPanelSections = Array.from(
+      list.querySelectorAll(".settings__panel__section")
+    );
 
     return settingsPanelSections.map(
       (el) =>
@@ -15,6 +15,9 @@ class SettingsGroup {
     );
   }
   deactivateAll() {
+    // for (let i = 0; i < this.settings.length; i++) {
+    //   this.settings[i].deactivate();
+    // }
     this.settings.forEach((setSection) => setSection.deactivate());
   }
 

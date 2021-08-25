@@ -16,7 +16,7 @@ $shadow-2: 0px 1px 17px rgba(0, 0, 0, 0.18);
 
 $grid-gap: 0.75rem;
 $grid-cols: 12;
-$col-width: 100% / 12;
+$col-width: math.div(100%, 12);
 
 $break-sm: 576px;
 $break-md: 768px;

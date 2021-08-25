@@ -23,6 +23,7 @@
     &::before {
       content: "";
       background-color: rgba(255, 255, 255, 0.25);
+      display: block;
       position: absolute;
       top: 0;
       bottom: 0;
@@ -126,7 +127,7 @@
   }
 }
 .subservices__body {
-  flex: 1 0 0;
+  flex: 1 0 0%;
   border: 1px solid $color-sep;
   border-top-width: 0;
   border-radius: 0 0 $brad-3 $brad-3;
@@ -162,6 +163,7 @@
 
   &::before {
     content: "";
+    display: block;
     height: 3rem;
     width: 3rem;
     position: absolute;
@@ -333,7 +335,6 @@
     align-items: center;
     border: 0;
     min-height: 17.4375rem;
-    height: 17.4375rem;
     padding: 1.875rem;
     position: relative;
   }
@@ -435,7 +436,6 @@
   }
   .service__presentation {
     min-height: 22.5rem;
-    height: 22.5rem;
     margin-bottom: 2.5rem;
   }
   .spresentation__action {
@@ -445,7 +445,7 @@
     align-self: flex-start;
     position: sticky;
     top: 1.5rem;
-    order: unset;
+    order: 1;
 
     .serv-cta__title {
       font-size: 1rem;

@@ -189,7 +189,6 @@ textarea {
 svg {
   display: block;
   max-width: 100%;
-  height: auto;
 }
 hr {
   box-sizing: content-box;
@@ -225,7 +224,6 @@ table {
   ol:not([class]),
   ul:not([class]) {
     li {
-      height: 1em;
       min-height: 1em; // custom markers are absolutely positioned thus no li content makes everything collapse
       margin-bottom: 0.5rem;
       padding-left: 1.625rem;
@@ -244,6 +242,7 @@ table {
     content: "";
     background: currentColor;
     border-radius: $brad-1;
+    display: block;
     height: 2px;
     width: 0.875rem;
     position: absolute;
@@ -306,16 +305,8 @@ table {
       border-right-width: 0;
     }
   }
-  thead {
-    position: relative;
-  }
-  thead tr:last-child::after {
-    content: "";
-    height: 2px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+  thead tr:last-child th {
+    border-bottom: 2px solid $color-sep;
   }
 }
 [hidden] {

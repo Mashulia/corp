@@ -83,6 +83,7 @@
     content: "";
     background: $color-sep;
     border-radius: 0px 3px 3px 0px;
+    display: block;
     height: 21px;
     width: 4px;
     position: absolute;
@@ -246,6 +247,7 @@
     background: $color-text2;
     box-shadow: inset 3px 4px 4px rgba(255, 255, 255, 0.38);
     border-radius: 2.625rem;
+    display: block;
     height: 1.625rem;
     width: 1.625rem;
     position: absolute;
@@ -297,6 +299,9 @@
 }
 .set-option__input {
   @extend .colors__input;
+}
+.set-option__image {
+  overflow: hidden;
 }
 .set-option__title {
   @extend %fx-centered-y;
@@ -472,6 +477,7 @@
       content: "";
       background: #e0e0e0;
       border-radius: 0px 3px 3px 0px;
+      display: block;
       height: 30px;
       width: 4px;
       position: absolute;

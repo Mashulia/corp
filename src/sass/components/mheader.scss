@@ -80,6 +80,7 @@
 
     &::before {
       content: "";
+      display: block;
       height: 3rem;
       width: 3rem;
       position: absolute;

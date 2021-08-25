@@ -3,7 +3,9 @@ class TabGroup {
     this.tabs = this.createTabs(element);
   }
   createTabs(list) {
-    const tabElements = [...list.children[0].querySelectorAll(".tabs__switch")];
+    const tabElements = Array.from(
+      list.children[0].querySelectorAll(".tabs__switch")
+    );
 
     return tabElements.map(
       (el) =>

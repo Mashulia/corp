@@ -58,6 +58,7 @@
     &::before {
       content: "";
       border-radius: 0px 3px 3px 0px;
+      display: block;
       width: 0.25rem;
       position: absolute;
       top: 1.0625rem;
@@ -84,6 +85,7 @@
 
   &::before {
     content: "";
+    display: block;
     height: 3rem;
     width: 3rem;
     position: absolute;

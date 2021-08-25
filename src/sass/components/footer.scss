@@ -348,7 +348,7 @@
     padding-right: 3.5rem;
   }
   .to-top {
-    right: calc(50% - #{$cont-1 / 2});
+    right: calc(50% - math.div($cont-1, 2));
   }
   .to-top--footed {
     bottom: 32%;

@@ -148,7 +148,6 @@ a,
 .page-header__bg,
 .snavigation__toggle,
 .snavigation__link--current::before,
-thead tr:last-child::after,
 .form__header,
 .footer--v2 .footer__phones .connect__button::before,
 .cards__list--accented1 .cards__item:first-child .icard__body,
@@ -169,6 +168,11 @@ thead tr:last-child::after,
 .cards__list--accented1 .cards__item:first-child .icard__body {
   border-color: #44745c;
   border-color: var(--custom-color-2);
+}
+.content__body thead tr:last-child th,
+.sabout__intro thead tr:last-child th {
+  border-bottom-color: #44745c;
+  border-bottom-color: var(--custom-color-2);
 }
 .reviews__cat__text,
 .reviews__pic__decor,

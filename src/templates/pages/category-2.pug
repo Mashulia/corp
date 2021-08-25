@@ -36,32 +36,32 @@ block contentNav
       }
     ];
   .content__nav
-    .snavigation.snavigation--catalog
-      button.snavigation__toggle= "Каталог"
+    .snavigation.snavigation--catalog.reveal
+      button.snavigation__toggle.js-revealer= "Каталог"
         span.snavigation__icon
           include ../../images/inline-svgs/dropdown.svg
-      .snavigation__body
+      .snavigation__body.reveal__contents
         ul.snavigation__list
           each item, index in items
             li.snavigation__item
               if !item.subcats
                 a.snavigation__link(href= item.link)= item.value
               else
-                .snavigation__item.split.split--opened
+                .snavigation__item.reveal.opened
                   .snavigation__link
                     a.snavigation__text(href= item.link)= item.value
-                    button.split__toggle
+                    button.snavigation__link__button.js-revealer
                       include ../../images/inline-svgs/dropdown.svg
-                  .split__body
+                  .reveal__contents
                     ul.snavigation__list
                       each elm, index in item.subcats
                         if index == 2
-                          li.split.snavigation__item.split--opened
+                          li.snavigation__item.reveal.opened
                             .snavigation__link
                               a.snavigation__text(href= item.link)= item.value
-                              button.split__toggle
+                              button.snavigation__link__button.js-revealer
                                 include ../../images/inline-svgs/dropdown.svg
-                            .split__body
+                            .reveal__contents
                               ul.snavigation__list
                                 each elm, index in item.subcats
                                   li.snavigation__item
