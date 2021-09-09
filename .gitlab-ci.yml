@@ -1,8 +1,9 @@
 stages:
+  - build
   - deploy
 
-deploy:
-  stage: deploy
+build:
+  stage: build
   image: node:15
   environment:
     name: corp21-front
@@ -14,3 +15,19 @@ deploy:
     # your build command
     - npm run build
     - npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod
+  artifacts:
+    paths:
+      - dist
+    expire_in: 1h
+
+deploy:
+  stage: deploy
+  image: ubuntu
+  only:
+    - master
+  before_script:
+    - "which ssh-agent || ( apt-get update -y && apt-get install openssh-client putty-tools rsync -y )"
+    - eval $(ssh-agent -s)
+    - echo "$DEV_RSYNC_PASSWORD" >> password && chmod 0600 password
+  script:
+    - rsync -av --delete --password-file=password dist/assets/ rsync://$DEV_RSYNC_USER@DEV_RSYNC_HOST:$DEV_RSYNC_PORT/volume
