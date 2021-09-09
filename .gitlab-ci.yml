@@ -30,4 +30,4 @@ deploy:
     - eval $(ssh-agent -s)
     - echo "$DEV_RSYNC_PASSWORD" >> password && chmod 0600 password
   script:
-    - rsync -av --delete --password-file=password dist/assets/ rsync://$DEV_RSYNC_USER@DEV_RSYNC_HOST:$DEV_RSYNC_PORT/volume
+    - rsync -av --delete --password-file=password dist/assets/ rsync://$DEV_RSYNC_USER@$DEV_RSYNC_HOST:$DEV_RSYNC_PORT/volume
