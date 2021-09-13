@@ -1,10 +1,13 @@
 const webpack = require("webpack");
 const path = require("path");
 const fs = require("fs");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const {
+  CleanWebpackPlugin
+} = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 // const CompressionPlugin = require('compression-webpack-plugin');
 // const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 // const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
@@ -27,29 +30,28 @@ module.exports = (env, options) => ({
   },
   devtool: "source-map",
   devServer: {
-    contentBase: "./dev",
-    watchContentBase: true,
+    static: "./dev",
     port: 3000
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.pug$/,
         include: path.resolve(__dirname, "src/templates"),
-        use: [
-          {
-            loader: "pug-loader",
-            options: {
-              pretty: true
-            }
+        use: [{
+          loader: "pug-loader",
+          options: {
+            pretty: true
           }
-        ]
+        }]
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
       },
       {
         test: /\.(scss|css)$/,
         include: path.resolve(__dirname, "src/sass"),
-        use: [
-          {
+        use: [{
             loader: MiniCssExtractPlugin.loader,
             options: {
               publicPath: "../../"
@@ -117,13 +119,14 @@ module.exports = (env, options) => ({
     new MiniCssExtractPlugin({
       filename: "assets/css/[name].css"
     }),
+    new VueLoaderPlugin(),
     ...pages.map(
       (page) =>
-        new HtmlWebpackPlugin({
-          template: "./src/templates/pages/" + page,
-          filename: page.replace(/\.pug/, ".html"),
-          minify: false
-        })
+      new HtmlWebpackPlugin({
+        template: "./src/templates/pages/" + page,
+        filename: page.replace(/\.pug/, ".html"),
+        minify: false
+      })
     ),
     // new webpack.ProvidePlugin({
     //   // $: "jquery",
@@ -140,9 +143,14 @@ module.exports = (env, options) => ({
       }
     }),
     new CopyPlugin({
-      patterns: [
-        { from: "src/js/vendor/*.js", to: "assets/js/vendor/[name].js" },
-        { from: "src/sass/vendor/*.css", to: "assets/css/vendor/[name].css" },
+      patterns: [{
+          from: "src/js/vendor/*.js",
+          to: "assets/js/vendor/[name].js"
+        },
+        {
+          from: "src/sass/vendor/*.css",
+          to: "assets/css/vendor/[name].css"
+        },
         {
           from: "src/images/content-images/*.pdf",
           to: "assets/content-images/[name].pdf"
