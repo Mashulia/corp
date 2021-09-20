@@ -7,7 +7,9 @@ const {
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const {
+  VueLoaderPlugin
+} = require('vue-loader');
 // const CompressionPlugin = require('compression-webpack-plugin');
 // const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 // const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
@@ -29,10 +31,10 @@ module.exports = (env, options) => ({
     filename: "assets/js/[name].js"
   },
   devtool: "source-map",
-  devServer: {
-    static: "./dev",
-    port: 3000
-  },
+  // devServer: {
+  //   static: "./dev",
+  //   port: 3000
+  // },
   module: {
     rules: [{
         test: /\.pug$/,
@@ -43,10 +45,6 @@ module.exports = (env, options) => ({
             pretty: true
           }
         }]
-      },
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
       },
       {
         test: /\.(scss|css)$/,
@@ -99,6 +97,10 @@ module.exports = (env, options) => ({
         generator: {
           filename: "assets/fonts/[name][ext]"
         }
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
       },
       {
         test: /\.js$/,

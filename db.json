@@ -1,0 +1,38 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Поролон мебельный ST 2236 (1,6х2м) толщина 10мм",
+      "price": 440,
+      "pic": "assets/images/content-images/cart-1.jpg",
+      "qty": 2
+    },
+    {
+      "id": 2,
+      "name": "Утеплитель ZE Строй «Коттедж +», упаковка  ",
+      "price": 840,
+      "pic": "assets/images/content-images/cart-2.jpg",
+      "qty": 1
+    },
+    {
+      "id": 3,
+      "name": "Короткое название",
+      "price": 110000,
+      "qty": 2
+    },
+    {
+      "id": 4,
+      "name": "Какой-то товар с очень длинным названием, например... ну просто с очень-очень-очень длинным названием",
+      "price": 0,
+      "pic": "assets/images/content-images/cats-2.png",
+      "qty": 1
+    },
+    {
+      "id": 5,
+      "name": "Какой-то бренд Какой-то товар с длинным названием",
+      "price": 1500450,
+      "pic": "assets/images/content-images/about-1.png",
+      "qty": 1
+    }
+  ]
+}
