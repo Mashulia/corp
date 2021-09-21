@@ -1,6 +1,8 @@
 <template>
   <div class="cell cell-md-8 cell-lg-6 mx-auto cart__form cell-xl-4">
-    <form class="custom-form collapsing-form" action="">
+    <form 
+      class="custom-form collapsing-form"
+      action="#">
       <div class="form__header">
         <div class="form__title">Оформить заказ</div>
         <div class="form__description">Заполните форму, и наш менеджер<br>свяжется с Вами в ближайшее время</div>
@@ -13,13 +15,26 @@
       <div class="form__bg">
         <div class="form__body">
           <label class="form__field form__field--required"><span class="form__label">Телефон</span>
-            <input class="form__input" type="tel" required="" inputmode="text">
+            <input 
+              class="form__input" 
+              type="tel" 
+              required="" 
+              inputmode="text"
+              v-model="tel">
           </label>
           <label class="form__field form__field--required"><span class="form__label">Email</span>
-            <input class="form__input" type="email" required="">
+            <input 
+              class="form__input" 
+              type="email" 
+              required=""
+              v-model="email">
           </label>
           <label class="form__field"><span class="form__label">Текст сообщения</span>
-            <textarea class="form__input" rows="3"></textarea>
+            <textarea 
+              class="form__input" 
+              rows="3"
+              v-model="text">
+            </textarea>
           </label>
           <div class="form__submit">
             <button 
@@ -36,44 +51,33 @@
 <script>
 export default {
   name: 'cart-form',
-  initForm: {
-    tel: '',
-    email: '',
-    text: ''
-  },
   data() {
     return {
-      form: {}
+     tel: '',
+     email: '',
+     text: ''
     }
   },
-  created() {
-    let storedForm = this.getStorage()
-    this.form = {...this.$options.initForm, ...storedForm}
-  },
-  watch: {
-    form: {
-      handler() {
-        this.updateStorage()
-      },
-      deep: true
+  mounted() {
+    if (localStorage.tel) {
+      this.tel = localStorage.tel;
+    }
+    if (localStorage.email) {
+      this.email = localStorage.email;
+    }
+    if (localStorage.text) {
+      this.text = localStorage.text;
     }
   },
-  methods: {
-    onSubmit() {
-      this.form = {...this.$options.initForm}
+   watch: {
+    tel(newTel) {
+      localStorage.tel = newTel;
     },
-    getStorage() {
-      return JSON.parse(localStorage.getItem('custom-form'))
+    email(newEmail) {
+      localStorage.email = newEmail;
     },
-    setStorage(value) {
-      localStorage.setItem('custom-form', JSON.stringify(value))
-    },
-    updateStorage() {
-      let storedForm = this.getStorage()
-      if(!storedForm) storedForm = {}
-
-      storedForm = JSON.parse(JSON.stringify(this.form))
-      this.setStorage(storedForm)
+    text(newText) {
+      localStorage.text = newText;
     }
   }
 }

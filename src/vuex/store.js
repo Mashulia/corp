@@ -8,7 +8,7 @@ import {
   createStore
 } from 'vuex';
 import axios from 'axios';
-import VuexPersist from 'vuex-persist'
+// import VuexPersist from 'vuex-persist'
 
 let store = createStore({
   state: {
@@ -75,13 +75,9 @@ let store = createStore({
     PRODUCTS(state) {
       return state.products;
     }
-  },
-  plugins: [vuexPersist.plugin]
+  }
 });
-const vuexPersist = new VuexPersist({
-  key: 'app',
-  storage: window.localStorage
-})
+
 const app = createApp({});
 app.use(store);
 

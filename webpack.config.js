@@ -154,8 +154,8 @@ module.exports = (env, options) => ({
           to: "assets/css/vendor/[name].css"
         },
         {
-          from: "src/images/content-images/*.pdf",
-          to: "assets/content-images/[name].pdf"
+          from: "src/images/content-images/*.jpg",
+          to: "assets/content-images/[name].jpg"
         }
       ]
     })
