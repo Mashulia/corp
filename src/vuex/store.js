@@ -3,17 +3,16 @@ const URL = 'http://localhost:3000/products';
 import {
   createApp
 } from 'vue';
-import createPersistedState from "vuex-persistedstate";
 
 import {
   createStore
 } from 'vuex';
 import axios from 'axios';
+import VuexPersist from 'vuex-persist'
 
 let store = createStore({
   state: {
-    products: [],
-    cart: []
+    products: []
   },
   mutations: {
     SET_PRODUCTS_TO_STATE: (state, products) => {
@@ -77,8 +76,12 @@ let store = createStore({
       return state.products;
     }
   },
-  plugins: [createPersistedState()]
+  plugins: [vuexPersist.plugin]
 });
+const vuexPersist = new VuexPersist({
+  key: 'app',
+  storage: window.localStorage
+})
 const app = createApp({});
 app.use(store);
 

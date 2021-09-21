@@ -91,6 +91,11 @@ export default {
       required: true
     }
   },
+  data() {
+    return {
+
+    }
+  },
   methods: {
     deleteFromCart() {
       this.$emit('deleteFromCart')
