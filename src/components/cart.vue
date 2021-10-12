@@ -38,17 +38,12 @@
 <script>
 import cartItem from './cart-item.vue'
 import {mapActions, mapGetters} from 'vuex'
-// import axios from 'axios'
 export default {
   name: 'cart',
   components: { cartItem },
   data() {
     return {
-      id: '',
-      name: '',
-      price: '',
-      url: '',
-      qty: ''
+
     }
   },
   computed: {
@@ -102,38 +97,7 @@ export default {
         this.CHANGE_STATE_LOCALSTORAGE()
         this.DEACTIVATE_CART_STATUS()
       }
-    },
-  //   loadData() {
-  //     return axios('http://localhost:3000/products', {method: "GET"})
-  //     .then(response => (
-  //       this.id = response.data.id,
-  //       this.name = response.data.name,
-  //       this.price = response.data.price,
-  //       this.url = response.data.pic,
-  //       this.qty = response.data.qty
-  //       ))
-  //       .catch((error) => {
-  //       console.log(error)
-  //       return error;
-  //     })
-  //   },
-  //   updateData(product) {
-  //     if(product.name !== this.name) {
-  //       product.name === this.name
-  //     }
-  //     if(product.price !== this.price) {
-  //       product.price === this.price
-  //     }
-  //     if(product.pic !== this.URL) {
-  //       product.pic === this.URL
-  //     }
-  //     if(product.qty > this.qty) {
-  //       product.qty === this.qty
-  //     }
-  //   }
-  // },
-  // mounted() {
-  //   setInterval(() => this.loadData(), 1000);
+    }
   }
 }
 </script>

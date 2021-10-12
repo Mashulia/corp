@@ -2,8 +2,7 @@
   <div class="cell cell-md-8 cell-lg-6 mx-auto cart__form cell-xl-4">
     <form
       class="custom-form collapsing-form"
-      action="#"
-      method="post">
+      action="#">
       <div class="form__header">
         <div class="form__title">Оформить заказ</div>
         <div class="form__description">Заполните форму, и наш менеджер<br>свяжется с Вами в ближайшее время</div>
@@ -50,18 +49,20 @@
   </div>
 </template>
 <script>
+import { required, email } from '@vuelidate/validators/dist/raw.esm'
+import { useVuelidate } from '@vuelidate/core'
 export default {
   name: 'cart-form',
   data() {
     return {
-     tel: '',
-     email: '',
-     text: ''
+      tel: '',
+      email: '',
+      text: ''
     }
   },
   methods: {
-    showSuccessNotification() {
-      this.$emit('showSuccessNotification');
+    onSubmit() {
+      this.$emit('onSubmit');
     }
   },
   mounted() {
@@ -84,8 +85,15 @@ export default {
     },
     text(newText) {
       localStorage.text = newText;
+    },
+  },
+  setup: () => ({ v$: useVuelidate() }),
+  validations () {
+    return {
+        tel: { required },
+        email: { required, email }
     }
-  }
+  },
 }
 </script>
 <style>

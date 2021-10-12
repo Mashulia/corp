@@ -74,9 +74,9 @@ function addToCart1(e) {
   let items = getCartData() || [], // получаем данные корзины или создаём новый массив, если данных еще нет
     id = this.getAttribute("data-id"), // ID товара
     name = this.getAttribute("data-name"), // название товара
-    price = this.getAttribute("data-price"); // стоимость товара
-  url = this.getAttribute("data-src"); // картинка товара
-  qty = parseInt(input.value);
+    price = this.getAttribute("data-price"), // стоимость товара
+    url = this.getAttribute("data-src"), // картинка товара
+    qty = parseInt(input.value);
 
   let isItemInCart = items.find(item => item.id === id);
 
@@ -107,9 +107,9 @@ function addToCart2(e) {
   let items = getCartData() || [], // получаем данные корзины или создаём новый массив, если данных еще нет
     id = this.getAttribute("data-id"), // ID товара
     name = this.getAttribute("data-name"), // название товара
-    price = this.getAttribute("data-price"); // стоимость товара
-  url = this.getAttribute("data-src"); // картинка товара
-  qty = 1;
+    price = this.getAttribute("data-price"), // стоимость товара
+    url = this.getAttribute("data-src"), // картинка товара
+    qty = 1;
 
   let isItemInCart = items.find(item => item.id === id);
 
@@ -154,6 +154,7 @@ function onLoadProductQty() {
     localStorage.clear()
     deActivateCart();
   }
+
 }
 
 onLoadProductQty()
