@@ -1,8 +1,9 @@
 <template>
   <div class="cell cell-md-8 cell-lg-6 mx-auto cart__form cell-xl-4">
-    <form 
+    <form
       class="custom-form collapsing-form"
-      action="#">
+      action="#"
+      method="post">
       <div class="form__header">
         <div class="form__title">Оформить заказ</div>
         <div class="form__description">Заполните форму, и наш менеджер<br>свяжется с Вами в ближайшее время</div>
@@ -15,30 +16,30 @@
       <div class="form__bg">
         <div class="form__body">
           <label class="form__field form__field--required"><span class="form__label">Телефон</span>
-            <input 
-              class="form__input" 
-              type="tel" 
-              required="" 
+            <input
+              class="form__input"
+              type="tel"
+              required=""
               inputmode="text"
               v-model="tel">
           </label>
           <label class="form__field form__field--required"><span class="form__label">Email</span>
-            <input 
-              class="form__input" 
-              type="email" 
+            <input
+              class="form__input"
+              type="email"
               required=""
               v-model="email">
           </label>
           <label class="form__field"><span class="form__label">Текст сообщения</span>
-            <textarea 
-              class="form__input" 
+            <textarea
+              class="form__input"
               rows="3"
               v-model="text">
             </textarea>
           </label>
           <div class="form__submit">
-            <button 
-              class="button button-submit" 
+            <button
+              class="button button-submit"
               type="submit"
               @click="onSubmit">Отправить</button>
           </div>
@@ -56,6 +57,11 @@ export default {
      tel: '',
      email: '',
      text: ''
+    }
+  },
+  methods: {
+    showSuccessNotification() {
+      this.$emit('showSuccessNotification');
     }
   },
   mounted() {
@@ -83,5 +89,5 @@ export default {
 }
 </script>
 <style>
-  
+
 </style>

@@ -2,24 +2,24 @@
   <div class="cart-contents__item">
     <div class="cart-contents__row">
       <a
-      v-if="product_data.pic"
+      v-if="product.pic"
       class="cart-contents__image"
       href="product-item.html">
         <!-- Размер картинок 124х93-->
         <img
-          :src="product_data.pic">
+          :src="product.pic">
       </a>
       <div
         v-else
         class="cart-contents__image no-image">
       </div>
       <div class="cart-contents__info">
-        <a class="cart-contents__name" href="product-item-2.html"> {{product_data.name}}</a>
+        <a class="cart-contents__name" href="product-item-2.html"> {{product.name}}</a>
         <div class="cart-contents__price">
           <div
-            v-if="product_data.price > 0"
+            v-if="product.price > 0"
             class="cart-contents__price__value">
-            {{product_data.price}}
+            {{product.price}}
           </div>
           <div
             v-else
@@ -40,7 +40,7 @@
               type="text"
               data-min="1"
               data-max="99"
-              v-model="product_data.qty">
+              v-model="product.qty">
             <button
               class="qty__change qty__change--plus"
               @click="incrementProduct">+</button>
@@ -48,9 +48,9 @@
         </div>
         <div class="cart-contents__price">
           <div
-            v-if="product_data.price > 0"
+            v-if="product.price > 0"
             class="cart-contents__price__value">
-            {{product_data.price * product_data.qty}}
+            {{product.price * product.qty}}
           </div>
           <div
             v-else
@@ -59,7 +59,7 @@
           </div>
 
 
-          <div class="cart-contents__price__label">x {{product_data.qty}} ед.</div>
+          <div class="cart-contents__price__label">x {{product.qty}} ед.</div>
         </div>
       </div>
       <div class="cart-contents__remove">
@@ -83,17 +83,21 @@
   </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
   name: "cart-item",
   props: {
-    product_data: {
+    product: {
       type: Object,
       required: true
-    }
-  },
-  data() {
-    return {
-
+    },
+    data() {
+      return {
+        name: '',
+        price: '',
+        url: '',
+        qty: ''
+      }
     }
   },
   methods: {
@@ -105,7 +109,43 @@ export default {
     },
     decrementProduct() {
       this.$emit('decrementProduct')
+    },
+     loadData() {
+      axios.get('http://localhost:3000/products', {
+         params: {
+            id: this.product.id
+        }
+      })
+      .then(response => (
+        this.id = response.data.id,
+        this.name = response.data.name,
+        this.price = response.data.price,
+        this.url = response.data.pic,
+        this.qty = response.data.qty
+        ))
+        .catch((error) => {
+        console.log(error)
+        return error;
+      })
+    },
+    updateData(product){
+      if(product.name !== this.name) {
+        product.name === this.name
+      }
+      if(product.price !== this.price) {
+        product.price === this.price
+      }
+      if(product.pic !== this.url) {
+        product.pic === this.url
+      }
+      if(product.qty > this.qty) {
+        product.qty === this.qty
+      }
     }
+  },
+  mounted() {
+    setInterval(() =>  this.loadData(), 5000);
+    setInterval(() =>  this.updateData(this.product.id), 6000);
   }
 }
 </script>

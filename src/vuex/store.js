@@ -7,22 +7,41 @@ import {
 import {
   createStore
 } from 'vuex';
-import axios from 'axios';
-// import VuexPersist from 'vuex-persist'
 
 let store = createStore({
   state: {
     products: []
   },
   mutations: {
-    SET_PRODUCTS_TO_STATE: (state, products) => {
-      state.products = products;
+    SET_TO_STATE: (state) => {
+      if (localStorage.getItem("cart") && localStorage.getItem("cart") !== "[]") {
+        state.products = JSON.parse(localStorage.getItem("cart"));
+      }
+    },
+    CHANGE_LOCALSTORAGE: (state) => {
+      localStorage.setItem("cart", JSON.stringify(state.products));
+    },
+    ACTIVATE_CART: () => {
+      let cartBtns = document.querySelectorAll(".bcart__button");
+      for (let i = 0; i < cartBtns.length; i++) {
+        cartBtns[i].classList.add("bcart__button--active");
+      }
+    },
+    DEACTIVATE_CART: () => {
+      let cartBtns = document.querySelectorAll(".bcart__button");
+      for (let i = 0; i < cartBtns.length; i++) {
+        cartBtns[i].classList.remove("bcart__button--active");
+      }
     },
     REMOVE_ITEM_FROM_CART: (state, index) => {
       state.products.splice(index, 1);
+      if (state.products.length === 0) {
+        localStorage.clear();
+      }
     },
-    REMOVE_ALL_PRODUCTS_FROM_CART: (state, products) => {
+    REMOVE_ALL_PRODUCTS_FROM_CART: (state) => {
       state.products.length = 0;
+      localStorage.clear();
     },
     INCREMENT: (state, index) => {
       state.products[index].qty++;
@@ -34,41 +53,50 @@ let store = createStore({
     }
   },
   actions: {
-    GET_PRODUCTS_FROM_API({
-      commit
+    SET_PRODUCTS_TO_STATE({
+      commit,
+      products
     }) {
-      return axios(URL, {
-          method: "GET"
-        })
-        .then((products) => {
-          commit('SET_PRODUCTS_TO_STATE', products.data);
-          return products;
-        })
-        .catch((error) => {
-          console.log(error);
-          return error;
-        });
+      commit("SET_TO_STATE", products);
+      commit("ACTIVATE_CART");
+      return products;
     },
     DELETE_PRODUCT_FROM_CART({
       commit,
       index
     }) {
-      commit('REMOVE_ITEM_FROM_CART', index);
+      commit("REMOVE_ITEM_FROM_CART", index);
     },
     DELETE_ALL_PRODUCTS_FROM_CART({
       commit
     }) {
-      commit('REMOVE_ALL_PRODUCTS_FROM_CART');
+      commit("REMOVE_ALL_PRODUCTS_FROM_CART");
     },
     INCREMENT_CART_PRODUCT({
       commit
     }, index) {
-      commit('INCREMENT', index);
+      commit("INCREMENT", index);
     },
     DECREMENT_CART_PRODUCT({
       commit
     }, index) {
-      commit('DECREMENT', index);
+      commit("DECREMENT", index);
+    },
+    ACTIVATE_CART_STATUS({
+      commit
+    }) {
+      commit("ACTIVATE_CART");
+      commit;
+    },
+    DEACTIVATE_CART_STATUS({
+      commit
+    }) {
+      commit("DEACTIVATE_CART");
+    },
+    CHANGE_STATE_LOCALSTORAGE({
+      commit
+    }) {
+      commit("CHANGE_LOCALSTORAGE");
     }
   },
   getters: {
@@ -76,7 +104,7 @@ let store = createStore({
       return state.products;
     }
   }
-});
+})
 
 const app = createApp({});
 app.use(store);
