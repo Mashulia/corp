@@ -1,29 +1,29 @@
 let addToCartBtns1 = document.querySelectorAll('.js-add2cart');
-let addToCartBtns2 = document.querySelectorAll(".products__item .button");
-let cartBtns = document.querySelectorAll(".bcart__button");
-let input = document.querySelector(".qty__input");
-let plusBtn = document.querySelector(".qty__change--plus");
-let minusBtn = document.querySelector(".qty__change--minus");
-let notification = document.querySelector("#product-added");
+let addToCartBtns2 = document.querySelectorAll('.products__item .button');
+let cartBtns = document.querySelectorAll('.bcart__button');
+let input = document.querySelector('.qty__input');
+let plusBtn = document.querySelector('.qty__change--plus');
+let minusBtn = document.querySelector('.qty__change--minus');
+let notification = document.querySelector('#product-added');
 
 // Функция активации корзины в шапке
 function activateCart() {
   for (let i = 0; i < cartBtns.length; i++) {
-    cartBtns[i].classList.add("bcart__button--active");
+    cartBtns[i].classList.add('bcart__button--active');
   }
 }
 
 // Функция деактивации корзины в шапке
 function deActivateCart() {
   for (let i = 0; i < cartBtns.length; i++) {
-    cartBtns[i].classList.remove("bcart__button--active");
+    cartBtns[i].classList.remove('bcart__button--active');
   }
 }
 
 // Функция инкремента
 if (plusBtn) {
   (function () {
-    plusBtn.addEventListener("click", () => {
+    plusBtn.addEventListener('click', () => {
       input.value = parseInt(input.value) + 1;
     });
   })()
@@ -31,7 +31,7 @@ if (plusBtn) {
 // Функция декремента
 if (minusBtn) {
   (function () {
-    minusBtn.addEventListener("click", () => {
+    minusBtn.addEventListener('click', () => {
       if (input.value > 1) {
         input.value = parseInt(input.value) - 1;
       } else input.value = 1;
@@ -41,8 +41,8 @@ if (minusBtn) {
 
 // Функция закрытия оповещения о добавлении товара в корзину
 function closeNotification() {
-  if (notification.classList.contains("notification--opened")) {
-    notification.classList.remove("notification--opened")
+  if (notification.classList.contains('notification--opened')) {
+    notification.classList.remove('notification--opened')
   }
 }
 
@@ -51,7 +51,7 @@ function addEvent(elem, type, handler) {
   if (elem.addEventListener) {
     elem.addEventListener(type, handler, false);
   } else {
-    elem.attachEvent("on" + type, function () {
+    elem.attachEvent('on' + type, function () {
       handler.call(elem);
     });
   }
@@ -60,22 +60,22 @@ function addEvent(elem, type, handler) {
 
 // Получаем данные из LocalStorage
 function getCartData() {
-  return JSON.parse(localStorage.getItem("cart"));
+  return JSON.parse(localStorage.getItem('cart'));
 }
 
 // Записываем данные в LocalStorage
 function setCartData(o) {
-  localStorage.setItem("cart", JSON.stringify(o));
+  localStorage.setItem('cart', JSON.stringify(o));
   return false;
 }
 
-// Добавляем товар в корзину по кнопке "в корзину"
+// Добавляем товар в корзину по кнопке 'в корзину'
 function addToCart1(e) {
   let items = getCartData() || [], // получаем данные корзины или создаём новый массив, если данных еще нет
-    id = this.getAttribute("data-id"), // ID товара
-    name = this.getAttribute("data-name"), // название товара
-    price = this.getAttribute("data-price"), // стоимость товара
-    url = this.getAttribute("data-src"), // картинка товара
+    id = this.getAttribute('data-id'), // ID товара
+    name = this.getAttribute('data-name'), // название товара
+    price = this.getAttribute('data-price'), // стоимость товара
+    url = this.getAttribute('data-src'), // картинка товара
     qty = parseInt(input.value);
 
   let isItemInCart = items.find(item => item.id === id);
@@ -96,19 +96,19 @@ function addToCart1(e) {
   };
 
   setCartData(items);
-  this.innerHTML = "В корзине";
-  notification.classList.add("notification--opened");
+  this.innerHTML = 'В корзине';
+  notification.classList.add('notification--opened');
   setTimeout(closeNotification, 4000);
   activateCart();
 }
 
-// Добавляем товар в корзину по кнопке "заказать"
+// Добавляем товар в корзину по кнопке 'заказать'
 function addToCart2(e) {
   let items = getCartData() || [], // получаем данные корзины или создаём новый массив, если данных еще нет
-    id = this.getAttribute("data-id"), // ID товара
-    name = this.getAttribute("data-name"), // название товара
-    price = this.getAttribute("data-price"), // стоимость товара
-    url = this.getAttribute("data-src"), // картинка товара
+    id = this.getAttribute('data-id'), // ID товара
+    name = this.getAttribute('data-name'), // название товара
+    price = this.getAttribute('data-price'), // стоимость товара
+    url = this.getAttribute('data-src'), // картинка товара
     qty = 1;
 
   let isItemInCart = items.find(item => item.id === id);
@@ -129,24 +129,24 @@ function addToCart2(e) {
   };
 
   setCartData(items);
-  this.innerHTML = "В корзине";
-  notification.classList.add("notification--opened");
+  this.innerHTML = 'В корзине';
+  notification.classList.add('notification--opened');
   setTimeout(closeNotification, 4000);
   activateCart();
 }
 
-// Устанавливаем обработчик события на каждую кнопку "в корзину"
+// Устанавливаем обработчик события на каждую кнопку 'в корзину'
 for (var i = 0; i < addToCartBtns1.length; i++) {
-  addEvent(addToCartBtns1[i], "click", addToCart1);
+  addEvent(addToCartBtns1[i], 'click', addToCart1);
 }
 
-// Устанавливаем обработчик события на каждую кнопку "заказать"
+// Устанавливаем обработчик события на каждую кнопку 'заказать'
 for (var i = 0; i < addToCartBtns2.length; i++) {
-  addEvent(addToCartBtns2[i], "click", addToCart2);
+  addEvent(addToCartBtns2[i], 'click', addToCart2);
 }
 
 function onLoadProductQty() {
-  let productQty = localStorage.getItem("cart");
+  let productQty = localStorage.getItem('cart');
 
   if (productQty && productQty !== '[]') {
     activateCart();

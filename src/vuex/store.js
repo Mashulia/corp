@@ -1,12 +1,12 @@
-const URL = 'http://localhost:3000/products';
+const URL = "http://localhost:3000/products";
 
 import {
   createApp
-} from 'vue';
+} from "vue";
 
 import {
   createStore
-} from 'vuex';
+} from "vuex";
 
 let store = createStore({
   state: {

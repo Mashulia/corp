@@ -49,20 +49,20 @@
   </div>
 </template>
 <script>
-import { required, email } from '@vuelidate/validators/dist/raw.esm'
-import { useVuelidate } from '@vuelidate/core'
+import { required, email } from "@vuelidate/validators/dist/raw.esm"
+import { useVuelidate } from "@vuelidate/core"
 export default {
-  name: 'cart-form',
+  name: "cart-form",
   data() {
     return {
-      tel: '',
-      email: '',
-      text: ''
+      tel: "",
+      email: "",
+      text: ""
     }
   },
   methods: {
     onSubmit() {
-      this.$emit('onSubmit');
+      this.$emit("onSubmit");
     }
   },
   mounted() {

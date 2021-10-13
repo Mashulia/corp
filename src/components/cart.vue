@@ -36,10 +36,10 @@
   </div>
 </template>
 <script>
-import cartItem from './cart-item.vue'
-import {mapActions, mapGetters} from 'vuex'
+import cartItem from "./cart-item.vue"
+import {mapActions, mapGetters} from "vuex"
 export default {
-  name: 'cart',
+  name: "cart",
   components: { cartItem },
   data() {
     return {
@@ -48,7 +48,7 @@ export default {
   },
   computed: {
   ...mapGetters([
-    'PRODUCTS'
+    "PRODUCTS"
     ]),
     cartTotalCost() {
       let result = [];
@@ -68,12 +68,12 @@ export default {
   },
   methods: {
     ...mapActions([
-      'DELETE_PRODUCT_FROM_CART',
-      'DELETE_ALL_PRODUCTS_FROM_CART',
-      'INCREMENT_CART_PRODUCT',
-      'DECREMENT_CART_PRODUCT',
-      'DEACTIVATE_CART_STATUS',
-      'CHANGE_STATE_LOCALSTORAGE'
+      "DELETE_PRODUCT_FROM_CART",
+      "DELETE_ALL_PRODUCTS_FROM_CART",
+      "INCREMENT_CART_PRODUCT",
+      "DECREMENT_CART_PRODUCT",
+      "DEACTIVATE_CART_STATUS",
+      "CHANGE_STATE_LOCALSTORAGE"
     ]),
     deleteFromCart(index) {
       this.DELETE_PRODUCT_FROM_CART(index)
@@ -92,7 +92,7 @@ export default {
     decrementProduct(index) {
       this.DECREMENT_CART_PRODUCT(index)
       this.CHANGE_STATE_LOCALSTORAGE()
-      if(localStorage.getItem("cart") && localStorage.getItem("cart") === '[]') {
+      if(localStorage.getItem("cart") && localStorage.getItem("cart") === "[]") {
         localStorage.clear()
         this.CHANGE_STATE_LOCALSTORAGE()
         this.DEACTIVATE_CART_STATUS()

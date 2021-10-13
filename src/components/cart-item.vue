@@ -83,7 +83,7 @@
   </div>
 </template>
 <script>
-import axios from 'axios'
+import axios from "axios"
 export default {
   name: "cart-item",
   props: {
@@ -93,25 +93,25 @@ export default {
     },
     data() {
       return {
-        name: '',
-        price: '',
-        url: '',
-        qty: ''
+        name: "",
+        price: "",
+        url: "",
+        qty: ""
       }
     }
   },
   methods: {
     deleteFromCart() {
-      this.$emit('deleteFromCart')
+      this.$emit("deleteFromCart")
     },
     incrementProduct() {
-      this.$emit('incrementProduct')
+      this.$emit("incrementProduct")
     },
     decrementProduct() {
-      this.$emit('decrementProduct')
+      this.$emit("decrementProduct")
     },
      loadData() {
-      axios.get('http://localhost:3000/products', {
+      axios.get("http://localhost:3000/products", {
          params: {
             id: this.product.id
         }
