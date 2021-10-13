@@ -19,6 +19,7 @@ import cartForm from "./components/cart-form.vue"
 import cartEmpty from "./components/cart-empty.vue"
 import cartSubmit from "./components/cart-submit.vue"
 import {mapActions, mapGetters} from "vuex"
+import axios from "axios"
 export default {
   components: { cartForm, cart, cartEmpty, cartSubmit },
   data() {

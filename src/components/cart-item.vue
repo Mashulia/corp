@@ -83,7 +83,6 @@
   </div>
 </template>
 <script>
-import axios from "axios"
 export default {
   name: "cart-item",
   props: {
@@ -93,10 +92,7 @@ export default {
     },
     data() {
       return {
-        name: "",
-        price: "",
-        url: "",
-        qty: ""
+
       }
     }
   },
@@ -110,42 +106,42 @@ export default {
     decrementProduct() {
       this.$emit("decrementProduct")
     },
-     loadData() {
-      axios.get("http://localhost:3000/products", {
-         params: {
-            id: this.product.id
-        }
-      })
-      .then(response => (
-        this.id = response.data.id,
-        this.name = response.data.name,
-        this.price = response.data.price,
-        this.url = response.data.pic,
-        this.qty = response.data.qty
-        ))
-        .catch((error) => {
-        console.log(error)
-        return error;
-      })
-    },
-    updateData(product){
-      if(product.name !== this.name) {
-        product.name === this.name
-      }
-      if(product.price !== this.price) {
-        product.price === this.price
-      }
-      if(product.pic !== this.url) {
-        product.pic === this.url
-      }
-      if(product.qty > this.qty) {
-        product.qty === this.qty
-      }
-    }
-  },
-  mounted() {
-    setInterval(() =>  this.loadData(), 5000);
-    setInterval(() =>  this.updateData(this.product.id), 6000);
+  //    loadData() {
+  //     axios.get("http://localhost:3000/products", {
+  //        params: {
+  //           id: this.product.id
+  //       }
+  //     })
+  //     .then(response => (
+  //       this.id = response.data.id,
+  //       this.name = response.data.name,
+  //       this.price = response.data.price,
+  //       this.url = response.data.pic,
+  //       this.qty = response.data.qty
+  //       ))
+  //       .catch((error) => {
+  //       console.log(error)
+  //       return error;
+  //     })
+  //   },
+  //   updateData(product){
+  //     if(product.name !== this.name) {
+  //       product.name === this.name
+  //     }
+  //     if(product.price !== this.price) {
+  //       product.price === this.price
+  //     }
+  //     if(product.pic !== this.url) {
+  //       product.pic === this.url
+  //     }
+  //     if(product.qty > this.qty) {
+  //       product.qty === this.qty
+  //     }
+  //   }
+  // },
+  // mounted() {
+  //   setInterval(() =>  this.loadData(), 5000);
+  //   setInterval(() =>  this.updateData(this.product.id), 6000);
   }
 }
 </script>

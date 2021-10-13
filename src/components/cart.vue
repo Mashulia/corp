@@ -36,14 +36,17 @@
   </div>
 </template>
 <script>
+const URL = "http://localhost:3000/products";
+
 import cartItem from "./cart-item.vue"
 import {mapActions, mapGetters} from "vuex"
+import axios from "axios"
 export default {
   name: "cart",
   components: { cartItem },
   data() {
-    return {
-
+    return  {
+      products: []
     }
   },
   computed: {
@@ -97,7 +100,43 @@ export default {
         this.CHANGE_STATE_LOCALSTORAGE()
         this.DEACTIVATE_CART_STATUS()
       }
+    },
+     loadData() {
+      axios.get(URL)
+      .then(response =>  {
+          for(let i = 0; i < response.data.length; i++) {
+          this.products[i]= response.data[i]
+        }
+      })
+        .catch((error) => {
+        console.log(error)
+        return error;
+      })
+    },
+    updateData(){
+      for (let i = 0; i < this.products.length; i++) {
+        for ( let j = 0; j < this.PRODUCTS.length; j++) {
+          if(Number(this.PRODUCTS[j].id) === this.products[i].id) {
+            if(this.PRODUCTS[j].name !== this.products[i].name) {
+            this.PRODUCTS[j].name = this.products[i].name
+            }
+            if(this.PRODUCTS[j].price !== this.products[i].price) {
+              this.PRODUCTS[j].price = this.products[i].price
+            }
+            if(this.PRODUCTS[j].pic !== this.products[i].pic) {
+              this.PRODUCTS[j].pic = this.products[i].pic
+            }
+            if(this.PRODUCTS[j].qty > this.products[i].qty) {
+              this.PRODUCTS[j].qty = this.products[i].qty
+            }
+          }else {continue}
+        }
+      }
     }
+  },
+  mounted() {
+    setInterval(() =>  this.loadData(), 5000);
+    setInterval(() =>  this.updateData(), 6000);
   }
 }
 </script>

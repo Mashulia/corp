@@ -1,5 +1,3 @@
-const URL = "http://localhost:3000/products";
-
 import {
   createApp
 } from "vue";
