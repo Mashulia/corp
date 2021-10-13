@@ -23,8 +23,10 @@ let store = createStore({
     },
     ACTIVATE_CART: () => {
       let cartBtns = document.querySelectorAll(".bcart__button");
-      for (let i = 0; i < cartBtns.length; i++) {
-        cartBtns[i].classList.add("bcart__button--active");
+      if (localStorage.getItem("cart") && localStorage.getItem("cart") !== "[]") {
+        for (let i = 0; i < cartBtns.length; i++) {
+          cartBtns[i].classList.add("bcart__button--active");
+        }
       }
     },
     DEACTIVATE_CART: () => {
