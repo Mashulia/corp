@@ -5,6 +5,7 @@ let input = document.querySelector('.qty__input');
 let plusBtn = document.querySelector('.qty__change--plus');
 let minusBtn = document.querySelector('.qty__change--minus');
 let notification = document.querySelector('#product-added');
+let test = document.querySelector('.page-header--v1 .breadcrumbs');
 
 // Функция активации корзины в шапке
 function activateCart() {
@@ -76,7 +77,9 @@ function addToCart1(e) {
     name = this.getAttribute('data-name'), // название товара
     price = this.getAttribute('data-price'), // стоимость товара
     url = this.getAttribute('data-src'), // картинка товара
-    qty = parseInt(input.value);
+    qty = parseInt(input.value),
+    text = this.innerHTML;
+  text = 'В корзине';
 
   let isItemInCart = items.find(item => item.id === id);
 
@@ -90,7 +93,8 @@ function addToCart1(e) {
       name: name,
       price: price,
       pic: url,
-      qty: qty
+      qty: qty,
+      text: text
     };
     items.push(item);
   };
@@ -104,12 +108,15 @@ function addToCart1(e) {
 
 // Добавляем товар в корзину по кнопке 'заказать'
 function addToCart2(e) {
+
   let items = getCartData() || [], // получаем данные корзины или создаём новый массив, если данных еще нет
     id = this.getAttribute('data-id'), // ID товара
     name = this.getAttribute('data-name'), // название товара
     price = this.getAttribute('data-price'), // стоимость товара
     url = this.getAttribute('data-src'), // картинка товара
-    qty = 1;
+    qty = 1,
+    text = this.innerHTML;
+  text = 'В корзине';
 
   let isItemInCart = items.find(item => item.id === id);
 
@@ -123,7 +130,8 @@ function addToCart2(e) {
       name: name,
       price: price,
       pic: url,
-      qty: qty
+      qty: qty,
+      text: text
     };
     items.push(item);
   };
@@ -146,15 +154,24 @@ for (var i = 0; i < addToCartBtns2.length; i++) {
 }
 
 function onLoadProductQty() {
-  let productQty = localStorage.getItem('cart');
+  let productQty = getCartData();
 
   if (productQty && productQty !== '[]') {
     activateCart();
-  } else {
-    localStorage.clear()
-    deActivateCart();
-  }
 
+    for (var i = 0; i < addToCartBtns1.length; i++) {
+      let buttonId = addToCartBtns1[i].getAttribute('data-id');
+      if (productQty.find(item => item.id === buttonId)) {
+        addToCartBtns1[i].innerHTML = productQty.find(item => item.id === buttonId).text;
+      }
+    }
+    for (var i = 0; i < addToCartBtns2.length; i++) {
+      let buttonId = addToCartBtns2[i].getAttribute('data-id');
+      if (productQty.find(item => item.id === buttonId)) {
+        addToCartBtns2[i].innerHTML = productQty.find(item => item.id === buttonId).text;
+      }
+    }
+  }
 }
 
 onLoadProductQty()
