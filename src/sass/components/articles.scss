@@ -70,9 +70,6 @@
     object-fit: contain;
   }
 }
-.article__body {
-  max-width: 65em;
-}
 @media (min-width: $break-md) {
   .articles__list .cards__item:first-child {
     flex-basis: 66.6667%;
