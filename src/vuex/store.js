@@ -35,7 +35,7 @@ let store = createStore({
     },
     REMOVE_ITEM_FROM_CART: (state, index) => {
       state.products.splice(index, 1);
-      if (state.products.length === 0) {
+      if (state.products.length === 0 && state.products === "[]") {
         localStorage.clear();
       }
     },

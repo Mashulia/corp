@@ -154,7 +154,7 @@ for (var i = 0; i < addToCartBtns2.length; i++) {
 }
 
 function onLoadProductQty() {
-  let productQty = getCartData();
+  let productQty = localStorage.getItem('cart');
 
   if (productQty && productQty !== '[]') {
     activateCart();

@@ -7,7 +7,7 @@
         <cart/>
       </div>
       <cart-form
-      @onSubmit="onSubmit()"/>
+      @showSuccessNotification="showSuccessNotification()"/>
     </div>
     <cart-empty v-else-if="PRODUCTS.length === 0 && !isSubmit"/>
     <cart-submit v-if="isSubmit"/>
@@ -19,7 +19,6 @@ import cartForm from "./components/cart-form.vue"
 import cartEmpty from "./components/cart-empty.vue"
 import cartSubmit from "./components/cart-submit.vue"
 import {mapActions, mapGetters} from "vuex"
-import axios from "axios"
 export default {
   components: { cartForm, cart, cartEmpty, cartSubmit },
   data() {
@@ -39,7 +38,7 @@ export default {
     "DEACTIVATE_CART_STATUS",
     "DELETE_ALL_PRODUCTS_FROM_CART"
   ]),
-  onSubmit() {
+  showSuccessNotification() {
     this.isSubmit = true;
     this.DELETE_ALL_PRODUCTS_FROM_CART();
     this.DEACTIVATE_CART_STATUS();

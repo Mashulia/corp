@@ -84,7 +84,7 @@ export default {
     },
     deleteAllProductsFromCart() {
       this.DELETE_ALL_PRODUCTS_FROM_CART(),
-      localStorage.clear()
+      localStorage.clear("cart")
       this.CHANGE_STATE_LOCALSTORAGE()
       this.DEACTIVATE_CART_STATUS()
     },
@@ -96,7 +96,7 @@ export default {
       this.DECREMENT_CART_PRODUCT(index)
       this.CHANGE_STATE_LOCALSTORAGE()
       if(localStorage.getItem("cart") && localStorage.getItem("cart") === "[]") {
-        localStorage.clear()
+        localStorage.clear("cart")
         this.CHANGE_STATE_LOCALSTORAGE()
         this.DEACTIVATE_CART_STATUS()
       }

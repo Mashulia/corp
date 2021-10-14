@@ -2,7 +2,8 @@
   <div class="cell cell-md-8 cell-lg-6 mx-auto cart__form cell-xl-4">
     <form
       class="custom-form collapsing-form"
-      action="#">
+      action="#"
+      @submit="showSuccessNotification">
       <div class="form__header">
         <div class="form__title">Оформить заказ</div>
         <div class="form__description">Заполните форму, и наш менеджер<br>свяжется с Вами в ближайшее время</div>
@@ -39,8 +40,7 @@
           <div class="form__submit">
             <button
               class="button button-submit"
-              type="submit"
-              @click="onSubmit">Отправить</button>
+              type="submit">Отправить</button>
           </div>
           <div class="form__note">Нажимая на кнопку «Отправить», подтверждаю свое согласие с&nbsp;<a href="policy.html">условиями обработки персональных данных</a></div>
         </div>
@@ -49,8 +49,6 @@
   </div>
 </template>
 <script>
-import { required, email } from "@vuelidate/validators/dist/raw.esm"
-import { useVuelidate } from "@vuelidate/core"
 export default {
   name: "cart-form",
   data() {
@@ -61,8 +59,8 @@ export default {
     }
   },
   methods: {
-    onSubmit() {
-      this.$emit("onSubmit");
+    showSuccessNotification() {
+      this.$emit("showSuccessNotification");
     }
   },
   mounted() {
@@ -85,15 +83,8 @@ export default {
     },
     text(newText) {
       localStorage.text = newText;
-    },
-  },
-  setup: () => ({ v$: useVuelidate() }),
-  validations () {
-    return {
-        tel: { required },
-        email: { required, email }
     }
-  },
+  }
 }
 </script>
 <style>
