@@ -29,7 +29,7 @@
           <div class="cart-contents__footer__title">Итого:</div>
         </div>
         <div class="cell cell-auto">
-          <div class="cart-contents__footer__value">{{cartTotalCost}}</div>
+          <div class="cart-contents__footer__value">{{cartTotalCost}} руб</div>
         </div>
       </div>
     </div>
