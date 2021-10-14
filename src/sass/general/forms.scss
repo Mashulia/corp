@@ -2,15 +2,18 @@
   display: block;
   margin-bottom: 0.75rem;
 }
+
 .form__field--required .form__label::after {
   content: "*";
   color: #eb5757;
 }
+
 .form__label {
   display: block;
   font-size: 0.8125rem;
   margin-bottom: 0.375rem;
 }
+
 .form__input {
   background: #fff;
   border: 1px solid $color-sep;
@@ -23,30 +26,36 @@
   &:focus {
     outline: none;
   }
+
   &::placeholder {
     color: $color-text2;
   }
+
   &:disabled,
   &:disabled:hover {
     background-color: $color-bg;
     border-color: $color-bg;
   }
 }
+
 .form__submit {
   margin-top: 1.25rem;
   margin-bottom: 0.75rem;
 }
+
 .button-submit {
   color: #fff;
   padding: 0.5rem 1rem;
   text-align: center;
   width: 100%;
 }
+
 .form__note {
   font-size: 0.75rem;
   line-height: 1.5;
   text-align: center;
 }
+
 .custom-form {
   border-radius: $brad-3;
   box-shadow: 0px 7px 13px rgba(103, 108, 111, 0.24);
@@ -54,10 +63,12 @@
   max-width: 22rem;
   min-width: 200px;
 }
+
 .form__header,
 .form__bg {
   padding: 1.5rem;
 }
+
 .form__header {
   background-color: $color-text1;
   border-radius: $brad-3 $brad-3 0px 0px;
@@ -69,17 +80,20 @@
     padding-bottom: 2rem;
   }
 }
+
 .form__title {
   font-weight: bold;
   font-size: 1rem;
   line-height: 1.3;
   margin-bottom: 0.5rem;
 }
+
 .form__description,
 .form__message {
   color: rgba(255, 255, 255, 0.8);
   font-size: 0.8125rem;
 }
+
 .form__bg {
   background-color: #fff;
   border-radius: 0 0 $brad-3 $brad-3;
@@ -91,6 +105,7 @@
     display: none;
   }
 }
+
 .form__description {
   display: block;
 
@@ -98,6 +113,7 @@
     display: none;
   }
 }
+
 .form__message {
   display: none;
 
@@ -105,6 +121,7 @@
     display: block;
   }
 }
+
 select.form__input {
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg width='10' height='7' viewBox='0 0 10 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23636565' stroke-width='2'/%3E%3C/svg%3E%0A");
@@ -112,13 +129,15 @@ select.form__input {
   background-position: right 16px top 50%;
   color: $color-text1;
 }
+
 .qty {
   @extend %fx-centered-y;
   align-items: stretch;
   background: $color-bg;
   border-radius: $brad-1;
-  width: 8.25rem;
+  width: auto;
 }
+
 .qty__change {
   flex-shrink: 0;
   background: transparent;
@@ -127,6 +146,7 @@ select.form__input {
   display: block;
   width: 2.5rem;
 }
+
 .qty__input {
   background-color: transparent;
   border-color: transparent;
@@ -134,36 +154,50 @@ select.form__input {
   font-weight: 800;
   text-align: center;
 }
+
 .collapsing-form--handled.failed {
   .form__header {
     background-color: #eb5757;
   }
 }
+
 @media (min-width: $break-lg) {
   .form__input {
     padding: 0.625rem 0.5rem;
   }
+
   .form__header,
   .form__bg {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
   }
+
   .form__header {
     padding-top: 2.5rem;
     padding-bottom: 1.5rem;
   }
+
   .form__bg {
     padding-top: 1.5rem;
     padding-bottom: 2.5rem;
   }
+
   .form__title {
     font-size: 1.5rem;
   }
+
   .form__description,
   .form__label {
     font-size: 0.875rem;
   }
+
   .form__label {
     margin-bottom: 0.6875rem;
+  }
+}
+
+@media (min-width: $break-sm) {
+  .qty {
+    width: 8.25rem;
   }
 }
