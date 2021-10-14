@@ -26,11 +26,9 @@ html(lang="ru")
             block contentNav
               //- .content__nav
             .content__body
-              .content__row
-                .content__main
-                  block contentBody
-                block contentAside
-                  //- .content__aside
+              block contentBody
+            block contentAside
+              //- .content__aside
       block footer
         +footer-var
       include components/popups
