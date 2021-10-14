@@ -157,6 +157,7 @@ function onLoadProductQty() {
   let productQty = localStorage.getItem('cart');
 
   if (productQty && productQty !== '[]') {
+    productQty = JSON.parse(localStorage.getItem('cart'))
     activateCart();
 
     for (var i = 0; i < addToCartBtns1.length; i++) {
@@ -165,10 +166,10 @@ function onLoadProductQty() {
         addToCartBtns1[i].innerHTML = productQty.find(item => item.id === buttonId).text;
       }
     }
-    for (var i = 0; i < addToCartBtns2.length; i++) {
-      let buttonId = addToCartBtns2[i].getAttribute('data-id');
+    for (var j = 0; j < addToCartBtns2.length; j++) {
+      let buttonId = addToCartBtns2[j].getAttribute('data-id');
       if (productQty.find(item => item.id === buttonId)) {
-        addToCartBtns2[i].innerHTML = productQty.find(item => item.id === buttonId).text;
+        addToCartBtns2[j].innerHTML = productQty.find(item => item.id === buttonId).text;
       }
     }
   }
