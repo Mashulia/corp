@@ -23,7 +23,7 @@ export default {
       isSubmit: false
     }
   },
-  name: "app",
+  name: "app-cart",
   computed: {
     ...mapGetters([
       "PRODUCTS"

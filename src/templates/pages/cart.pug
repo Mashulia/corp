@@ -5,5 +5,101 @@ block prepend head
 block title
   +page-header(pageName)
 block contentBody
-  #app-cart
-
+  -
+    var cprds = [
+      {
+        name: "Поролон мебельный ST 2236 (1,6х2м) толщина 10мм",
+        price: 440,
+        pic: require("/src/images/content-images/cart-1.jpg"),
+        qty: 2
+      },
+      {
+        name: "Утеплитель ZE Строй «Коттедж +», упаковка  ",
+        price: 840,
+        pic: require("/src/images/content-images/cart-2.jpg"),
+        qty: 1
+      },
+      {
+        name: "Короткое название",
+        price: 110000,
+        qty: 2
+      },
+      {
+        name: "Какой-то товар с очень длинным названием, например... ну просто с очень-очень-очень длинным названием",
+        price: 0,
+        pic: require("/src/images/content-images/cats-2.png"),
+        qty: 1
+      },
+      {
+        name: "Какой-то бренд Какой-то товар с длинным названием",
+        price: 1500450,
+        pic: require("/src/images/content-images/about-1.png"),
+        qty: 1
+      }
+    ];
+  .cells
+    .cell.cell-xl-8
+      .cart-contents
+        .cart-contents__header
+          .cells.fx-justify-between
+            .cell.cell-auto
+              .cart-contents__header__title Список заказа
+            .cell.cell-auto
+              button.cart-contents__header__erase.js-cart-empty Очистить все
+        .cart-contents__body
+          each item in cprds
+            .cart-contents__item
+              .cart-contents__row
+                a.cart-contents__image(class= item.pic ? "" : "no-image", href="product-item.html")
+                  // Размер картинок 124х93
+                  if item.pic
+                    img(src= item.pic)
+                .cart-contents__info
+                  a.cart-contents__name(href="product-item-2.html")  Поролон мебельный ST 2236 (1,6х2м) толщина 10мм
+                  .cart-contents__price
+                    .cart-contents__price__value= item.price ? item.price + " руб." : "по запросу"
+                    .cart-contents__price__label Цена, за 1 ед.
+                .cart-contents__pricing
+                  .cart-contents__qty
+                    .qty
+                      button.qty__change.qty__change--minus(disabled) -
+                      input.qty__input.form__input(type="text", value= item.qty, data-min="1", data-max="99")
+                      button.qty__change.qty__change--plus +
+                  .cart-contents__price
+                    .cart-contents__price__value= item.price ? (item.price * item.qty) + " руб." : "по запросу"
+                    .cart-contents__price__label= "x " + item.qty + " ед."
+                .cart-contents__remove
+                  button.button-remove.button.button-icon(title="Удалить товар из корзины")
+                    include ../../images/inline-svgs/remove-from-cart.svg
+        .cart-contents__footer
+          .cells.fx-justify-between
+            .cell.cell-auto
+              .cart-contents__footer__title Итого:
+            .cell.cell-auto
+              .cart-contents__footer__value 2 600 руб
+    .cell.cell-md-8.cell-lg-6.mx-auto.cart__form.cell-xl-4
+      form(action="").custom-form.collapsing-form
+        .form__header
+          .form__title Оформить заказ
+          .form__description
+            | Заполните форму, и наш менеджер
+            br
+            | свяжется с Вами в ближайшее время
+          .form__message
+            .form__success
+              .form__message__text Ваша заявка успешно отправлена!
+        .form__bg
+          .form__body
+            label.form__field.form__field--required
+              span.form__label Телефон
+              input.form__input(type="tel", required)
+            label.form__field.form__field--required
+              span.form__label Email
+              input.form__input(type="email", required)
+            label.form__field
+              span.form__label Текст сообщения
+              textarea.form__input(rows="3")
+            .form__submit
+              button.button.button-submit(type="submit") Отправить
+            .form__note Нажимая на кнопку «Отправить», подтверждаю свое согласие с&nbsp;
+              a(href="policy.html") условиями обработки персональных данных

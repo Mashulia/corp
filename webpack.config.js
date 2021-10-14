@@ -100,6 +100,7 @@ module.exports = (env, options) => ({
       },
       {
         test: /\.vue$/,
+        include: path.resolve(__dirname, "src/cart-vue"),
         loader: 'vue-loader'
       },
       {
