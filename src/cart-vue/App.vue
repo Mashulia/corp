@@ -2,31 +2,29 @@
   <div>
     <div
       class="cells"
-      v-if="!isSubmit && PRODUCTS.length">
+      v-if="PRODUCTS.length">
       <div class="cell cell-xl-8">
-        <cart/>
+        <cart :URL="URL"/>
       </div>
-      <cart-form
-      @showSuccessNotification="showSuccessNotification()"/>
     </div>
-    <cart-empty v-else-if="PRODUCTS.length === 0 && !isSubmit"/>
+    <cart-empty v-else/>
     <cart-submit v-if="isSubmit"/>
   </div>
 </template>
 <script>
 import cart from "./components/cart.vue"
-import cartForm from "./components/cart-form.vue"
 import cartEmpty from "./components/cart-empty.vue"
 import cartSubmit from "./components/cart-submit.vue"
 import {mapActions, mapGetters} from "vuex"
 export default {
-  components: { cartForm, cart, cartEmpty, cartSubmit },
+  components: { cart, cartEmpty, cartSubmit },
   data() {
     return {
-      isSubmit: false
+      isSubmit: false,
+      URL: "http://localhost:3000/products"
     }
   },
-  name: "app",
+  name: "app-cart",
   computed: {
     ...mapGetters([
       "PRODUCTS"

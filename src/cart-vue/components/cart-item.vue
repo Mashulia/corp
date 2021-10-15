@@ -19,7 +19,7 @@
           <div
             v-if="product.price > 0"
             class="cart-contents__price__value">
-            {{product.price}}
+            {{product.price}} руб.
           </div>
           <div
             v-else
@@ -50,7 +50,7 @@
           <div
             v-if="product.price > 0"
             class="cart-contents__price__value">
-            {{product.price * product.qty}}
+            {{product.price * product.qty}} руб.
           </div>
           <div
             v-else

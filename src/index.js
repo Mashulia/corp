@@ -7,7 +7,7 @@ import "./js/scripts.js";
 import {
   createApp
 } from 'vue';
-import App from './App.vue';
-import store from "./vuex/store.js";
+import App from './cart-vue/App.vue';
+import store from "./cart-vue/vuex/store.js";
 
-createApp(App).use(store).mount('#app');
+createApp(App).use(store).mount('#app-cart');
