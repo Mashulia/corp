@@ -4,7 +4,7 @@
       class="cells"
       v-if="PRODUCTS.length">
       <div class="cell cell-xl-8">
-        <cart/>
+        <cart :URL="URL"/>
       </div>
     </div>
     <cart-empty v-else/>
@@ -20,7 +20,8 @@ export default {
   components: { cart, cartEmpty, cartSubmit },
   data() {
     return {
-      isSubmit: false
+      isSubmit: false,
+      URL: "http://localhost:3000/products"
     }
   },
   name: "app-cart",

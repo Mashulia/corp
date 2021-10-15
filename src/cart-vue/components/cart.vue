@@ -36,7 +36,6 @@
   </div>
 </template>
 <script>
-const URL = "http://localhost:3000/products";
 
 import cartItem from "./cart-item.vue"
 import {mapActions, mapGetters} from "vuex"
@@ -47,6 +46,12 @@ export default {
   data() {
     return  {
       products: []
+    }
+  },
+  props: {
+  URL: {
+    type: String,
+    required: true
     }
   },
   computed: {
@@ -101,7 +106,7 @@ export default {
         this.DEACTIVATE_CART_STATUS()
       }
     },
-     loadData() {
+     loadData(URL) {
       axios.get(URL)
       .then(response =>  {
           for(let i = 0; i < response.data.length; i++) {
@@ -135,7 +140,7 @@ export default {
     }
   },
   mounted() {
-    setInterval(() =>  this.loadData(), 5000);
+    setInterval(() =>  this.loadData(this.URL), 5000);
     setInterval(() =>  this.updateData(), 6000);
   }
 }
@@ -143,3 +148,4 @@ export default {
 <style>
 
 </style>
+})
