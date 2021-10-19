@@ -1,49 +1,42 @@
 <template>
-  <div>
-    <div
-      class="cells"
-      v-if="PRODUCTS.length">
-      <div class="cell cell-xl-8">
-        <cart :URL="URL"/>
-      </div>
-    </div>
-    <cart-empty v-else/>
-    <cart-submit v-if="isSubmit"/>
-  </div>
+  <cart
+  v-if="PRODUCTS.length"
+  :URL="URL"
+  :STRINGS="STRINGS"/>
+  <cart-empty v-else/>
 </template>
 <script>
 import cart from "./components/cart.vue"
 import cartEmpty from "./components/cart-empty.vue"
-import cartSubmit from "./components/cart-submit.vue"
 import {mapActions, mapGetters} from "vuex"
 export default {
-  components: { cart, cartEmpty, cartSubmit },
-  data() {
-    return {
-      isSubmit: false,
-      URL: "http://localhost:3000/products"
+  components: { cart, cartEmpty },
+    props: {
+      URL: {
+      type: String,
+      required: true
     }
   },
   name: "app-cart",
   computed: {
     ...mapGetters([
-      "PRODUCTS"
+      "PRODUCTS",
+      "STRINGS"
     ])
   },
   methods: {
   ...mapActions([
     "SET_PRODUCTS_TO_STATE",
     "DEACTIVATE_CART_STATUS",
-    "DELETE_ALL_PRODUCTS_FROM_CART"
-  ]),
-  showSuccessNotification() {
-    this.isSubmit = true;
-    this.DELETE_ALL_PRODUCTS_FROM_CART();
-    this.DEACTIVATE_CART_STATUS();
-    }
+    "DELETE_ALL_PRODUCTS_FROM_CART",
+    "DEFINE_ENCODING",
+    "SHOW_CART_FORM"
+  ])
   },
    mounted() {
-     this.SET_PRODUCTS_TO_STATE();
+     this.SHOW_CART_FORM();
+    this.SET_PRODUCTS_TO_STATE();
+    this.DEFINE_ENCODING();
   }
 }
 </script>

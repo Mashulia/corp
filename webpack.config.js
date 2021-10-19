@@ -13,17 +13,17 @@ const {
 // const CompressionPlugin = require('compression-webpack-plugin');
 // const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 // const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const ImageminPlugin = require("imagemin-webpack-plugin").default;
 
 const pages = fs
   .readdirSync(path.resolve(__dirname, "src/templates/pages"))
   .filter((fileName) => fileName.endsWith(".pug"));
 
-const ImageminPlugin = require("imagemin-webpack-plugin").default;
-
 module.exports = (env, options) => ({
   entry: {
     main: "./src/index.js",
-    theming: "./src/js/theming.js"
+    theming: "./src/js/theming.js",
+    cart: "./src/cart-vue/cart-vue.js"
   },
   output: {
     publicPath: "",
@@ -36,20 +36,24 @@ module.exports = (env, options) => ({
   //   port: 3000
   // },
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.pug$/,
         include: path.resolve(__dirname, "src/templates"),
-        use: [{
-          loader: "pug-loader",
-          options: {
-            pretty: true
+        use: [
+          {
+            loader: "pug-loader",
+            options: {
+              pretty: true
+            }
           }
-        }]
+        ]
       },
       {
         test: /\.(scss|css)$/,
         include: path.resolve(__dirname, "src/sass"),
-        use: [{
+        use: [
+          {
             loader: MiniCssExtractPlugin.loader,
             options: {
               publicPath: "../../"
@@ -101,7 +105,7 @@ module.exports = (env, options) => ({
       {
         test: /\.vue$/,
         include: path.resolve(__dirname, "src/cart-vue"),
-        loader: 'vue-loader'
+        loader: "vue-loader"
       },
       {
         test: /\.js$/,
@@ -124,13 +128,20 @@ module.exports = (env, options) => ({
     }),
     new VueLoaderPlugin(),
     ...pages.map(
-      (page) =>
-      new HtmlWebpackPlugin({
-        template: "./src/templates/pages/" + page,
-        filename: page.replace(/\.pug/, ".html"),
-        minify: false
-      })
+      page =>
+        new HtmlWebpackPlugin({
+          template: "./src/templates/pages/" + page,
+          chunks: ["main", "theming"],
+          filename: page.replace(/\.pug/, ".html"),
+          minify: false
+        })
     ),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "./src/templates/pages/cart-vue.pug"),
+      chunks: ["main", "theming", "cart"],
+      filename: "cart-vue.html",
+      minify: false
+    }),
     // new webpack.ProvidePlugin({
     //   // $: "jquery",
     //   // jQuery: "jquery",
@@ -146,7 +157,8 @@ module.exports = (env, options) => ({
       }
     }),
     new CopyPlugin({
-      patterns: [{
+      patterns: [
+        {
           from: "src/js/vendor/*.js",
           to: "assets/js/vendor/[name].js"
         },
@@ -160,7 +172,7 @@ module.exports = (env, options) => ({
         }
       ]
     })
-  ].filter((n) => n)
+  ].filter(n => n)
   //   optimization: {
   //     minimizer: [
   //         new UglifyJsPlugin({

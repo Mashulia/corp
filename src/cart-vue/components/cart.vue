@@ -4,12 +4,12 @@
     <div class="cart-contents__header">
       <div class="cells fx-justify-between">
         <div class="cell cell-auto">
-          <div class="cart-contents__header__title">Список заказа</div>
+          <div class="cart-contents__header__title">{{ STRINGS.headerTitle }}</div>
         </div>
         <div class="cell cell-auto">
           <button
             class="cart-contents__header__erase js-cart-empty"
-            @click="deleteAllProductsFromCart">Очистить все</button>
+            @click="deleteAllProductsFromCart">{{ STRINGS.headerRemove }}</button>
         </div>
       </div>
     </div>
@@ -20,23 +20,21 @@
       :product="product"
       @deleteFromCart="deleteFromCart(index)"
       @incrementProduct="incrementProduct(index)"
-      @decrementProduct="decrementProduct(index)">
-      </cart-item>
+      @decrementProduct="decrementProduct(index)"/>
     </div>
     <div class="cart-contents__footer">
       <div class="cells fx-justify-between">
         <div class="cell cell-auto">
-          <div class="cart-contents__footer__title">Итого:</div>
+          <div class="cart-contents__footer__title">{{ STRINGS.footerTitle }}</div>
         </div>
         <div class="cell cell-auto">
-          <div class="cart-contents__footer__value">{{cartTotalCost}} руб</div>
+          <div class="cart-contents__footer__value">{{cartTotalCost}} {{ STRINGS.currencyUnit1 }}</div>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-
 import cartItem from "./cart-item.vue"
 import {mapActions, mapGetters} from "vuex"
 import axios from "axios"
@@ -45,13 +43,18 @@ export default {
   components: { cartItem },
   data() {
     return  {
-      products: []
+      products: [],
+      STRINGS: this.STRINGS
     }
   },
   props: {
   URL: {
     type: String,
     required: true
+    },
+    STRINGS: {
+      type: Object,
+      required: true
     }
   },
   computed: {
@@ -81,7 +84,8 @@ export default {
       "INCREMENT_CART_PRODUCT",
       "DECREMENT_CART_PRODUCT",
       "DEACTIVATE_CART_STATUS",
-      "CHANGE_STATE_LOCALSTORAGE"
+      "CHANGE_STATE_LOCALSTORAGE",
+      "DEFINE_ENCODING"
     ]),
     deleteFromCart(index) {
       this.DELETE_PRODUCT_FROM_CART(index)
@@ -142,10 +146,10 @@ export default {
   mounted() {
     setInterval(() =>  this.loadData(this.URL), 5000);
     setInterval(() =>  this.updateData(), 6000);
+    // DEFINE_ENCODING()
   }
 }
 </script>
 <style>
 
 </style>
-})

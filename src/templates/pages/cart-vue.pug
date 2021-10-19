@@ -5,4 +5,32 @@ block prepend head
 block title
   +page-header(pageName)
 block contentBody
-  #app-cart
+  .cells
+    .cell.cell-xl-8#app-cart
+    .cell.cell-md-8.cell-lg-6.mx-auto.cart__form.cell-xl-4
+        form(action="").custom-form.collapsing-form
+          .form__header
+            .form__title Оформить заказ
+            .form__description
+              | Заполните форму, и наш менеджер
+              br
+              | свяжется с Вами в ближайшее время
+            .form__message
+              .form__success
+                .form__message__text Ваша заявка успешно отправлена!
+          .form__bg
+            .form__body
+              label.form__field.form__field--required
+                span.form__label Телефон
+                input.form__input(type="tel", required)
+              label.form__field.form__field--required
+                span.form__label Email
+                input.form__input(type="email", required)
+              label.form__field
+                span.form__label Текст сообщения
+                textarea.form__input(rows="3")
+              .form__submit
+                button.button.button-submit(type="submit") Отправить
+              .form__note Нажимая на кнопку «Отправить», подтверждаю свое согласие с&nbsp;
+                a(href="policy.html") условиями обработки персональных данных
+                

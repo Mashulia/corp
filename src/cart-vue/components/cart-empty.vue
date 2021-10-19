@@ -22,8 +22,22 @@
 
 <script>
 export default {
-  name: "cart-empty"
+  name: "cart-empty",
+   methods: {
+    removeForm() {
+      let cartData = localStorage.getItem("cart") && localStorage.getItem("cart") !== "[]",
+      form = document.querySelector(".cart__form"),
+      cartApp = document.querySelector("#app-cart");
 
+      if (!cartData) {
+        form.setAttribute("style", "display: none");
+        cartApp.setAttribute("style", "width: 100%; margin: 0 auto");
+      }
+    }
+   },
+  mounted() {
+    this.removeForm();
+  }
 }
 </script>
 

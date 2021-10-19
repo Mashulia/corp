@@ -6,8 +6,7 @@
       class="cart-contents__image"
       href="product-item.html">
         <!-- Размер картинок 124х93-->
-        <img
-          :src="product.pic">
+        <img :src="product.pic">
       </a>
       <div
         v-else
@@ -19,14 +18,14 @@
           <div
             v-if="product.price > 0"
             class="cart-contents__price__value">
-            {{product.price}} руб.
+            {{product.price}} {{ STRINGS.currencyUnit2 }}
           </div>
           <div
             v-else
             class="cart-contents__price__value">
-            по запросу
+            {{ STRINGS.onRequest }}
           </div>
-          <div class="cart-contents__price__label">Цена, за 1 ед.</div>
+          <div class="cart-contents__price__label">{{ STRINGS.priceForUnit }}</div>
         </div>
       </div>
       <div class="cart-contents__pricing">
@@ -50,16 +49,16 @@
           <div
             v-if="product.price > 0"
             class="cart-contents__price__value">
-            {{product.price * product.qty}} руб.
+            {{product.price * product.qty}} {{ STRINGS.currencyUnit2 }}
           </div>
           <div
             v-else
             class="cart-contents__price__value">
-            по запросу
+            {{ STRINGS.onRequest }}
           </div>
 
 
-          <div class="cart-contents__price__label">x {{product.qty}} ед.</div>
+          <div class="cart-contents__price__label">x {{product.qty}} {{ STRINGS.unit }}</div>
         </div>
       </div>
       <div class="cart-contents__remove">
@@ -83,17 +82,18 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex"
 export default {
   name: "cart-item",
+  computed: {
+  ...mapGetters([
+    "STRINGS"
+    ])
+  },
   props: {
     product: {
       type: Object,
       required: true
-    },
-    data() {
-      return {
-
-      }
     }
   },
   methods: {
