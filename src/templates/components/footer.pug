@@ -108,18 +108,18 @@ mixin footer-var(fvar="footer--v1", fbg="footer__bg--v1")
                   .cell.cell-md-6
                     .footer__addresses
                       .addresses.connect.connect--labeled 
-                        span Адрес офиса:
+                        span.footer__label Адрес офиса:
                         +connectList("addresses", false, 1)
                     .footer__emails
                       .connect.emails.connect--labeled 
-                        span Эл. почта:
+                        span.footer__label Эл. почта:
                         +connectList("emails", false, 1)
                     .footer__socials
                       +socials
                   .cell.cell-md-6
                     .footer__phones
                       .connect.phones.connect--labeled.connect--inlined
-                        span Возникли вопросы? Звоните.
+                        span.footer__label Возникли вопросы? Звоните.
                         +connectList("phones", false, 2)
                     .footer__messengers
                       +messengers

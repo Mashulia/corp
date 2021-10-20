@@ -101,7 +101,7 @@
   flex-direction: column;
 
   // &::before,
-  & span {
+  & .footer__label {
     flex-basis: auto;
     background: none;
     font-weight: 600;
@@ -221,7 +221,7 @@
   //   margin-right: 0.5rem;
   // }
 
-  .connect span {
+  .footer__label {
     margin-right: 0.5rem;
   }
   .socials__link,

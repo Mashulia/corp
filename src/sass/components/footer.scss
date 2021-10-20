@@ -134,7 +134,7 @@
   .footer__dev,
   .connect__label,
   // .connect::before,
-  .connect span {
+  .footer__label {
     color: rgba(255, 255, 255, 0.6);
   }
 }
@@ -143,7 +143,7 @@
     color: $color-textHeader;
   }
   .connect__label,
-  .connect::before,
+  // .connect::before,
   .messengers__link {
     color: $color-text2;
   }
@@ -312,7 +312,7 @@
   // .footer--v1 .connect::before {
   //   margin-bottom: 0.4375rem;
   // }
-  .footer--v1 .connect span {
+  .footer--v1 .footer__label {
     margin-bottom: 0.4375rem;
   }
   .footer--v2 {
