@@ -133,7 +133,8 @@
   .footer__copy,
   .footer__dev,
   .connect__label,
-  .connect::before {
+  // .connect::before,
+  .connect span {
     color: rgba(255, 255, 255, 0.6);
   }
 }
@@ -308,7 +309,10 @@
       margin-bottom: 0.375rem;
     }
   }
-  .footer--v1 .connect::before {
+  // .footer--v1 .connect::before {
+  //   margin-bottom: 0.4375rem;
+  // }
+  .footer--v1 .connect span {
     margin-bottom: 0.4375rem;
   }
   .footer--v2 {

@@ -107,16 +107,19 @@ mixin footer-var(fvar="footer--v1", fbg="footer__bg--v1")
                 .cells.footer__connects
                   .cell.cell-md-6
                     .footer__addresses
-                      .addresses.connect.connect--labeled
+                      .addresses.connect.connect--labeled 
+                        span Адрес офиса:
                         +connectList("addresses", false, 1)
                     .footer__emails
-                      .connect.emails.connect--labeled
+                      .connect.emails.connect--labeled 
+                        span Эл. почта:
                         +connectList("emails", false, 1)
                     .footer__socials
                       +socials
                   .cell.cell-md-6
                     .footer__phones
                       .connect.phones.connect--labeled.connect--inlined
+                        span Возникли вопросы? Звоните.
                         +connectList("phones", false, 2)
                     .footer__messengers
                       +messengers
