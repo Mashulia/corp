@@ -6,13 +6,13 @@ import {
   createStore
 } from "vuex";
 
-import stringsUtf from "./../strings-constants-utf8.json";
-import stringsWin from "./../strings-constants-win1251.json";
+import constantsUtf8 from "./../text-constants-utf8.js";
+import constantsWin1251 from "./../text-constants-win1251.js";
 
 let store = createStore({
   state: {
     products: [],
-    strings: stringsUtf
+    constants: constantsUtf8
   },
   mutations: {
     SET_TO_STATE: state => {
@@ -61,22 +61,23 @@ let store = createStore({
         state.products[index].qty--;
       }
     },
-    CHANGE_ENCODING: (state, strings) => {
+    CHANGE_ENCODING: (state, constants) => {
       let charset = document.querySelector('meta[charset="windows-1251"]');
       if (charset) {
-        state.strings = stringsWin;
+        state.constants = constantsWin1251;
       }
     },
     SHOW_FORM: () => {
-      let cartData = localStorage.getItem("cart") && localStorage.getItem("cart") !== "[]",
+      let cartData =
+          localStorage.getItem("cart") && localStorage.getItem("cart") !== "[]",
         form = document.querySelector(".cart__form"),
         cartApp = document.querySelector("#app-cart");
-        if (cartData) {
-          form.setAttribute("style", "display: block");
-        } else {
-          form.setAttribute("style", "display: none");
-          cartApp.setAttribute("style", "width: 100%; margin: 0 auto");
-        }
+      if (cartData) {
+        form.setAttribute("style", "display: block");
+      } else {
+        form.setAttribute("style", "display: none");
+        cartApp.setAttribute("style", "width: 100%; margin: 0 auto");
+      }
     }
   },
   actions: {
@@ -117,8 +118,8 @@ let store = createStore({
     PRODUCTS(state) {
       return state.products;
     },
-    STRINGS(state) {
-      return state.strings;
+    CONSTANTS(state) {
+      return state.constants;
     }
   }
 });

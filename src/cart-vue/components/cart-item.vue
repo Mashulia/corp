@@ -18,14 +18,14 @@
           <div
             v-if="product.price > 0"
             class="cart-contents__price__value">
-            {{product.price}} {{ STRINGS.currencyUnit2 }}
+            {{product.price}} {{ CONSTANTS.TEXT.CURRENCY_UNIT2 }}
           </div>
           <div
             v-else
             class="cart-contents__price__value">
-            {{ STRINGS.onRequest }}
+            {{ CONSTANTS.TEXT.ON_REQUEST_TEXT }}
           </div>
-          <div class="cart-contents__price__label">{{ STRINGS.priceForUnit }}</div>
+          <div class="cart-contents__price__label">{{ CONSTANTS.TEXT.PRISE_FOR_UNIT }}</div>
         </div>
       </div>
       <div class="cart-contents__pricing">
@@ -49,16 +49,16 @@
           <div
             v-if="product.price > 0"
             class="cart-contents__price__value">
-            {{product.price * product.qty}} {{ STRINGS.currencyUnit2 }}
+            {{product.price * product.qty}} {{ CONSTANTS.TEXT.CURRENCY_UNIT2 }}
           </div>
           <div
             v-else
             class="cart-contents__price__value">
-            {{ STRINGS.onRequest }}
+            {{ CONSTANTS.TEXT.ON_REQUEST_TEXT }}
           </div>
 
 
-          <div class="cart-contents__price__label">x {{product.qty}} {{ STRINGS.unit }}</div>
+          <div class="cart-contents__price__label">x {{product.qty}} {{ CONSTANTS.TEXT.UNIT }}</div>
         </div>
       </div>
       <div class="cart-contents__remove">
@@ -87,7 +87,7 @@ export default {
   name: "cart-item",
   computed: {
   ...mapGetters([
-    "STRINGS"
+    "CONSTANTS"
     ])
   },
   props: {

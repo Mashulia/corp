@@ -4,12 +4,12 @@
     <div class="cart-contents__header">
       <div class="cells fx-justify-between">
         <div class="cell cell-auto">
-          <div class="cart-contents__header__title">{{ STRINGS.headerTitle }}</div>
+          <div class="cart-contents__header__title">{{ CONSTANTS.TEXT.HEADER_TITLE }}</div>
         </div>
         <div class="cell cell-auto">
           <button
             class="cart-contents__header__erase js-cart-empty"
-            @click="deleteAllProductsFromCart">{{ STRINGS.headerRemove }}</button>
+            @click="deleteAllProductsFromCart">{{ CONSTANTS.TEXT.HEADER_REMOVE }}</button>
         </div>
       </div>
     </div>
@@ -25,10 +25,10 @@
     <div class="cart-contents__footer">
       <div class="cells fx-justify-between">
         <div class="cell cell-auto">
-          <div class="cart-contents__footer__title">{{ STRINGS.footerTitle }}</div>
+          <div class="cart-contents__footer__title">{{ CONSTANTS.TEXT.FOOTER_TITLE }}</div>
         </div>
         <div class="cell cell-auto">
-          <div class="cart-contents__footer__value">{{cartTotalCost}} {{ STRINGS.currencyUnit1 }}</div>
+          <div class="cart-contents__footer__value">{{cartTotalCost}} {{ CONSTANTS.TEXT.CURRENCY_UNIT1 }}</div>
         </div>
       </div>
     </div>
@@ -44,7 +44,7 @@ export default {
   data() {
     return  {
       products: [],
-      STRINGS: this.STRINGS
+      CONSTANTS: this.CONSTANTS
     }
   },
   props: {
@@ -52,7 +52,7 @@ export default {
     type: String,
     required: true
     },
-    STRINGS: {
+    CONSTANTS: {
       type: Object,
       required: true
     }

@@ -2,7 +2,7 @@
   <cart
   v-if="PRODUCTS.length"
   :URL="URL"
-  :STRINGS="STRINGS"/>
+  :CONSTANTS="CONSTANTS"/>
   <cart-empty v-else/>
 </template>
 <script>
@@ -20,7 +20,7 @@ export default {
   computed: {
     ...mapGetters([
       "PRODUCTS",
-      "STRINGS"
+      "CONSTANTS"
     ])
   },
   methods: {
