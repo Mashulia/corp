@@ -6,7 +6,8 @@ block title
   +page-header(pageName)
 block contentBody
   .cells
-    .cell.cell-xl-8#app-cart
+    .cell.cell-xl-8
+      #app-cart(data-url="http://localhost:3000/products")
     .cell.cell-md-8.cell-lg-6.mx-auto.cart__form.cell-xl-4
         form(action="").custom-form.collapsing-form
           .form__header

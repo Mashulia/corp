@@ -11,12 +11,11 @@ import cartEmpty from "./components/cart-empty.vue"
 import {mapActions, mapGetters} from "vuex"
 export default {
   components: { cart, cartEmpty },
-    props: {
-      URL: {
-      type: String,
-      required: true
-    }
-  },
+    data() {
+      return {
+        URL: document.getElementById("app-cart").dataset.url
+      }
+    },
   name: "app-cart",
   computed: {
     ...mapGetters([
@@ -34,7 +33,7 @@ export default {
   ])
   },
    mounted() {
-     this.SHOW_CART_FORM();
+    this.SHOW_CART_FORM();
     this.SET_PRODUCTS_TO_STATE();
     this.DEFINE_ENCODING();
   }
