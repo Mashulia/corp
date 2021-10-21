@@ -84,8 +84,8 @@ function addToCart1(e) {
   let isItemInCart = items.find(item => item.id === id);
 
   if (isItemInCart) {
-    // если такой товар уже в корзине, то добавляем +input.value к его количеству
-    items.find(item => item.id === id).qty += parseInt(input.value);
+    // если такой товар уже в корзине, то делаем кнопку неактивной
+    this.setAttribute("disabled", "");
   } else {
     // если товара в корзине еще нет, то добавляем в массив новый объект
     let item = {
@@ -97,6 +97,7 @@ function addToCart1(e) {
       text: text
     };
     items.push(item);
+    this.setAttribute("disabled", "");
   };
 
   setCartData(items);
@@ -116,13 +117,15 @@ function addToCart2(e) {
     url = this.getAttribute('data-src'), // картинка товара
     qty = 1,
     text = this.innerHTML;
-  text = 'В корзине';
+
+
+    text = 'В корзине';
 
   let isItemInCart = items.find(item => item.id === id);
 
   if (isItemInCart) {
-    // если такой товар уже в корзине, то добавляем +input.value к его количеству
-    items.find(item => item.id === id).qty += 1;
+    // если такой товар уже в корзине, то делаем кнопку неактивной
+    this.setAttribute("disabled", "")
   } else {
     // если товара в корзине еще нет, то добавляем в массив новый объект
     let item = {
@@ -134,6 +137,7 @@ function addToCart2(e) {
       text: text
     };
     items.push(item);
+    this.setAttribute("disabled", "");
   };
 
   setCartData(items);
@@ -154,22 +158,24 @@ for (var i = 0; i < addToCartBtns2.length; i++) {
 }
 
 function onLoadProductQty() {
-  let productQty = localStorage.getItem('cart');
+    let productQty = localStorage.getItem('cart');
 
   if (productQty && productQty !== '[]') {
     productQty = JSON.parse(localStorage.getItem('cart'))
     activateCart();
 
     for (var i = 0; i < addToCartBtns1.length; i++) {
-      let buttonId = addToCartBtns1[i].getAttribute('data-id');
+      let buttonId = addToCartBtns1[i].getAttribute("data-id");
       if (productQty.find(item => item.id === buttonId)) {
         addToCartBtns1[i].innerHTML = productQty.find(item => item.id === buttonId).text;
+        addToCartBtns1[i].setAttribute("disabled", "");
       }
     }
     for (var j = 0; j < addToCartBtns2.length; j++) {
-      let buttonId = addToCartBtns2[j].getAttribute('data-id');
+      let buttonId = addToCartBtns2[j].getAttribute("data-id");
       if (productQty.find(item => item.id === buttonId)) {
         addToCartBtns2[j].innerHTML = productQty.find(item => item.id === buttonId).text;
+        addToCartBtns2[j].setAttribute("disabled", "");
       }
     }
   }
