@@ -117,7 +117,7 @@
   display: block;
 
   .collapsing-form--handled & {
-    display: none;
+   visibility: hidden;
   }
 }
 
