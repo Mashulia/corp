@@ -9,7 +9,7 @@ block contentBody
     .cell.cell-xl-8
       #app-cart(data-url="http://localhost:3000/products")
     .cell.cell-md-8.cell-lg-6.mx-auto.cart__form.cell-xl-4
-        form(action="").custom-form.collapsing-form
+        form.custom-form.collapsing-form(onsubmit="addNotification(evt)", action="")
           .form__header
             .form__title Оформить заказ
             .form__description
