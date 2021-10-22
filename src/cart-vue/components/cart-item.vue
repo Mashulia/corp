@@ -35,11 +35,12 @@
               class="qty__change qty__change--minus"
               @click="decrementProduct">-</button>
             <input
-            class="qty__input form__input"
-              type="text"
-              data-min="1"
-              data-max="99"
-              v-model="product.qty">
+              class="qty__input form__input"
+              type="number" 
+              v-model="product.qty"
+              min="1"
+              max="99"
+              @blur="validateInputData($event)">
             <button
               class="qty__change qty__change--plus"
               @click="incrementProduct">+</button>
@@ -56,8 +57,6 @@
             class="cart-contents__price__value">
             {{ CONSTANTS.TEXT.ON_REQUEST_TEXT }}
           </div>
-
-
           <div class="cart-contents__price__label">x {{product.qty}} {{ CONSTANTS.TEXT.UNIT }}</div>
         </div>
       </div>
@@ -82,7 +81,7 @@
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex"
+import { mapActions, mapGetters } from "vuex"
 export default {
   name: "cart-item",
   computed: {
@@ -97,6 +96,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      "CHANGE_STATE_LOCALSTORAGE",
+    ]),
     deleteFromCart() {
       this.$emit("deleteFromCart")
     },
@@ -105,6 +107,20 @@ export default {
     },
     decrementProduct() {
       this.$emit("decrementProduct")
+    },
+    validateInputData(event) {
+      if(event.target.value < event.target.min || event.target.value === "") {
+      this.product.qty = event.target.min;
+      this.CHANGE_STATE_LOCALSTORAGE();
+    }
+      else if (event.target.value >= event.target.max || event.target.value.length > 2) {
+        this.product.qty = event.target.max;
+        this.CHANGE_STATE_LOCALSTORAGE();
+      } 
+      else {
+        this.product.qty = event.target.value;
+        this.CHANGE_STATE_LOCALSTORAGE();
+      }
     }
   }
 }

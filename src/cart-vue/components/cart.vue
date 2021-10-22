@@ -28,7 +28,12 @@
           <div class="cart-contents__footer__title">{{ CONSTANTS.TEXT.FOOTER_TITLE }}</div>
         </div>
         <div class="cell cell-auto">
-          <div class="cart-contents__footer__value">{{cartTotalCost}} {{ CONSTANTS.TEXT.CURRENCY_UNIT1 }}</div>
+          <div 
+          class="cart-contents__footer__value"
+            v-if="cartTotalCost > 0 ">
+            {{cartTotalCost}} {{ CONSTANTS.TEXT.CURRENCY_UNIT1 }}
+          </div>
+          <div class="cart-contents__footer__value" v-else></div>
         </div>
       </div>
     </div>
@@ -84,8 +89,7 @@ export default {
       "INCREMENT_CART_PRODUCT",
       "DECREMENT_CART_PRODUCT",
       "DEACTIVATE_CART_STATUS",
-      "CHANGE_STATE_LOCALSTORAGE",
-      "DEFINE_ENCODING"
+      "CHANGE_STATE_LOCALSTORAGE"
     ]),
     deleteFromCart(index) {
       this.DELETE_PRODUCT_FROM_CART(index)
@@ -146,7 +150,6 @@ export default {
   mounted() {
     setInterval(() =>  this.loadData(this.URL), 5000);
     setInterval(() =>  this.updateData(), 6000);
-    // DEFINE_ENCODING()
   }
 }
 </script>

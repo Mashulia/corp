@@ -54,7 +54,13 @@ let store = createStore({
       localStorage.clear();
     },
     INCREMENT: (state, index) => {
-      state.products[index].qty++;
+      state.products[index].qty = state.products[index].qty;
+      if (state.products[index].qty >= 99) {
+        state.products[index].qty = 99;
+      }
+      else {
+        state.products[index].qty++;
+      }
     },
     DECREMENT: (state, index) => {
       if (state.products[index].qty > 1) {

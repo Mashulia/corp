@@ -24,8 +24,12 @@ function deActivateCart() {
 // Функция инкремента
 if (plusBtn) {
   (function () {
+    let maxValue = input.getAttribute("data-max");
     plusBtn.addEventListener('click', () => {
-      input.value = parseInt(input.value) + 1;
+      input.value = parseInt(input.value);
+      if (input.value >= maxValue) {
+        input.value = maxValue;
+      } else input.value ++;
     });
   })()
 }
@@ -72,13 +76,25 @@ function setCartData(o) {
 
 // Добавляем товар в корзину по кнопке 'в корзину'
 function addToCart1(e) {
+  let minValue = input.getAttribute("data-min");
+  let maxValue = input.getAttribute("data-max");
+  
   let items = getCartData() || [], // получаем данные корзины или создаём новый массив, если данных еще нет
-    id = this.getAttribute('data-id'), // ID товара
-    name = this.getAttribute('data-name'), // название товара
-    price = this.getAttribute('data-price'), // стоимость товара
-    url = this.getAttribute('data-src'), // картинка товара
-    qty = parseInt(input.value),
-    text = this.innerHTML;
+    id = this.getAttribute("data-id"), // ID товара
+    name = this.getAttribute("data-name"), // название товара
+    price = this.getAttribute("data-price"), // стоимость товара
+    url = this.getAttribute("data-src"),// картинка товара
+    text = this.innerHTML,
+    qty; 
+  if (input.value < minValue || input.value === "") {
+    input.value = minValue;
+  } else if (input.value > maxValue) {
+    input.value = maxValue;
+  } else {
+    input.value = input.value;
+  }
+
+  qty = parseInt(input.value);
   text = 'В корзине';
 
   let isItemInCart = items.find(item => item.id === id);
@@ -111,16 +127,14 @@ function addToCart1(e) {
 function addToCart2(e) {
 
   let items = getCartData() || [], // получаем данные корзины или создаём новый массив, если данных еще нет
-    id = this.getAttribute('data-id'), // ID товара
-    name = this.getAttribute('data-name'), // название товара
-    price = this.getAttribute('data-price'), // стоимость товара
-    url = this.getAttribute('data-src'), // картинка товара
-    qty = 1,
-    text = this.innerHTML;
+    id = this.getAttribute("data-id"), // ID товара
+    name = this.getAttribute("data-name"), // название товара
+    price = this.getAttribute("data-price"), // стоимость товара
+    url = this.getAttribute("data-src"), // картинка товара
+    text = this.innerHTML,
+    qty =  1;
 
-
-    text = 'В корзине';
-
+  text = "В корзине";
   let isItemInCart = items.find(item => item.id === id);
 
   if (isItemInCart) {
