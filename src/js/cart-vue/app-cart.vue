@@ -1,3 +1,8 @@
+App.component('app-cart', {
+  data() {
+    return {
+    }
+  },
 <template>
   <cart
   v-if="PRODUCTS.length"

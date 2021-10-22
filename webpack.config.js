@@ -22,8 +22,7 @@ const pages = fs
 module.exports = (env, options) => ({
   entry: {
     main: "./src/index.js",
-    theming: "./src/js/theming.js",
-    cart: "./src/cart-vue/cart-vue.js"
+    theming: "./src/js/theming.js"
   },
   output: {
     publicPath: "",
@@ -104,7 +103,7 @@ module.exports = (env, options) => ({
       },
       {
         test: /\.vue$/,
-        include: path.resolve(__dirname, "src/cart-vue"),
+        include: path.resolve(__dirname, "src/js/cart-vue"),
         loader: "vue-loader"
       },
       {

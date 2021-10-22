@@ -6,8 +6,8 @@ import {
   createStore
 } from "vuex";
 
-import constantsUtf8 from "./../text-constants-utf8.js";
-import constantsWin1251 from "./../text-constants-win1251.js";
+import constantsUtf8 from "../text-constants-utf8.js";
+import constantsWin1251 from "../text-constants-win1251.js";
 
 let store = createStore({
   state: {
