@@ -74,15 +74,16 @@ let store = createStore({
       }
     },
     SHOW_FORM: () => {
-      let cartData =
-          localStorage.getItem("cart") && localStorage.getItem("cart") !== "[]",
+      let cartData = localStorage.getItem("cart") && localStorage.getItem("cart") !== "[]",
         form = document.querySelector(".cart__form"),
-        cartApp = document.querySelector("#app-cart");
+        cartApp = document.querySelector("#app-cart"),
+        cell = document.querySelector(".cells .cell-xl-8");
       if (cartData) {
         form.setAttribute("style", "display: block");
       } else {
         form.setAttribute("style", "display: none");
         cartApp.setAttribute("style", "width: 100%; margin: 0 auto");
+        cell.setAttribute("style", "flex-basis: 100%; max-width: 100%")
       }
     }
   },

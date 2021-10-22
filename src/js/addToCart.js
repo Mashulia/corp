@@ -20,6 +20,12 @@ function deActivateCart() {
     cartBtns[i].classList.remove('bcart__button--active');
   }
 }
+// Функция валидации текстового поля на ввод только чисел
+if (input) {
+  input.oninput = function() {
+    this.value = this.value.replace(/[^0-9]/g, "");
+  };
+}
 
 // Функция инкремента
 if (plusBtn) {
@@ -27,9 +33,11 @@ if (plusBtn) {
     let maxValue = input.getAttribute("data-max");
     plusBtn.addEventListener('click', () => {
       input.value = parseInt(input.value);
-      if (input.value >= maxValue) {
+      if (input.value >= maxValue || input.value.length > 2) {
         input.value = maxValue;
-      } else input.value ++;
+      } else {
+        input.value = parseInt(input.value) + 1;
+      }
     });
   })()
 }
@@ -88,11 +96,11 @@ function addToCart1(e) {
     qty; 
   if (input.value < minValue || input.value === "") {
     input.value = minValue;
-  } else if (input.value > maxValue) {
-    input.value = maxValue;
-  } else {
-    input.value = input.value;
-  }
+  } else if (input.value >= maxValue && input.value.length > 2) {
+      input.value = maxValue;
+    } else {
+      input.value = input.value;
+    }
 
   qty = parseInt(input.value);
   text = 'В корзине';

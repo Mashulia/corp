@@ -91,7 +91,7 @@ block contentBody
           .presentation__action.presentation__qty
             .qty
               button.qty__change.qty__change--minus -
-              input.qty__input.form__input(type="text", value="1", data-min="1", data-max="99")
+              input.qty__input.form__input(type="text", value="1", data-min="1", data-max="99", minlength="1", maxlength="2" pattern="[0-9]{1,2}")
               button.qty__change.qty__change--plus +
           .presentation__action.presentation__add
             // Когда товар добавлен, нужно показать сообщение об успешной добавке. Сообщение в div#product-added.

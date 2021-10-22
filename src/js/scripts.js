@@ -7,7 +7,6 @@ import { qtyChanger } from "./quantity-changer";
 import { handleAdd2Cart } from "./add2cart";
 import { SettingsGroup } from "./settings";
 import { addToCart } from "./addToCart"
-import { validateInputNumber } from "./validateInputNumber"
 // contents:
 // array.remove
 // delay function
