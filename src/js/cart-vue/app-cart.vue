@@ -1,6 +1,8 @@
-App.component('app-cart', {
-  data() {
-    return {
+const cart = Vue.createApp({});
+cart.component("app-cart", {
+data() {
+  return {
+    URL: document.getElementById("app-cart").dataset.url
     }
   },
 <template>
@@ -10,18 +12,14 @@ App.component('app-cart', {
   :CONSTANTS="CONSTANTS"/>
   <cart-empty v-else/>
 </template>
+});
 <script>
 import cart from "./components/cart.vue"
 import cartEmpty from "./components/cart-empty.vue"
 import {mapActions, mapGetters} from "vuex"
 export default {
-  components: { cart, cartEmpty },
-    data() {
-      return {
-        URL: document.getElementById("app-cart").dataset.url
-      }
-    },
   name: "app-cart",
+  components: { cart, cartEmpty },
   computed: {
     ...mapGetters([
       "PRODUCTS",
@@ -44,6 +42,4 @@ export default {
   }
 }
 </script>
-<style>
-
-</style>
+cart.use(store).mount("#app-cart");

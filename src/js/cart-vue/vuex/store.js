@@ -78,10 +78,11 @@ let store = createStore({
         form = document.querySelector(".cart__form"),
         cartApp = document.querySelector("#app-cart"),
         cell = document.querySelector(".cells .cell-xl-8");
-      if (cartData) {
+      if (cartData && form) {
         form.setAttribute("style", "display: block");
-      } else {
+      } else if(form){
         form.setAttribute("style", "display: none");
+      } else {
         cartApp.setAttribute("style", "width: 100%; margin: 0 auto");
         cell.setAttribute("style", "flex-basis: 100%; max-width: 100%")
       }

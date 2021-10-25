@@ -1,6 +1,5 @@
 <template>
-  <div
-    class="cart-contents">
+  <div class="cart-contents">
     <div class="cart-contents__header">
       <div class="cells fx-justify-between">
         <div class="cell cell-auto">
