@@ -2,10 +2,12 @@
   import App from "./app-cart.vue";
   import store from "./vuex/store.js";
   
-   let cartApp = document.querySelector("#app-cart");
+  document.addEventListener('DOMContentLoaded', function() { 
+    let cartApp = document.querySelector("#app-cart");
 
-   if (cartApp) {
-     createApp(App, { props: ["data-url"] })
+    if (cartApp) {
+      createApp(App, { props: ["data-url"] })
       .use(store)
       .mount("#app-cart");
-   }
+    }
+  }, false)
