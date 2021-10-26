@@ -1,10 +1,3 @@
-const cart = Vue.createApp({});
-cart.component("app-cart", {
-data() {
-  return {
-    URL: document.getElementById("app-cart").dataset.url
-    }
-  },
 <template>
   <cart
   v-if="PRODUCTS.length"
@@ -12,7 +5,6 @@ data() {
   :CONSTANTS="CONSTANTS"/>
   <cart-empty v-else/>
 </template>
-});
 <script>
 import cart from "./components/cart.vue"
 import cartEmpty from "./components/cart-empty.vue"
@@ -42,4 +34,3 @@ export default {
   }
 }
 </script>
-cart.use(store).mount("#app-cart");

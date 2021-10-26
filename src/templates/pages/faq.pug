@@ -15,6 +15,10 @@ block contentBody
       a(href="#faq-fancy") Всплывашки
     li
       a(href="#faq-spectrum") Выбор цвета
+    li
+      a(href="#faq-addToCart") Добавление товара в корзину
+    li
+      a(href="#faq-vue-cart") Корзина на vue.js
   .article__section
     h2#faq-forms Формы
     .cells
@@ -141,5 +145,74 @@ block contentBody
       |
       a(href="https://seballot.github.io/spectrum/", target="_blank") Spectrum
     p После ВЫБОРА нового цвета в поля [name="theme-color-2"] и [name="theme-color-1"] записываюца value="hsl(0, 0%, 0%)"
+
+  .article__section
+    h2#faq-addToCart Добавление товара в корзину
+
+    p 
+      | Данные товара передаются через атрибуты
+      | 
+      code data-: 
+      | (data-id, data-name, data-src, data-price и т.д.) в соответствующие кнопки с названиями "В корзину" (на странице товара) и "Заказать" (на странице каталога).
+
+    p По клику на кнопку происходит несколько событий:
+
+    ul 
+      li всплывает уведомление об успешном добавлении товара и пропадает через 4с.
+      li 
+        | маленькой корзинке в шапке добавляется класс 
+        |
+        code .bcart__button--active,
+        | меняющий состояние корзины и сигнализирующий о том, что корзина не пустая 
+        .bcart
+          a.button.button-icon.bcart__button.bcart__button--active(title="Перейти в корзину", href="cart-vue.html")
+            include ../../images/inline-svgs/cart-icon.svg
+      li 
+        | кнопке добавляется атрибут 
+        |
+        code disabled 
+        | она становится далее неактивной по клику и надпись меняется на "В корзине" 
+        button.button.button-primary(data-fancybox, data-type="inline", data-src="#some-popup", disabled) В корзине
+      li 
+        | все данные из 
+        |
+        code data-
+        | атрибутов сохраняются в localStorage на клиенте, согласно которым отрисовывается корзина
+
+  .article__section
+    h2#faq-vue-cart Корзина на vue.js
+
+    p 
+      | Инициализация корзины происходит при добавлении на страницу 
+      |
+      code &#12296;div id="app-cart" data-url=""&#12297;
+      |
+      | необходимый параметр - ссылка для синхронизации с сервером передается в атрибут
+      |
+      code data-url=""
+
+    P Реализованы следующие возможности:
+    ul 
+      li удалениe элементов (делается перерасчет итоговой суммы)
+      li изменение количества(в диапазоне от 1 до 99) (делается перерасчет итоговой суммы)
+      li предусмотрена синхронизация с сервером на предмет актуальности товаров (есть ли нет), наименования и цены  функцией
+      code updateData()
+      | которая срабатывает через установленное время  
+      |
+      code setInterval()
+      |  6 секунд       
+      li При нажатии кнопки "Очистить все" (в шапке корзины) или при удалении всех товаров из корзины появляется уведомление о том, что корзина пуста и форма заказа исчезает
+      block contentBody
+        .page-message
+          .page-message__icon
+            include ../../images/inline-svgs/cart-icon.svg
+          .page-message__title Ваша корзина пуста
+          .page-message__text
+            | Выберите в каталоге интересующий товар и добавьте в корзину
+          .page-message__action
+            a.button.button-secondary(href="catalog.html")
+              .button__body Перейти в каталог
+              .button__icon
+                include ../../images/inline-svgs/go-forward.svg
   //- +pagination(1)
   //- +seo
