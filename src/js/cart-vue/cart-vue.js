@@ -10,4 +10,12 @@
       .use(store)
       .mount("#app-cart");
     }
+
+    let cartApp1 = document.querySelector("#app-cart1");
+
+    if (cartApp1) {
+      createApp(App, { props: ["data-url"] })
+        .use(store)
+        .mount("#app-cart1");
+    }
   }, false)
