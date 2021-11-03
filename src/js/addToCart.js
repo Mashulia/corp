@@ -201,7 +201,7 @@ function onLoadProductQty() {
         addToCartBtns2[j].setAttribute("disabled", "");
       }
     }
-  } else {
+  } else if(cell){
     cell.classList.add("max-width");
   }
 }
