@@ -5,6 +5,21 @@ block prepend head
 block title
   +page-header(pageName)
 block contentBody
+  -
+    var cprds = [
+      {
+        name: "Поролон мебельный ST 2236 (1,6х2м) толщина 10мм",
+        price: 440,
+        pic: require("/src/images/content-images/cart-1.jpg"),
+        qty: 2
+      },
+      {
+        name: "Утеплитель ZE Строй «Коттедж +», упаковка  ",
+        price: 840,
+        pic: require("/src/images/content-images/cart-2.jpg"),
+        qty: 1
+      }
+    ];
   h2 Содержание
   ul
     li
@@ -117,7 +132,7 @@ block contentBody
   .article__section
     h2#faq-fancy Всплывашки
     p.
-      Всплывашки - fancyBox v3.5.7. Версия 3 больше не поддерживаеца, поэтому ссылки с доками такие:
+      Всплывашки - fancyBox v3.5.7. Версия 3 больше не поддерживается, поэтому ссылки с доками такие:
     ul
       li
         a(href="https://web.archive.org/web/20210325170940/https://fancyapps.com/fancybox/3/docs/", target="_blank") Webarchive Fancybox 3
@@ -153,7 +168,7 @@ block contentBody
       | Данные товара передавать через атрибуты
       | 
       code data-: 
-      | ( data-id="уникальный id товара", data-name ="наименование(название) товара", data-src ="наименование картинки товара(например, about-1.jpg)", data-price ="новая цена товара(.products__prices__new)") в соответствующие кнопки товара с названиями "В корзину" (на странице товара) и "Заказать" (на странице каталога), которые после клика будут сохраняться в localStorage
+      | ( data-id="уникальный id товара", data-name ="наименование(название) товара", data-src ="наименование картинки товара(например, about-1.jpg)", data-price ="новая цена товара(.products__prices__new)") в соответствующие кнопки товара с названиями "В корзину" (на странице товара кнопка с классом .js-add2cart) и "Заказать" (на странице каталога кнопка с классом .products__button &gt; .button), которые после клика будут сохраняться в localStorage
 
     p Попасть в корзину можно по клику на маленькую корзину в шапке 
       .bcart
@@ -175,9 +190,7 @@ block contentBody
       | необходимый параметр - ссылка для синхронизации с сервером передается в атрибут
       |
       code data-url=""
-      | передача происходит по get-запросу, ожидает ответ в формате файла .json вида:
-      
-    p
+      | передача происходит по get-запросу, ожидает ответ в формате файла вида .json
 
       p По нажатию на иконку корзины у каждой единицы товара - вся строка с товаром удаляется из корзины
     
@@ -188,26 +201,64 @@ block contentBody
       code data-min = "1" 
       | и 
       code data-max = "99" 
-      p Если корзина пуста и товаров в корзине нет появляется соответствующее уведомление,  а также у маленькой корзинки в шапке класс .bcart__button--active удаляется
+      p Если корзина пуста и товаров в корзине нет появляется соответствующее уведомление
 
-      .cells
-        .cell.cell-md-6
-          h3.text-center Типичная корзина
-          #app-cart1(data-url="http://localhost:3000/products")
-        .cell.cell-md-6        
-          h3.text-center Пустая корзина
-          block contentBody
-            .page-message
-              .page-message__icon
-                include ../../images/inline-svgs/cart-icon.svg
-              .page-message__title Ваша корзина пуста
-              .page-message__text
-                | Выберите в каталоге интересующий товар и добавьте в корзину
-              .page-message__action
-                a.button.button-secondary(href="catalog.html")
-                  .button__body Перейти в каталог
-                  .button__icon
-                    include ../../images/inline-svgs/go-forward.svg
+    .cells
+      .cell.cell-md-8
+        h3.text-center Типичная корзина
+        .cart-contents
+          .cart-contents__header
+            .cells.fx-justify-between
+              .cell.cell-auto
+                .cart-contents__header__title Список заказа
+              .cell.cell-auto
+                button.cart-contents__header__erase.js-cart-empty Очистить все
+          .cart-contents__body
+            each item in cprds
+              .cart-contents__item
+                .cart-contents__row
+                  a.cart-contents__image(class= item.pic ? "" : "no-image", href="product-item.html")
+                    // Размер картинок 124х93
+                    if item.pic
+                      img(src= item.pic)
+                  .cart-contents__info
+                    a.cart-contents__name(href="product-item-2.html")  Поролон мебельный ST 2236 (1,6х2м) толщина 10мм
+                    .cart-contents__price
+                      .cart-contents__price__value= item.price ? item.price + " руб." : "по запросу"
+                      .cart-contents__price__label Цена, за 1 ед.
+                  .cart-contents__pricing
+                    .cart-contents__qty
+                      .qty
+                        button.qty__change.qty__change--minus(disabled) -
+                        input.qty__input.form__input(type="text", value= item.qty, data-min="1", data-max="99")
+                        button.qty__change.qty__change--plus +
+                    .cart-contents__price
+                      .cart-contents__price__value= item.price ? (item.price * item.qty) + " руб." : "по запросу"
+                      .cart-contents__price__label= "x " + item.qty + " ед."
+                  .cart-contents__remove
+                    button.button-remove.button.button-icon(title="Удалить товар из корзины")
+                      include ../../images/inline-svgs/remove-from-cart.svg
+          .cart-contents__footer
+            .cells.fx-justify-between
+              .cell.cell-auto
+                .cart-contents__footer__title Итого:
+              .cell.cell-auto
+                .cart-contents__footer__value 2 600 руб
+
+      .cell.cell-md-4        
+        h3.text-center Пустая корзина
+        block contentBody
+          .page-message
+            .page-message__icon
+              include ../../images/inline-svgs/cart-icon.svg
+            .page-message__title Ваша корзина пуста
+            .page-message__text
+              | Выберите в каталоге интересующий товар и добавьте в корзину
+            .page-message__action
+              a.button.button-secondary(href="catalog.html")
+                .button__body Перейти в каталог
+                .button__icon
+                  include ../../images/inline-svgs/go-forward.svg
         
 
   //- +pagination(1)

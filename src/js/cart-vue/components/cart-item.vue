@@ -6,7 +6,7 @@
       class="cart-contents__image"
       href="product-item.html">
         <!-- Размер картинок 124х93-->
-        <img :src="product.pic">
+        <img :src="this.path + product.pic">
       </a>
       <div
         v-else
@@ -84,6 +84,11 @@
 import { mapActions, mapGetters } from "vuex"
 export default {
   name: "cart-item",
+  data() {
+    return {
+      path: "assets/content-images/"
+    }
+  },
   computed: {
   ...mapGetters([
     "CONSTANTS"

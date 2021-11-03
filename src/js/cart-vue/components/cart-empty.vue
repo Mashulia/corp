@@ -27,11 +27,11 @@ export default {
     removeForm() {
       let cartData = localStorage.getItem("cart") && localStorage.getItem("cart") !== "[]",
       form = document.querySelector(".cart__form"),
-      cartApp = document.querySelector("#app-cart");
+      cell = document.querySelector(".wrap .cell-xl-8");
 
       if (!cartData) {
         form.setAttribute("style", "display: none");
-        cartApp.setAttribute("style", "width: 100%; margin: 0 auto");
+        cell.classList.add("max-width");
       }
     }
    },

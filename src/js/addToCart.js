@@ -6,6 +6,7 @@ let plusBtn = document.querySelector('.qty__change--plus');
 let minusBtn = document.querySelector('.qty__change--minus');
 let notification = document.querySelector('#product-added');
 let test = document.querySelector('.page-header--v1 .breadcrumbs');
+let cell = document.querySelector(".wrap .cell-xl-8");
 
 // Функция активации корзины в шапке
 function activateCart() {
@@ -200,6 +201,8 @@ function onLoadProductQty() {
         addToCartBtns2[j].setAttribute("disabled", "");
       }
     }
+  } else {
+    cell.classList.add("max-width");
   }
 }
 
