@@ -304,7 +304,8 @@
     max-width: 25%;
   }
   .content__body,
-  .content__main {
+  .content__main,
+  .content__row {
     flex: 1 0 75%;
     max-width: 75%;
     &:first-child:last-child {
