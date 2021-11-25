@@ -138,9 +138,6 @@ export default {
             if(this.PRODUCTS[j].pic !== this.products[i].pic) {
               this.PRODUCTS[j].pic = this.products[i].pic
             }
-            if(this.PRODUCTS[j].qty > this.products[i].availableQty) {
-              this.PRODUCTS[j].qty = this.products[i].availableQty
-            }
             if(this.PRODUCTS[j].currency !== this.products[i].currency) {
               this.PRODUCTS[j].currency = this.products[i].currency
             }
