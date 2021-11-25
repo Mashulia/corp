@@ -6,7 +6,7 @@
       class="cart-contents__image"
       href="product-item.html">
         <!-- Размер картинок 124х93-->
-        <img :src="this.path + product.pic">
+        <img :src="product.pic">
       </a>
       <div
         v-else
@@ -18,14 +18,14 @@
           <div
             v-if="product.price > 0"
             class="cart-contents__price__value">
-            {{product.price}} {{ CONSTANTS.TEXT.CURRENCY_UNIT2 }}
+            {{product.price}} {{product.currency}}
           </div>
           <div
             v-else
             class="cart-contents__price__value">
             {{ CONSTANTS.TEXT.ON_REQUEST_TEXT }}
           </div>
-          <div class="cart-contents__price__label">{{ CONSTANTS.TEXT.PRISE_FOR_UNIT }}</div>
+          <div class="cart-contents__price__label">{{product.currency}}</div>
         </div>
       </div>
       <div class="cart-contents__pricing">
@@ -50,14 +50,14 @@
           <div
             v-if="product.price > 0"
             class="cart-contents__price__value">
-            {{product.price * product.qty}} {{ CONSTANTS.TEXT.CURRENCY_UNIT2 }}
+            {{product.price * product.qty}} {{product.currency}}
           </div>
           <div
             v-else
             class="cart-contents__price__value">
             {{ CONSTANTS.TEXT.ON_REQUEST_TEXT }}
           </div>
-          <div class="cart-contents__price__label">x {{product.qty}} {{ CONSTANTS.TEXT.UNIT }}</div>
+          <div class="cart-contents__price__label">x {{product.qty}} {{product.currency}}</div>
         </div>
       </div>
       <div class="cart-contents__remove">
@@ -84,11 +84,6 @@
 import { mapActions, mapGetters } from "vuex"
 export default {
   name: "cart-item",
-  data() {
-    return {
-      path: "assets/content-images/"
-    }
-  },
   computed: {
   ...mapGetters([
     "CONSTANTS"
