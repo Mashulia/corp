@@ -95,6 +95,7 @@ function addToCart1(e) {
     url = this.getAttribute("data-src"), // картинка товара
     currency = this.getAttribute("data-currency"), //валюта товара
     text = this.innerHTML,
+    link = this.getAttribute("data-href"), //ссылка на товар
     qty;
   if (input.value < minValue || input.value === "") {
     input.value = minValue;
@@ -121,7 +122,8 @@ function addToCart1(e) {
       pic: url,
       qty: qty,
       text: text,
-      currency: currency
+      currency: currency,
+      link: link
     };
     items.push(item);
     this.setAttribute("disabled", "");
@@ -142,6 +144,7 @@ function addToCart2(e) {
     price = this.getAttribute("data-price"), // стоимость товара
     url = this.getAttribute("data-src"), // картинка товара
     currency = this.getAttribute("data-currency"), //валюта товара
+    link = this.getAttribute("data-href"), //ссылка на товар
     text = this.innerHTML,
     qty = 1;
 
@@ -160,7 +163,8 @@ function addToCart2(e) {
       pic: url,
       qty: qty,
       text: text,
-      currency: currency
+      currency: currency,
+      link: link
     };
     items.push(item);
     this.setAttribute("disabled", "");
