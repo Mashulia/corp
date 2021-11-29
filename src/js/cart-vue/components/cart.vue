@@ -3,34 +3,41 @@
     <div class="cart-contents__header">
       <div class="cells fx-justify-between">
         <div class="cell cell-auto">
-          <div class="cart-contents__header__title">{{ CONSTANTS.TEXT.HEADER_TITLE }}</div>
+          <div class="cart-contents__header__title">
+            {{ TEXT.HEADER_TITLE }}
+          </div>
         </div>
         <div class="cell cell-auto">
           <button
             class="cart-contents__header__erase js-cart-empty"
-            @click="deleteAllProductsFromCart">{{ CONSTANTS.TEXT.HEADER_REMOVE }}</button>
+            @click="deleteAllProductsFromCart"
+          >
+            {{ TEXT.HEADER_REMOVE }}
+          </button>
         </div>
       </div>
     </div>
     <div class="cart-contents__body">
       <cart-item
-      v-for="(product, index) in PRODUCTS"
-      :key="product.id"
-      :product="product"
-      @deleteFromCart="deleteFromCart(index)"
-      @incrementProduct="incrementProduct(index)"
-      @decrementProduct="decrementProduct(index)"/>
+        v-for="(product, index) in PRODUCTS"
+        :TEXT="TEXT"
+        :key="product.id"
+        :product="product"
+        @deleteFromCart="deleteFromCart(index)"
+        @incrementProduct="incrementProduct(index)"
+        @decrementProduct="decrementProduct(index)"
+      />
     </div>
     <div class="cart-contents__footer">
       <div class="cells fx-justify-between">
         <div class="cell cell-auto">
-          <div class="cart-contents__footer__title">{{ CONSTANTS.TEXT.FOOTER_TITLE }}</div>
+          <div class="cart-contents__footer__title">
+            {{ TEXT.FOOTER_TITLE }}
+          </div>
         </div>
         <div class="cell cell-auto">
-          <div 
-          class="cart-contents__footer__value"
-            v-if="cartTotalCost > 0 ">
-            {{cartTotalCost}} {{ CONSTANTS.TEXT.CURRENCY_UNIT1 }}
+          <div class="cart-contents__footer__value" v-if="cartTotalCost > 0">
+            {{ cartTotalCost }} {{ TEXT.CURRENCY_UNIT }}
           </div>
           <div class="cart-contents__footer__value" v-else></div>
         </div>
@@ -39,44 +46,41 @@
   </div>
 </template>
 <script>
-import cartItem from "./cart-item.vue"
-import {mapActions, mapGetters} from "vuex"
-import axios from "axios"
+import cartItem from "./cart-item.vue";
+import { mapActions, mapGetters } from "vuex";
+import axios from "axios";
+import VueAxios from "vue-axios";
 export default {
   name: "cart",
   components: { cartItem },
   data() {
-    return  {
-      products: [],
-      CONSTANTS: this.CONSTANTS
-    }
+    return {
+      products: []
+    };
   },
   props: {
-  URL: {
-    type: String,
-    required: true
+    URL: {
+      type: Object,
+      required: true
     },
-    CONSTANTS: {
+    TEXT: {
       type: Object,
       required: true
     }
   },
   computed: {
-  ...mapGetters([
-    "PRODUCTS"
-    ]),
+    ...mapGetters(["PRODUCTS"]),
     cartTotalCost() {
       let result = [];
-      if(this.PRODUCTS.length) {
-          for(let product of this.PRODUCTS) {
+      if (this.PRODUCTS.length) {
+        for (let product of this.PRODUCTS) {
           result.push(product.price * product.qty);
         }
-        result = result.reduce(function(sum, el){
+        result = result.reduce(function(sum, el) {
           return sum + el;
-        })
+        });
         return result;
-      }
-      else {
+      } else {
         return 0;
       }
     }
@@ -91,67 +95,69 @@ export default {
       "CHANGE_STATE_LOCALSTORAGE"
     ]),
     deleteFromCart(index) {
-      this.DELETE_PRODUCT_FROM_CART(index)
-      this.CHANGE_STATE_LOCALSTORAGE()
+      this.DELETE_PRODUCT_FROM_CART(index);
+      this.CHANGE_STATE_LOCALSTORAGE();
     },
     deleteAllProductsFromCart() {
-      this.DELETE_ALL_PRODUCTS_FROM_CART(),
-      localStorage.clear("cart")
-      this.CHANGE_STATE_LOCALSTORAGE()
-      this.DEACTIVATE_CART_STATUS()
+      this.DELETE_ALL_PRODUCTS_FROM_CART(), localStorage.clear("cart");
+      this.CHANGE_STATE_LOCALSTORAGE();
+      this.DEACTIVATE_CART_STATUS();
     },
     incrementProduct(index) {
-      this.INCREMENT_CART_PRODUCT(index)
-      this.CHANGE_STATE_LOCALSTORAGE()
+      this.INCREMENT_CART_PRODUCT(index);
+      this.CHANGE_STATE_LOCALSTORAGE();
     },
     decrementProduct(index) {
-      this.DECREMENT_CART_PRODUCT(index)
-      this.CHANGE_STATE_LOCALSTORAGE()
-      if(localStorage.getItem("cart") && localStorage.getItem("cart") === "[]") {
-        localStorage.clear("cart")
-        this.CHANGE_STATE_LOCALSTORAGE()
-        this.DEACTIVATE_CART_STATUS()
+      this.DECREMENT_CART_PRODUCT(index);
+      this.CHANGE_STATE_LOCALSTORAGE();
+      if (
+        localStorage.getItem("cart") &&
+        localStorage.getItem("cart") === "[]"
+      ) {
+        localStorage.clear("cart");
+        this.CHANGE_STATE_LOCALSTORAGE();
+        this.DEACTIVATE_CART_STATUS();
       }
     },
-     loadData(URL) {
-      axios.get(URL)
-      .then(response =>  {
-          for(let i = 0; i < response.data.length; i++) {
-          this.products[i]= response.data[i]
-        }
-      })
-        .catch((error) => {
-        console.log(error)
+    loadData() {
+      const axiosInstance = axios.create();
+      try {
+        axiosInstance.get(URL).then(response => {
+          for (let i = 0; i < response.data.length; i++) {
+            this.products[i] = response.data[i];
+          }
+        });
+      } catch (error) {
+        console.log(error);
         return error;
-      })
+      }
     },
-    updateData(){
+    updateData() {
       for (let i = 0; i < this.products.length; i++) {
-        for ( let j = 0; j < this.PRODUCTS.length; j++) {
-          if(Number(this.PRODUCTS[j].id) === this.products[i].id) {
-            if(this.PRODUCTS[j].name !== this.products[i].name) {
-            this.PRODUCTS[j].name = this.products[i].name
+        for (let j = 0; j < this.PRODUCTS.length; j++) {
+          if (Number(this.PRODUCTS[j].id) === this.products[i].id) {
+            if (this.PRODUCTS[j].name !== this.products[i].name) {
+              this.PRODUCTS[j].name = this.products[i].name;
             }
-            if(this.PRODUCTS[j].price !== this.products[i].price) {
-              this.PRODUCTS[j].price = this.products[i].price
+            if (this.PRODUCTS[j].price !== this.products[i].price) {
+              this.PRODUCTS[j].price = this.products[i].price;
             }
-            if(this.PRODUCTS[j].pic !== this.products[i].pic) {
-              this.PRODUCTS[j].pic = this.products[i].pic
+            if (this.PRODUCTS[j].pic !== this.products[i].pic) {
+              this.PRODUCTS[j].pic = this.products[i].pic;
             }
-            if(this.PRODUCTS[j].currency !== this.products[i].currency) {
-              this.PRODUCTS[j].currency = this.products[i].currency
+            if (this.PRODUCTS[j].currency !== this.products[i].currency) {
+              this.PRODUCTS[j].currency = this.products[i].currency;
             }
-          }else {continue}
+          } else {
+            continue;
+          }
         }
       }
     }
   },
   mounted() {
-    setInterval(() =>  this.loadData(this.URL), 5000);
-    setInterval(() =>  this.updateData(), 6000);
+    setInterval(() => this.loadData(), 5000);
+    setInterval(() => this.updateData(), 6000);
   }
-}
+};
 </script>
-<style>
-
-</style>

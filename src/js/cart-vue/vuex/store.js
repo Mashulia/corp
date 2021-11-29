@@ -1,18 +1,10 @@
-import {
-  createApp
-} from "vue";
+import { createApp } from "vue";
 
-import {
-  createStore
-} from "vuex";
-
-import constantsUtf8 from "../text-constants-utf8.js";
-import constantsWin1251 from "../text-constants-win1251.js";
+import { createStore } from "vuex";
 
 let store = createStore({
   state: {
-    products: [],
-    constants: constantsUtf8
+    products: []
   },
   mutations: {
     SET_TO_STATE: state => {
@@ -57,8 +49,7 @@ let store = createStore({
       state.products[index].qty = state.products[index].qty;
       if (state.products[index].qty >= 99) {
         state.products[index].qty = 99;
-      }
-      else {
+      } else {
         state.products[index].qty++;
       }
     },
@@ -74,17 +65,18 @@ let store = createStore({
       }
     },
     SHOW_FORM: () => {
-      let cartData = localStorage.getItem("cart") && localStorage.getItem("cart") !== "[]",
+      let cartData =
+          localStorage.getItem("cart") && localStorage.getItem("cart") !== "[]",
         form = document.querySelector(".cart__form"),
         cartApp = document.querySelector("#app-cart"),
         cell = document.querySelector(".cells .cell-xl-8");
       if (cartData && form) {
         form.setAttribute("style", "display: block");
-      } else if(form){
+      } else if (form) {
         form.setAttribute("style", "display: none");
       } else {
         cartApp.setAttribute("style", "width: 100%; margin: 0 auto");
-        cell.setAttribute("style", "flex-basis: 100%; max-width: 100%")
+        cell.setAttribute("style", "flex-basis: 100%; max-width: 100%");
       }
     }
   },
@@ -115,9 +107,6 @@ let store = createStore({
     CHANGE_STATE_LOCALSTORAGE({ commit }) {
       commit("CHANGE_LOCALSTORAGE");
     },
-    DEFINE_ENCODING({ commit }) {
-      commit("CHANGE_ENCODING");
-    },
     SHOW_CART_FORM({ commit }) {
       commit("SHOW_FORM");
     }
@@ -125,9 +114,6 @@ let store = createStore({
   getters: {
     PRODUCTS(state) {
       return state.products;
-    },
-    CONSTANTS(state) {
-      return state.constants;
     }
   }
 });
