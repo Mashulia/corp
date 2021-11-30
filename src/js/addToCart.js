@@ -94,9 +94,9 @@ function addToCart1(e) {
     price = this.getAttribute("data-price"), // стоимость товара
     url = this.getAttribute("data-src"), // картинка товара
     currency = this.getAttribute("data-currency"), //валюта товара
-    text = this.innerHTML,
     link = this.getAttribute("data-href"), //ссылка на товар
     qty;
+
   if (input.value < minValue || input.value === "") {
     input.value = minValue;
   } else if (input.value >= maxValue && input.value.length > 2) {
@@ -106,13 +106,15 @@ function addToCart1(e) {
   }
 
   qty = parseInt(input.value);
-  text = "В корзине";
 
   let isItemInCart = items.find(item => item.id === id);
 
   if (isItemInCart) {
-    // если такой товар уже в корзине, то делаем кнопку неактивной
-    this.setAttribute("disabled", "");
+    // если такой товар уже в корзине, то увеличиваем количество этого товара
+    items.find(item => {
+      item.id === id;
+      item.qty += parseInt(input.value);
+    });
   } else {
     // если товара в корзине еще нет, то добавляем в массив новый объект
     let item = {
@@ -121,16 +123,13 @@ function addToCart1(e) {
       price: price,
       pic: url,
       qty: qty,
-      text: text,
       currency: currency,
       link: link
     };
     items.push(item);
-    this.setAttribute("disabled", "");
   }
 
   setCartData(items);
-  this.innerHTML = "В корзине";
   notification.classList.add("notification--opened");
   setTimeout(closeNotification, 4000);
   activateCart();
@@ -145,15 +144,16 @@ function addToCart2(e) {
     url = this.getAttribute("data-src"), // картинка товара
     currency = this.getAttribute("data-currency"), //валюта товара
     link = this.getAttribute("data-href"), //ссылка на товар
-    text = this.innerHTML,
     qty = 1;
 
-  text = "В корзине";
   let isItemInCart = items.find(item => item.id === id);
 
   if (isItemInCart) {
-    // если такой товар уже в корзине, то делаем кнопку неактивной
-    this.setAttribute("disabled", "");
+    // если такой товар уже в корзине, то увеличиваем количество этого товара
+    items.find(item => {
+      item.id === id;
+      item.qty++;
+    });
   } else {
     // если товара в корзине еще нет, то добавляем в массив новый объект
     let item = {
@@ -162,16 +162,13 @@ function addToCart2(e) {
       price: price,
       pic: url,
       qty: qty,
-      text: text,
       currency: currency,
       link: link
     };
     items.push(item);
-    this.setAttribute("disabled", "");
   }
 
   setCartData(items);
-  this.innerHTML = "В корзине";
   notification.classList.add("notification--opened");
   setTimeout(closeNotification, 4000);
   activateCart();
@@ -193,25 +190,6 @@ function onLoadProductQty() {
   if (productQty && productQty !== "[]") {
     productQty = JSON.parse(localStorage.getItem("cart"));
     activateCart();
-
-    for (var i = 0; i < addToCartBtns1.length; i++) {
-      let buttonId = addToCartBtns1[i].getAttribute("data-id");
-      if (productQty.find(item => item.id === buttonId)) {
-        addToCartBtns1[i].innerHTML = productQty.find(
-          item => item.id === buttonId
-        ).text;
-        addToCartBtns1[i].setAttribute("disabled", "");
-      }
-    }
-    for (var j = 0; j < addToCartBtns2.length; j++) {
-      let buttonId = addToCartBtns2[j].getAttribute("data-id");
-      if (productQty.find(item => item.id === buttonId)) {
-        addToCartBtns2[j].innerHTML = productQty.find(
-          item => item.id === buttonId
-        ).text;
-        addToCartBtns2[j].setAttribute("disabled", "");
-      }
-    }
   } else if (cell) {
     cell.classList.add("max-width");
   }
