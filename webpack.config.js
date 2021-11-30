@@ -1,15 +1,11 @@
 const webpack = require("webpack");
 const path = require("path");
 const fs = require("fs");
-const {
-  CleanWebpackPlugin
-} = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
-const {
-  VueLoaderPlugin
-} = require('vue-loader');
+const { VueLoaderPlugin } = require("vue-loader");
 // const CompressionPlugin = require('compression-webpack-plugin');
 // const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 // const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
@@ -17,7 +13,7 @@ const ImageminPlugin = require("imagemin-webpack-plugin").default;
 
 const pages = fs
   .readdirSync(path.resolve(__dirname, "src/templates/pages"))
-  .filter((fileName) => fileName.endsWith(".pug"));
+  .filter(fileName => fileName.endsWith(".pug"));
 
 module.exports = (env, options) => ({
   entry: {
@@ -29,7 +25,7 @@ module.exports = (env, options) => ({
     path: path.resolve(__dirname, "dist"),
     filename: "assets/js/[name].js"
   },
-  devtool: "source-map",
+  // devtool: "source-map",
   // devServer: {
   //   static: "./dev",
   //   port: 3000
