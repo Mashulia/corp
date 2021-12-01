@@ -16,13 +16,13 @@
         ></path>
       </svg>
     </div>
-    <div class="page-message__title">{{ TEXT.EMPTY_CART_TITLE }}</div>
+    <div class="page-message__title">{{ this.textData.EMPTY_CART_TITLE }}</div>
     <div class="page-message__text">
-      {{ TEXT.EMPTY_CART_TEXT }}
+      {{ this.textData.EMPTY_CART_TEXT }}
     </div>
     <div class="page-message__action">
       <a class="button button-secondary" :href="link">
-        <div class="button__body">{{ TEXT.EMPTY_CART_LINK_TEXT }}</div>
+        <div class="button__body">{{ this.textData.EMPTY_CART_LINK_TEXT }}</div>
         <div class="button__icon">
           <svg
             width="7"
@@ -51,11 +51,8 @@ export default {
       link: document.querySelector("#app-cart").getAttribute("data-link")
     };
   },
-  props: {
-    TEXT: {
-      type: Object,
-      required: true
-    }
+  created() {
+    this.textData = textData;
   },
   methods: {
     removeForm() {

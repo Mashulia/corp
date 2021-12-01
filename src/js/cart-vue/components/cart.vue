@@ -4,7 +4,7 @@
       <div class="cells fx-justify-between">
         <div class="cell cell-auto">
           <div class="cart-contents__header__title">
-            {{ TEXT.HEADER_TITLE }}
+            {{ this.textData.HEADER_TITLE }}
           </div>
         </div>
         <div class="cell cell-auto">
@@ -12,7 +12,7 @@
             class="cart-contents__header__erase js-cart-empty"
             @click="deleteAllProductsFromCart"
           >
-            {{ TEXT.HEADER_REMOVE }}
+            {{ this.textData.HEADER_REMOVE }}
           </button>
         </div>
       </div>
@@ -20,7 +20,6 @@
     <div class="cart-contents__body">
       <cart-item
         v-for="(product, index) in PRODUCTS"
-        :TEXT="TEXT"
         :key="product.id"
         :product="product"
         @deleteFromCart="deleteFromCart(index)"
@@ -32,12 +31,12 @@
       <div class="cells fx-justify-between">
         <div class="cell cell-auto">
           <div class="cart-contents__footer__title">
-            {{ TEXT.FOOTER_TITLE }}
+            {{ this.textData.FOOTER_TITLE }}
           </div>
         </div>
         <div class="cell cell-auto">
           <div class="cart-contents__footer__value" v-if="cartTotalCost > 0">
-            {{ cartTotalCost }} {{ TEXT.CURRENCY_UNIT }}
+            {{ cartTotalCost }} {{ this.textData.CURRENCY_UNIT }}
           </div>
           <div class="cart-contents__footer__value" v-else></div>
         </div>
@@ -55,21 +54,13 @@ export default {
   components: { cartItem },
   data() {
     return {
-      products: []
+      products: [],
+      idArray: [],
+      URL: document.querySelector("#app-cart").getAttribute("data-url")
     };
   },
-  props: {
-    URL: {
-      type: Object,
-      required: true
-    },
-    TEXT: {
-      type: Object,
-      required: true
-    }
-  },
   computed: {
-    ...mapGetters(["PRODUCTS"]),
+    ...mapGetters(["PRODUCTS", "ID_ARRAY"]),
     cartTotalCost() {
       let result = [];
       if (this.PRODUCTS.length) {
@@ -84,6 +75,9 @@ export default {
         return 0;
       }
     }
+  },
+  created() {
+    this.textData = textData;
   },
   methods: {
     ...mapActions([
@@ -122,10 +116,8 @@ export default {
     loadData() {
       const axiosInstance = axios.create();
       try {
-        axiosInstance.get(URL).then(response => {
-          for (let i = 0; i < response.data.length; i++) {
-            this.products[i] = response.data[i];
-          }
+        axiosInstance.get(this.URL + "?idArray").then(response => {
+          this.products = response.data;
         });
       } catch (error) {
         console.log(error);

@@ -19,7 +19,7 @@
             {{ product.price }} {{ product.currency }}
           </div>
           <div v-else class="cart-contents__price__value">
-            {{ TEXT.ON_REQUEST_TEXT }}
+            {{ this.textData.ON_REQUEST_TEXT }}
           </div>
           <div class="cart-contents__price__label">{{ product.currency }}</div>
         </div>
@@ -54,7 +54,7 @@
             {{ product.price * product.qty }} {{ product.currency }}
           </div>
           <div v-else class="cart-contents__price__value">
-            {{ TEXT.ON_REQUEST_TEXT }}
+            {{ this.textData.ON_REQUEST_TEXT }}
           </div>
           <div class="cart-contents__price__label">
             x {{ product.qty }} {{ product.currency }}
@@ -111,18 +111,14 @@
 import { mapActions, mapGetters } from "vuex";
 export default {
   name: "cart-item",
-  computed: {
-    ...mapGetters(["CONSTANTS"])
-  },
   props: {
     product: {
       type: Object,
       required: true
-    },
-    TEXT: {
-      type: Object,
-      required: true
     }
+  },
+  created() {
+    this.textData = textData;
   },
   methods: {
     ...mapActions(["CHANGE_STATE_LOCALSTORAGE"]),

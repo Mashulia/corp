@@ -196,14 +196,15 @@ block contentBody
 
     p Инициализация корзины происходит при добавлении на страницу следующего тэга
     code 	
-     b &lt;div id="app-cart" data-url="" data-text="" data-link=""	&gt;
+     b &lt;div id="app-cart" data-url="" data-link=""	&gt;
     p необходимыe параметры для работы корзины:
     ul
       li
         code 
           b data-url="" - ссылка для запроса по данным товаров к серверу
           br
-        div передача происходит по get-запросу, ожидает ответ в формате файла .json вида:
+        div передача происходит по get-запросу(в качестве параметра передается массив idArray с id товаров в корзине), 
+        div ожидает ответ с данными по товарам в формате файла .json вида:
           span(style="display: block;") &#123;
           span(style="margin-left: 10px; display: block;") &#34;products&#34;: &#91;
           span(style="margin-left: 20px; display: block;") &#123;
@@ -218,25 +219,20 @@ block contentBody
           span &#125;
       li
         code 
-          b data-text="" - ссылка для запроса по текстовым константам для корзины к серверу
+          b для текстовых данных на сайте необходимо подключение js-файла со следующими строковыми константами:
           br
-        div передача происходит по get-запросу, ожидает ответ в формате файла .json вида:
-          span(style="display: block;") &#123;
-          span(style="margin-left: 10px; display: block;") &#34;TEXT&#34;: &#91;
-          span(style="margin-left: 20px; display: block;") &#123;
-          div(style="margin-left: 60px; display: block;")
-            p &#34;HEADER_TITLE&#34;: &#34;Список заказа&#34;,
-            p &#34;HEADER_REMOVE&#34;:&#34;Очистить все&#34;,
-            p &#34;FOOTER_TITLE&#34;: &#34;Итого:&#34;,
-            p &#34;CURRENCY_UNIT&#34;:&#34;руб.&#34;,
-            p &#34;UNIT&#34;:&#34;ед.&#34;
-            p &#34;PRISE_FOR_UNIT&#34;:&#34;Цена, за 1 ед.&#34;
-            p &#34;ON_REQUEST_TEXT&#34;:&#34;по запросу&#34;
-            p &#34;EMPTY_CART_TITLE&#34;:&#34;Ваша корзина пуста&#34;
-            p &#34;EMPTY_CART_TEXT&#34;:&#34;Выберите в каталоге интересующий товар и добавьте в корзину&#34;
-            p &#34;EMPTY_CART_LINK_TEXT&#34;:&#34;Перейти в каталог&#34;
-          span(style="margin-left: 20px; display: block;") &#125;
-          span(style="margin-left: 10px; display: block;") &#93;
+        div
+          div const textData =  &#123;
+            p HEADER_TITLE: &#34;Список заказа&#34;,
+            p HEADER_REMOVE;:&#34;Очистить все&#34;,
+            p FOOTER_TITLE: &#34;Итого:&#34;,
+            p CURRENCY_UNIT:&#34;руб.&#34;,
+            p UNIT:&#34;ед.&#34;
+            p PRISE_FOR_UNIT:&#34;Цена, за 1 ед.&#34;
+            p ON_REQUEST_TEXT:&#34;по запросу&#34;
+            p EMPTY_CART_TITLE:&#34;Ваша корзина пуста&#34;
+            p EMPTY_CART_TEXT:&#34;Выберите в каталоге интересующий товар и добавьте в корзину&#34;
+            p EMPTY_CART_LINK_TEXT:&#34;Перейти в каталог&#34;
           span &#125;
       li
         code 
