@@ -158,6 +158,10 @@ module.exports = (env, options) => ({
           to: "assets/js/vendor/[name].js"
         },
         {
+          from: "src/js/cart-vue/cart-data/*js",
+          to: "assets/js/cart-data/[name].js"
+        },
+        {
           from: "src/sass/vendor/*.css",
           to: "assets/css/vendor/[name].css"
         },

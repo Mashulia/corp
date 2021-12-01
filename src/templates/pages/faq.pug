@@ -217,12 +217,15 @@ block contentBody
           span(style="margin-left: 20px; display: block;") &#125;
           span(style="margin-left: 10px; display: block;") &#93;
           span &#125;
-      li
-        code 
-          b для текстовых данных на сайте необходимо подключение js-файла со следующими строковыми константами:
-          br
+      li 
+        p для текстовых данных на сайте необходимо подключение js-файла  
+        p файл в кодировке utf-8 расположен по адресу assets/js/cart-data/textUtf.js,  
+        p файл в кодировке windows-1251 расположен по адресу assets/js/cart-data/textWin1251.js
+        br
+        p содержимое файла - строковые константы:
         div
           div const textData =  &#123;
+            br
             p HEADER_TITLE: &#34;Список заказа&#34;,
             p HEADER_REMOVE;:&#34;Очистить все&#34;,
             p FOOTER_TITLE: &#34;Итого:&#34;,

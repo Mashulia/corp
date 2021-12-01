@@ -4,7 +4,7 @@
       <div class="cells fx-justify-between">
         <div class="cell cell-auto">
           <div class="cart-contents__header__title">
-            {{ this.textData.HEADER_TITLE }}
+            {{ this.cartTextData.HEADER_TITLE }}
           </div>
         </div>
         <div class="cell cell-auto">
@@ -12,7 +12,7 @@
             class="cart-contents__header__erase js-cart-empty"
             @click="deleteAllProductsFromCart"
           >
-            {{ this.textData.HEADER_REMOVE }}
+            {{ this.cartTextData.HEADER_REMOVE }}
           </button>
         </div>
       </div>
@@ -31,12 +31,12 @@
       <div class="cells fx-justify-between">
         <div class="cell cell-auto">
           <div class="cart-contents__footer__title">
-            {{ this.textData.FOOTER_TITLE }}
+            {{ this.cartTextData.FOOTER_TITLE }}
           </div>
         </div>
         <div class="cell cell-auto">
           <div class="cart-contents__footer__value" v-if="cartTotalCost > 0">
-            {{ cartTotalCost }} {{ this.textData.CURRENCY_UNIT }}
+            {{ cartTotalCost }} {{ this.cartTextData.CURRENCY_UNIT }}
           </div>
           <div class="cart-contents__footer__value" v-else></div>
         </div>
@@ -77,7 +77,7 @@ export default {
     }
   },
   created() {
-    this.textData = textData;
+    this.cartTextData = cartTextData;
   },
   methods: {
     ...mapActions([

@@ -19,7 +19,7 @@
             {{ product.price }} {{ product.currency }}
           </div>
           <div v-else class="cart-contents__price__value">
-            {{ this.textData.ON_REQUEST_TEXT }}
+            {{ this.cartTextData.ON_REQUEST_TEXT }}
           </div>
           <div class="cart-contents__price__label">{{ product.currency }}</div>
         </div>
@@ -54,7 +54,7 @@
             {{ product.price * product.qty }} {{ product.currency }}
           </div>
           <div v-else class="cart-contents__price__value">
-            {{ this.textData.ON_REQUEST_TEXT }}
+            {{ this.cartTextData.ON_REQUEST_TEXT }}
           </div>
           <div class="cart-contents__price__label">
             x {{ product.qty }} {{ product.currency }}
@@ -118,7 +118,7 @@ export default {
     }
   },
   created() {
-    this.textData = textData;
+    this.cartTextData = cartTextData;
   },
   methods: {
     ...mapActions(["CHANGE_STATE_LOCALSTORAGE"]),

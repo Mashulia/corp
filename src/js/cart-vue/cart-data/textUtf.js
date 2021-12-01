@@ -1,4 +1,4 @@
-const textData = {
+const cartTextData = {
   HEADER_TITLE: "Список заказа",
   HEADER_REMOVE: "Очистить все",
   FOOTER_TITLE: "Итого:",
