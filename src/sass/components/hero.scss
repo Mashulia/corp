@@ -161,6 +161,7 @@
   }
   .hero__item {
     height: 520px;
+    min-height: 0;
   }
   .hero__text {
     max-width: $col-width * 5;
