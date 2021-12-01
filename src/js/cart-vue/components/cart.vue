@@ -55,12 +55,12 @@ export default {
   data() {
     return {
       products: [],
-      idArray: [],
+      cartIdArray: [],
       URL: document.querySelector("#app-cart").getAttribute("data-url")
     };
   },
   computed: {
-    ...mapGetters(["PRODUCTS", "ID_ARRAY"]),
+    ...mapGetters(["PRODUCTS", "ID_STRING"]),
     cartTotalCost() {
       let result = [];
       if (this.PRODUCTS.length) {
@@ -116,9 +116,11 @@ export default {
     loadData() {
       const axiosInstance = axios.create();
       try {
-        axiosInstance.get(this.URL + "?idArray").then(response => {
-          this.products = response.data;
-        });
+        axiosInstance
+          .post(this.URL + this.ID_STRING.slice(0, this.ID_STRING.length - 1))
+          .then(response => {
+            this.products = response.data;
+          });
       } catch (error) {
         console.log(error);
         return error;

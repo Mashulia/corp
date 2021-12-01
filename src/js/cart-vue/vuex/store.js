@@ -5,7 +5,7 @@ import { createStore } from "vuex";
 let store = createStore({
   state: {
     products: [],
-    idArray: []
+    cartIdString: "?"
   },
   mutations: {
     SET_TO_STATE: state => {
@@ -16,9 +16,9 @@ let store = createStore({
         state.products = JSON.parse(localStorage.getItem("cart"));
       }
     },
-    GET_ID_ARRAY: state => {
+    GET_ID_STRING: state => {
       for (let i = 0; i < state.products.length; i++) {
-        state.idArray.push(state.products[i].id);
+        state.cartIdString += "id=" + Number(state.products[i].id) + "&";
       }
     },
     CHANGE_LOCALSTORAGE: state => {
@@ -43,9 +43,9 @@ let store = createStore({
     },
     REMOVE_ITEM_FROM_CART: (state, index) => {
       state.products.splice(index, 1);
-      for (let i = 0; i < idArray.length; i++) {
-        if (state.products[i] == state.idArray[i].id) {
-          state.idArray.splice(idArray[i], 1);
+      for (let i = 0; i < cartIdArray.length; i++) {
+        if (state.products[i] == state.cartIdArray[i].id) {
+          state.cartIdArray.splice(cartIdArray[i], 1);
         }
       }
       if (state.products.length === 0 && state.products === "[]") {
@@ -55,7 +55,7 @@ let store = createStore({
     REMOVE_ALL_PRODUCTS_FROM_CART: state => {
       state.products.length = 0;
       localStorage.clear();
-      idArray.splice(0);
+      cartIdArray.splice(0);
     },
     INCREMENT: (state, index) => {
       state.products[index].qty = state.products[index].qty;
@@ -116,16 +116,16 @@ let store = createStore({
     SHOW_CART_FORM({ commit }) {
       commit("SHOW_FORM");
     },
-    GET_ID_ARRAY_OF_PRODUCTS({ commit }) {
-      commit("GET_ID_ARRAY");
+    GET_ID_STRING_OF_PRODUCTS({ commit }) {
+      commit("GET_ID_STRING");
     }
   },
   getters: {
     PRODUCTS(state) {
       return state.products;
     },
-    ID_ARRAY(state) {
-      return state.idArray;
+    ID_STRING(state) {
+      return state.cartIdString;
     }
   }
 });

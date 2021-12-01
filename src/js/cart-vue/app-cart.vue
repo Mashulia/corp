@@ -10,7 +10,7 @@ export default {
   name: "app-cart",
   components: { cart, cartEmpty },
   computed: {
-    ...mapGetters(["PRODUCTS", "ID_ARRAY"])
+    ...mapGetters(["PRODUCTS", "ID_STRING"])
   },
   methods: {
     ...mapActions([
@@ -18,13 +18,13 @@ export default {
       "DEACTIVATE_CART_STATUS",
       "DELETE_ALL_PRODUCTS_FROM_CART",
       "SHOW_CART_FORM",
-      "GET_ID_ARRAY_OF_PRODUCTS"
+      "GET_ID_STRING_OF_PRODUCTS"
     ])
   },
   mounted() {
     this.SHOW_CART_FORM();
     this.SET_PRODUCTS_TO_STATE();
-    this.GET_ID_ARRAY_OF_PRODUCTS();
+    this.GET_ID_STRING_OF_PRODUCTS();
   }
 };
 </script>
