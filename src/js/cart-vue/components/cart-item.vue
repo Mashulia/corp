@@ -1,17 +1,13 @@
 <template>
   <div class="cart-contents__item">
     <div class="cart-contents__row">
-      <a
-        v-if="product.pic"
-        class="cart-contents__image"
-        href="product-item.html"
-      >
+      <a v-if="product.pic" class="cart-contents__image" :href="product.link">
         <!-- Размер картинок 124х93-->
         <img :src="product.pic" />
       </a>
       <div v-else class="cart-contents__image no-image"></div>
       <div class="cart-contents__info">
-        <a class="cart-contents__name" href="product-item-2.html">
+        <a class="cart-contents__name" :href="product.link">
           {{ product.name }}</a
         >
         <div class="cart-contents__price">
