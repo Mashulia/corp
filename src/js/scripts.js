@@ -6,7 +6,7 @@ import { handleSlidingTabClick, TabGroup } from "./tabs";
 import { qtyChanger } from "./quantity-changer";
 import { handleAdd2Cart } from "./add2cart";
 import { SettingsGroup } from "./settings";
-import { addToCart } from "./addToCart"
+// import { addToCart } from "./addToCart";
 // contents:
 // array.remove
 // delay function
@@ -35,7 +35,7 @@ import { addToCart } from "./addToCart"
 // trimming text by number of lines
 
 // array.remove
-Array.prototype.remove = function () {
+Array.prototype.remove = function() {
   var what,
     a = arguments,
     L = a.length,
@@ -50,9 +50,9 @@ Array.prototype.remove = function () {
 };
 
 // delay function to use on resize to prevent multiple resize events
-var delay = (function () {
+var delay = (function() {
   var timer = 0;
-  return function (callback, ms) {
+  return function(callback, ms) {
     clearTimeout(timer);
     timer = setTimeout(callback, ms);
   };
@@ -65,7 +65,7 @@ if (!Element.prototype.matches) {
     Element.prototype.webkitMatchesSelector;
 }
 if (!Element.prototype.closest) {
-  Element.prototype.closest = function (s) {
+  Element.prototype.closest = function(s) {
     var el = this;
 
     do {
@@ -80,7 +80,7 @@ if (!Element.prototype.closest) {
 // note that forEach works for .querySelectorAll, but doesn't on getElementsByClassName
 if ("NodeList" in window && !NodeList.prototype.forEach) {
   console.info("polyfill for IE11");
-  NodeList.prototype.forEach = function (callback, thisArg) {
+  NodeList.prototype.forEach = function(callback, thisArg) {
     thisArg = thisArg || window;
     for (var i = 0; i < this.length; i++) {
       callback.call(thisArg, this[i], i, this);
@@ -90,7 +90,7 @@ if ("NodeList" in window && !NodeList.prototype.forEach) {
 // ie11 polyfill includes()
 if (!Array.prototype.includes) {
   Object.defineProperty(Array.prototype, "includes", {
-    value: function (searchElement, fromIndex) {
+    value: function(searchElement, fromIndex) {
       // 1. Let O be ? ToObject(this value).
       if (this == null) {
         throw new TypeError('"this" is null or not defined');
@@ -176,7 +176,7 @@ if (typeof Object.assign !== "function") {
 }
 // ie11 polyfill Array.from
 if (!Array.from) {
-  Array.from = (function () {
+  Array.from = (function() {
     var symbolIterator;
     try {
       symbolIterator = Symbol.iterator
@@ -187,17 +187,17 @@ if (!Array.from) {
     }
 
     var toStr = Object.prototype.toString;
-    var isCallable = function (fn) {
+    var isCallable = function(fn) {
       return typeof fn === "function" || toStr.call(fn) === "[object Function]";
     };
-    var toInteger = function (value) {
+    var toInteger = function(value) {
       var number = Number(value);
       if (isNaN(number)) return 0;
       if (number === 0 || !isFinite(number)) return number;
       return (number > 0 ? 1 : -1) * Math.floor(Math.abs(number));
     };
     var maxSafeInteger = Math.pow(2, 53) - 1;
-    var toLength = function (value) {
+    var toLength = function(value) {
       var len = toInteger(value);
       return Math.min(Math.max(len, 0), maxSafeInteger);
     };
@@ -300,7 +300,7 @@ if (!Array.from) {
   })();
 }
 
-window.addEventListener("load", function () {
+window.addEventListener("load", function() {
   var windowWidth = window.innerWidth;
 
   // touch device detection
@@ -406,7 +406,7 @@ window.addEventListener("load", function () {
   let globalNavs = this.document.querySelectorAll(".dheader .site-nav");
 
   // dropdowns
-  document.querySelectorAll(".dropdown__toggle").forEach((el) => {
+  document.querySelectorAll(".dropdown__toggle").forEach(el => {
     new dropdown(el, ".dropdown", 767);
   });
 
@@ -414,7 +414,7 @@ window.addEventListener("load", function () {
   let expandToggles = document.querySelectorAll(".expand__toggle");
 
   function attachExpands(elems) {
-    elems.forEach((item) => {
+    elems.forEach(item => {
       new expand(item, ".expand", 1023);
     });
   }
@@ -469,7 +469,7 @@ window.addEventListener("load", function () {
         ]
       })
     );
-    $(".products__images__list").each(function () {
+    $(".products__images__list").each(function() {
       let $currSlider = $(this);
       if ($currSlider.children().length > 1) {
         $currSlider.slick({
@@ -499,9 +499,9 @@ window.addEventListener("load", function () {
         });
         let oldMousePos = 0;
         let newMousePos = 0;
-        this.addEventListener("mousemove", function (e) {
+        this.addEventListener("mousemove", function(e) {
           newMousePos = e.pageX;
-          delay(function () {
+          delay(function() {
             if (newMousePos < oldMousePos - 20) {
               $currSlider.slick("slickPrev");
             } else if (newMousePos > oldMousePos + 20) {
@@ -586,7 +586,7 @@ window.addEventListener("load", function () {
         ]
       })
     );
-    $(".illustrations__pic__slider").each(function () {
+    $(".illustrations__pic__slider").each(function() {
       let $currentSlider = $(this);
       if ($currentSlider.children().length > 1) {
         $currentSlider.slick(
@@ -618,7 +618,7 @@ window.addEventListener("load", function () {
         this.style.height = "auto";
       }
     });
-    $(".illustrations__nav__slider").each(function () {
+    $(".illustrations__nav__slider").each(function() {
       let $currentSlider = $(this);
       if ($currentSlider.children().length > 1) {
         $currentSlider.slick({
@@ -670,7 +670,7 @@ window.addEventListener("load", function () {
         this.style.height = "auto";
       }
     });
-    $(".sliding-tabs .tabs__switches").each(function () {
+    $(".sliding-tabs .tabs__switches").each(function() {
       addTabNavSlider(this);
     });
   } else {
@@ -739,7 +739,7 @@ window.addEventListener("load", function () {
       "</button>"
   };
   $.fancybox.defaults.parentEl = ".corp";
-  $(function () {
+  $(function() {
     $(".fancy-image").fancybox();
   });
 
@@ -815,12 +815,12 @@ window.addEventListener("load", function () {
   // document.querySelector(".footer").offsetTop - window.innerHeight - point at which one can see footer
   let footerElm = document.querySelector(".footer");
   if (toTopElem) {
-    toTopLink.addEventListener("click", function (e) {
+    toTopLink.addEventListener("click", function(e) {
       e.preventDefault();
       window.scrollTo(0, 0);
     });
 
-    this.window.onscroll = function (event) {
+    this.window.onscroll = function(event) {
       // no delay() here cause needed a smooth transition between fixed and absolute at footer
       showToTop();
     };
@@ -872,9 +872,9 @@ window.addEventListener("load", function () {
     }
   }
   function handleReviewPicturesOverflow() {
-    reviewPictures.forEach((el) => {
+    reviewPictures.forEach(el => {
       let elPics = el.getElementsByClassName("reviews__image");
-      let hiddenEls = Array.from(elPics).filter((el) => {
+      let hiddenEls = Array.from(elPics).filter(el => {
         return el.offsetTop > 45;
       });
       if (hiddenEls.length) {
@@ -931,32 +931,30 @@ window.addEventListener("load", function () {
   //   new qtyChanger(el).checkRange();
   // });
 
-  document.querySelectorAll(".js-revealer").forEach((el) => {
+  document.querySelectorAll(".js-revealer").forEach(el => {
     new revealer(el, ".reveal");
   });
 
   // tabs
   const tabTriggers = document.querySelectorAll(".sliding-tabs .tabs__switch");
   if (tabTriggers.length) {
-    tabTriggers.forEach((item) => {
+    tabTriggers.forEach(item => {
       item.addEventListener("click", handleSlidingTabClick);
     });
   }
   TabGroup.init(".tabs:not(.sliding-tabs)");
 
   // settings panel toggle
-  document
-    .querySelectorAll(".js-settings, .js-settings-close")
-    .forEach((el) => {
-      new overlayedRevealer(el, ".settings");
-    });
+  document.querySelectorAll(".js-settings, .js-settings-close").forEach(el => {
+    new overlayedRevealer(el, ".settings");
+  });
   // settings__panel__section toggle
-  document.querySelectorAll(".sps__toggle__input").forEach((el) => {
+  document.querySelectorAll(".sps__toggle__input").forEach(el => {
     new inputRevealer(el, ".reveal");
   });
   SettingsGroup.init(".settings__panel");
   // spectrum color picker
-  $(".spectrum-picker").each(function () {
+  $(".spectrum-picker").each(function() {
     const correspondingEl = document.querySelector(
       "[data-name='" + this.getAttribute("name") + "']"
     );
@@ -970,7 +968,7 @@ window.addEventListener("load", function () {
       clickoutFiresChange: true,
       // appendTo: parentEl,
       containerClassName: "colors__picker",
-      change: function (color) {
+      change: function(color) {
         correspondingEl.style.color = color.toHexString();
         let currentHsl = color.toHsl();
         this.setAttribute("value", color.toHslString());
@@ -996,10 +994,10 @@ window.addEventListener("load", function () {
           );
         }
       },
-      dragstart: function (color) {
+      dragstart: function(color) {
         correspondingEl.style.color = color.toHexString();
       },
-      move: function (color) {
+      move: function(color) {
         correspondingEl.style.color = color.toHexString();
       }
     });
@@ -1015,11 +1013,11 @@ window.addEventListener("load", function () {
         .previousSibling.dispatchEvent(new Event("change"));
     }
   }
-  document.querySelectorAll(".js-init-spectrum").forEach((item) => {
+  document.querySelectorAll(".js-init-spectrum").forEach(item => {
     item.addEventListener("click", initSpectrum);
   });
-  document.querySelectorAll("[name='site-theme']").forEach((item) => {
-    item.addEventListener("change", (e) => {
+  document.querySelectorAll("[name='site-theme']").forEach(item => {
+    item.addEventListener("change", e => {
       const siteThemeSet = e.target.getAttribute("value");
       const siteRoot = document.querySelector(".corp");
       switch (siteThemeSet) {
@@ -1052,7 +1050,7 @@ window.addEventListener("load", function () {
     settingsReset.addEventListener("click", () => {
       const settingsForms = document
         .querySelectorAll(".settings form")
-        .forEach((item) => {
+        .forEach(item => {
           item.reset();
         });
       const siteRoot = document.querySelector(".corp");
@@ -1061,20 +1059,20 @@ window.addEventListener("load", function () {
       $("[name='theme-color-1']").spectrum("set", "hsl(29, 78%, 58%)");
       $("[name='theme-color-2']").spectrum("set", "hsl(150, 26%, 36%)");
       $(".spectrum-picker").trigger("change");
-      document.querySelectorAll(".settings .opened").forEach((item) => {
+      document.querySelectorAll(".settings .opened").forEach(item => {
         item.classList.remove("opened");
       });
     });
   }
 
   // functions on resize
-  window.onresize = function (event) {
-    delay(function () {
+  window.onresize = function(event) {
+    delay(function() {
       delayedFunctions();
     }, 500);
   };
 
-  var delayedFunctions = function () {
+  var delayedFunctions = function() {
     windowWidth = window.innerWidth;
 
     let tabsSwitches = document.querySelectorAll(

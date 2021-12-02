@@ -5,4 +5,5 @@ import Inputmask from "inputmask";
 import "node-remove-polyfill";
 import "./js/scripts.js";
 
+import "./js/addToCart.js";
 import "./js/cart-vue/cart-vue.js";
