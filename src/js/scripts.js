@@ -942,6 +942,7 @@ window.addEventListener("load", function() {
   let plusBtn = document.querySelector(".qty__change--plus");
   let minusBtn = document.querySelector(".qty__change--minus");
   let notification = document.querySelector("#product-added");
+  let notificationText = document.querySelector(".notification__text");
   let cell = document.querySelector(".wrap .cell-xl-8");
 
   // Функция активации корзины в шапке
@@ -1066,6 +1067,7 @@ window.addEventListener("load", function() {
     }
 
     setCartData(items);
+    notificationText.textContent = this.getAttribute("data-name");
     notification.classList.add("notification--opened");
     setTimeout(closeNotification, 4000);
     activateCart();
@@ -1105,6 +1107,7 @@ window.addEventListener("load", function() {
     }
 
     setCartData(items);
+    notificationText.textContent = this.getAttribute("data-name");
     notification.classList.add("notification--opened");
     setTimeout(closeNotification, 4000);
     activateCart();
