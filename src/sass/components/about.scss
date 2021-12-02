@@ -46,9 +46,14 @@
 }
 @media (min-width: $break-xl) {
   .sabout__text {
-    flex: 1 0 33.333%;
+    flex: 1 0 32%;
     max-width: 100%;
   }
+
+.sabout__illustration {
+  flex: 1 0 49%;
+}
+
   .sabout__image,
   .sabout__bens {
     margin-top: 4.125rem;
@@ -57,7 +62,7 @@
     max-height: 500px;
   }
   .sabout__bens {
-    flex: 1 0 16.666%;
+    flex: 1 0 15%;
     max-width: 100%;
     .benefits__item {
       flex: 1 0 13rem;
