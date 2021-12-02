@@ -5,6 +5,7 @@ import { createStore } from "vuex";
 let store = createStore({
   state: {
     products: [],
+    cartIdArray: [],
     cartIdString: "?"
   },
   mutations: {
@@ -16,11 +17,17 @@ let store = createStore({
         state.products = JSON.parse(localStorage.getItem("cart"));
       }
     },
-    GET_ID_STRING: state => {
+    GET_ID_ARRAY: state => {
       for (let i = 0; i < state.products.length; i++) {
-        let productId = Number(state.products[i].id);
-        state.cartIdString += "id[]=" + productId + "&";
+        state.cartIdArray.push(Number(state.products[i].id));
       }
+    },
+    GET_ID_STRING: state => {
+      let idString = "";
+      for (let j = 0; j < state.cartIdArray.length; j++) {
+        idString += "id[]=" + state.cartIdArray[j] + "&";
+      }
+      state.cartIdString += idString.substr(0, idString.length);
     },
     CHANGE_LOCALSTORAGE: state => {
       localStorage.setItem("cart", JSON.stringify(state.products));
@@ -44,9 +51,9 @@ let store = createStore({
     },
     REMOVE_ITEM_FROM_CART: (state, index) => {
       state.products.splice(index, 1);
-      for (let i = 0; i < cartIdArray.length; i++) {
-        if (state.products[i] == state.cartIdArray[i].id) {
-          state.cartIdArray.splice(cartIdArray[i], 1);
+      for (index = 0; index < state.cartIdArray.length; index++) {
+        if (state.products[index] == state.cartIdArray[index].id) {
+          state.cartIdArray.splice(state.cartIdArray[index], 1);
         }
       }
       if (state.products.length === 0 && state.products === "[]") {
@@ -56,7 +63,7 @@ let store = createStore({
     REMOVE_ALL_PRODUCTS_FROM_CART: state => {
       state.products.length = 0;
       localStorage.clear();
-      cartIdArray.splice(0);
+      state.cartIdArray.length = 0;
     },
     INCREMENT: (state, index) => {
       state.products[index].qty = state.products[index].qty;
@@ -119,6 +126,9 @@ let store = createStore({
     },
     GET_ID_STRING_OF_PRODUCTS({ commit }) {
       commit("GET_ID_STRING");
+    },
+    GET_ID_ARRAY_OF_PRODUCTS({ commit }) {
+      commit("GET_ID_ARRAY");
     }
   },
   getters: {
@@ -127,6 +137,9 @@ let store = createStore({
     },
     ID_STRING(state) {
       return state.cartIdString;
+    },
+    ID_ARRAY(state) {
+      return state.cartIdArray;
     }
   }
 });
