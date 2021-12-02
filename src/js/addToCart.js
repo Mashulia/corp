@@ -5,7 +5,6 @@ let input = document.querySelector(".qty__input");
 let plusBtn = document.querySelector(".qty__change--plus");
 let minusBtn = document.querySelector(".qty__change--minus");
 let notification = document.querySelector("#product-added");
-let test = document.querySelector(".page-header--v1 .breadcrumbs");
 let cell = document.querySelector(".wrap .cell-xl-8");
 
 // Функция активации корзины в шапке
@@ -177,11 +176,13 @@ function addToCart2(e) {
 // Устанавливаем обработчик события на каждую кнопку 'в корзину'
 for (var i = 0; i < addToCartBtns1.length; i++) {
   addEvent(addToCartBtns1[i], "click", addToCart1);
+  console.log("Установлен обработчик1");
 }
 
 // Устанавливаем обработчик события на каждую кнопку 'заказать'
 for (var i = 0; i < addToCartBtns2.length; i++) {
   addEvent(addToCartBtns2[i], "click", addToCart2);
+  console.log("Установлен обработчик2");
 }
 
 function onLoadProductQty() {
