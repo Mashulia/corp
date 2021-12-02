@@ -203,7 +203,7 @@ block contentBody
         code 
           b data-url="" - ссылка для запроса по данным товаров к серверу
           br
-        div передача происходит по get-запросу(в качестве параметров передаются id товаров в корзине), 
+        div передача происходит по get-запросу(в качестве параметров передаются id товаров в корзине). Формат строки: URL?id[]=2&amp;id[]=1&amp;id[]=5
         div ожидает ответ с данными по товарам в формате файла .json вида:
           span(style="display: block;") &#123;
           span(style="margin-left: 10px; display: block;") &#34;products&#34;: &#91;
@@ -219,8 +219,8 @@ block contentBody
           span &#125;
       li 
         p для текстовых данных на сайте необходимо подключение js-файла  
-        p файл в кодировке utf-8 расположен по адресу assets/js/cart-data/textUtf.js,  
-        p файл в кодировке windows-1251 расположен по адресу assets/js/cart-data/textWin1251.js
+        p файл в кодировке utf-8 расположен по адресу assets/js/cart-data/text-utf8.js,  
+        p файл в кодировке windows-1251 расположен по адресу assets/js/cart-data/text-win1251.js
         br
         p содержимое файла - строковые константы:
         div

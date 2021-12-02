@@ -18,7 +18,8 @@ let store = createStore({
     },
     GET_ID_STRING: state => {
       for (let i = 0; i < state.products.length; i++) {
-        state.cartIdString += "id=" + Number(state.products[i].id) + "&";
+        let productId = Number(state.products[i].id);
+        state.cartIdString += "id[]=" + productId + "&";
       }
     },
     CHANGE_LOCALSTORAGE: state => {
