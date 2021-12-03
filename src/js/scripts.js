@@ -939,8 +939,10 @@ window.addEventListener("load", function() {
   let addToCartBtns2 = document.querySelectorAll(".products__item .button");
   let cartBtns = document.querySelectorAll(".bcart__button");
   let input = document.querySelector(".qty__input");
-  let plusBtn = document.querySelector(".qty__change--plus");
-  let minusBtn = document.querySelector(".qty__change--minus");
+  let plusBtn = document.querySelector(".presentation__qty .qty__change--plus");
+  let minusBtn = document.querySelector(
+    ".presentation__qty .qty__change--minus"
+  );
   let notification = document.querySelector("#product-added");
   let notificationText = document.querySelector(".notification__text");
   let cell = document.querySelector(".wrap .cell-xl-8");
@@ -965,6 +967,17 @@ window.addEventListener("load", function() {
     };
   }
 
+  // Функция декремента
+  if (minusBtn) {
+    (function() {
+      minusBtn.addEventListener("click", () => {
+        if (input.value > 1) {
+          input.value = parseInt(input.value) - 1;
+        } else input.value = 1;
+      });
+    })();
+  }
+
   // Функция инкремента
   if (plusBtn) {
     (function() {
@@ -976,16 +989,6 @@ window.addEventListener("load", function() {
         } else {
           input.value = parseInt(input.value) + 1;
         }
-      });
-    })();
-  }
-  // Функция декремента
-  if (minusBtn) {
-    (function() {
-      minusBtn.addEventListener("click", () => {
-        if (input.value > 1) {
-          input.value = parseInt(input.value) - 1;
-        } else input.value = 1;
       });
     })();
   }
