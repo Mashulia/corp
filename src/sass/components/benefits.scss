@@ -1,8 +1,13 @@
+.section.benefits {
+  padding-bottom: 0;
+}
+
 .benefits__list {
   margin-bottom: 0.75rem;
 }
 .benefits__item {
   @extend %fx-centered-y;
+  align-items: flex-start;
   color: $color-textHeader;
   font-weight: bold;
   margin-bottom: 1.125rem;
@@ -39,6 +44,9 @@
   .benefits {
     padding-top: 1.75rem;
     padding-bottom: 1.8125rem;
+  }
+  .benefits__list {
+    margin-bottom: 0;
   }
   .benefits__img {
     flex-basis: 3.625rem;
