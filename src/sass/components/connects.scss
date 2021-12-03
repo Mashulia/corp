@@ -4,18 +4,18 @@
   font-size: 1rem;
   font-weight: 600;
 
-  // &::before {
-  //   content: "";
-  //   background-repeat: no-repeat;
-  //   background-position: 50% 50%;
-  //   background-size: contain;
-  //   border-radius: 50%;
-  //   display: block;
-  //   flex: 0 0 1.5rem;
-  //   height: 1.5rem;
-  //   width: 1.5rem;
-  //   margin-right: 0.625rem;
-  // }
+  .header &::before {
+    content: "";
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: contain;
+    border-radius: 50%;
+    display: block;
+    flex: 0 0 1.5rem;
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-right: 0.625rem;
+  }
 }
 .connect__item {
   margin-bottom: 0.625rem;
@@ -74,17 +74,17 @@
     margin-bottom: 0.375rem;
   }
 }
-// .addresses::before {
-//   background-image: url("data:image/svg+xml,%3Csvg width='10' height='13' viewBox='0 0 10 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8.57146 1.5228C7.63356 0.552152 6.3808 0.0121605 5.04265 0.000160698H5.04132C3.70184 -0.0105058 2.44041 0.510153 1.48716 1.46547C-0.472697 3.42878 -0.498713 6.65006 1.42846 8.64536L4.46964 12.796C4.59438 12.9246 4.76515 12.998 4.94459 13C5.12403 13.0013 5.29614 12.9306 5.42222 12.8033L8.51343 8.70336C10.4726 6.73806 10.4986 3.51744 8.57146 1.5228ZM5 8C6.65685 8 8 6.65685 8 5C8 3.34315 6.65685 2 5 2C3.34315 2 2 3.34315 2 5C2 6.65685 3.34315 8 5 8Z' fill='white'/%3E%3C/svg%3E");
-//   background-size: 0.625rem 0.8125rem;
-// }
-// .phones {
-//   font-weight: 800;
-//   &::before {
-//     background-image: url("data:image/svg+xml,%3Csvg width='34' height='34' viewBox='0 0 34 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.48087 13.6943C9.03733 15.9201 11.9588 19.2589 13.3499 20.6501C14.7411 22.0412 18.0799 24.9627 20.3057 25.5191C23.0881 26.2147 23.4358 25.1713 24.1314 23.7802C24.827 22.389 25.8704 20.6501 28.3049 20.9979C30.7395 21.3457 31.7828 20.9978 32.8262 22.0412C33.8695 23.0846 34.2174 26.9103 33.8696 29.3449C33.5218 31.7794 31.0873 33.5183 29.3483 33.8661C27.6094 34.2139 17.5234 34.5617 8.48086 25.5191C-0.561709 16.4766 -0.213927 6.39063 0.133864 4.65168C0.481654 2.91273 2.22061 0.478203 4.65514 0.130413C7.08967 -0.217378 10.9154 0.130468 11.9588 1.17384C13.0022 2.21721 12.6543 3.26053 13.0021 5.69506C13.3499 8.12959 11.611 9.17299 10.2198 9.86857C8.82866 10.5642 7.78529 10.9119 8.48087 13.6943Z' fill='%23fff'/%3E%3C/svg%3E");
-//     background-size: 0.625rem 0.75rem;
-//   }
-// }
+.header .addresses::before {
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='13' viewBox='0 0 10 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8.57146 1.5228C7.63356 0.552152 6.3808 0.0121605 5.04265 0.000160698H5.04132C3.70184 -0.0105058 2.44041 0.510153 1.48716 1.46547C-0.472697 3.42878 -0.498713 6.65006 1.42846 8.64536L4.46964 12.796C4.59438 12.9246 4.76515 12.998 4.94459 13C5.12403 13.0013 5.29614 12.9306 5.42222 12.8033L8.51343 8.70336C10.4726 6.73806 10.4986 3.51744 8.57146 1.5228ZM5 8C6.65685 8 8 6.65685 8 5C8 3.34315 6.65685 2 5 2C3.34315 2 2 3.34315 2 5C2 6.65685 3.34315 8 5 8Z' fill='white'/%3E%3C/svg%3E");
+  background-size: 0.625rem 0.8125rem;
+}
+.phones {
+  font-weight: 800;
+  .header &::before {
+    background-image: url("data:image/svg+xml,%3Csvg width='34' height='34' viewBox='0 0 34 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.48087 13.6943C9.03733 15.9201 11.9588 19.2589 13.3499 20.6501C14.7411 22.0412 18.0799 24.9627 20.3057 25.5191C23.0881 26.2147 23.4358 25.1713 24.1314 23.7802C24.827 22.389 25.8704 20.6501 28.3049 20.9979C30.7395 21.3457 31.7828 20.9978 32.8262 22.0412C33.8695 23.0846 34.2174 26.9103 33.8696 29.3449C33.5218 31.7794 31.0873 33.5183 29.3483 33.8661C27.6094 34.2139 17.5234 34.5617 8.48086 25.5191C-0.561709 16.4766 -0.213927 6.39063 0.133864 4.65168C0.481654 2.91273 2.22061 0.478203 4.65514 0.130413C7.08967 -0.217378 10.9154 0.130468 11.9588 1.17384C13.0022 2.21721 12.6543 3.26053 13.0021 5.69506C13.3499 8.12959 11.611 9.17299 10.2198 9.86857C8.82866 10.5642 7.78529 10.9119 8.48087 13.6943Z' fill='%23fff'/%3E%3C/svg%3E");
+    background-size: 0.625rem 0.75rem;
+  }
+}
 .phones .connect__text,
 .phones .dropdown__toggle {
   white-space: nowrap;
@@ -217,9 +217,9 @@
   }
 }
 @media (min-width: $break-lg) {
-  // .connect::before {
-  //   margin-right: 0.5rem;
-  // }
+  .header .connect::before {
+    margin-right: 0.5rem;
+  }
 
   .footer__label {
     margin-right: 0.5rem;
