@@ -36,7 +36,8 @@
         </div>
         <div class="cell cell-auto">
           <div class="cart-contents__footer__value" v-if="cartTotalCost > 0">
-            {{ cartTotalCost }} {{ this.cartTextData.CURRENCY_UNIT }}
+            {{ cartTotalCost.toLocaleString() }}
+            {{ this.cartTextData.CURRENCY_UNIT }}
           </div>
           <div class="cart-contents__footer__value" v-else></div>
         </div>

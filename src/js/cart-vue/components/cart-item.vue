@@ -12,7 +12,7 @@
         >
         <div class="cart-contents__price">
           <div v-if="product.price > 0" class="cart-contents__price__value">
-            {{ product.price }} {{ product.currency }}
+            {{ product.price.toLocaleString() }} {{ product.currency }}
           </div>
           <div v-else class="cart-contents__price__value">
             {{ this.cartTextData.ON_REQUEST_TEXT }}
@@ -47,7 +47,8 @@
         </div>
         <div class="cart-contents__price">
           <div v-if="product.price > 0" class="cart-contents__price__value">
-            {{ product.price * product.qty }} {{ product.currency }}
+            {{ (product.price * product.qty).toLocaleString() }}
+            {{ product.currency }}
           </div>
           <div v-else class="cart-contents__price__value">
             {{ this.cartTextData.ON_REQUEST_TEXT }}
