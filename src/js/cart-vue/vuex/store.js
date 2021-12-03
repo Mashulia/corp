@@ -27,7 +27,7 @@ let store = createStore({
       for (let j = 0; j < state.cartIdArray.length; j++) {
         idString += "id[]=" + state.cartIdArray[j] + "&";
       }
-      state.cartIdString += idString.substr(0, idString.length);
+      state.cartIdString += idString;
     },
     CHANGE_LOCALSTORAGE: state => {
       localStorage.setItem("cart", JSON.stringify(state.products));

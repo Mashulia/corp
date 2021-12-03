@@ -117,11 +117,13 @@ export default {
     loadData() {
       const axiosInstance = axios.create();
       try {
-        axiosInstance
-          .post(this.URL + this.ID_STRING.slice(0, this.ID_STRING.length - 1))
-          .then(response => {
-            this.products = response.data;
-          });
+        axios({
+          method: "POST",
+          url: this.URL,
+          data: this.ID_STRING.slice(0, this.ID_STRING.length - 1)
+        }).then(response => {
+          this.products = response.data;
+        });
       } catch (error) {
         console.log(error);
         return error;
@@ -151,8 +153,8 @@ export default {
     }
   },
   mounted() {
-    setInterval(() => this.loadData(), 5000);
-    setInterval(() => this.updateData(), 6000);
+    setInterval(() => this.loadData(), 10000);
+    setInterval(() => this.updateData(), 11000);
   }
 };
 </script>
