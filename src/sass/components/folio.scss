@@ -27,7 +27,7 @@
 
   img {
     @extend %absolute-img;
-    object-fit: contain;
+    object-fit: cover;
   }
 }
 .folio__images__title {
