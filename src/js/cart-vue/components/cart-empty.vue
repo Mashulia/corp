@@ -52,7 +52,9 @@ export default {
   name: "cart-empty",
   data() {
     return {
-      link: document.querySelector("#app-cart").getAttribute("data-link")
+      link: document
+        .querySelector("#app-cart")
+        .getAttribute("data-link-catalog")
     };
   },
   created() {

@@ -8,25 +8,32 @@ document.addEventListener(
     let cartApp = document.querySelector("#app-cart");
 
     if (cartApp) {
-      let urlCartData = cartApp.getAttribute("data-url");
-      let catalogLink = cartApp.getAttribute("data-link");
       createApp(appCart)
         .use(store)
         .mount("#app-cart");
 
-      if (!urlCartData && catalogLink) {
+      let urlCartData = cartApp.getAttribute("data-url");
+      let catalogLink = cartApp.getAttribute("data-link-catalog");
+      let mainPageLink = cartApp.getAttribute("data-link-index-page");
+
+      if (!urlCartData && catalogLink && mainPageLink) {
         console.log(
           '%cRequired parameter "data-url"(link for synchronization with the server) is empty',
           "color: red"
         );
-      } else if (urlCartData && !catalogLink) {
+      } else if (urlCartData && !catalogLink && mainPageLink) {
         console.log(
-          '%cRequired parameter "data-link"(link to catalog page) is empty',
+          '%cRequired parameter "data-link-catalog"(link to catalog page) is empty',
           "color: red"
         );
-      } else if (!urlCartData && !catalogLink) {
+      } else if (urlCartData && catalogLink && !mainPageLink) {
         console.log(
-          '%cRequired parameter "data-link"(link to catalog page) and data-url(link for synchronization with the server) are empty',
+          '%cRequired parameter "data-link-index-page"(link to index page) is empty',
+          "color: red"
+        );
+      } else if (!urlCartData && !catalogLink && !mainPageLink) {
+        console.log(
+          '%cRequired parameter "data-link-catalog"(link to catalog page),"data-link-index-page"(link to index page) and data-url(link for synchronization with the server) are empty',
           "color: red"
         );
       }
