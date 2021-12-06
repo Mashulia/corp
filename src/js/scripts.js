@@ -1069,6 +1069,7 @@ window.addEventListener("load", function() {
       items.push(item);
     }
 
+    checkButtonData(id, name, price, url, currency, link);
     setCartData(items);
     notificationText.textContent = this.getAttribute("data-name");
     notification.classList.add("notification--opened");
@@ -1108,7 +1109,7 @@ window.addEventListener("load", function() {
       };
       items.push(item);
     }
-
+    checkButtonData(id, name, price, url, currency, link);
     setCartData(items);
     notificationText.textContent = this.getAttribute("data-name");
     notification.classList.add("notification--opened");
@@ -1124,6 +1125,53 @@ window.addEventListener("load", function() {
   // Устанавливаем обработчик события на каждую кнопку 'заказать'
   for (var i = 0; i < addToCartBtns2.length; i++) {
     addEvent(addToCartBtns2[i], "click", addToCart2);
+  }
+
+  //Функция проверки указания необходимых данных для кнопок
+  function checkButtonData(
+    dataId,
+    dataName,
+    dataPrice,
+    dataPic,
+    dataCurrency,
+    dataLink
+  ) {
+    if (!dataId) {
+      console.log(
+        '%cRequired parameter "data-id"(unique product "id") is empty',
+        "color: red"
+      );
+    }
+    if (!dataName) {
+      console.log(
+        '%cRequired parameter "data-name"(name of product) is empty',
+        "color: red"
+      );
+    }
+    if (!dataPrice) {
+      console.log(
+        '%cRequired parameter "data-price"(price of product) is empty',
+        "color: red"
+      );
+    }
+    if (!dataPic) {
+      console.log(
+        '%cRequired parameter "data-src"(path to product picture) is empty',
+        "color: red"
+      );
+    }
+    if (!dataCurrency) {
+      console.log(
+        '%cRequired parameter "data-currency"(currency of product) is empty',
+        "color: red"
+      );
+    }
+    if (!dataLink) {
+      console.log(
+        '%cRequired parameter "data-href"(link to the current product page) is empty',
+        "color: red"
+      );
+    }
   }
 
   function onLoadProductQty() {

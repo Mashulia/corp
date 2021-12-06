@@ -153,8 +153,10 @@ export default {
     }
   },
   mounted() {
-    setInterval(() => this.loadData(), 10000);
-    setInterval(() => this.updateData(), 11000);
+    if (this.URL) {
+      this.loadData();
+      this.updateData();
+    }
   }
 };
 </script>
