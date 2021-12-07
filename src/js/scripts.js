@@ -909,30 +909,35 @@ window.addEventListener("load", function() {
     attachReviewsImagesMore();
   }
 
-  // $("form").submit(function (e) {
-  //   $(this)
-  //     .slideUp(function () {
-  //       $(this).addClass("collapsing-form--handled");
-  //     })
-  //     .slideDown();
-
-  //   e.preventDefault();
-  // });
-
-  // const add2carts = document.querySelectorAll(".js-add2cart");
-  // if (add2carts.length) {
-  //   add2carts.forEach((item) => {
-  //     item.addEventListener("click", handleAdd2Cart);
-  //   });
-  // }
-
-  // document.querySelectorAll(".qty").forEach((el) => {
-  //   new qtyChanger(el).checkRange();
-  // });
-
   document.querySelectorAll(".js-revealer").forEach(el => {
     new revealer(el, ".reveal");
   });
+
+  //globalObject
+  window.getCartProducts = function() {
+    return JSON.parse(localStorage.getItem("cart"));
+  };
+
+  window.getCartProducts = function() {
+    return JSON.parse(localStorage.getItem("cart"));
+  };
+
+  //function showSuccessPopup
+  window.setSubmitButtonListener = function() {
+    let cartForm = document.querySelector(".cart__form form");
+    if (cartForm) cartForm.addEventListener("submit", showSuccessPopup);
+  };
+
+  window.showSuccessPopup = function(event) {
+    let cartApp = document.querySelector("#app-cart");
+    let cartForm = document.querySelector(".cart__form form");
+
+    cartApp.setAttribute("data-is-submit", true);
+    cartForm.setAttribute("style", "display: none");
+    document.querySelector(".wrap .cell-xl-8").classList.add("max-width");
+    localStorage.removeItem("cart");
+    event.preventDefault();
+  };
 
   //function addToCart
   let addToCartBtns1 = document.querySelectorAll(".js-add2cart");
@@ -1186,6 +1191,7 @@ window.addEventListener("load", function() {
   }
 
   onLoadProductQty();
+  console.log(getCartData());
 
   // tabs
   const tabTriggers = document.querySelectorAll(".sliding-tabs .tabs__switch");

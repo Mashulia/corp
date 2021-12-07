@@ -49,7 +49,6 @@
 import cartItem from "./cart-item.vue";
 import { mapActions, mapGetters } from "vuex";
 import axios from "axios";
-import VueAxios from "vue-axios";
 export default {
   name: "cart",
   components: { cartItem },

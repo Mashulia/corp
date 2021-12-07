@@ -79,12 +79,12 @@ let store = createStore({
       }
     },
     SHOW_FORM: () => {
-      let cartData =
+      let isCartData =
           localStorage.getItem("cart") && localStorage.getItem("cart") !== "[]",
         form = document.querySelector(".cart__form"),
         cartApp = document.querySelector("#app-cart"),
         cell = document.querySelector(".cells .cell-xl-8");
-      if (cartData && form) {
+      if (isCartData && form) {
         form.setAttribute("style", "display: block");
       } else if (form) {
         form.setAttribute("style", "display: none");
