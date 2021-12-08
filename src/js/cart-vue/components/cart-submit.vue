@@ -33,7 +33,7 @@
     <div class="page-message__title">
       {{ this.cartTextData.CART_SUBMIT_TITLE }}
     </div>
-    <div class="page-message__text" v-html="formattedMessage"></div>
+    <div class="page-message__text" v-html="stringMessage"></div>
 
     <div class="page-message__action">
       <a class="button button-secondary" :href="link">
@@ -74,11 +74,6 @@ export default {
   },
   created() {
     this.cartTextData = cartTextData;
-  },
-  computed: {
-    formattedMessage() {
-      return this.stringMessage.split(/(?<=[!?.])/).join("<br>");
-    }
   }
 };
 </script>
