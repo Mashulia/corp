@@ -35,7 +35,7 @@
     </div>
     <div class="page-message__text">
       {{ this.cartTextData.CART_SUBMIT_SUCCESS_TEXT }}<br />
-      {{ this.cartTextData.CART_SUBMIT_PROMISE_TEXT }}
+      {{ this.stringMessage }}
     </div>
     <div class="page-message__action">
       <a class="button button-secondary" :href="link">
@@ -68,7 +68,10 @@ export default {
     return {
       link: document
         .querySelector("#app-cart")
-        .getAttribute("data-link-index-page")
+        .getAttribute("data-link-index-page"),
+      stringMessage: document
+        .querySelector("#app-cart")
+        .getAttribute("data-submit-message")
     };
   },
   created() {

@@ -924,23 +924,25 @@ window.addEventListener("load", function() {
     if (cartForm) cartForm.addEventListener("submit", showSuccessPopup);
   };
 
-  window.showSuccessPopup = function(event) {
+  window.showSuccessPopup = function() {
     let cartForm = document.querySelector(".cart__form form");
     let submitFormMessage = document.querySelector(".page-message--submit");
     let cart = document.querySelector(".cart-contents");
-
-    cartForm.setAttribute("style", "display: none");
-    cart.setAttribute("style", "display: none");
-    submitFormMessage.setAttribute("style", "display: block");
-    document.querySelector(".wrap .cell-xl-8").classList.add("max-width");
-    localStorage.removeItem("cart");
-    event.preventDefault();
+    if (cartForm) {
+      cartForm.setAttribute("style", "display: none");
+      cart.setAttribute("style", "display: none");
+      submitFormMessage.setAttribute("style", "display: block");
+      document.querySelector(".wrap .cell-xl-8").classList.add("max-width");
+      localStorage.removeItem("cart");
+    }
+    // event.preventDefault();
   };
 
   window.changeStatus = function(status) {
     return !!status;
   };
 
+  // showSuccessPopup();
   // setSubmitButtonListener();
 
   //function addToCart
@@ -1122,6 +1124,7 @@ window.addEventListener("load", function() {
     setCartData(items);
     notificationText.textContent = this.getAttribute("data-name");
     notification.classList.add("notification--opened");
+
     setTimeout(closeNotification, 4000);
     activateCart();
   }
