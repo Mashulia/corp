@@ -197,7 +197,7 @@ block contentBody
 
     p Инициализация корзины происходит при добавлении на страницу следующего тэга
     code 	
-     b &lt;div id="app-cart" data-url="" data-link-catalog=""	data-link-index-page=""	&gt;
+     b &lt;div id="app-cart" data-url="" data-link-catalog=""	data-link-index-page="" data-submit-message=""	&gt;
     p Необходимыe параметры для работы корзины:
     ul
       li
@@ -249,6 +249,12 @@ block contentBody
       li
         code 
           b data-link-index-page="" - путь для ссылки, которая возвращает обратно на главную страницу
+          br
+          br
+      p
+      li
+        code 
+          b data-submit-message="" - настраиваемый параметр для успешного сообщения об отправке формы в корзине
           br
           br
       p
