@@ -197,7 +197,7 @@ block contentBody
 
     p Инициализация корзины происходит при добавлении на страницу следующего тэга
     code 	
-     b &lt;div id="app-cart" data-url="" data-link=""	&gt;
+     b &lt;div id="app-cart" data-url="" data-link-catalog=""	data-link-index-page=""	&gt;
     p Необходимыe параметры для работы корзины:
     ul
       li
@@ -237,20 +237,31 @@ block contentBody
             p EMPTY_CART_TITLE:&#34;Ваша корзина пуста&#34;
             p EMPTY_CART_TEXT:&#34;Выберите в каталоге интересующий товар и добавьте в корзину&#34;
             p EMPTY_CART_LINK_TEXT:&#34;Перейти в каталог&#34;
+            p CART_SUBMIT_TITLE:&#34;Ваш заказ успешно оформлен&#34;
+            p CART_SUBMIT_SUCCESS_TEXT:&#34;Ваша заявка успешно отправлена!&#34;
+            p CART_SUBMIT_PROMISE_TEXT:&#34;В течение 5 минут мы Вам перезвоним&#34;
+            p CART_SUBMIT_LINK_TEXT:&#34;Перейти на главную&#34;
           span &#125;
       li
         code 
-          b data-link="" - путь для ссылки, которая возвращает обратно в каталог
+          b data-link-catalog="" - путь для ссылки, которая возвращает обратно в каталог
           br
-
+          br
+      li
+        code 
+          b data-link-index-page="" - путь для ссылки, которая возвращает обратно на главную страницу
+          br
+          br
       p
         b Для получения данных корзины необходимо вызвать функцию 
           code getCartData()
           | которая возвращает данные корзины в виде массива объектов 
           br
+          br
       p
         b Для получения успешного сообщения об отправке формы вызываем функцию 
           code setSubmitButtonListener()
+          br
           br
     .cells
       .cell.cell-md-8

@@ -918,10 +918,6 @@ window.addEventListener("load", function() {
     return JSON.parse(localStorage.getItem("cart"));
   };
 
-  window.getCartProducts = function() {
-    return JSON.parse(localStorage.getItem("cart"));
-  };
-
   //function showSuccessPopup
   window.setSubmitButtonListener = function() {
     let cartForm = document.querySelector(".cart__form form");
@@ -929,15 +925,23 @@ window.addEventListener("load", function() {
   };
 
   window.showSuccessPopup = function(event) {
-    let cartApp = document.querySelector("#app-cart");
     let cartForm = document.querySelector(".cart__form form");
+    let submitFormMessage = document.querySelector(".page-message--submit");
+    let cart = document.querySelector(".cart-contents");
 
-    cartApp.setAttribute("data-is-submit", true);
     cartForm.setAttribute("style", "display: none");
+    cart.setAttribute("style", "display: none");
+    submitFormMessage.setAttribute("style", "display: block");
     document.querySelector(".wrap .cell-xl-8").classList.add("max-width");
     localStorage.removeItem("cart");
     event.preventDefault();
   };
+
+  window.changeStatus = function(status) {
+    return !!status;
+  };
+
+  // setSubmitButtonListener();
 
   //function addToCart
   let addToCartBtns1 = document.querySelectorAll(".js-add2cart");
@@ -1191,7 +1195,6 @@ window.addEventListener("load", function() {
   }
 
   onLoadProductQty();
-  console.log(getCartData());
 
   // tabs
   const tabTriggers = document.querySelectorAll(".sliding-tabs .tabs__switch");

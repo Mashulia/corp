@@ -1,5 +1,5 @@
 <template>
-  <div class="page-message">
+  <div class="page-message page-message--submit">
     <div class="page-message__icon">
       <svg
         width="38"
@@ -38,7 +38,7 @@
       {{ this.cartTextData.CART_SUBMIT_PROMISE_TEXT }}
     </div>
     <div class="page-message__action">
-      <a class="button button-secondary" href="index.html">
+      <a class="button button-secondary" :href="link">
         <div class="button__body">
           {{ this.cartTextData.CART_SUBMIT_LINK_TEXT }}
         </div>
