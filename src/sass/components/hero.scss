@@ -4,18 +4,21 @@
   padding-bottom: 0;
   position: relative;
 }
+
 .hero__slider {
   height: 450px;
 
   .slick-track {
     align-items: flex-start;
   }
+
   .slick-dots {
     bottom: auto;
-    top: 60.625vw;
+    top: 60.25vw;
     transform: translate(0%, -70%);
   }
 }
+
 .hero__item {
   background-color: $color-textHeader;
   color: #fff;
@@ -25,6 +28,7 @@
   padding-bottom: 1.25rem;
   position: relative;
 }
+
 .hero__bg {
   background: rgba(255, 255, 255, 0.1);
   width: 100%;
@@ -42,15 +46,18 @@
     left: 0;
   }
 }
+
 .hero__wrap {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
 .hero__text {
   padding: 1.5rem 0 1.25rem;
 }
+
 .hero__descr {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 60px;
@@ -61,20 +68,24 @@
   font-size: 0.875rem;
   padding: 0.375rem 0.75rem;
 }
+
 .hero__title {
   font-weight: 800;
   font-size: 1.625rem;
   line-height: 1.2;
   margin-bottom: 1.25rem;
 }
+
 .hero__button {
   padding: 0.4375rem 1rem;
 }
+
 @media (max-width: $break-sm - 1) {
   .hero__text {
     text-align: center;
   }
 }
+
 @media (min-width: $break-sm) {
   .hero__item {
     background-color: $color-bg;
@@ -83,6 +94,7 @@
     min-height: 41vw;
     padding-bottom: 0;
   }
+
   .hero__bg {
     padding-bottom: 0;
     position: absolute;
@@ -91,18 +103,22 @@
     left: 0;
     right: 0;
   }
+
   .hero__text {
     max-width: 50%;
     padding: 4.375rem 0;
     position: relative;
   }
+
   .hero__descr {
     background: rgba(255, 255, 255, 0.4);
     font-weight: 800;
   }
+
   .hero__title {
     margin-bottom: 1.5rem;
   }
+
   .hero__slider {
     .slick-dots {
       top: auto;
@@ -116,6 +132,7 @@
     }
   }
 }
+
 @media (min-width: $break-lg) {
   .hero__descr {
     font-size: 1rem;
@@ -123,15 +140,18 @@
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
   }
+
   .hero__title {
     font-size: 2.25rem;
     margin-bottom: 2.25rem;
   }
+
   .hero__button {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
 }
+
 @media (min-width: $break-xl) {
   .hero__slider {
     .slick-prev {
@@ -142,6 +162,7 @@
         left: 6.5rem;
       }
     }
+
     .slick-next {
       right: -4rem;
       transition: right 0.4s;
@@ -151,30 +172,37 @@
       }
     }
   }
+
   .hero__slider:hover {
     .slick-prev {
       left: 6.5rem;
     }
+
     .slick-next {
       right: 6.5rem;
     }
   }
+
   .hero__item {
     height: 520px;
     min-height: 0;
   }
+
   .hero__text {
     max-width: $col-width * 5;
   }
+
   .hero__title {
     font-size: 2.75rem;
     line-height: 1.2;
     margin-bottom: 2.5rem;
   }
+
   .hero__slider .slick-dots {
     bottom: 2rem;
   }
 }
+
 .dark {
   .hero__descr {
     background: rgba(42, 43, 43, 0.4);
