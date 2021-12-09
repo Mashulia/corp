@@ -4,7 +4,13 @@
 
 .benefits__list {
   margin-bottom: 0.75rem;
+
+  .cell {
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
 }
+
 .benefits__item {
   @extend %fx-centered-y;
   align-items: flex-start;
@@ -13,6 +19,7 @@
   margin-bottom: 1.125rem;
   position: relative;
 }
+
 .benefits__img {
   flex: 0 0 2.75rem;
   background: $color-bg;
@@ -30,24 +37,29 @@
     max-width: 1.25rem;
   }
 }
+
 @media (min-width: $break-md) {
   .benefits__item {
     margin-bottom: 1.75rem;
   }
+
   .sabout__bens {
     .benefits__item {
       margin-bottom: 1.25rem;
     }
   }
 }
+
 @media (min-width: $break-lg) {
   .benefits {
     padding-top: 1.75rem;
     padding-bottom: 1.8125rem;
   }
+
   .benefits__list {
     margin-bottom: 0;
   }
+
   .benefits__img {
     flex-basis: 3.625rem;
     max-width: 3.625rem;
@@ -59,15 +71,17 @@
       max-height: 2.125rem;
     }
   }
+
   .sabout__bens {
     .benefits__item {
       margin-bottom: 1.5rem;
     }
   }
 }
+
 @media (min-width: $break-xl) {
   .benefits__cell {
-    flex-basis: 20%;
+    flex: 1 1 20%;
     max-width: 20%;
   }
 }
