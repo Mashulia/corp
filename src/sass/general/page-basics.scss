@@ -194,20 +194,6 @@
   &--opened {
     transform: translateY(0);
   }
-
-  &--fade {
-    animation: 0.1s fade linear;
-  }
-}
-
-@keyframes fade {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-  }
 }
 
 .notification__row {

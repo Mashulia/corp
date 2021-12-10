@@ -1006,16 +1006,14 @@ window.addEventListener("load", function() {
   }
 
   // Функция закрытия оповещения о добавлении товара в корзину
-  function removeFade() {
-    if (notification.classList.contains("notification--fade")) {
-      notification.classList.remove("notification--fade");
-    }
-  }
-  // Функция закрытия оповещения о добавлении товара в корзину
   function closeNotification() {
     if (notification.classList.contains("notification--opened")) {
       notification.classList.remove("notification--opened");
     }
+  }
+
+  function showNotification() {
+    notification.classList.add("notification--opened");
   }
 
   // Функция кроссбраузерной установки обработчика событий
@@ -1089,15 +1087,20 @@ window.addEventListener("load", function() {
 
     checkButtonData(id, name, price, url, currency, link);
     setCartData(items);
-    notificationText.textContent = this.getAttribute("data-name");
+
+    function setTextContent() {
+      return (notificationText.textContent = name);
+    }
 
     if (notification.classList.contains("notification--opened")) {
-      notification.classList.add("notification--fade");
-      setTimeout(removeFade, 1000);
+      notification.classList.remove("notification--opened");
       clearTimeout(timeForNotification);
-      setTimeout(closeNotification, 5000);
+      timeForNotification = setTimeout(showNotification, 200);
+      setTimeout(setTextContent, 200);
+      timeForNotification = setTimeout(closeNotification, 4200);
     } else {
       notification.classList.add("notification--opened");
+      setTextContent(name);
       timeForNotification = setTimeout(closeNotification, 4000);
     }
 
@@ -1138,15 +1141,20 @@ window.addEventListener("load", function() {
     }
     checkButtonData(id, name, price, url, currency, link);
     setCartData(items);
-    notificationText.textContent = this.getAttribute("data-name");
+
+    function setTextContent() {
+      return (notificationText.textContent = name);
+    }
 
     if (notification.classList.contains("notification--opened")) {
-      notification.classList.add("notification--fade");
-      setTimeout(removeFade, 1000);
+      notification.classList.remove("notification--opened");
       clearTimeout(timeForNotification);
-      setTimeout(closeNotification, 5000);
+      timeForNotification = setTimeout(showNotification, 200);
+      setTimeout(setTextContent, 200);
+      timeForNotification = setTimeout(closeNotification, 4200);
     } else {
       notification.classList.add("notification--opened");
+      setTextContent(name);
       timeForNotification = setTimeout(closeNotification, 4000);
     }
 
