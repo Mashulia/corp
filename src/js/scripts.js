@@ -1095,9 +1095,9 @@ window.addEventListener("load", function() {
     if (notification.classList.contains("notification--opened")) {
       notification.classList.remove("notification--opened");
       clearTimeout(timeForNotification);
-      timeForNotification = setTimeout(showNotification, 200);
-      setTimeout(setTextContent, 200);
-      timeForNotification = setTimeout(closeNotification, 4200);
+      timeForNotification = setTimeout(showNotification, 400);
+      setTimeout(setTextContent, 400);
+      timeForNotification = setTimeout(closeNotification, 4400);
     } else {
       notification.classList.add("notification--opened");
       setTextContent(name);
@@ -1149,9 +1149,9 @@ window.addEventListener("load", function() {
     if (notification.classList.contains("notification--opened")) {
       notification.classList.remove("notification--opened");
       clearTimeout(timeForNotification);
-      timeForNotification = setTimeout(showNotification, 200);
-      setTimeout(setTextContent, 200);
-      timeForNotification = setTimeout(closeNotification, 4200);
+      timeForNotification = setTimeout(showNotification, 400);
+      setTimeout(setTextContent, 400);
+      timeForNotification = setTimeout(closeNotification, 4400);
     } else {
       notification.classList.add("notification--opened");
       setTextContent(name);
