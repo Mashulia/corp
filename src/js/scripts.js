@@ -957,6 +957,7 @@ window.addEventListener("load", function() {
   let notification = document.querySelector("#product-added");
   let notificationText = document.querySelector(".notification__text");
   let cell = document.querySelector(".wrap .cell-xl-8");
+  let timeForNotification;
 
   // Функция активации корзины в шапке
   function activateCart() {
@@ -1004,6 +1005,12 @@ window.addEventListener("load", function() {
     })();
   }
 
+  // Функция закрытия оповещения о добавлении товара в корзину
+  function removeFade() {
+    if (notification.classList.contains("notification--fade")) {
+      notification.classList.remove("notification--fade");
+    }
+  }
   // Функция закрытия оповещения о добавлении товара в корзину
   function closeNotification() {
     if (notification.classList.contains("notification--opened")) {
@@ -1083,8 +1090,17 @@ window.addEventListener("load", function() {
     checkButtonData(id, name, price, url, currency, link);
     setCartData(items);
     notificationText.textContent = this.getAttribute("data-name");
-    notification.classList.add("notification--opened");
-    setTimeout(closeNotification, 4000);
+
+    if (notification.classList.contains("notification--opened")) {
+      notification.classList.add("notification--fade");
+      setTimeout(removeFade, 1000);
+      clearTimeout(timeForNotification);
+      setTimeout(closeNotification, 5000);
+    } else {
+      notification.classList.add("notification--opened");
+      timeForNotification = setTimeout(closeNotification, 4000);
+    }
+
     activateCart();
   }
 
@@ -1123,9 +1139,17 @@ window.addEventListener("load", function() {
     checkButtonData(id, name, price, url, currency, link);
     setCartData(items);
     notificationText.textContent = this.getAttribute("data-name");
-    notification.classList.add("notification--opened");
 
-    setTimeout(closeNotification, 4000);
+    if (notification.classList.contains("notification--opened")) {
+      notification.classList.add("notification--fade");
+      setTimeout(removeFade, 1000);
+      clearTimeout(timeForNotification);
+      setTimeout(closeNotification, 5000);
+    } else {
+      notification.classList.add("notification--opened");
+      timeForNotification = setTimeout(closeNotification, 4000);
+    }
+
     activateCart();
   }
 
