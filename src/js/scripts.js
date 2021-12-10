@@ -956,7 +956,7 @@ window.addEventListener("load", function() {
   );
   let notification = document.querySelector("#product-added");
   let notificationText = document.querySelector(".notification__text");
-  let cell = document.querySelector(".wrap .cell-xl-8");
+  let cell = document.querySelector(".cell--cart");
   let timeForNotification;
 
   // Функция активации корзины в шапке
