@@ -152,7 +152,7 @@
     align-items: center;
     justify-content: space-between;
     min-height: 5.4375rem;
-    height: 5.4375rem;
+    // height: 5.4375rem;
     padding: 0;
   }
 
@@ -221,7 +221,7 @@
   .header--v2 {
     .header__body {
       min-height: 4.75rem;
-      height: 4.75rem;
+      // height: 4.75rem;
     }
 
     .header__addresses .dropdown__toggle,
@@ -242,7 +242,7 @@
       align-items: center;
       justify-content: space-between;
       min-height: 3.6875rem;
-      height: 3.6875rem;
+      // height: 3.6875rem;
     }
 
     .header__primary-nav {
@@ -259,7 +259,7 @@
 
     .primary-nav>.primary-nav__list {
       justify-content: flex-start;
-      height: 3.6875rem;
+      // height: 3.6875rem;
     }
 
     .primary-nav__item {
