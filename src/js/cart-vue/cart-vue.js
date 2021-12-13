@@ -13,27 +13,31 @@ document.addEventListener(
         .mount("#app-cart");
 
       let urlCartData = cartApp.getAttribute("data-url");
+      let sessidCartData = cartApp.getAttribute("data-sessid");
       let catalogLink = cartApp.getAttribute("data-link-catalog");
       let mainPageLink = cartApp.getAttribute("data-link-index-page");
 
-      if (!urlCartData && catalogLink && mainPageLink) {
+      if (!urlCartData) {
         console.log(
           '%cRequired parameter "data-url"(link for synchronization with the server) is empty',
           "color: red"
         );
-      } else if (urlCartData && !catalogLink && mainPageLink) {
+      }
+      if (!catalogLink) {
         console.log(
           '%cRequired parameter "data-link-catalog"(link to catalog page) is empty',
           "color: red"
         );
-      } else if (urlCartData && catalogLink && !mainPageLink) {
+      }
+      if (!mainPageLink) {
         console.log(
           '%cRequired parameter "data-link-index-page"(link to index page) is empty',
           "color: red"
         );
-      } else if (!urlCartData && !catalogLink && !mainPageLink) {
+      }
+      if (!sessidCartData) {
         console.log(
-          '%cRequired parameter "data-link-catalog"(link to catalog page),"data-link-index-page"(link to index page) and data-url(link for synchronization with the server) are empty',
+          '%cRequired parameter "data-sessid"(protection against method calls on third-party sites) is empty',
           "color: red"
         );
       }

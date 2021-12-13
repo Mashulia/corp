@@ -54,6 +54,7 @@ export default {
   components: { cartItem },
   data() {
     return {
+      sessid: document.querySelector("#app-cart").getAttribute("data-sessid"),
       products: [],
       cartIdArray: [],
       URL: document.querySelector("#app-cart").getAttribute("data-url")
@@ -119,7 +120,10 @@ export default {
         axios({
           method: "POST",
           url: this.URL,
-          data: this.ID_STRING.slice(0, this.ID_STRING.length - 1)
+          data: {
+            idArray: this.ID_STRING.slice(0, this.ID_STRING.length - 1),
+            sessid: this.sessid
+          }
         }).then(response => {
           this.products = response.data;
         });
