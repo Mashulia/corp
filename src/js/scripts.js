@@ -917,16 +917,19 @@ window.addEventListener("load", function() {
   function setPageToIframe() {
     let togglerPanel = document.querySelector(".js-settings");
     let body = document.querySelector("body");
+    let contFrame = document.querySelector("#opt-iframe");
     if (togglerPanel) {
       togglerPanel.addEventListener("click", () => {
         body.classList.add("opt-outer-body");
         body.style.overflow = "hidden";
-        togglerPanel.insertAdjacentHTML(
-          "afterend",
-          "<iframe id='opt-iframe'></iframe>"
-        );
-        let contFrame = document.querySelector("#opt-iframe");
-        contFrame.src = location.href + "?" + new Date().getTime();
+        if (!contFrame) {
+          togglerPanel.insertAdjacentHTML(
+            "afterend",
+            "<iframe id='opt-iframe'></iframe>"
+          );
+
+          contFrame.src = location.href + "?" + new Date().getTime();
+        }
       });
     }
   }
