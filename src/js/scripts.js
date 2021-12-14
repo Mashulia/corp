@@ -913,24 +913,24 @@ window.addEventListener("load", function() {
     new revealer(el, ".reveal");
   });
 
-  // Функция для показа панели и айфрейма
-  function setPageToIframe() {
-    let togglerPanel = document.querySelector(".js-settings");
-    let body = document.querySelector("body");
-    if (togglerPanel) {
-      togglerPanel.addEventListener("click", () => {
-        body.classList.add("opt-outer-body");
-        togglerPanel.insertAdjacentHTML(
-          "afterend",
-          "<iframe id='opt-iframe'></iframe>"
-        );
-        let contFrame = document.querySelector("#opt-iframe");
-        contFrame.src = location.href + "?" + new Date().getTime();
-      });
-    }
-  }
+  // // Функция для показа панели и айфрейма
 
-  setPageToIframe();
+  // function setPageToIframe() {
+  //   let togglerPanel = document.querySelector(".js-settings");
+  //   let settings = document.querySelector(".settings");
+  //   if (settings && !document.querySelector(".opt-iframe")) {
+  //     togglerPanel.addEventListener("click", () => {
+  //       let iframe = document.createElement("iframe");
+  //       iframe.className = "opt-iframe";
+
+  //       settings.after(iframe);
+  //       let contFrame = document.querySelector(".opt-iframe")[0];
+  //       contFrame.src = location.href + "?" + new Date().getTime();
+  //     });
+  //   }
+  // }
+
+  // setPageToIframe();
 
   //globalObject
   window.getCartProducts = function() {
@@ -943,7 +943,6 @@ window.addEventListener("load", function() {
     if (contFrame) contFrame.contentWindow.location.reload(true);
   };
 
-  //function showSuccessPopup
   window.setSubmitButtonListener = function() {
     let cartForm = document.querySelector(".cart__form form");
     if (cartForm) cartForm.addEventListener("submit", showSuccessPopup);
