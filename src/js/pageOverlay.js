@@ -3,7 +3,7 @@ function createPageOverlay() {
   let pageOverlay = document.createElement("div");
   pageOverlay.classList.add("page-overlay");
   document.getElementsByClassName("corp")[0].appendChild(pageOverlay);
-  setTimeout(function () {
+  setTimeout(function() {
     document.body.classList.add("overlayed");
     document.body.style.paddingRight = scrollbarWidth;
   }, 100);
@@ -12,7 +12,7 @@ function createPageOverlay() {
 function removePageOverlay(pageOverlay) {
   document.body.classList.remove("overlayed");
   document.body.style.paddingRight = "";
-  setTimeout(function () {
+  setTimeout(function() {
     if (pageOverlay) {
       pageOverlay.remove();
     }

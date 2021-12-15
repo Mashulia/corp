@@ -914,23 +914,32 @@ window.addEventListener("load", function() {
   });
 
   // // Функция для показа панели и айфрейма
+  if (!("remove" in Element.prototype)) {
+    Element.prototype.remove = function() {
+      if (this.parentNode) {
+        this.parentNode.removeChild(this);
+      }
+    };
+  }
 
-  // function setPageToIframe() {
-  //   let togglerPanel = document.querySelector(".js-settings");
-  //   let settings = document.querySelector(".settings");
-  //   if (settings && !document.querySelector(".opt-iframe")) {
-  //     togglerPanel.addEventListener("click", () => {
-  //       let iframe = document.createElement("iframe");
-  //       iframe.className = "opt-iframe";
+  $(document).ready(function() {
+    $(".settings__toggle").on("click", function(e) {
+      if ($("#opt-iframe").length === 0) {
+        $("body")
+          .addClass("opt-outer-body")
+          .css({ overflow: "hidden" });
+        $(".settings").after('<iframe id="opt-iframe"></iframe>');
 
-  //       settings.after(iframe);
-  //       let contFrame = document.querySelector(".opt-iframe")[0];
-  //       contFrame.src = location.href + "?" + new Date().getTime();
-  //     });
-  //   }
-  // }
+        var contFrame = $("#opt-iframe")[0];
 
-  // setPageToIframe();
+        contFrame.addEventListener("load", function() {
+          contFrame.contentWindow.document.querySelector(".settings").remove();
+        });
+
+        contFrame.src = location.href + "?" + new Date().getTime();
+      }
+    });
+  });
 
   //globalObject
   window.getCartProducts = function() {
@@ -1381,9 +1390,12 @@ window.addEventListener("load", function() {
 
   // functions on resize
   window.onresize = function(event) {
-    delay(function() {
-      delayedFunctions();
-    }, 500);
+    let contFrame = document.querySelector("#opt-iframe");
+    if (!contFrame) {
+      delay(function() {
+        delayedFunctions();
+      }, 500);
+    }
   };
 
   var delayedFunctions = function() {
