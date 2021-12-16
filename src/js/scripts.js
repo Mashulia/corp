@@ -1077,8 +1077,7 @@ window.addEventListener("load", function() {
       url = this.getAttribute("data-src"), // картинка товара
       currency = this.getAttribute("data-currency"), //валюта товара
       link = this.getAttribute("data-href"), //ссылка на товар
-      qty,
-      show = true;
+      qty;
 
     if (input.value < minValue || input.value === "") {
       input.value = minValue;
@@ -1107,8 +1106,7 @@ window.addEventListener("load", function() {
         pic: url,
         qty: qty,
         currency: currency,
-        link: link,
-        show: show
+        link: link
       };
       items.push(item);
     }
@@ -1144,8 +1142,7 @@ window.addEventListener("load", function() {
       url = this.getAttribute("data-src"), // картинка товара
       currency = this.getAttribute("data-currency"), //валюта товара
       link = this.getAttribute("data-href"), //ссылка на товар
-      qty = 1,
-      show = true;
+      qty = 1;
 
     let isItemInCart = items.find(item => item.id === id);
 
@@ -1164,8 +1161,7 @@ window.addEventListener("load", function() {
         pic: url,
         qty: qty,
         currency: currency,
-        link: link,
-        show: show
+        link: link
       };
       items.push(item);
     }
