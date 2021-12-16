@@ -931,12 +931,15 @@ window.addEventListener("load", function() {
         $(".settings").after('<iframe id="opt-iframe"></iframe>');
 
         var contFrame = $("#opt-iframe")[0];
+        if (contFrame) {
+          contFrame.addEventListener("load", function() {
+            contFrame.contentWindow.document
+              .querySelector(".settings")
+              .remove();
+          });
 
-        contFrame.addEventListener("load", function() {
-          contFrame.contentWindow.document.querySelector(".settings").remove();
-        });
-
-        contFrame.src = location.href + "?" + new Date().getTime();
+          contFrame.src = location.href + "?" + new Date().getTime();
+        }
       }
     });
   });
@@ -1254,6 +1257,16 @@ window.addEventListener("load", function() {
     } else if (cell) {
       cell.classList.add("max-width");
     }
+
+    $(document).on("keyup", function(event) {
+      if (event.keyCode === 27) {
+        event.preventDefault();
+        let settings = document.querySelector(".settings");
+        if (settings && settings.classList.contains("opened")) {
+          settings.classList.remove("opened");
+        }
+      }
+    });
   }
 
   onLoadProductQty();
@@ -1387,16 +1400,6 @@ window.addEventListener("load", function() {
       });
     });
   }
-
-  $(document).on("keyup", function(event) {
-    if (event.keyCode == 27) {
-      event.preventDefault();
-      let settings = document.querySelector(".settings");
-      if (settings && settings.classList.contains("opened")) {
-        settings.classList.remove("opened");
-      }
-    }
-  });
 
   // functions on resize
   window.onresize = function(event) {
