@@ -949,7 +949,7 @@ window.addEventListener("load", function() {
   // Функция для перезагрузки айфрейма
   window.reloadFrame = function() {
     let contFrame = document.querySelector("#opt-iframe");
-    if (contFrame) contFrame.contentWindow.location.reload(true);
+    if (contFrame) contFrame.contentWindow.location.reload();
   };
 
   window.setSubmitButtonListener = function() {
@@ -1387,6 +1387,16 @@ window.addEventListener("load", function() {
       });
     });
   }
+
+  $(document).on("keyup", function(event) {
+    if (event.keyCode == 27) {
+      event.preventDefault();
+      let settings = document.querySelector(".settings");
+      if (settings && settings.classList.contains("opened")) {
+        settings.classList.remove("opened");
+      }
+    }
+  });
 
   // functions on resize
   window.onresize = function(event) {

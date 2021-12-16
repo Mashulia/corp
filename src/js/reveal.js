@@ -6,7 +6,7 @@ class revealer {
       root: rootClass
     });
     this.wrapper = this.trigger.closest(this.root);
-    this.trigger.onclick = (e) => this.toggle(e);
+    this.trigger.onclick = e => this.toggle(e);
   }
 
   toggle(e) {
@@ -21,7 +21,7 @@ class inputRevealer extends revealer {
       document.querySelectorAll(
         "[name='" + this.trigger.getAttribute("name") + "']"
       )
-    ).filter((item) => {
+    ).filter(item => {
       return item != this.trigger;
     });
   }
@@ -31,16 +31,16 @@ class inputRevealer extends revealer {
 
       this.wrapper
         .querySelectorAll(".spectrum-picker")
-        .forEach((item) => $(item).spectrum("reflow"));
+        .forEach(item => $(item).spectrum("reflow"));
       if (this.sameNameInputs.length) {
         const self = this;
-        this.sameNameInputs.forEach((item) => {
+        this.sameNameInputs.forEach(item => {
           item.addEventListener("change", hideReveal);
         });
 
         function hideReveal() {
           self.wrapper.classList.remove(`opened`);
-          self.sameNameInputs.forEach((item) => {
+          self.sameNameInputs.forEach(item => {
             item.removeEventListener("change", hideReveal);
           });
         }
@@ -54,7 +54,10 @@ class overlayedRevealer extends revealer {
   toggle(e) {
     super.toggle(e);
     let self = this;
-    if (this.wrapper.classList.contains(`opened`)) {
+    if (
+      !this.wrapper.classList.contains(`settings`) &&
+      this.wrapper.classList.contains(`opened`)
+    ) {
       let pageOverlay = createPageOverlay();
       pageOverlay.addEventListener("click", closeWhatsOpened);
     } else {
