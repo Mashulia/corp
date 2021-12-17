@@ -65,7 +65,7 @@ export default {
       let cartData =
           localStorage.getItem("cart") && localStorage.getItem("cart") !== "[]",
         form = document.querySelector(".cart__form"),
-        cell = document.querySelector(".wrap .cell-xl-8");
+        cell = document.querySelector(".cell--cart");
 
       if (!cartData) {
         form.setAttribute("style", "display: none");

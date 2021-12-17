@@ -22,8 +22,6 @@ export default {
   methods: {
     ...mapActions([
       "SET_PRODUCTS_TO_STATE",
-      "DEACTIVATE_CART_STATUS",
-      "DELETE_ALL_PRODUCTS_FROM_CART",
       "SHOW_CART_FORM",
       "GET_ID_STRING_OF_PRODUCTS",
       "GET_ID_ARRAY_OF_PRODUCTS"

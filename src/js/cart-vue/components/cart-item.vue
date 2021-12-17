@@ -1,5 +1,5 @@
 <template>
-  <transition name="fade" @leave="deleteFromCart">
+  <transition name="slide-fade">
     <div class="cart-contents__item" v-if="show">
       <div class="cart-contents__row">
         <a v-if="product.pic" class="cart-contents__image" :href="product.link">
@@ -68,7 +68,7 @@
           <button
             class="button-remove button button-icon"
             title="Удалить товар из корзины"
-            @click="animateDeleteItem()"
+            @click="deleteFromCart"
           >
             <svg
               width="24"
@@ -144,7 +144,9 @@ export default {
       "CHANGE_STATE_LOCALSTORAGE"
     ]),
     deleteFromCart() {
-      this.$emit("deleteFromCart");
+      setTimeout(() => {
+        this.$emit("deleteFromCart");
+      }, 500);
     },
     animateDeleteItem() {
       this.show = !this.show;

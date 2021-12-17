@@ -27,7 +27,7 @@ export default {
   methods: {
     tween(newValue, oldValue) {
       gsap.to(this.$data, {
-        duration: 0.3,
+        duration: 0.5,
         tweeningValue: newValue,
         ease: "power2"
       });

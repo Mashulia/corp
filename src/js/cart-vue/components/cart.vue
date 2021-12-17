@@ -176,6 +176,13 @@ export default {
       this.loadData();
       this.updateData();
     }
+    let buttons = document.querySelectorAll(".button-remove");
+    buttons.forEach(element => {
+      element.addEventListener("click", () => {
+        let parent = element.closest(".cart-contents__item");
+        parent.classList.add("slide-fade");
+      });
+    });
   }
 };
 </script>

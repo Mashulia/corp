@@ -968,7 +968,7 @@ window.addEventListener("load", function() {
       cartForm.setAttribute("style", "display: none");
       cart.setAttribute("style", "display: none");
       submitFormMessage.setAttribute("style", "display: block");
-      document.querySelector(".wrap .cell-xl-8").classList.add("max-width");
+      document.querySelector(".cell--cart").classList.add("max-width");
       localStorage.removeItem("cart");
     }
   };
