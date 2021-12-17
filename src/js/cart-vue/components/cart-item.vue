@@ -38,7 +38,6 @@
                 v-model="product.qty"
                 min="1"
                 max="99"
-                step=""
                 @blur="validateInputData($event)"
               />
               <button
@@ -51,7 +50,10 @@
           </div>
           <div class="cart-contents__price">
             <div v-if="product.price > 0" class="cart-contents__price__value">
-              {{ (this.product.qty * this.product.price).toLocaleString() }}
+              <animated-integer
+                :value="result"
+                :product="product"
+              ></animated-integer>
               {{ product.currency }}
             </div>
             <div v-else class="cart-contents__price__value">
@@ -110,22 +112,26 @@
   </transition>
 </template>
 <script>
+import animatedInteger from "./animated-integer.vue";
 import { mapActions, mapGetters } from "vuex";
-import gsap from "gsap";
 export default {
   name: "cart-item",
+  components: { animatedInteger },
   data() {
     return {
       show: true,
-      originalPrice: this.product.price,
-      qty: this.product.qty,
-      totalPriceProductItem: this.qty * this.originalPrice
+      price: this.product.price
     };
   },
   props: {
     product: {
       type: Object,
       required: true
+    }
+  },
+  computed: {
+    result() {
+      return this.product.qty * this.price;
     }
   },
   created() {

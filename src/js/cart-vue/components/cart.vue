@@ -36,7 +36,7 @@
         </div>
         <div class="cell cell-auto">
           <div class="cart-contents__footer__value" v-if="cartTotalCost > 0">
-            {{ cartTotalCost.toLocaleString() }}
+            <animated-total :value="cartTotalCost"></animated-total>
             {{ this.cartTextData.CURRENCY_UNIT }}
           </div>
           <div class="cart-contents__footer__value" v-else></div>
@@ -47,13 +47,16 @@
 </template>
 <script>
 import cartItem from "./cart-item.vue";
+import animatedTotal from "./animated-total.vue";
 import { mapActions, mapGetters } from "vuex";
+import gsap from "gsap";
 import axios from "axios";
 export default {
   name: "cart",
-  components: { cartItem },
+  components: { cartItem, animatedTotal },
   data() {
     return {
+      tweeningValue: this.cartTotalCost,
       sessid: document.querySelector("#app-cart").getAttribute("data-sessid"),
       products: [],
       cartIdArray: [],
@@ -153,9 +156,22 @@ export default {
           }
         }
       }
+    },
+    tween(newValue, oldValue) {
+      gsap.to(this.$data, {
+        duration: 0.3,
+        tweeningValue: newValue,
+        ease: "power2"
+      });
+    }
+  },
+  watch: {
+    value(newValue, oldValue) {
+      this.tween(newValue, oldValue);
     }
   },
   mounted() {
+    this.tween(this.value, Number(this.cartTotalCost));
     if (this.URL) {
       this.loadData();
       this.updateData();
