@@ -41,6 +41,7 @@ document.addEventListener(
           '%cRequired parameter "data-sessid"(protection against method calls on third-party sites) is empty',
           "color: red"
         );
+      }
       if (!paramsCartData) {
         console.log(
           '%cRequired parameter "data-params" is empty',
