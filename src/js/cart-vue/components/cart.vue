@@ -119,15 +119,15 @@ export default {
     },
     loadData() {
       const axiosInstance = axios.create();
+      const form_data = new FormData();
+
+      this.ID_ARRAY.forEach(element => {
+        form_data.append("id[]", element);
+      });
+      form_data.append("sessid", this.sessid);
+
       try {
-        axios({
-          method: "POST",
-          url: this.URL,
-          data: {
-            idArray: JSON.stringify(this.ID_ARRAY),
-            sessid: this.sessid
-          }
-        }).then(response => {
+        axios.post(this.URL, form_data).then(response => {
           this.products = response.data;
         });
       } catch (error) {
