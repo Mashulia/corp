@@ -64,7 +64,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["PRODUCTS", "ID_STRING"]),
+    ...mapGetters(["PRODUCTS", "ID_ARRAY"]),
     cartTotalCost() {
       let result = [];
       if (this.PRODUCTS.length) {
@@ -124,7 +124,7 @@ export default {
           method: "POST",
           url: this.URL,
           data: {
-            idArray: this.ID_STRING.slice(0, this.ID_STRING.length - 1),
+            idArray: JSON.stringify(this.ID_ARRAY),
             sessid: this.sessid
           }
         }).then(response => {

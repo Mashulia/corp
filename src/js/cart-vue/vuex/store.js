@@ -5,8 +5,7 @@ import { createStore } from "vuex";
 let store = createStore({
   state: {
     products: [],
-    cartIdArray: [],
-    cartIdString: "?"
+    cartIdArray: []
   },
   mutations: {
     SET_TO_STATE: state => {
@@ -50,10 +49,12 @@ let store = createStore({
       }
     },
     REMOVE_ITEM_FROM_CART: (state, index) => {
-      state.products.splice(index, 1);
-      if (state.products.length === 0 && state.products === "[]") {
-        localStorage.clear();
-      }
+      setInterval(() => {
+        state.products.splice(index, 1);
+        if (state.products.length === 0 && state.products === "[]") {
+          localStorage.clear();
+        }
+      }, 400);
       for (index = 0; index < state.cartIdArray.length; index++) {
         if (state.products[index] == state.cartIdArray[index].id) {
           state.cartIdArray.splice(state.cartIdArray[index], 1);
