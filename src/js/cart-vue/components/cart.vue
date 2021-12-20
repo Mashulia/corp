@@ -58,6 +58,7 @@ export default {
     return {
       tweeningValue: this.cartTotalCost,
       sessid: document.querySelector("#app-cart").getAttribute("data-sessid"),
+      params: document.querySelector("#app-cart").getAttribute("data-params"),
       products: [],
       cartIdArray: [],
       URL: document.querySelector("#app-cart").getAttribute("data-url")
@@ -125,6 +126,7 @@ export default {
         form_data.append("id[]", element);
       });
       form_data.append("sessid", this.sessid);
+      form_data.append("params", this.params);
 
       try {
         axios.post(this.URL, form_data).then(response => {
