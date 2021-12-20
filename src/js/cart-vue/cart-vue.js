@@ -16,6 +16,7 @@ document.addEventListener(
       let sessidCartData = cartApp.getAttribute("data-sessid");
       let catalogLink = cartApp.getAttribute("data-link-catalog");
       let mainPageLink = cartApp.getAttribute("data-link-index-page");
+      let paramsCartData = cartApp.getAttribute("data-params");
 
       if (!urlCartData) {
         console.log(
@@ -38,6 +39,11 @@ document.addEventListener(
       if (!sessidCartData) {
         console.log(
           '%cRequired parameter "data-sessid"(protection against method calls on third-party sites) is empty',
+          "color: red"
+        );
+      if (!paramsCartData) {
+        console.log(
+          '%cRequired parameter "data-params" is empty',
           "color: red"
         );
       }
