@@ -140,7 +140,6 @@ export default {
     updateData() {
       for (let i = 0; i < this.products.length; i++) {
         for (let j = i; j < this.PRODUCTS.length; j++) {
-          this.PRODUCTS[j].id = this.products[i].id;
           if (this.PRODUCTS[j].id === this.products[i].id) {
             if (this.PRODUCTS[j].link !== this.products[i].link) {
               this.PRODUCTS[j].link = this.products[i].link;
