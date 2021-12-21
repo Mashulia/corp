@@ -127,10 +127,10 @@ export default {
       });
       form_data.append("sessid", this.sessid);
       form_data.append("params", this.params);
-
       try {
         axios.post(this.URL, form_data).then(response => {
           this.products.push(response.data);
+          this.updateData();
         });
       } catch (error) {
         console.log(error);
@@ -140,22 +140,22 @@ export default {
     updateData() {
       for (let i = 0; i < this.products.length; i++) {
         for (let j = i; j < this.PRODUCTS.length; j++) {
-          this.PRODUCTS[j].id = this.products[j].id;
-          if (this.PRODUCTS[j].id === this.products[j].id) {
-            if (this.PRODUCTS[j].link !== this.products[j].link) {
-              this.PRODUCTS[j].link = this.products[j].link;
+          this.PRODUCTS[j].id = this.products[i].id;
+          if (this.PRODUCTS[j].id === this.products[i].id) {
+            if (this.PRODUCTS[j].link !== this.products[i].link) {
+              this.PRODUCTS[j].link = this.products[i].link;
             }
-            if (this.PRODUCTS[j].name !== this.products[j].name) {
-              this.PRODUCTS[j].name = this.products[j].name;
+            if (this.PRODUCTS[j].name !== this.products[i].name) {
+              this.PRODUCTS[j].name = this.products[i].name;
             }
-            if (this.PRODUCTS[j].price !== this.products[j].price) {
-              this.PRODUCTS[j].price = this.products[j].price;
+            if (this.PRODUCTS[j].price !== this.products[i].price) {
+              this.PRODUCTS[j].price = this.products[i].price;
             }
-            if (this.PRODUCTS[j].pic !== this.products[j].pic) {
-              this.PRODUCTS[j].pic = this.products[j].pic;
+            if (this.PRODUCTS[j].pic !== this.products[i].pic) {
+              this.PRODUCTS[j].pic = this.products[i].pic;
             }
-            if (this.PRODUCTS[j].currency !== this.products[j].currency) {
-              this.PRODUCTS[j].currency = this.products[j].currency;
+            if (this.PRODUCTS[j].currency !== this.products[i].currency) {
+              this.PRODUCTS[j].currency = this.products[i].currency;
             }
           } else {
             continue;
@@ -179,9 +179,8 @@ export default {
   mounted() {
     this.tween(this.value, Number(this.cartTotalCost));
     if (this.URL) {
-      this.loadData();
       setTimeout(() => {
-        this.updateData();
+        this.loadData();
       }, 200);
     }
     // let buttons = document.querySelectorAll(".button-remove");
