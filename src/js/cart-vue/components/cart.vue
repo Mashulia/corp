@@ -60,7 +60,7 @@ export default {
       sessid: document.querySelector("#app-cart").getAttribute("data-sessid"),
       params: document.querySelector("#app-cart").getAttribute("data-params"),
       URL: document.querySelector("#app-cart").getAttribute("data-url"),
-      products: [],
+      products: null,
       cartIdArray: []
     };
   },
@@ -129,7 +129,7 @@ export default {
       form_data.append("params", this.params);
       try {
         axios.post(this.URL, form_data).then(response => {
-          this.products.push(JSON.parse(JSON.stringify(response.data)));
+          this.products = response.data;
           this.updateData();
         });
       } catch (error) {
