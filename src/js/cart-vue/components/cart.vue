@@ -59,9 +59,9 @@ export default {
       tweeningValue: this.cartTotalCost,
       sessid: document.querySelector("#app-cart").getAttribute("data-sessid"),
       params: document.querySelector("#app-cart").getAttribute("data-params"),
+      URL: document.querySelector("#app-cart").getAttribute("data-url"),
       products: [],
-      cartIdArray: [],
-      URL: document.querySelector("#app-cart").getAttribute("data-url")
+      cartIdArray: []
     };
   },
   computed: {
@@ -130,7 +130,7 @@ export default {
 
       try {
         axios.post(this.URL, form_data).then(response => {
-          this.products = response.data;
+          this.products.push(response.data);
         });
       } catch (error) {
         console.log(error);
