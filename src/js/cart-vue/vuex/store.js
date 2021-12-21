@@ -21,13 +21,6 @@ let store = createStore({
         state.cartIdArray.push(Number(state.products[i].id));
       }
     },
-    GET_ID_STRING: state => {
-      let idString = "";
-      for (let j = 0; j < state.cartIdArray.length; j++) {
-        idString += "id[]=" + state.cartIdArray[j] + "&";
-      }
-      state.cartIdString += idString;
-    },
     CHANGE_LOCALSTORAGE: state => {
       localStorage.setItem("cart", JSON.stringify(state.products));
     },
@@ -49,12 +42,10 @@ let store = createStore({
       }
     },
     REMOVE_ITEM_FROM_CART: (state, index) => {
-      setInterval(() => {
-        state.products.splice(index, 1);
-        if (state.products.length === 0 && state.products === "[]") {
-          localStorage.clear();
-        }
-      }, 400);
+      state.products.splice(index, 1);
+      if (state.products.length === 0 && state.products === "[]") {
+        localStorage.clear();
+      }
       for (index = 0; index < state.cartIdArray.length; index++) {
         if (state.products[index] == state.cartIdArray[index].id) {
           state.cartIdArray.splice(state.cartIdArray[index], 1);
@@ -125,9 +116,6 @@ let store = createStore({
     SHOW_CART_FORM({ commit }) {
       commit("SHOW_FORM");
     },
-    GET_ID_STRING_OF_PRODUCTS({ commit }) {
-      commit("GET_ID_STRING");
-    },
     GET_ID_ARRAY_OF_PRODUCTS({ commit }) {
       commit("GET_ID_ARRAY");
     }
@@ -135,9 +123,6 @@ let store = createStore({
   getters: {
     PRODUCTS(state) {
       return state.products;
-    },
-    ID_STRING(state) {
-      return state.cartIdString;
     },
     ID_ARRAY(state) {
       return state.cartIdArray;

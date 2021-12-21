@@ -17,13 +17,12 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["PRODUCTS", "ID_STRING", "ID_ARRAY"])
+    ...mapGetters(["PRODUCTS", "ID_ARRAY"])
   },
   methods: {
     ...mapActions([
       "SET_PRODUCTS_TO_STATE",
       "SHOW_CART_FORM",
-      "GET_ID_STRING_OF_PRODUCTS",
       "GET_ID_ARRAY_OF_PRODUCTS"
     ])
   },
@@ -31,7 +30,6 @@ export default {
     this.SHOW_CART_FORM();
     this.SET_PRODUCTS_TO_STATE();
     this.GET_ID_ARRAY_OF_PRODUCTS();
-    this.GET_ID_STRING_OF_PRODUCTS();
   }
 };
 </script>

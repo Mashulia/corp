@@ -955,11 +955,6 @@ window.addEventListener("load", function() {
     if (contFrame) contFrame.contentWindow.location.reload();
   };
 
-  window.setSubmitButtonListener = function() {
-    let cartForm = document.querySelector(".cart__form form");
-    if (cartForm) cartForm.addEventListener("submit", showSuccessPopup);
-  };
-
   window.showSuccessPopup = function() {
     let cartForm = document.querySelector(".cart__form form");
     let submitFormMessage = document.querySelector(".page-message--submit");
