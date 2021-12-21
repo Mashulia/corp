@@ -129,7 +129,7 @@ export default {
       form_data.append("params", this.params);
       try {
         axios.post(this.URL, form_data).then(response => {
-          this.products.push(response.data);
+          this.products.push(JSON.parse(JSON.stringify(response.data)));
           this.updateData();
         });
       } catch (error) {
@@ -144,16 +144,16 @@ export default {
             if (this.PRODUCTS[j].link != this.products[i].link) {
               this.PRODUCTS[j].link = this.products[i].link;
             }
-            if (this.PRODUCTS[j].name != this.products[i].name) {
+            if (this.PRODUCTS[j].name !== this.products[i].name) {
               this.PRODUCTS[j].name = this.products[i].name;
             }
             if (this.PRODUCTS[j].price != this.products[i].price) {
               this.PRODUCTS[j].price = this.products[i].price;
             }
-            if (this.PRODUCTS[j].pic != this.products[i].pic) {
+            if (this.PRODUCTS[j].pic !== this.products[i].pic) {
               this.PRODUCTS[j].pic = this.products[i].pic;
             }
-            if (this.PRODUCTS[j].currency != this.products[i].currency) {
+            if (this.PRODUCTS[j].currency !== this.products[i].currency) {
               this.PRODUCTS[j].currency = this.products[i].currency;
             }
           } else {
