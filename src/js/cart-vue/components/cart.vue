@@ -139,19 +139,23 @@ export default {
     },
     updateData() {
       for (let i = 0; i < this.products.length; i++) {
-        for (let j = 0; j < this.PRODUCTS.length; j++) {
-          if (Number(this.PRODUCTS[j].id) === this.products[i].id) {
-            if (this.PRODUCTS[j].name !== this.products[i].name) {
-              this.PRODUCTS[j].name = this.products[i].name;
+        for (let j = i; j < this.PRODUCTS.length; j++) {
+          this.PRODUCTS[j].id = this.products[j].id;
+          if (this.PRODUCTS[j].id === this.products[j].id) {
+            if (this.PRODUCTS[j].link !== this.products[j].link) {
+              this.PRODUCTS[j].link = this.products[j].link;
             }
-            if (this.PRODUCTS[j].price !== this.products[i].price) {
-              this.PRODUCTS[j].price = this.products[i].price;
+            if (this.PRODUCTS[j].name !== this.products[j].name) {
+              this.PRODUCTS[j].name = this.products[j].name;
             }
-            if (this.PRODUCTS[j].pic !== this.products[i].pic) {
-              this.PRODUCTS[j].pic = this.products[i].pic;
+            if (this.PRODUCTS[j].price !== this.products[j].price) {
+              this.PRODUCTS[j].price = this.products[j].price;
             }
-            if (this.PRODUCTS[j].currency !== this.products[i].currency) {
-              this.PRODUCTS[j].currency = this.products[i].currency;
+            if (this.PRODUCTS[j].pic !== this.products[j].pic) {
+              this.PRODUCTS[j].pic = this.products[j].pic;
+            }
+            if (this.PRODUCTS[j].currency !== this.products[j].currency) {
+              this.PRODUCTS[j].currency = this.products[j].currency;
             }
           } else {
             continue;
@@ -176,15 +180,17 @@ export default {
     this.tween(this.value, Number(this.cartTotalCost));
     if (this.URL) {
       this.loadData();
-      this.updateData();
+      setTimeout(() => {
+        this.updateData();
+      }, 200);
     }
-    let buttons = document.querySelectorAll(".button-remove");
-    buttons.forEach(element => {
-      element.addEventListener("click", () => {
-        let parent = element.closest(".cart-contents__item");
-        parent.classList.add("slide-fade");
-      });
-    });
+    // let buttons = document.querySelectorAll(".button-remove");
+    // buttons.forEach(element => {
+    //   element.addEventListener("click", () => {
+    //     let parent = element.closest(".cart-contents__item");
+    //     parent.classList.add("slide-fade");
+    //   });
+    // });
   }
 };
 </script>
