@@ -127,15 +127,14 @@ export default {
       });
       form_data.append("sessid", this.sessid);
       form_data.append("params", this.params);
+      let _this = this;
       try {
-        axios.post(this.URL, form_data).then(response => {
-          this.products = response.data;
-          // for (let i = 0; i < newCartData.length; i++) {
-          //   this.products.push(newCartData[i]);
-          // }
-          console.log(response.data);
-          console.log(this.products);
-          console.log(this.PRODUCTS);
+        axios.post(_this.URL, form_data).then(response => {
+          _this.products = response.data;
+
+          console.log(typeof response.data);
+          console.log(typeof _this.products);
+          console.log(typeof _this.PRODUCTS);
           this.updateData();
         });
       } catch (error) {
