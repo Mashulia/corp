@@ -130,11 +130,14 @@ export default {
       let _this = this;
       try {
         axios.post(_this.URL, form_data).then(response => {
-          _this.products = response.data;
+          let newCartData = response.data;
+          for (let i = 0; i < newCartData.length; i++) {
+            _this.products.push(newCartData[i]);
+          }
 
-          console.log(typeof response.data);
-          console.log(typeof _this.products);
-          console.log(typeof _this.PRODUCTS);
+          console.log(Array.isArray(response.data));
+          console.log(Array.isArray(_this.products));
+          console.log(Array.isArray(_this.PRODUCTS));
           this.updateData();
         });
       } catch (error) {
