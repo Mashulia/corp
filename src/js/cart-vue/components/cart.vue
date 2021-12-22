@@ -133,40 +133,40 @@ export default {
           for (let i = 0; i < newCartData.length; i++) {
             this.products.push(newCartData[i]);
           }
-          // this.updateData();
+          this.updateData();
         });
       } catch (error) {
         console.log(error);
         return error;
       }
     },
-    // updateData() {
-    //   for (let i = 0; i < this.products.length; i++) {
-    //     console.log(this.products[i].id);
-    //     console.log(this.PRODUCTS[i].id);
-    //     for (let j = 0; j < this.PRODUCTS.length; j++) {
-    //       if (this.PRODUCTS[j].id == this.products[i].id) {
-    //         console.log(PRODUCTS[j]);
-    //         console.log(products[i]);
-    //         if (this.PRODUCTS[j].link != this.products[i].link) {
-    //           this.PRODUCTS[j].link = this.products[i].link;
-    //         }
-    //         if (this.PRODUCTS[j].name != this.products[i].name) {
-    //           this.PRODUCTS[j].name = this.products[i].name;
-    //         }
-    //         if (this.PRODUCTS[j].price != this.products[i].price) {
-    //           this.PRODUCTS[j].price = this.products[i].price;
-    //         }
-    //         if (this.PRODUCTS[j].pic != this.products[i].pic) {
-    //           this.PRODUCTS[j].pic = this.products[i].pic;
-    //         }
-    //         if (this.PRODUCTS[j].currency != this.products[i].currency) {
-    //           this.PRODUCTS[j].currency = this.products[i].currency;
-    //         }
-    //       }
-    //     }
-    //   }
-    // },
+    updateData() {
+      for (let j = 0; j < this.PRODUCTS.length; j++) {
+        console.log(this.products[j].id);
+        console.log(this.PRODUCTS[j].id);
+        for (let i = 0; i < this.products.length; i++) {
+          if (this.PRODUCTS[j].id == this.products[i].id) {
+            console.log(PRODUCTS[j]);
+            console.log(products[i]);
+            if (this.PRODUCTS[j].link != this.products[i].link) {
+              this.PRODUCTS[j].link = this.products[i].link;
+            }
+            if (this.PRODUCTS[j].name != this.products[i].name) {
+              this.PRODUCTS[j].name = this.products[i].name;
+            }
+            if (this.PRODUCTS[j].price != this.products[i].price) {
+              this.PRODUCTS[j].price = this.products[i].price;
+            }
+            if (this.PRODUCTS[j].pic != this.products[i].pic) {
+              this.PRODUCTS[j].pic = this.products[i].pic;
+            }
+            if (this.PRODUCTS[j].currency != this.products[i].currency) {
+              this.PRODUCTS[j].currency = this.products[i].currency;
+            }
+          }
+        }
+      }
+    },
     tween(newValue, oldValue) {
       gsap.to(this.$data, {
         duration: 0.3,
@@ -180,36 +180,7 @@ export default {
       this.tween(newValue, oldValue);
     },
     newCartData(newValue, oldValue) {
-      if (products.length !== 0) this.updateData(newValue, oldValue);
-    },
-    updateData() {
-      if (this.products.length !== 0) {
-        for (let i = 0; i < this.products.length; i++) {
-          console.log(this.products[i].id);
-          console.log(this.PRODUCTS[i].id);
-          for (let j = 0; j < this.PRODUCTS.length; j++) {
-            if (this.PRODUCTS[j].id == this.products[i].id) {
-              console.log(PRODUCTS[j]);
-              console.log(products[i]);
-              if (this.PRODUCTS[j].link != this.products[i].link) {
-                this.PRODUCTS[j].link = this.products[i].link;
-              }
-              if (this.PRODUCTS[j].name != this.products[i].name) {
-                this.PRODUCTS[j].name = this.products[i].name;
-              }
-              if (this.PRODUCTS[j].price != this.products[i].price) {
-                this.PRODUCTS[j].price = this.products[i].price;
-              }
-              if (this.PRODUCTS[j].pic != this.products[i].pic) {
-                this.PRODUCTS[j].pic = this.products[i].pic;
-              }
-              if (this.PRODUCTS[j].currency != this.products[i].currency) {
-                this.PRODUCTS[j].currency = this.products[i].currency;
-              }
-            }
-          }
-        }
-      }
+      if (this.products.length !== 0) this.updateData(newValue, oldValue);
     }
   },
   mounted() {
@@ -221,13 +192,6 @@ export default {
       // this.updateData();
       // }, 200);
     }
-    // let buttons = document.querySelectorAll(".button-remove");
-    // buttons.forEach(element => {
-    //   element.addEventListener("click", () => {
-    //     let parent = element.closest(".cart-contents__item");
-    //     parent.classList.add("slide-fade");
-    //   });
-    // });
   }
 };
 </script>
