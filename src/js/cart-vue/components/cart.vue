@@ -133,6 +133,7 @@ export default {
           for (let i = 0; i < newCartData.length; i++) {
             this.products.push(newCartData[i]);
           }
+          this.updateData();
         });
       } catch (error) {
         console.log(error);
@@ -141,9 +142,13 @@ export default {
     },
     updateData() {
       for (let i = 0; i < this.products.length; i++) {
+        console.log(PRODUCTS[j]);
+        console.log(products[j]);
         for (let j = i; j < this.PRODUCTS.length; j++) {
-          if (this.PRODUCTS[j].id != this.products[i].id) {
-            if (this.PRODUCTS[j].link == this.products[i].link) {
+          if (this.PRODUCTS[j].id == this.products[i].id) {
+            console.log(PRODUCTS[j]);
+            console.log(products[i]);
+            if (this.PRODUCTS[j].link != this.products[i].link) {
               this.PRODUCTS[j].link = this.products[i].link;
             }
             if (this.PRODUCTS[j].name != this.products[i].name) {
@@ -158,8 +163,6 @@ export default {
             if (this.PRODUCTS[j].currency != this.products[i].currency) {
               this.PRODUCTS[j].currency = this.products[i].currency;
             }
-          } else {
-            break;
           }
         }
       }
@@ -176,17 +179,18 @@ export default {
     value(newValue, oldValue) {
       this.tween(newValue, oldValue);
     },
-    data(newValue, oldValue) {
-      this.updateData(newValue, oldValue);
+    newCartData(newValue, oldValue) {
+      if (products.length !== 0) this.updateData(newValue, oldValue);
     }
   },
   mounted() {
     this.tween(this.value, Number(this.cartTotalCost));
     if (this.URL) {
       this.loadData();
+      // this.updateData(this.newCartData, this.products);
       setTimeout(() => {
-        this.updateData(this.data, this.products);
-      }, 300);
+        this.updateData();
+      }, 200);
     }
     // let buttons = document.querySelectorAll(".button-remove");
     // buttons.forEach(element => {
