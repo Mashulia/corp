@@ -923,25 +923,19 @@ window.addEventListener("load", function() {
   }
 
   $(document).ready(function() {
-    $(".settings__toggle").on("click", function(e) {
-      if ($("#opt-iframe").length === 0) {
-        $("body")
-          .addClass("opt-outer-body")
-          .css({ overflow: "hidden" });
-        $(".settings").after('<iframe id="opt-iframe"></iframe>');
+    if ($("#opt-iframe").length === 0) {
+      $("body").addClass("opt-outer-body");
+      $(".settings").after('<iframe id="opt-iframe"></iframe>');
+      var contFrame = $("#opt-iframe")[0];
+      if (contFrame) {
+        $("body").css({ overflow: "hidden" });
+        contFrame.addEventListener("load", function() {
+          contFrame.contentWindow.document.querySelector(".settings").remove();
+        });
 
-        var contFrame = $("#opt-iframe")[0];
-        if (contFrame) {
-          contFrame.addEventListener("load", function() {
-            contFrame.contentWindow.document
-              .querySelector(".settings")
-              .remove();
-          });
-
-          contFrame.src = location.href + "?" + new Date().getTime();
-        }
+        contFrame.src = location.href + "?" + new Date().getTime();
       }
-    });
+    }
   });
 
   //globalObject
