@@ -130,14 +130,9 @@ export default {
       let _this = this;
       try {
         axios.post(_this.URL, form_data).then(response => {
-          let newCartData = response.data;
-          for (let i = 0; i < newCartData.length; i++) {
-            _this.products.push(newCartData[i]);
-          }
-
-          console.log(Array.isArray(response.data));
-          console.log(Array.isArray(_this.products));
-          console.log(Array.isArray(_this.PRODUCTS));
+          _this.products.push(response.data.products);
+          console.log(response.data.products);
+          console.log(response.data);
           this.updateData();
         });
       } catch (error) {
@@ -147,12 +142,9 @@ export default {
     },
     updateData() {
       for (let j = 0; j < this.PRODUCTS.length; j++) {
-        console.log(this.products[j].id);
         console.log(this.PRODUCTS[j].id);
         for (let i = 0; i < this.products.length; i++) {
           if (this.PRODUCTS[j].id != this.products[i].id) {
-            console.log(PRODUCTS[j]);
-            console.log(products[i]);
             if (this.PRODUCTS[j].link != this.products[i].link) {
               this.PRODUCTS[j].link = this.products[i].link;
             }
