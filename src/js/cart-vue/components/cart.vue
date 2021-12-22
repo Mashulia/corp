@@ -129,10 +129,13 @@ export default {
       form_data.append("params", this.params);
       try {
         axios.post(this.URL, form_data).then(response => {
-          const newCartData = response.data;
-          for (let i = 0; i < newCartData.length; i++) {
-            this.products.push(newCartData[i]);
-          }
+          this.products = response.data;
+          // for (let i = 0; i < newCartData.length; i++) {
+          //   this.products.push(newCartData[i]);
+          // }
+          console.log(response.data);
+          console.log(this.products);
+          console.log(this.PRODUCTS);
           this.updateData();
         });
       } catch (error) {
@@ -145,7 +148,7 @@ export default {
         console.log(this.products[j].id);
         console.log(this.PRODUCTS[j].id);
         for (let i = 0; i < this.products.length; i++) {
-          if (this.PRODUCTS[j].id == this.products[i].id) {
+          if (this.PRODUCTS[j].id != this.products[i].id) {
             console.log(PRODUCTS[j]);
             console.log(products[i]);
             if (this.PRODUCTS[j].link != this.products[i].link) {
@@ -178,19 +181,12 @@ export default {
   watch: {
     value(newValue, oldValue) {
       this.tween(newValue, oldValue);
-    },
-    newCartData(newValue, oldValue) {
-      if (this.products.length !== 0) this.updateData(newValue, oldValue);
     }
   },
   mounted() {
     this.tween(this.value, Number(this.cartTotalCost));
     if (this.URL) {
       this.loadData();
-      // this.updateData(this.newCartData, this.products);
-      // setTimeout(() => {
-      // this.updateData();
-      // }, 200);
     }
   }
 };
