@@ -155,7 +155,7 @@ export default {
       for (let i = 0; i < this.products.length; i++) {
         for (let j = i; j < this.PRODUCTS.length; j++) {
           if (this.PRODUCTS[j].id != this.products[j].id) {
-            if (this.PRODUCTS[j].link != this.products[j].link) {
+            if (this.PRODUCTS[j].link == this.products[j].link) {
               this.PRODUCTS[j].link = this.products[j].link;
             }
             if (this.PRODUCTS[j].name != this.products[j].name) {
