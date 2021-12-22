@@ -22,6 +22,9 @@ export default {
   computed: {
     fullValue() {
       return Math.trunc(this.tweeningValue).toLocaleString();
+    },
+    multiplication() {
+      return this.product.qty * this.price;
     }
   },
   methods: {
@@ -39,7 +42,7 @@ export default {
     }
   },
   mounted() {
-    this.tween(this.value, Number(this.product.qty));
+    this.tween(this.value, Number(this.multiplication));
   }
 };
 </script>
