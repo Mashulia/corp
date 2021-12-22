@@ -132,7 +132,8 @@ export default {
         axios.post(_this.URL, form_data).then(response => {
           _this.products.push(response.data.products);
           console.log(response.data.products);
-          console.log(response.data);
+          console.log(_this.products);
+
           this.updateData();
         });
       } catch (error) {
@@ -144,7 +145,7 @@ export default {
       for (let j = 0; j < this.PRODUCTS.length; j++) {
         console.log(this.PRODUCTS[j].id);
         for (let i = 0; i < this.products.length; i++) {
-          if (this.PRODUCTS[j].id != this.products[i].id) {
+          if (this.PRODUCTS[j].id == this.products[i].id) {
             if (this.PRODUCTS[j].link != this.products[i].link) {
               this.PRODUCTS[j].link = this.products[i].link;
             }
