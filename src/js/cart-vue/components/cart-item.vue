@@ -1,6 +1,6 @@
 <template>
-  <transition name="slide-fade">
-    <div class="cart-contents__item" v-if="show">
+  <transition>
+    <div class="cart-contents__item" ref="animateDeleteItem" v-if="show">
       <div class="cart-contents__row">
         <a v-if="product.pic" class="cart-contents__image" :href="product.link">
           <!-- Размер картинок 124х93-->
@@ -51,7 +51,7 @@
           <div class="cart-contents__price">
             <div v-if="product.price > 0" class="cart-contents__price__value">
               <animated-integer
-                :value="result"
+                :value="multiplication"
                 :product="product"
               ></animated-integer>
               {{ product.currency }}
@@ -112,6 +112,7 @@
   </transition>
 </template>
 <script>
+import gsap from "gsap";
 import animatedInteger from "./animated-integer.vue";
 import { mapActions, mapGetters } from "vuex";
 export default {
@@ -120,7 +121,7 @@ export default {
   data() {
     return {
       show: true,
-      price: this.product.price
+      tweeningValue: this.multiplication
     };
   },
   props: {
@@ -130,8 +131,8 @@ export default {
     }
   },
   computed: {
-    result() {
-      return this.product.qty * this.price;
+    multiplication() {
+      return this.product.qty * this.product.price;
     }
   },
   created() {
@@ -144,12 +145,10 @@ export default {
       "CHANGE_STATE_LOCALSTORAGE"
     ]),
     deleteFromCart() {
-      setTimeout(() => {
-        this.$emit("deleteFromCart");
-      }, 500);
-    },
-    animateDeleteItem() {
-      this.show = !this.show;
+      if (this.$refs) {
+        this.show = !this.show;
+      }
+      this.$emit("deleteFromCart");
     },
     incrementProduct() {
       this.$emit("incrementProduct");
@@ -171,7 +170,22 @@ export default {
         this.product.qty = event.target.value;
         this.CHANGE_STATE_LOCALSTORAGE();
       }
+    },
+    tween(newValue, oldValue) {
+      gsap.to(this.$data, {
+        duration: 0.3,
+        tweeningValue: newValue,
+        ease: "power2"
+      });
     }
+  },
+  watch: {
+    value(newValue, oldValue) {
+      this.tween(newValue, oldValue);
+    }
+  },
+  mounted() {
+    this.tween(this.value, Number(this.multiplication));
   }
 };
 </script>

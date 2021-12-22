@@ -6,7 +6,7 @@ import gsap from "gsap";
 export default {
   data() {
     return {
-      tweeningValue: this.product.qty
+      tweeningValue: this.multiplication
     };
   },
   props: {
@@ -24,7 +24,7 @@ export default {
       return Math.trunc(this.tweeningValue).toLocaleString();
     },
     multiplication() {
-      return this.product.qty * this.price;
+      return this.product.price * this.product.qty;
     }
   },
   methods: {

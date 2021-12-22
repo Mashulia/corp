@@ -131,8 +131,6 @@ export default {
       try {
         axios.post(_this.URL, form_data).then(response => {
           _this.products = response.data.products;
-          console.log(Array.isArray(response.data.products));
-          console.log(_this.products);
 
           this.updateData();
         });
