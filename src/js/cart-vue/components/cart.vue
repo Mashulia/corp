@@ -130,8 +130,8 @@ export default {
       let _this = this;
       try {
         axios.post(_this.URL, form_data).then(response => {
-          _this.products.push(response.data.products);
-          console.log(response.data.products);
+          _this.products = response.data.products;
+          console.log(Array.isArray(response.data.products));
           console.log(_this.products);
 
           this.updateData();
@@ -143,7 +143,6 @@ export default {
     },
     updateData() {
       for (let j = 0; j < this.PRODUCTS.length; j++) {
-        console.log(this.PRODUCTS[j].id);
         for (let i = 0; i < this.products.length; i++) {
           if (this.PRODUCTS[j].id == this.products[i].id) {
             if (this.PRODUCTS[j].link != this.products[i].link) {
