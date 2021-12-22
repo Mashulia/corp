@@ -144,7 +144,7 @@ export default {
       for (let i = 0; i < this.products.length; i++) {
         console.log(PRODUCTS[j]);
         console.log(products[j]);
-        for (let j = i; j < this.PRODUCTS.length; j++) {
+        for (let j = 0; j < this.PRODUCTS.length; j++) {
           if (this.PRODUCTS[j].id == this.products[i].id) {
             console.log(PRODUCTS[j]);
             console.log(products[i]);
@@ -187,10 +187,10 @@ export default {
     this.tween(this.value, Number(this.cartTotalCost));
     if (this.URL) {
       this.loadData();
-      // this.updateData(this.newCartData, this.products);
-      setTimeout(() => {
-        this.updateData();
-      }, 200);
+      this.updateData(this.newCartData, this.products);
+      // setTimeout(() => {
+      //   this.updateData();
+      // }, 200);
     }
     // let buttons = document.querySelectorAll(".button-remove");
     // buttons.forEach(element => {
