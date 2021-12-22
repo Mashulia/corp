@@ -159,8 +159,9 @@ export default {
               this.PRODUCTS[j].currency = this.products[i].currency;
             }
           } else {
-            const index = this.PRODUCTS.indexOf(this.PRODUCTS[j]);
+            const index = this.PRODUCTS.indexOf(this.PRODUCTS[i]);
             this.PRODUCTS.splice(index, 1);
+            this.CHANGE_STATE_LOCALSTORAGE();
           }
         }
       }
