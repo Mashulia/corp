@@ -142,22 +142,25 @@ export default {
     updateData() {
       for (let j = 0; j < this.PRODUCTS.length; j++) {
         for (let i = 0; i < this.products.length; i++) {
-          if (this.PRODUCTS[j].id == this.products[i].id) {
-            if (this.PRODUCTS[j].link != this.products[i].link) {
+          if (this.PRODUCTS[j].id === this.products[i].id) {
+            if (this.PRODUCTS[j].link !== this.products[i].link) {
               this.PRODUCTS[j].link = this.products[i].link;
             }
-            if (this.PRODUCTS[j].name != this.products[i].name) {
+            if (this.PRODUCTS[j].name !== this.products[i].name) {
               this.PRODUCTS[j].name = this.products[i].name;
             }
-            if (this.PRODUCTS[j].price != this.products[i].price) {
+            if (this.PRODUCTS[j].price !== this.products[i].price) {
               this.PRODUCTS[j].price = this.products[i].price;
             }
-            if (this.PRODUCTS[j].pic != this.products[i].pic) {
+            if (this.PRODUCTS[j].pic !== this.products[i].pic) {
               this.PRODUCTS[j].pic = this.products[i].pic;
             }
-            if (this.PRODUCTS[j].currency != this.products[i].currency) {
+            if (this.PRODUCTS[j].currency !== this.products[i].currency) {
               this.PRODUCTS[j].currency = this.products[i].currency;
             }
+          } else {
+            const index = this.PRODUCTS.indexOf(this.PRODUCTS[j]);
+            this.PRODUCTS.splice(index, 1);
           }
         }
       }
