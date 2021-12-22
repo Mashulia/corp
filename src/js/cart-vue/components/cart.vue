@@ -60,7 +60,7 @@ export default {
       sessid: document.querySelector("#app-cart").getAttribute("data-sessid"),
       params: document.querySelector("#app-cart").getAttribute("data-params"),
       URL: document.querySelector("#app-cart").getAttribute("data-url"),
-      products: null,
+      products: [],
       cartIdArray: []
     };
   },
@@ -129,8 +129,13 @@ export default {
       form_data.append("params", this.params);
       try {
         axios.post(this.URL, form_data).then(response => {
-          this.products = response.data;
-          this.updateData();
+          const newCartData = response.data;
+          for (let i = 0; i < newCartData.length; i++) {
+            this.products.push(newCartData[i]);
+          }
+          setTimeout(() => {
+            this.updateData();
+          }, 100);
         });
       } catch (error) {
         console.log(error);
@@ -140,24 +145,24 @@ export default {
     updateData() {
       for (let i = 0; i < this.products.length; i++) {
         for (let j = i; j < this.PRODUCTS.length; j++) {
-          if (this.PRODUCTS[j].id == this.products[i].id) {
-            if (this.PRODUCTS[j].link != this.products[i].link) {
-              this.PRODUCTS[j].link = this.products[i].link;
+          if (this.PRODUCTS[j].id == this.products[j].id) {
+            if (this.PRODUCTS[j].link != this.products[j].link) {
+              this.PRODUCTS[j].link = this.products[j].link;
             }
-            if (this.PRODUCTS[j].name !== this.products[i].name) {
-              this.PRODUCTS[j].name = this.products[i].name;
+            if (this.PRODUCTS[j].name !== this.products[j].name) {
+              this.PRODUCTS[j].name = this.products[j].name;
             }
-            if (this.PRODUCTS[j].price != this.products[i].price) {
-              this.PRODUCTS[j].price = this.products[i].price;
+            if (this.PRODUCTS[j].price != this.products[j].price) {
+              this.PRODUCTS[j].price = this.products[j].price;
             }
-            if (this.PRODUCTS[j].pic !== this.products[i].pic) {
-              this.PRODUCTS[j].pic = this.products[i].pic;
+            if (this.PRODUCTS[j].pic !== this.products[j].pic) {
+              this.PRODUCTS[j].pic = this.products[j].pic;
             }
             if (this.PRODUCTS[j].currency !== this.products[i].currency) {
               this.PRODUCTS[j].currency = this.products[i].currency;
             }
           } else {
-            continue;
+            break;
           }
         }
       }
@@ -178,9 +183,7 @@ export default {
   mounted() {
     this.tween(this.value, Number(this.cartTotalCost));
     if (this.URL) {
-      setTimeout(() => {
-        this.loadData();
-      }, 200);
+      this.loadData();
     }
     // let buttons = document.querySelectorAll(".button-remove");
     // buttons.forEach(element => {
