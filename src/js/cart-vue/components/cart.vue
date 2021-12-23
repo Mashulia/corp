@@ -170,7 +170,7 @@ export default {
         entry1 = array1[i];
         if (
           array2.some(function(entry2) {
-            return entry1.Id === entry2.Student.Id;
+            return entry1.id === entry2.product.id;
           })
         ) {
           // Found, progress to next
