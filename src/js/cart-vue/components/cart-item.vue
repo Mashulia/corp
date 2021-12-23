@@ -145,9 +145,6 @@ export default {
       "CHANGE_STATE_LOCALSTORAGE"
     ]),
     deleteFromCart() {
-      if (this.$refs) {
-        this.show = !this.show;
-      }
       this.$emit("deleteFromCart");
     },
     incrementProduct() {

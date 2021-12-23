@@ -132,6 +132,7 @@ export default {
         axios.post(_this.URL, form_data).then(response => {
           _this.products = response.data.products;
           this.removeElems(this.PRODUCTS, _this.products);
+          this.CHANGE_STATE_LOCALSTORAGE();
           this.updateData();
         });
       } catch (error) {
@@ -162,12 +163,21 @@ export default {
         }
       }
     },
-    removeElems(src, permitted) {
-      // traverse array backwards so iteration not affected when we remove current item
-      for (let i = src.length - 1; i >= 0; i--) {
-        // if src element not found in permitted array, remove it from src
-        if (permitted.indexOf(src[i]) === -1) {
-          src.splice(i, 1);
+    removeElems(array1, array2) {
+      let i = 0;
+      let entry1;
+      while (i < array1.length) {
+        entry1 = array1[i];
+        if (
+          array2.some(function(entry2) {
+            return entry1.Id === entry2.Student.Id;
+          })
+        ) {
+          // Found, progress to next
+          ++i;
+        } else {
+          // Not found, remove
+          array1.splice(i, 1);
         }
       }
     },
