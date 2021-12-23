@@ -1,5 +1,4 @@
 import { createApp } from "vue";
-
 import { createStore } from "vuex";
 
 let store = createStore({

@@ -57,12 +57,23 @@ export default {
   data() {
     return {
       tweeningValue: this.cartTotalCost,
-      sessid: document.querySelector("#app-cart").getAttribute("data-sessid"),
-      params: document.querySelector("#app-cart").getAttribute("data-params"),
-      URL: document.querySelector("#app-cart").getAttribute("data-url"),
       products: [],
       cartIdArray: []
     };
+  },
+  props: {
+    sessid: {
+      type: String,
+      required: true
+    },
+    URL: {
+      type: String,
+      required: true
+    },
+    params: {
+      type: String,
+      required: true
+    }
   },
   computed: {
     ...mapGetters(["PRODUCTS", "ID_ARRAY"]),

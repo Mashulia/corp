@@ -33,10 +33,10 @@
     <div class="page-message__title">
       {{ this.cartTextData.CART_SUBMIT_TITLE }}
     </div>
-    <div class="page-message__text" v-html="stringMessage"></div>
+    <div class="page-message__text" v-html="submitMessage"></div>
 
     <div class="page-message__action">
-      <a class="button button-secondary" :href="link">
+      <a class="button button-secondary" :href="linkIndexPage">
         <div class="button__body">
           {{ this.cartTextData.CART_SUBMIT_LINK_TEXT }}
         </div>
@@ -62,15 +62,15 @@
 <script>
 export default {
   name: "cart-submit",
-  data() {
-    return {
-      link: document
-        .querySelector("#app-cart")
-        .getAttribute("data-link-index-page"),
-      stringMessage: document
-        .querySelector("#app-cart")
-        .getAttribute("data-submit-message")
-    };
+  props: {
+    linkIndexPage: {
+      type: String,
+      required: true
+    },
+    submitMessage: {
+      type: String,
+      required: true
+    }
   },
   created() {
     this.cartTextData = cartTextData;

@@ -1,7 +1,11 @@
 <template>
-  <cart v-if="PRODUCTS.length" />
-  <cart-empty v-else />
-  <cart-submit v-show="hidden" />
+  <cart v-if="PRODUCTS.length" :sessid="sessid" :params="params" :URL="URL" />
+  <cart-empty v-else :linkCatalog="linkCatalog" />
+  <cart-submit
+    v-show="hidden"
+    :linkIndexPage="linkIndexPage"
+    :submitMessage="submitMessage"
+  />
 </template>
 <script>
 import cart from "./components/cart.vue";
@@ -13,7 +17,13 @@ export default {
   components: { cart, cartEmpty, cartSubmit },
   data() {
     return {
-      hidden: false
+      hidden: false,
+      sessid: "",
+      params: "",
+      URL: "",
+      linkCatalog: "",
+      linkIndexPage: "",
+      submitMessage: ""
     };
   },
   computed: {
@@ -30,6 +40,18 @@ export default {
     this.SHOW_CART_FORM();
     this.SET_PRODUCTS_TO_STATE();
     this.GET_ID_ARRAY_OF_PRODUCTS();
+
+    this.sessid = this.$el.parentElement.getAttribute("data-sessid");
+    this.URL = this.$el.parentElement.getAttribute("data-url");
+    this.params = this.$el.parentElement.getAttribute("data-params");
+    this.sessid = this.$el.parentElement.getAttribute("data-sessid");
+    this.linkCatalog = this.$el.parentElement.getAttribute("data-link-catalog");
+    this.linkIndexPage = this.$el.parentElement.getAttribute(
+      "data-link-index-page"
+    );
+    this.submitMessage = this.$el.parentElement.getAttribute(
+      "data-submit-message"
+    );
   }
 };
 </script>

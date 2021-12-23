@@ -23,7 +23,7 @@
       {{ this.cartTextData.EMPTY_CART_TEXT }}
     </div>
     <div class="page-message__action">
-      <a class="button button-secondary" :href="link">
+      <a class="button button-secondary" :href="linkCatalog">
         <div class="button__body">
           {{ this.cartTextData.EMPTY_CART_LINK_TEXT }}
         </div>
@@ -50,12 +50,11 @@
 <script>
 export default {
   name: "cart-empty",
-  data() {
-    return {
-      link: document
-        .querySelector("#app-cart")
-        .getAttribute("data-link-catalog")
-    };
+  props: {
+    linkCatalog: {
+      type: String,
+      required: true
+    }
   },
   created() {
     this.cartTextData = cartTextData;
