@@ -131,7 +131,7 @@ export default {
       try {
         axios.post(_this.URL, form_data).then(response => {
           _this.products = response.data.products;
-
+          this.removeElems(this.PRODUCTS, _this.products);
           this.updateData();
         });
       } catch (error) {
@@ -158,11 +158,16 @@ export default {
             if (this.PRODUCTS[j].currency !== this.products[i].currency) {
               this.PRODUCTS[j].currency = this.products[i].currency;
             }
-          } else {
-            const index = this.PRODUCTS.indexOf(this.PRODUCTS[i]);
-            this.PRODUCTS.splice(index, 1);
-            this.CHANGE_STATE_LOCALSTORAGE();
           }
+        }
+      }
+    },
+    removeElems(src, permitted) {
+      // traverse array backwards so iteration not affected when we remove current item
+      for (let i = src.length - 1; i >= 0; i--) {
+        // if src element not found in permitted array, remove it from src
+        if (permitted.indexOf(src[i]) === -1) {
+          src.splice(i, 1);
         }
       }
     },
