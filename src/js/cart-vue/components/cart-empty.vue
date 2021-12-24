@@ -48,6 +48,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "cart-empty",
   props: {
@@ -60,6 +61,7 @@ export default {
     this.cartTextData = cartTextData;
   },
   methods: {
+    ...mapActions(["DEACTIVATE_CART_STATUS"]),
     removeForm() {
       let cartData =
           localStorage.getItem("cart") && localStorage.getItem("cart") !== "[]",
@@ -74,6 +76,7 @@ export default {
   },
   mounted() {
     this.removeForm();
+    this.DEACTIVATE_CART_STATUS();
   }
 };
 </script>

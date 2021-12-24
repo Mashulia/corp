@@ -42,8 +42,13 @@ let store = createStore({
     },
     REMOVE_ITEM_FROM_CART: (state, index) => {
       state.products.splice(index, 1);
+
       if (state.products.length === 0 && state.products === "[]") {
         localStorage.clear();
+        let cartBtns = document.querySelectorAll(".bcart__button");
+        for (let i = 0; i < cartBtns.length; i++) {
+          cartBtns[i].classList.remove("bcart__button--active");
+        }
       }
       for (index = 0; index < state.cartIdArray.length; index++) {
         if (state.products[index] == state.cartIdArray[index].id) {

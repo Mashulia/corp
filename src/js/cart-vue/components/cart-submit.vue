@@ -60,6 +60,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "cart-submit",
   props: {
@@ -72,8 +73,14 @@ export default {
       required: true
     }
   },
+  methods: {
+    ...mapActions(["DEACTIVATE_CART_STATUS"])
+  },
   created() {
     this.cartTextData = cartTextData;
+  },
+  mounted() {
+    this.DEACTIVATE_CART_STATUS();
   }
 };
 </script>
