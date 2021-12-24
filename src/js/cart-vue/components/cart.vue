@@ -18,6 +18,7 @@
       </div>
     </div>
     <div class="cart-contents__body">
+      <!-- <transition-group name="fade"> -->
       <cart-item
         v-for="(product, index) in PRODUCTS"
         :key="product.id"
@@ -26,6 +27,7 @@
         @incrementProduct="incrementProduct(index)"
         @decrementProduct="decrementProduct(index)"
       />
+      <!-- </transition-group> -->
     </div>
     <div class="cart-contents__footer">
       <div class="cells fx-justify-between">
@@ -155,9 +157,6 @@ export default {
       for (let j = 0; j < this.PRODUCTS.length; j++) {
         for (let i = 0; i < this.products.length; i++) {
           if (this.PRODUCTS[j].id === this.products[i].id) {
-            if (this.PRODUCTS[j].link !== this.products[i].link) {
-              this.PRODUCTS[j].link = this.products[i].link;
-            }
             if (this.PRODUCTS[j].name !== this.products[i].name) {
               this.PRODUCTS[j].name = this.products[i].name;
             }
