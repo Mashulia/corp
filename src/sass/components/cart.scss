@@ -128,31 +128,20 @@
   line-height: 1.25;
 }
 
-.slide-fade-enter-active {
-  transition: all .3s ease;
+.fade-enter-active,
+.fade-leave-active {
+  transition: all .5s;
 }
 
-.slide-fade-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-
-.slide-fade-enter,
-.slide-fade-leave-to
-
-/* .slide-fade-leave-active до версии 2.1.8 */
-  {
-  transform: translateX(-30px);
+.fade-enter,
+.fade-leave-to {
+  transform: translateX(-40px);
   opacity: 0;
 }
 
 .cell--cart .page-message {
   animation: showMessage 0.6s linear;
 }
-
-.cart-contents__item.fade {
-  animation: animateDelete 0.5s linear;
-}
-
 
 @keyframes showMessage {
   0% {
@@ -168,16 +157,6 @@
   }
 }
 
-@keyframes animateDelete {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-}
 
 @media (min-width: $break-sm) {
   .cart-contents {

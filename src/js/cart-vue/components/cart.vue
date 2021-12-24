@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="cart-contents__body">
-      <transition-group name="slide-fade">
+      <transition-group name="fade">
         <cart-item
           v-for="(product, index) in PRODUCTS"
           :key="index"
