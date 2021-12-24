@@ -962,10 +962,6 @@ window.addEventListener("load", function() {
     }
   };
 
-  window.changeStatus = function(status) {
-    return !!status;
-  };
-
   //function addToCart
   let addToCartBtns1 = document.querySelectorAll(".js-add2cart");
   let addToCartBtns2 = document.querySelectorAll(".products__item .button");
@@ -1065,7 +1061,7 @@ window.addEventListener("load", function() {
       price = this.getAttribute("data-price"), // стоимость товара
       url = this.getAttribute("data-src"), // картинка товара
       currency = this.getAttribute("data-currency"), //валюта товара
-      link = this.getAttribute("data-href"), //ссылка на товар
+      link = this.getAttribute("data-link"), //ссылка на товар
       qty;
 
     if (input.value < minValue || input.value === "") {
@@ -1130,7 +1126,7 @@ window.addEventListener("load", function() {
       price = this.getAttribute("data-price"), // стоимость товара
       url = this.getAttribute("data-src"), // картинка товара
       currency = this.getAttribute("data-currency"), //валюта товара
-      link = this.getAttribute("data-href"), //ссылка на товар
+      link = this.getAttribute("data-link"), //ссылка на товар
       qty = 1;
 
     let isItemInCart = items.find(item => item.id === id);
