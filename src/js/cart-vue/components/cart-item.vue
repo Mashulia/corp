@@ -71,7 +71,7 @@
         <button
           class="button-remove button button-icon"
           title="Удалить товар из корзины"
-          @click.stop="deleteFromCart"
+          @click="deleteFromCart"
         >
           <svg
             width="24"

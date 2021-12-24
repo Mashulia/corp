@@ -21,7 +21,7 @@
       <transition-group name="slide-fade" mode="out-in">
         <cart-item
           v-for="(product, index) in PRODUCTS"
-          :key="index"
+          :key="product.id"
           :product="product"
           @deleteFromCart="deleteFromCart(index)"
           @incrementProduct="incrementProduct(index)"
@@ -107,6 +107,7 @@ export default {
       "CHANGE_STATE_LOCALSTORAGE"
     ]),
     deleteFromCart(index) {
+      this.PRODUCTS.splice(index, 1);
       this.DELETE_PRODUCT_FROM_CART(index);
       this.CHANGE_STATE_LOCALSTORAGE();
     },
