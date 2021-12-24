@@ -1,6 +1,5 @@
 <template>
-  <!-- <transition-group name="fade"> -->
-  <div class="cart-contents__item" v-if="show">
+  <div class="cart-contents__item">
     <div class="cart-contents__row">
       <a
         v-if="product.pic"
@@ -72,7 +71,7 @@
         <button
           class="button-remove button button-icon"
           title="Удалить товар из корзины"
-          @click="deleteFromCart"
+          @click.stop="deleteFromCart"
         >
           <svg
             width="24"
@@ -113,7 +112,6 @@
       </div>
     </div>
   </div>
-  <!-- </transition-group> -->
 </template>
 <script>
 import gsap from "gsap";
@@ -125,7 +123,6 @@ export default {
   data() {
     return {
       tweeningValue: this.multiplication,
-      show: true,
       cartItem: null
     };
   },
@@ -151,10 +148,6 @@ export default {
     ]),
     deleteFromCart() {
       this.$emit("deleteFromCart");
-      // show = !show;
-    },
-    animateDelete() {
-      show = !show;
     },
     incrementProduct() {
       this.$emit("incrementProduct");
@@ -192,7 +185,6 @@ export default {
   },
   mounted() {
     this.tween(this.value, Number(this.multiplication));
-    console.log(this.product.link);
   }
 };
 </script>

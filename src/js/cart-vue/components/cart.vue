@@ -18,16 +18,16 @@
       </div>
     </div>
     <div class="cart-contents__body">
-      <!-- <transition-group name="fade"> -->
-      <cart-item
-        v-for="(product, index) in PRODUCTS"
-        :key="product.id"
-        :product="product"
-        @deleteFromCart="deleteFromCart(index)"
-        @incrementProduct="incrementProduct(index)"
-        @decrementProduct="decrementProduct(index)"
-      />
-      <!-- </transition-group> -->
+      <transition-group name="slide-fade">
+        <cart-item
+          v-for="(product, index) in PRODUCTS"
+          :key="index"
+          :product="product"
+          @deleteFromCart="deleteFromCart(index)"
+          @incrementProduct="incrementProduct(index)"
+          @decrementProduct="decrementProduct(index)"
+        />
+      </transition-group>
     </div>
     <div class="cart-contents__footer">
       <div class="cells fx-justify-between">
