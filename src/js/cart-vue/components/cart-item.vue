@@ -2,13 +2,17 @@
   <!-- <transition-group name="fade"> -->
   <div class="cart-contents__item" v-if="show">
     <div class="cart-contents__row">
-      <a v-if="product.pic" class="cart-contents__image" :href="product.link">
+      <a
+        v-if="product.pic"
+        class="cart-contents__image"
+        v-bind:href="product.link"
+      >
         <!-- Размер картинок 124х93-->
         <img :src="product.pic" />
       </a>
       <div v-else class="cart-contents__image no-image"></div>
       <div class="cart-contents__info">
-        <a class="cart-contents__name" :href="product.link">
+        <a class="cart-contents__name" v-bind:href="product.link">
           {{ product.name }}</a
         >
         <div class="cart-contents__price">
