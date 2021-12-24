@@ -962,10 +962,6 @@ window.addEventListener("load", function() {
     }
   };
 
-  window.changeStatus = function(status) {
-    return !!status;
-  };
-
   //function addToCart
   let addToCartBtns1 = document.querySelectorAll(".js-add2cart");
   let addToCartBtns2 = document.querySelectorAll(".products__item .button");
