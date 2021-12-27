@@ -923,27 +923,31 @@ window.addEventListener("load", function() {
   }
 
   $(document).ready(function(e) {
-    if ($("#opt-iframe").length === 0) {
-      $("body").addClass("opt-outer-body");
-      $(".settings").after('<iframe id="opt-iframe"></iframe>');
-      var contFrame = $("#opt-iframe")[0];
-      if (contFrame) {
-        $("body").css({ overflow: "hidden" });
-
-        contFrame.addEventListener("load", function() {
-          const frameLinks = $(this)
-            .contents()
-            .find("a[href]");
-          frameLinks.on("click", function() {
-            let href = $(this).attr("href");
-            contFrame.src = href + "?" + new Date().getTime();
-            setLocation(contFrame.src);
+    $(".settings__toggle").on("click", function(e) {
+      if ($("#opt-iframe").length === 0) {
+        $("body")
+          .addClass("opt-outer-body")
+          .css({ overflow: "hidden" });
+        $(".settings").after('<iframe id="opt-iframe"></iframe>');
+        var contFrame = $("#opt-iframe")[0];
+        if (contFrame) {
+          contFrame.addEventListener("load", function() {
+            const frameLinks = $(this)
+              .contents()
+              .find("a[href]");
+            frameLinks.on("click", function() {
+              let href = $(this).attr("href");
+              contFrame.src = href;
+              setLocation(contFrame.src);
+            });
+            contFrame.contentWindow.document
+              .querySelector(".settings")
+              .remove();
           });
-          contFrame.contentWindow.document.querySelector(".settings").remove();
-        });
-        contFrame.src = location.href + "?" + new Date().getTime();
+          contFrame.src = location.href;
+        }
       }
-    }
+    });
   });
   function setLocation(curLoc) {
     try {
