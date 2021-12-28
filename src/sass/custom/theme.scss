@@ -7,22 +7,16 @@ $custom-color-2-s: 26%;
 $custom-color-2-l: 36%;
 $custom-color-2: hsl($custom-color-2-h, $custom-color-2-s, $custom-color-2-l);
 
-$custom-color-hover: hsl(
-  $custom-color-1-h,
+$custom-color-hover: hsl($custom-color-1-h,
   $custom-color-1-s + 10,
-  $custom-color-1-l - 15
-);
-$custom-color-active: hsl(
-  $custom-color-1-h,
+  $custom-color-1-l - 15);
+$custom-color-active: hsl($custom-color-1-h,
   $custom-color-1-s,
-  $custom-color-1-l - 20
-);
+  $custom-color-1-l - 20);
 
-$custom-color-21: hsl(
-  $custom-color-2-h,
+$custom-color-21: hsl($custom-color-2-h,
   $custom-color-2-s,
-  $custom-color-2-l - 15
-);
+  $custom-color-2-l - 15);
 
 .corp {
   --custom-color-1: #{$custom-color-1};
@@ -36,7 +30,7 @@ $custom-color-21: hsl(
 .sservices--v1 .services__title,
 .videos__link::after,
 .slider-nav .slick-current::after,
-.nav--extra.dropdown--opened > .dropdown__toggle,
+.nav--extra.dropdown--opened>.dropdown__toggle,
 .to-top__link,
 .header--v3 .search__toggle,
 .fancy-arrow:hover,
@@ -44,11 +38,12 @@ $custom-color-21: hsl(
 .tabs__switch.current,
 .nav-slider .slick-arrow,
 .sprojects__category,
-.sps__toggle__input:checked ~ .sps__toggle__value::after,
-.settings__block-toggle:checked ~ .button-on,
+.sps__toggle__input:checked~.sps__toggle__value::after,
+.settings__block-toggle:checked~.button-on,
 .settings__accordeon.opened .button-tweak {
   background-color: $custom-color-1;
 }
+
 .button-primary,
 .button-submit,
 .button-secondary,
@@ -58,18 +53,21 @@ $custom-color-21: hsl(
 .pagination__link--active,
 .slick-current .illustrations__nav__image,
 .illustrations__nav__item:not(.slick-slide) .illustrations__nav__image,
-.set-option__input:checked ~ .sps__container {
+.set-option__input:checked~.sps__container {
   border-color: $custom-color-1;
 }
-.set-option__input:checked ~ .sps__container {
+
+.settings__body,
+.set-option__input:checked~.sps__container {
   box-shadow: 0 0 0 1px $custom-color-1;
 }
+
 a,
 .expand__icon,
 .button-secondary,
 .slick-arrow,
-.expand--opened > .expand__toggle,
-.dropdown--opened:not(.nav--extra) > .dropdown__toggle,
+.expand--opened>.expand__toggle,
+.dropdown--opened:not(.nav--extra)>.dropdown__toggle,
 .footer--v1 .footer__emails .connect,
 .snavigation__link--current,
 .dropdown__icon,
@@ -82,16 +80,17 @@ a,
 .search__result span,
 .snavigation__link__button,
 .snavigation__sublink--current,
-.opened > .snavigation__link,
+.opened>.snavigation__link,
 .cart-contents__header__erase,
 .illustrations__pic__image__decor,
-.set-option__input:checked ~ .sps__container .set-option__title::before,
+.set-option__input:checked~.sps__container .set-option__title::before,
 .settings__accordeon.opened .set-accordeon__title,
-.set-option__input:checked ~ .set-option__text,
-.set-option__input:checked ~ .sps__container .set-option__text,
+.set-option__input:checked~.set-option__text,
+.set-option__input:checked~.sps__container .set-option__text,
 .settings__label__link.tabs__switch.current {
   color: $custom-color-1;
 }
+
 .connect:not(.connect--labeled)::before,
 .benefits__img,
 .label,
@@ -110,14 +109,15 @@ thead tr:last-child::after,
 .form__header,
 .footer--v2 .footer__phones .connect__button::before,
 .cards__list--accented1 .cards__item:first-child .icard__body,
-.opened > .snavigation__link::before,
+.opened>.snavigation__link::before,
 .presentation__label,
 .settings__header,
 .settings__panel__section.active .sps__container::before,
-.set-option__input:checked ~ .sps__container::before,
+.set-option__input:checked~.sps__container::before,
 .settings__label__link.tabs__switch.current::before {
   background-color: $custom-color-2;
 }
+
 .hero__slider .slick-dots button,
 .videos__link::before,
 .primary-nav .expand__body,
@@ -126,6 +126,7 @@ thead tr:last-child::after,
 .cards__list--accented1 .cards__item:first-child .icard__body {
   border-color: $custom-color-2;
 }
+
 .reviews__cat__text,
 .reviews__pic__decor,
 ol li::before,
@@ -137,6 +138,7 @@ ul li::before,
 .page-message__icon {
   color: $custom-color-2;
 }
+
 .button-primary:hover,
 .button-secondary:hover,
 .button-submit:hover,
@@ -145,7 +147,7 @@ ul li::before,
 .videos__link:hover::after,
 .slick-arrow:hover,
 .slick-dots button:hover,
-.nav--extra:hover > .dropdown__toggle,
+.nav--extra:hover>.dropdown__toggle,
 .to-top__link:hover,
 .socials__link:hover,
 .messengers__link:hover,
@@ -155,6 +157,7 @@ ul li::before,
 .tabs__switch:hover {
   background-color: $custom-color-hover;
 }
+
 .button-primary:hover,
 .button-secondary:hover,
 .button-submit:hover,
@@ -168,13 +171,15 @@ ul li::before,
 .pagination__link:hover {
   border-color: $custom-color-hover;
 }
+
 a:hover,
-.hoverable .expand:hover > .expand__toggle,
+.hoverable .expand:hover>.expand__toggle,
 .search__toggle:hover,
 .footer__emails .connect__text:hover,
 .button-remove:hover {
   color: $custom-color-hover;
 }
+
 .button-primary:active,
 .button-secondary:active,
 .button-submit:active,
@@ -193,6 +198,7 @@ a:hover,
 .tabs__switch:active {
   background-color: $custom-color-active;
 }
+
 .button-primary:active,
 .button-secondary:active,
 .button-submit:active,
@@ -205,6 +211,7 @@ a:hover,
 .pagination__link:active {
   border-color: $custom-color-active;
 }
+
 a:active,
 .hoverable .expand__toggle:active,
 .search__toggle:active,
@@ -212,80 +219,80 @@ a:active,
 .button-remove:active {
   color: $custom-color-active;
 }
+
 .footer__bg--v1 {
   background-color: $custom-color-21;
-  background-image: radial-gradient(
-    90% 30% at 120% 90%,
-    hsla($custom-color-1-h, $custom-color-1-s, $custom-color-1-l, 0.3) 0%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  background-image: radial-gradient(90% 30% at 120% 90%,
+      hsla($custom-color-1-h, $custom-color-1-s, $custom-color-1-l, 0.3) 0%,
+      rgba(0, 0, 0, 0) 100%);
 }
+
 .header--v2 .mheader__phones .connect::before,
 .header--v2 .header__phones .connect::before,
 .header--v2 .header__addresses .connect::before {
-  background-color: hsla(
-    $custom-color-2-h,
-    $custom-color-2-s,
-    $custom-color-2-l - 15,
-    0.5
-  );
+  background-color: hsla($custom-color-2-h,
+      $custom-color-2-s,
+      $custom-color-2-l - 15,
+      0.5);
 }
+
 .snavigation__toggle {
-  background-image: radial-gradient(
-    12% 85% at 100% 7%,
-    hsla($custom-color-1-h, $custom-color-1-s, $custom-color-1-l, 0.3) 0%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  background-image: radial-gradient(12% 85% at 100% 7%,
+      hsla($custom-color-1-h, $custom-color-1-s, $custom-color-1-l, 0.3) 0%,
+      rgba(0, 0, 0, 0) 100%);
 }
+
 .settings__header {
-  background-image: radial-gradient(
-    22.6% 110.35% at 100% 100%,
-    hsla($custom-color-1-h, $custom-color-1-s, $custom-color-1-l, 0.5) 0%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  background-image: radial-gradient(22.6% 110.35% at 100% 100%,
+      hsla($custom-color-1-h, $custom-color-1-s, $custom-color-1-l, 0.5) 0%,
+      rgba(0, 0, 0, 0) 100%);
 }
+
 .notification {
   background-color: $custom-color-21;
 }
+
 .notification__icon {
   color: $custom-color-21;
 }
+
 .button-settings {
   border-top-color: $custom-color-1;
   border-right-color: $custom-color-1;
   border-bottom-color: $custom-color-2;
   border-left-color: $custom-color-2;
 }
+
 @media (max-width: 575px) {
   .hero__item {
     background-color: $custom-color-2;
   }
 }
+
 @media (min-width: 576px) {
   .hero__descr {
     color: $custom-color-2;
   }
 }
+
 @media (min-width: 768px) {
   .footer__bg--v1 {
-    background-image: radial-gradient(
-      35% 60% at 50% 128%,
-      hsla($custom-color-1-h, $custom-color-1-s, $custom-color-1-l, 0.3) 0%,
-      rgba(0, 0, 0, 0) 100%
-    );
+    background-image: radial-gradient(35% 60% at 50% 128%,
+        hsla($custom-color-1-h, $custom-color-1-s, $custom-color-1-l, 0.3) 0%,
+        rgba(0, 0, 0, 0) 100%);
   }
 }
+
 @media (min-width: 800px) {
   .settings__close {
     color: $custom-color-1;
   }
 }
+
 @media (min-width: 1024px) {
   .footer__bg--v1 {
-    background-image: radial-gradient(
-      30% 60% at 60% 120%,
-      hsla($custom-color-1-h, $custom-color-1-s, $custom-color-1-l, 0.3) 0%,
-      rgba(0, 0, 0, 0) 100%
-    );
+    background-image: radial-gradient(30% 60% at 60% 120%,
+        hsla($custom-color-1-h, $custom-color-1-s, $custom-color-1-l, 0.3) 0%,
+        rgba(0, 0, 0, 0) 100%);
   }
 }
