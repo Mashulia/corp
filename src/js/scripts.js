@@ -396,7 +396,6 @@ window.addEventListener("load", function() {
     let pageOverlay = document.getElementsByClassName("page-overlay")[0];
     if (pageOverlay) {
       pageOverlay.removeEventListener("click", closeSearchPopup);
-      e.preventDefault();
       removePageOverlay(pageOverlay);
     }
   }
