@@ -702,7 +702,7 @@ window.addEventListener("load", function() {
       return false;
     }
   }
-  // fancybox
+  // fancybox;
   $.fancybox.defaults.autoFocus = false;
   $.fancybox.defaults.backFocus = false;
   $.fancybox.defaults.idleTime = 0;
@@ -738,6 +738,7 @@ window.addEventListener("load", function() {
       "</button>"
   };
   $.fancybox.defaults.parentEl = ".corp";
+
   $(function() {
     $(".fancy-image").fancybox();
   });
@@ -932,18 +933,26 @@ window.addEventListener("load", function() {
         var contFrame = $("#opt-iframe")[0];
         if (contFrame) {
           contFrame.addEventListener("load", function() {
+            const fancyImages = $(this)
+              .contents()
+              .find("data-fancybox");
             const frameLinks = $(this)
               .contents()
               .find("a[href]");
+
+            fancyImages.setAttribute("data-fancybox-type", "iframe");
+
             frameLinks.on("click", function() {
               let href = $(this).attr("href");
               contFrame.src = href;
               setLocation(contFrame.src);
             });
+
             contFrame.contentWindow.document
               .querySelector(".settings")
               .remove();
           });
+
           contFrame.src = location.href;
         }
       }
