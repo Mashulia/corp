@@ -371,7 +371,8 @@ window.addEventListener("load", function() {
     : [];
   let searchBodyButtons = searchBody.querySelectorAll("button");
 
-  function toggleSearch() {
+  function toggleSearch(e) {
+    e.preventDefault();
     searchBody.classList.toggle("popup-search--opened");
     if (searchBody.classList.contains("popup-search--opened")) {
       let pageOverlay = createPageOverlay();
@@ -392,6 +393,7 @@ window.addEventListener("load", function() {
     }
   }
   function closeSearchPopup(e) {
+    e.preventDefault();
     searchBody.classList.remove("popup-search--opened");
     let pageOverlay = document.getElementsByClassName("page-overlay")[0];
     if (pageOverlay) {
