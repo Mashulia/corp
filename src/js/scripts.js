@@ -740,7 +740,9 @@ window.addEventListener("load", function() {
   $.fancybox.defaults.parentEl = ".corp";
 
   $(function() {
-    $(".fancy-image").fancybox();
+    $(".fancy-image").fancybox({
+      type: "iframe"
+    });
   });
 
   // functions on load
@@ -933,18 +935,12 @@ window.addEventListener("load", function() {
         var contFrame = $("#opt-iframe")[0];
         if (contFrame) {
           contFrame.addEventListener("load", function() {
-            const fancyImages = $(this)
-              .contents()
-              .find("data-fancybox");
-            const frameLinks = $(this)
-              .contents()
-              .find("a[href]");
+            const iframe = $(this).contents();
 
-            fancyImages.setAttribute("data-fancybox-type", "iframe");
-
-            frameLinks.on("click", function() {
+            iframe.find("a[href]:not(a[data-fancybox]").on("click", function() {
               let href = $(this).attr("href");
               contFrame.src = href;
+
               setLocation(contFrame.src);
             });
 
