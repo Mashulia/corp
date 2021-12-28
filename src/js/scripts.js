@@ -391,11 +391,12 @@ window.addEventListener("load", function() {
       }
     }
   }
-  function closeSearchPopup() {
+  function closeSearchPopup(e) {
     searchBody.classList.remove("popup-search--opened");
     let pageOverlay = document.getElementsByClassName("page-overlay")[0];
     if (pageOverlay) {
       pageOverlay.removeEventListener("click", closeSearchPopup);
+      e.preventDefault();
       removePageOverlay(pageOverlay);
     }
   }
