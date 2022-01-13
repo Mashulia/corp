@@ -1088,7 +1088,8 @@ window.addEventListener("load", function() {
       url = this.getAttribute("data-src"), // картинка товара
       currency = this.getAttribute("data-currency"), //валюта товара
       link = this.getAttribute("data-href"), //ссылка на товар
-      qty;
+      qty,
+      disabled = false;
 
     if (input.value < minValue || input.value === "") {
       input.value = minValue;
@@ -1117,7 +1118,8 @@ window.addEventListener("load", function() {
         pic: url,
         qty: qty,
         currency: currency,
-        link: link
+        link: link,
+        disabled: disabled
       };
       items.push(item);
     }
@@ -1153,7 +1155,8 @@ window.addEventListener("load", function() {
       url = this.getAttribute("data-src"), // картинка товара
       currency = this.getAttribute("data-currency"), //валюта товара
       link = this.getAttribute("data-href"), //ссылка на товар
-      qty = 1;
+      qty = 1,
+      disabled = false;
 
     let isItemInCart = items.find(item => item.id === id);
 
@@ -1172,7 +1175,8 @@ window.addEventListener("load", function() {
         pic: url,
         qty: qty,
         currency: currency,
-        link: link
+        link: link,
+        disabled: disabled
       };
       items.push(item);
     }
@@ -1260,6 +1264,7 @@ window.addEventListener("load", function() {
 
     if (productQty && productQty !== "[]") {
       productQty = JSON.parse(localStorage.getItem("cart"));
+
       activateCart();
     } else if (cell) {
       cell.classList.add("max-width");

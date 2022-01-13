@@ -6,6 +6,8 @@ const cartTextData = {
   UNIT: "ед.",
   PRISE_FOR_UNIT: "Цена, за 1 ед.",
   ON_REQUEST_TEXT: "по запросу",
+  REMOVE_NOTIFICATION_PRODUCT_WORD: "Товар",
+  REMOVE_NOTIFICATION_TEXT: "был удален из корзины",
   EMPTY_CART_TITLE: "Ваша корзина пуста",
   EMPTY_CART_TEXT:
     "Выберите в каталоге интересующий товар и добавьте в корзину",

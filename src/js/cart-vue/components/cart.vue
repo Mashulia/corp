@@ -23,7 +23,9 @@
           v-for="(product, index) in PRODUCTS"
           :key="product.id"
           :product="product"
+          :qty="qty"
           @deleteFromCart="deleteFromCart(index)"
+          @showRemoveNotification="showRemoveNotification(index)"
           @incrementProduct="incrementProduct(index)"
           @decrementProduct="decrementProduct(index)"
         />
@@ -60,7 +62,8 @@ export default {
     return {
       tweeningValue: this.cartTotalCost,
       products: [],
-      cartIdArray: []
+      cartIdArray: [],
+      qty: 0
     };
   },
   props: {
@@ -111,6 +114,13 @@ export default {
       this.DELETE_PRODUCT_FROM_CART(index);
       this.CHANGE_STATE_LOCALSTORAGE();
     },
+    showRemoveNotification(index) {
+      this.PRODUCTS[index].disabled = true;
+      this.qty = this.PRODUCTS[index].qty;
+      this.PRODUCTS[index].qty = 0;
+      this.CHANGE_STATE_LOCALSTORAGE();
+    },
+
     deleteAllProductsFromCart() {
       this.DELETE_ALL_PRODUCTS_FROM_CART(), localStorage.clear("cart");
       this.CHANGE_STATE_LOCALSTORAGE();

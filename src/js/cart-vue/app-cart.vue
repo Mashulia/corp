@@ -33,7 +33,9 @@ export default {
     ...mapActions([
       "SET_PRODUCTS_TO_STATE",
       "SHOW_CART_FORM",
-      "GET_ID_ARRAY_OF_PRODUCTS"
+      "GET_ID_ARRAY_OF_PRODUCTS",
+      "DELETE_PRODUCT_FROM_CART",
+      "CHANGE_STATE_LOCALSTORAGE"
     ])
   },
   mounted() {
