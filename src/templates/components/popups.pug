@@ -37,9 +37,10 @@
           a(href="policy.html") условиями обработки персональных данных
 // Всплывающее сообщение об успешно добавленном в корзину товаре
 .notification#product-added
-  .notification__row
-    .notification__icon
-      include ../../images/inline-svgs/tick.svg
-    .notification__body
-      .notification__title Товар добавлен в корзину
-      .notification__text Поролон мебельный ST 2236 (1,6х2м) толщина 10мм
+  a.notification__link(href="cart-vue.html", title="Перейти в корзину")
+    .notification__row
+      .notification__icon
+        include ../../images/inline-svgs/tick.svg
+      .notification__body
+        .notification__title Товар добавлен в корзину
+        .notification__text Поролон мебельный ST 2236 (1,6х2м) толщина 10мм
