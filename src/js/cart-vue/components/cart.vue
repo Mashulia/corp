@@ -139,6 +139,8 @@ export default {
       this.CHANGE_STATE_LOCALSTORAGE();
       if (this.arrayDisabledItems.length === this.PRODUCTS.length) {
         this.DEACTIVATE_CART_STATUS();
+        let form = document.querySelector(".cart__form");
+        form.setAttribute("style", "display: none");
       }
     },
     showAllRemoveNotification() {
@@ -150,6 +152,8 @@ export default {
       for (let i = 0; i < this.PRODUCTS.length; i++) {
         this.PRODUCTS[i].disabled = true;
         this.PRODUCTS[i].savedQty = this.PRODUCTS[i].qty;
+        let form = document.querySelector(".cart__form");
+        form.setAttribute("style", "display: none");
       }
       this.show = !this.show;
       this.CHANGE_STATE_LOCALSTORAGE();
@@ -160,6 +164,8 @@ export default {
         this.PRODUCTS[i].disabled = false;
         this.PRODUCTS[i].qty = this.PRODUCTS[i].savedQty;
       }
+      let form = document.querySelector(".cart__form");
+      form.setAttribute("style", "display: block");
       this.show = !this.show;
       this.CHANGE_STATE_LOCALSTORAGE();
       this.ACTIVATE_CART_STATUS();

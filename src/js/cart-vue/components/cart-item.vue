@@ -188,6 +188,8 @@ export default {
         if (this.arrayDisabledItems[i].id == this.product.id) {
           this.arrayDisabledItems.splice(i, 1);
           this.ACTIVATE_CART_STATUS();
+          let form = document.querySelector(".cart__form");
+          form.setAttribute("style", "display: block");
         }
       }
     },
