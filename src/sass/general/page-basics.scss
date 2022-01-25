@@ -217,10 +217,18 @@
   font-weight: bold;
   line-height: 1.4;
   margin-bottom: 0.5rem;
+
+  .notification__link & {
+    color: #fff;
+  }
 }
 
 .notification__text {
   color: rgba(255, 255, 255, 0.8);
+}
+
+.notification__link:hover {
+  text-decoration: none;
 }
 
 .page-message {

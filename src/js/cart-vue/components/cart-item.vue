@@ -16,8 +16,8 @@
           <a
             class="cart-contents__restore-link"
             href="javascript:void(0)"
-            @click="returnToCart"
-            >Восстановить</a
+            @click="returnItemToCart"
+            >{{ this.cartTextData.REMOVE_NOTIFICATION_RESTORE }}</a
           >
         </div>
       </div>
@@ -94,7 +94,7 @@
           <button
             class="button-remove button button-icon"
             title="Удалить товар из корзины"
-            @click="showRemoveNotification"
+            @click="showItemRemoveNotification"
           >
             <svg
               width="24"
@@ -156,8 +156,8 @@ export default {
       type: Object,
       required: true
     },
-    qty: {
-      type: Number,
+    arrayDisabledItems: {
+      type: Array,
       required: true
     }
   },
@@ -170,20 +170,26 @@ export default {
     this.cartTextData = cartTextData;
   },
   methods: {
-    ...mapActions(["CHANGE_STATE_LOCALSTORAGE", "DELETE_PRODUCT_FROM_CART"]),
-    deleteFromCart() {
-      this.$emit("deleteFromCart");
-    },
-    showRemoveNotification() {
-      this.show = !this.show;
+    ...mapActions([
+      "CHANGE_STATE_LOCALSTORAGE",
+      "DELETE_PRODUCT_FROM_CART",
+      "ACTIVATE_CART_STATUS"
+    ]),
+    showItemRemoveNotification() {
       this.buttonClicked = true;
-      this.$emit("showRemoveNotification");
+      this.$emit("showItemRemoveNotification");
     },
-    returnToCart() {
+    returnItemToCart() {
       this.buttonClicked = false;
       this.product.disabled = false;
-      this.product.qty = this.qty;
+      this.product.qty = this.product.savedQty;
       this.CHANGE_STATE_LOCALSTORAGE();
+      for (let i = 0; i < this.arrayDisabledItems.length; i++) {
+        if (this.arrayDisabledItems[i].id == this.product.id) {
+          this.arrayDisabledItems.splice(i, 1);
+          this.ACTIVATE_CART_STATUS();
+        }
+      }
     },
     incrementProduct() {
       this.$emit("incrementProduct");
@@ -221,9 +227,6 @@ export default {
   },
   mounted() {
     this.tween(this.value, Number(this.multiplication));
-    if (this.product.disabled === true) {
-      this.$emit("deleteFromCart");
-    }
   }
 };
 </script>

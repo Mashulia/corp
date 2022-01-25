@@ -17,7 +17,8 @@ let store = createStore({
     },
     GET_ID_ARRAY: state => {
       for (let i = 0; i < state.products.length; i++) {
-        state.cartIdArray.push(Number(state.products[i].id));
+        if (state.products[i].disabled !== true)
+          state.cartIdArray.push(Number(state.products[i].id));
       }
     },
     CHANGE_LOCALSTORAGE: state => {
@@ -40,7 +41,12 @@ let store = createStore({
         cartBtns[i].classList.remove("bcart__button--active");
       }
     },
-    REMOVE_ITEM_FROM_CART: (state, index) => {
+    REMOVE_ITEM_FROM_CART: state => {
+      for (let i = 0; i < state.products.length; i++) {
+        if (state.products[i].disabled === true) {
+          state.products.splice(i, 1);
+        }
+      }
       if (state.products.length === 0 && state.products === "[]") {
         localStorage.clear();
         let cartBtns = document.querySelectorAll(".bcart__button");
@@ -48,9 +54,9 @@ let store = createStore({
           cartBtns[i].classList.remove("bcart__button--active");
         }
       }
-      for (index = 0; index < state.cartIdArray.length; index++) {
-        if (state.products[index] == state.cartIdArray[index].id) {
-          state.cartIdArray.splice(state.cartIdArray[index], 1);
+      for (let i = 0; i < state.cartIdArray.length; i++) {
+        if (state.products[i] == state.cartIdArray[i].id) {
+          state.cartIdArray.splice(state.cartIdArray[i], 1);
         }
       }
     },
@@ -93,8 +99,8 @@ let store = createStore({
       commit("SET_TO_STATE", products);
       commit("ACTIVATE_CART");
     },
-    DELETE_PRODUCT_FROM_CART({ commit, index }) {
-      commit("REMOVE_ITEM_FROM_CART", index);
+    DELETE_PRODUCT_FROM_CART({ commit }) {
+      commit("REMOVE_ITEM_FROM_CART");
     },
     DELETE_ALL_PRODUCTS_FROM_CART({ commit }) {
       commit("REMOVE_ALL_PRODUCTS_FROM_CART");

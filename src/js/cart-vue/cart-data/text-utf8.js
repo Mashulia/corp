@@ -8,6 +8,8 @@ const cartTextData = {
   ON_REQUEST_TEXT: "по запросу",
   REMOVE_NOTIFICATION_PRODUCT_WORD: "Товар",
   REMOVE_NOTIFICATION_TEXT: "был удален из корзины",
+  REMOVE_NOTIFICATION_PRODUCT_ALL: "Все товары были удалены из корзины",
+  REMOVE_NOTIFICATION_RESTORE: "восстановить",
   EMPTY_CART_TITLE: "Ваша корзина пуста",
   EMPTY_CART_TEXT:
     "Выберите в каталоге интересующий товар и добавьте в корзину",

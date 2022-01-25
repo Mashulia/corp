@@ -10,27 +10,44 @@
         <div class="cell cell-auto">
           <button
             class="cart-contents__header__erase js-cart-empty"
-            @click="deleteAllProductsFromCart"
+            @click="showAllRemoveNotification"
           >
             {{ this.cartTextData.HEADER_REMOVE }}
           </button>
         </div>
       </div>
     </div>
-    <div class="cart-contents__body">
-      <transition-group name="slide-fade" mode="out-in">
+    <transition name="fade" mode="out-in">
+      <div
+        class="cart-contents__item cart-contents__item--notification"
+        v-if="show"
+      >
+        <div class="cart-contents__row">
+          <div class="cart-contents__info">
+            {{ this.cartTextData.REMOVE_NOTIFICATION_PRODUCT_ALL }}
+          </div>
+          <div class="cart-contents__restore">
+            <a
+              class="cart-contents__restore-link"
+              href="javascript:void(0)"
+              @click="returnAllToCart"
+              >{{ this.cartTextData.REMOVE_NOTIFICATION_RESTORE }}</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="cart-contents__body" v-else>
         <cart-item
           v-for="(product, index) in PRODUCTS"
           :key="product.id"
           :product="product"
-          :qty="qty"
-          @deleteFromCart="deleteFromCart(index)"
-          @showRemoveNotification="showRemoveNotification(index)"
+          :arrayDisabledItems="arrayDisabledItems"
+          @showItemRemoveNotification="showItemRemoveNotification(index)"
           @incrementProduct="incrementProduct(index)"
           @decrementProduct="decrementProduct(index)"
         />
-      </transition-group>
-    </div>
+      </div>
+    </transition>
     <div class="cart-contents__footer">
       <div class="cells fx-justify-between">
         <div class="cell cell-auto">
@@ -39,7 +56,10 @@
           </div>
         </div>
         <div class="cell cell-auto">
-          <div class="cart-contents__footer__value" v-if="cartTotalCost > 0">
+          <div
+            class="cart-contents__footer__value"
+            v-if="cartTotalCost > 0 && show !== true"
+          >
             <animated-total :value="cartTotalCost"></animated-total>
             {{ this.cartTextData.CURRENCY_UNIT }}
           </div>
@@ -63,7 +83,8 @@ export default {
       tweeningValue: this.cartTotalCost,
       products: [],
       cartIdArray: [],
-      qty: 0
+      arrayDisabledItems: [],
+      show: false
     };
   },
   props: {
@@ -107,24 +128,41 @@ export default {
       "INCREMENT_CART_PRODUCT",
       "DECREMENT_CART_PRODUCT",
       "DEACTIVATE_CART_STATUS",
+      "ACTIVATE_CART_STATUS",
       "CHANGE_STATE_LOCALSTORAGE"
     ]),
-    deleteFromCart(index) {
-      this.PRODUCTS.splice(index, 1);
-      this.DELETE_PRODUCT_FROM_CART(index);
-      this.CHANGE_STATE_LOCALSTORAGE();
-    },
-    showRemoveNotification(index) {
+    showItemRemoveNotification(index) {
       this.PRODUCTS[index].disabled = true;
-      this.qty = this.PRODUCTS[index].qty;
+      this.arrayDisabledItems.push(this.PRODUCTS[index]);
+      this.PRODUCTS[index].savedQty = this.PRODUCTS[index].qty;
       this.PRODUCTS[index].qty = 0;
       this.CHANGE_STATE_LOCALSTORAGE();
+      if (this.arrayDisabledItems.length === this.PRODUCTS.length) {
+        this.DEACTIVATE_CART_STATUS();
+      }
     },
-
-    deleteAllProductsFromCart() {
-      this.DELETE_ALL_PRODUCTS_FROM_CART(), localStorage.clear("cart");
+    showAllRemoveNotification() {
+      if (this.arrayDisabledItems.length === this.PRODUCTS.length) {
+        this.DELETE_ALL_PRODUCTS_FROM_CART();
+        this.CHANGE_STATE_LOCALSTORAGE();
+        this.DEACTIVATE_CART_STATUS();
+      }
+      for (let i = 0; i < this.PRODUCTS.length; i++) {
+        this.PRODUCTS[i].disabled = true;
+        this.PRODUCTS[i].savedQty = this.PRODUCTS[i].qty;
+      }
+      this.show = !this.show;
       this.CHANGE_STATE_LOCALSTORAGE();
       this.DEACTIVATE_CART_STATUS();
+    },
+    returnAllToCart() {
+      for (let i = 0; i < this.PRODUCTS.length; i++) {
+        this.PRODUCTS[i].disabled = false;
+        this.PRODUCTS[i].qty = this.PRODUCTS[i].savedQty;
+      }
+      this.show = !this.show;
+      this.CHANGE_STATE_LOCALSTORAGE();
+      this.ACTIVATE_CART_STATUS();
     },
     incrementProduct(index) {
       this.INCREMENT_CART_PRODUCT(index);
@@ -140,6 +178,26 @@ export default {
         localStorage.clear("cart");
         this.CHANGE_STATE_LOCALSTORAGE();
         this.DEACTIVATE_CART_STATUS();
+      }
+    },
+    checkDisabledItems() {
+      for (let i = 0; i < this.PRODUCTS.length; i++) {
+        if (this.PRODUCTS[i].disabled === true) {
+          this.arrayDisabledItems.push(this.PRODUCTS[i]);
+        }
+      }
+      if (this.arrayDisabledItems.length === this.PRODUCTS.length) {
+        this.DELETE_ALL_PRODUCTS_FROM_CART();
+        this.CHANGE_STATE_LOCALSTORAGE();
+        this.DEACTIVATE_CART_STATUS();
+      } else {
+        for (let i = 0; i < this.PRODUCTS.length; i++) {
+          for (let j = 0; j < this.arrayDisabledItems.length; j++) {
+            if (this.PRODUCTS[i].id === this.arrayDisabledItems[j].id)
+              this.PRODUCTS.splice(i, 1);
+            this.CHANGE_STATE_LOCALSTORAGE();
+          }
+        }
       }
     },
     loadData() {
@@ -216,10 +274,14 @@ export default {
     }
   },
   mounted() {
+    if (this.PRODUCTS.length) {
+      this.checkDisabledItems();
+    }
     this.tween(this.value, Number(this.cartTotalCost));
     if (this.URL) {
       this.loadData();
     }
+    this.arrayDisabledItems = [];
   }
 };
 </script>

@@ -966,7 +966,14 @@ window.addEventListener("load", function() {
 
   //globalObject
   window.getCartProducts = function() {
-    return JSON.parse(localStorage.getItem("cart"));
+    let cartData = JSON.parse(localStorage.getItem("cart"));
+    let cartItems = [];
+    for (let i = 0; i < cartData.length; i++) {
+      if (cartData[i].disabled === false) {
+        cartItems.push(cartData[i]);
+      }
+    }
+    return cartItems;
   };
 
   // Функция для перезагрузки айфрейма
@@ -1089,6 +1096,7 @@ window.addEventListener("load", function() {
       currency = this.getAttribute("data-currency"), //валюта товара
       link = this.getAttribute("data-href"), //ссылка на товар
       qty,
+      savedQty,
       disabled = false;
 
     if (input.value < minValue || input.value === "") {
@@ -1117,6 +1125,7 @@ window.addEventListener("load", function() {
         price: price,
         pic: url,
         qty: qty,
+        savedQty: savedQty,
         currency: currency,
         link: link,
         disabled: disabled
@@ -1156,6 +1165,7 @@ window.addEventListener("load", function() {
       currency = this.getAttribute("data-currency"), //валюта товара
       link = this.getAttribute("data-href"), //ссылка на товар
       qty = 1,
+      savedQty,
       disabled = false;
 
     let isItemInCart = items.find(item => item.id === id);
@@ -1176,7 +1186,8 @@ window.addEventListener("load", function() {
         qty: qty,
         currency: currency,
         link: link,
-        disabled: disabled
+        disabled: disabled,
+        savedQty: savedQty
       };
       items.push(item);
     }
