@@ -149,12 +149,18 @@ export default {
         this.CHANGE_STATE_LOCALSTORAGE();
         this.DEACTIVATE_CART_STATUS();
       }
+      if (this.arrayDisabledItems.length !== 0) {
+        this.arrayDisabledItems.length = 0;
+      }
       for (let i = 0; i < this.PRODUCTS.length; i++) {
         this.PRODUCTS[i].disabled = true;
-        this.PRODUCTS[i].savedQty = this.PRODUCTS[i].qty;
-        let form = document.querySelector(".cart__form");
-        form.setAttribute("style", "display: none");
+        if (this.PRODUCTS[i].qty !== 0) {
+          this.PRODUCTS[i].savedQty = this.PRODUCTS[i].qty;
+        }
+        this.arrayDisabledItems.push(this.PRODUCTS[i]);
       }
+      let form = document.querySelector(".cart__form");
+      form.setAttribute("style", "display: none");
       this.show = !this.show;
       this.CHANGE_STATE_LOCALSTORAGE();
       this.DEACTIVATE_CART_STATUS();
@@ -164,6 +170,7 @@ export default {
         this.PRODUCTS[i].disabled = false;
         this.PRODUCTS[i].qty = this.PRODUCTS[i].savedQty;
       }
+      this.arrayDisabledItems = [];
       let form = document.querySelector(".cart__form");
       form.setAttribute("style", "display: block");
       this.show = !this.show;
