@@ -1274,9 +1274,19 @@ window.addEventListener("load", function() {
     let productQty = localStorage.getItem("cart");
 
     if (productQty && productQty !== "[]") {
+      let deletedProducts = [];
       productQty = JSON.parse(localStorage.getItem("cart"));
-
-      activateCart();
+      console.log(productQty);
+      for (let i = 0; i < productQty.length; i++) {
+        if (productQty[i].disabled === true) {
+          deletedProducts.push(productQty[i]);
+        }
+      }
+      if (deletedProducts.length === productQty.length) {
+        localStorage.clear("cart");
+      } else {
+        activateCart();
+      }
     } else if (cell) {
       cell.classList.add("max-width");
     }
